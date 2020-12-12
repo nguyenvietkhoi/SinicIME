@@ -52,7 +52,7 @@ self.addEventListener('install', function (event) {
     );
 });
 
-// Connect to sqlite db file 
+// Connect to sqlite db file
 var xhr = new XMLHttpRequest();
 xhr.open('GET', './Resources/nomime.jpg', true);
 xhr.responseType = 'arraybuffer';
@@ -66,6 +66,10 @@ xhr.onload = function (e) {
     $("#txtPad").focus();
 };
 xhr.send();
+
+function isNoSpaceLang(qn) {
+    return ((qn == 8) || (qn == 9) || (qn == 15) || (qn == 16) || (qn == 19) || (qn == 20) || (qn == 24) || (qn == 26));
+}
 
 function tovertical() {
     $("#txtPad").css({ 'width': '50%' });
@@ -384,7 +388,7 @@ function txtPadKeyTyped(evt) {
         return;
     } else if (evtK == 32) {    //SPACE
         if (optionlist.length == 1) {
-            if ((quocngu == 8) || (quocngu == 9) || (quocngu == 15) || (quocngu == 16) || (quocngu == 19) || (quocngu == 20) || (quocngu == 24) || (quocngu == 26)) {
+            if (isNoSpaceLang(quocngu)) {
                 listUpdate();
             } else {
                 $("#rubytype").html(rubystr + " ");
@@ -687,7 +691,7 @@ function convertpad(direction) {
         $("#txtPad").css({ 'width': '50%' });
         $("#txtPadout").css({ 'writing-mode': 'horizontal-tb' });
         $("#txtPadout").css({ 'display': 'block' });
-        $("#txtPadout").html(convtxt);
+        $("#txtPadout").html(convtxt.replace(/\n/g, " <br> "));
     } else {
         offpad();
     }
@@ -772,12 +776,10 @@ function logo2phon(pad, nospace) {
     for (i = 1; i < cubo.length; i++) {
         var nextword = "";
         nextword = cubo[i];
-
-        if ((nospace) && ((quocngu == 8) || (quocngu == 9) || (quocngu == 15) || (quocngu == 16) || (quocngu == 19) || (quocngu == 20) || (quocngu == 24) || (quocngu == 26)))
-            ttt = ttt + nextword;
-        else if (nextword.startsWith('$')) {
+        
+        if (nextword.startsWith('$')) {
             nextword = cubo[i].substring(1);
-            if ("。、，：；？！…".includes(nextword)) {
+            if (("。、，：；？！…".includes(nextword)) && (quocngu != 24)) {
                 nextword = nextword.replace(/。/g, ".");
                 nextword = nextword.replace(/、/g, ",");
                 nextword = nextword.replace(/：/g, ":");
@@ -785,7 +787,11 @@ function logo2phon(pad, nospace) {
                 nextword = nextword.replace(/？/g, "?");
                 nextword = nextword.replace(/！/g, "!");
                 nextword = nextword.replace(/，/g, ",");
+                if ((nospace) && (isNoSpaceLang(quocngu)))
+                    nextword += " ";
             }
+            ttt = ttt + nextword;
+        } else if ((nospace) && (isNoSpaceLang(quocngu))) {
             ttt = ttt + nextword;
         }
         else if (ttt.slice(-1) == "\n")
@@ -1214,7 +1220,7 @@ function selExample(word, ruby) {
     if (contents.length != 0) {
         for (i = 0; i < contents[0].values.length; i++) {
             if (contents[0].values[i][0].indexOf(word) > -1) {
-                if ((quocngu == 8) || (quocngu == 9) || (quocngu == 15) || (quocngu == 16) || (quocngu == 19) || (quocngu == 20) || (quocngu == 24) || (quocngu == 26)) {
+                if (isNoSpaceLang(quocngu)) {
                     cubostr += "<tr><td>" + contents[0].values[i][0].replace(/:/g, "") + "</td><td>" + contents[0].values[i][1].replace(/ /g, "") + "</td></tr>";
                 }
                 else {
@@ -2209,13 +2215,13 @@ function TAIYO(text, ch) {
         case '0': tch = "𖰷"; break;
         case '1': tch = "𖱊"; break;
         case '2': tch = "𖱋"; break;
-        case '3': tch = "𖰴"; break;
+        case '3': tch = "𖰻"; break;
         case '4': tch = "𖰶"; break;
-        case '5': tch = "𖰵"; break;
+        case '5': tch = "𖰼"; break;
         case '6': tch = "𖰾"; break;
         case '7': tch = "𖰿"; break;
-        case '8': tch = "𖰳"; break;
-        case '9': tch = "𖰱"; break;
+        case '8': tch = "𖰺"; break;
+        case '9': tch = "𖰸"; break;
         case 'a': tch = "𖰲"; break;
         case 'b': tch = "𖰖"; break;
         case 'c': tch = "𖰈"; break;
@@ -2224,19 +2230,19 @@ function TAIYO(text, ch) {
         case 'f': tch = "𖰜"; break;
         case 'g': tch = "𖰇"; break;
         case 'h': tch = "𖰪"; break;
-        case 'i': tch = "𖰯"; break;
+        case 'i': tch = "𖰳"; break;
         case 'j': tch = "𖰍"; break;
         case 'k': tch = "𖰀"; break;
         case 'l': tch = "𖰥"; break;
         case 'm': tch = "𖰟"; break;
         case 'n': tch = "𖰕"; break;
-        case 'o': tch = "𖰬"; break;
+        case 'o': tch = "𖰱"; break;
         case 'p': tch = "𖰘"; break;
-        case 'q': tch = "𖰄"; break;
-        case 'r': tch = "𖰣"; break;
+        case 'q': tch = "𖰬"; break;
+        case 'r': tch = "𖰴"; break;
         case 's': tch = "𖰊"; break;
         case 't': tch = "𖰐"; break;
-        case 'u': tch = "𖰩"; break;
+        case 'u': tch = "𖰵"; break;
         case 'v': tch = "𖰧"; break;
         case 'w': tch = "𖰚"; break;
         case 'x': tch = "𖰂"; break;
@@ -2269,13 +2275,8 @@ function TAIYO(text, ch) {
         case '\'p': roma = "𖰙"; break;
         case '\'b': roma = "𖰗"; break;
         case '\'d': roma = "𖰏"; break;
-        case '\'o': roma = "𖰭"; break;
-        case '\'q': roma = "𖰅"; break;
+        case '\'q': roma = "𖰭"; break;
         case '\'y': roma = "𖰡"; break;
-        case '𖰴3': roma = "𖰻"; break;
-        case '𖰵5': roma = "𖰼"; break;
-        case '𖰳8': roma = "𖰺"; break;
-        case '𖰱9': roma = "𖰸"; break;
         case '𖰷0': roma = "𖰽"; break;
         case '𖰷d': roma = "𖱄"; break;
         case '𖰷b': roma = "𖱅"; break;
@@ -2283,31 +2284,29 @@ function TAIYO(text, ch) {
         case '𖰷n': roma = "𖱁"; break;
         case '𖰷m': roma = "𖱂"; break;
         case '𖰷g': roma = "𖱀"; break;
-        case '𖰪u': roma = "𖰨"; break;
-        case '𖰪i': roma = "𖰮"; break;
         case '𖰪j': roma = "𖰌"; break;
-        case '𖰪r': roma = "𖰢"; break;
         case '𖰪l': roma = "𖰤"; break;
         case '𖰪m': roma = "𖰞"; break;
         case '𖰪n': roma = "𖰔"; break;
         case '𖰪g': roma = "𖰆"; break;
         case '𖰪v': roma = "𖰦"; break;
-        case '\'3': roma = "𖰴"; break;
-        case '\'5': roma = "𖰵"; break;
-        case '\'8': roma = "𖰳"; break;
-        case '\'9': roma = "𖰱"; break;
-        case '\'i': roma = "𖰯"; break;
         case '\'l': roma = "𖰥"; break;
         case '\'m': roma = "𖰟"; break;
         case '\'n': roma = "𖰕"; break;
         case '\'g': roma = "𖰇"; break;
         case '\'j': roma = "𖰍"; break;
-        case '\'r': roma = "𖰣"; break;
-        case '\'u': roma = "𖰩"; break;
         case '\'v': roma = "𖰧"; break;
         case '𖰀v': roma = "𖰰"; break;
+        case '\'o': roma = "𖱈"; break;
         case '\'a': roma = "𖱉"; break;
-        case '\'e': roma = "𖱈"; break;
+        case '\'e': roma = "𖰣"; break;
+        case '\'r': roma = "𖰢"; break;
+        case '\'u': roma = "𖰯"; break;
+        case '\'i': roma = "𖰮"; break;
+        case '𖰂h': roma = "𖰨"; break;
+        case '𖰒h': roma = "𖰩"; break;
+        case '𖰀h': roma = "𖰄"; break;
+        case '𖰇h': roma = "𖰅"; break;
         default: roma = t + tch; break;
     }
     return text.substring(0, text.length - utf) + roma;
@@ -5112,22 +5111,22 @@ function loadkeyboard() {
                 $('#K48').html("<span style='color: #b59bff;'>◌𖰽 </span><br><span style='color: #6551d9;'>◌𖰷 </span>");
                 $('#K49').html("<br><span style='color: #d48600;'>◌𖱊</span>");
                 $('#K50').html("<br><span style='color: #d48600;'>◌𖱋</span>");
-                $('#K51').html("<span style='color: #b1bb13;'>𖰻</span><br><span style='color: #7ba064;'>◌𖰴</span>");
+                $('#K51').html("<br>𖰻");
                 $('#K52').html("<br>𖰶");
-                $('#K53').html("<span style='color: #b1bb13;'>𖰼</span><br><span style='color: #7ba064;'>𖰵</span>");
+                $('#K53').html("<br>𖰼");
                 $('#K54').html("<br>𖰾");
-                $('#K55').html("<br><span style='color: #ffc000;'>◌𖰿");
-                $('#K56').html("<span style='color: #b1bb13;'>𖰺</span><br><span style='color: #7ba064;'>𖰳</span>");
-                $('#K57').html("<span style='color: #b1bb13;'>𖰸</span><br><span style='color: #7ba064;'>𖰱</span>");
-                $('#K81').html("<span style='color: #d22e9f;'>𖰅   </span><br>𖰄");
+                $('#K55').html("<br><span style='color: #ffc000;'>◌𖰿</span>");
+                $('#K56').html("<br>𖰺");
+                $('#K57').html("<br>𖰸");
+                $('#K81').html("<span style='color: #d22e9f;'>𖰭    </span><br>𖰬");
                 $('#K87').html("<span style='color: #d22e9f;'>𖰛   </span><br>𖰚");
-                $('#K69').html("<span style='color: #d22e9f;'>𖱈   </span><br>𖰹");
-                $('#K82').html("<span style='color: #13abbb;'>𖰢   </span><br>𖰣");
+                $('#K69').html("<span style='color: #d22e9f;'>𖰣  </span><br>𖰹");
+                $('#K82').html("<span style='color: #d22e9f;'>𖰢 </span><br><span style='color: #ffc000;'>◌𖰴</span>");
                 $('#K84').html("<span style='color: #d22e9f;'>𖰑   </span><br>𖰐");
                 $('#K89').html("<span style='color: #d22e9f;'>𖰡    </span><br>𖰠");
-                $('#K85').html("<span style='color: #13abbb;'>𖰨   </span><br>𖰩");
-                $('#K73').html("<span style='color: #13abbb;'>𖰮   </span><br>𖰯");
-                $('#K79').html("<span style='color: #d22e9f;'>𖰭    </span><br>𖰬");
+                $('#K85').html("<span style='color: #d22e9f;'>𖰯   </span><br>𖰵");
+                $('#K73').html("<span style='color: #d22e9f;'>𖰮   </span><br>𖰳");
+                $('#K79').html("<span style='color: #d22e9f;'>𖱈    </span><br>𖰱");
                 $('#K80').html("<span style='color: #d22e9f;'>𖰙   </span><br>𖰘");
                 $('#K219').html("<br>[");
                 $('#K221').html("<br>]");
@@ -5135,15 +5134,15 @@ function loadkeyboard() {
                 $('#K83').html("<span style='color: #d22e9f;'>𖰋   </span><br>𖰊");
                 $('#K68').html("<span style='color: #d22e9f;'>𖰏  </span><span style='color: #b59bff;'>𖱄</span><br>𖰎");
                 $('#K70').html("<span style='color: #d22e9f;'>𖰝   </span><br>𖰜");
-                $('#K71').html("<span style='color: #13abbb;'>𖰆 </span><span style='color: #b59bff;'>◌𖱀 </span><br>𖰇");
+                $('#K71').html("<span style='color: #13abbb;'>𖰆 </span><span style='color: #b59bff;'>◌𖱀 </span><br><span style='color: #13abbb;'>𖰅 </span>𖰇");
                 $('#K72').html("<span style='color: #d22e9f;'>𖰫   </span><br><span style='color: #2f80b9;'>𖰪</span>");
                 $('#K74').html("<span style='color: #13abbb;'>𖰌   </span><br>𖰍");
-                $('#K75').html("<span style='color: #d22e9f;'>𖰁  </span><span style='color: #b59bff;'>𖱃</span><br><span style='color: #90ffc2;'>𖰀</span>");
+                $('#K75').html("<span style='color: #d22e9f;'>𖰁  </span><span style='color: #b59bff;'>𖱃</span><br><span style='color: #13abbb;'>𖰄 </span><span style='color: #90ffc2;'>𖰀</span>");
                 $('#K76').html("<span style='color: #13abbb;'>𖰤   </span><br>𖰥");
                 $('#K186').html("<br>;");
                 $('#K222').html("<br><span style='color: #cc4444;'>'</span>");
-                $('#K90').html("<span style='color: #d22e9f;'>𖰓   </span><br>𖰒");
-                $('#K88').html("<span style='color: #d22e9f;'>𖰃   </span><br>𖰂");
+                $('#K90').html("<span style='color: #d22e9f;'>𖰓   </span><br><span style='color: #13abbb;'>𖰩 </span>𖰒");
+                $('#K88').html("<span style='color: #d22e9f;'>𖰃   </span><br><span style='color: #13abbb;'>𖰨 </span>𖰂");
                 $('#K67').html("<span style='color: #d22e9f;'>𖰉   </span><br>𖰈");
                 $('#K86').html("<span style='color: #13abbb;'>𖰦  </span><span style='color: #4fd454;'>𖰰</span><br>𖰧");
                 $('#K66').html("<span style='color: #d22e9f;'>𖰗  </span><span style='color: #b59bff;'>𖱅</span><br>𖰖");
