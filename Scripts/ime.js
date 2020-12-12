@@ -52,9 +52,9 @@ self.addEventListener('install', function (event) {
     );
 });
 
-// Connect to sqlite db file
+// Connect to sqlite db file 
 var xhr = new XMLHttpRequest();
-xhr.open('GET', '../Resources/nomime.jpg', true);
+xhr.open('GET', './Resources/nomime.jpg', true);
 xhr.responseType = 'arraybuffer';
 xhr.onload = function (e) {
     var uInt8Array = new Uint8Array(this.response);
