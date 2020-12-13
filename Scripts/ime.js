@@ -1882,6 +1882,7 @@ function TAIDON(text, ch) {
         case '\'o': roma = "ꪯ"; break;
         case 'ꪰn': roma = "ꪽ"; break;
         case 'ꪰm': roma = "ꪾ"; break;
+        case 'ꪰd': roma = "ꪰ‍ꪒ"; break;
         case '꪿h': roma = "ꫀ"; break;
         case '꫁h': roma = "ꫂ"; break;
         default: roma = t + tch; break;
@@ -4902,7 +4903,7 @@ function loadkeyboard() {
                 $('#K221').html("<br>]");
                 $('#K65').html("<span style='color: #b1bb13;'>◌꫏</span><br><span style='color: #7ba064;'>ꪱ</span>");
                 $('#K83').html("<span style='color: #d22e9f;'>ꪏ‍   </span><br><span style='color: #13abbb;'>ꪍ   </span>ꪎ‍");
-                $('#K68').html("<span style='color: #d22e9f;'>ꪓ   </span><br>ꪒ");
+                $('#K68').html("<span style='color: #d22e9f;'>ꪓ</span><span style='color: #b59bff;'>​ꪰ‍ꪒ</span><br>ꪒ");
                 $('#K70').html("<span style='color: #d22e9f;'>ꪡ   </span><br><span style='color: #13abbb;'>ꪞ  </span>ꪠ");
                 $('#K71').html("<span style='color: #13abbb;'>ꪈ   </span><br>ꪉ");
                 $('#K72').html("<br><span style='color: #2f80b9;'>ꪬ</span>");
