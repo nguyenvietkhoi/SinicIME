@@ -45,8 +45,18 @@
 <input type="hidden" id="Vientiane" value="Vientiane">
 <input type="hidden" id="DictGuide" value="Press SHIFT">
 
-<div id="waitscreen"></div>
-
+<script type="text/javascript">
+    if (!(navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ )) {
+        window.location = "./index";
+    }
+</script>
 <script type="text/javascript" src="./Scripts/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="./Scripts/sql.js"></script>
 <script type="text/javascript" src="./Scripts/ime.js"></script>
@@ -64,6 +74,9 @@
 
     
 </head>
+
+<div id="waitscreen"></div>
+
 <div class="navbar navbar-inverse navbar-fixed-top">
         <div style="position: fixed">
         </div>
@@ -142,12 +155,12 @@
                                         <li onclick="logo2ipa('HaNoi')"><a>IPA: Hà Nội</a></li>
                                         <li onclick="logo2ipa('SaiGon')"><a>IPA: Sài Gòn</a></li>
                                         <li onclick="logo2ipa('SaiGon')"><a>IPA: Quảng Nam</a></li>
-                        <li onclick="convertpad(0)"><a>→ อักษร</a></li>
+                        <li onclick="convertpad(0)"><a>→ abc</a></li>
                         <li onclick="convertpad(1)"><a>→ 文</a></li>
                     </ul>
                 </li>
-                <li class="dropup" id="keyboardbutton" onclick="togglekeyboard()">
-                    <a>⌨️</a>
+                <li class="dropup" id="keyboardbutton"">
+                    <a onclick="togglekeyboard()>⌨️</a>
                     <div class="dropdown-menu text-left" id="keyboard" style="z-index: 100; left: -228px; padding: 0px 0;">
                         <div dir="ltr" style="direction: ltr;user-select: none;">
                             <div style="white-space: nowrap; user-select: none;">

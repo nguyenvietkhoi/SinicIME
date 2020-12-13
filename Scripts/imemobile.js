@@ -9,7 +9,7 @@ function txtPadKeyInput(evt) {
     var rubystr = $("#rubytype").text();
     var curcaret = $("#txtPad")[0].selectionEnd;
     var newtxtPadlength = document.getElementById("txtPad").value.length;
-    if ($("#rubytype").text().length >= 10) {
+    if ([...$("#rubytype").text()].text().length >= 12) {
         contail = conqueue = "";
         conlenbuf = 0;
         delList();

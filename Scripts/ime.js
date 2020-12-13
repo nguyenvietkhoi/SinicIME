@@ -29,7 +29,7 @@ var optruby = "ruby";
 var optlev = "and level>1";
 var sugCB = false;
 var quocngu = 0;
-var convertdeftext = '<li onclick="convertpad(0)"><a>→ อักษร</a></li><li onclick="convertpad(1)"><a>→ 文</a></li><li onclick="tovertical()"><a>' + $('#Vertical').val() + '</a></li>';
+var convertdeftext = '<li onclick="convertpad(0)"><a>→ abc</a></li><li onclick="convertpad(1)"><a>→ 文</a></li><li onclick="tovertical()"><a>' + $('#Vertical').val() + '</a></li>';
 
 var oo = false;
 self.addEventListener('fetch', function (event) {
@@ -69,6 +69,17 @@ xhr.send();
 
 function isNoSpaceLang(qn) {
     return ((qn == 8) || (qn == 9) || (qn == 15) || (qn == 16) || (qn == 19) || (qn == 20) || (qn == 24) || (qn == 26));
+}
+
+function virtualtype(key) {
+    document.getElementById('txtPad').dispatchEvent(new KeyboardEvent('keydown', { 'key': key, 'keyCode': key.charCodeAt(0), 'which': key.charCodeAt(0), 'bubbles': true, 'cancelable': true, 'returnValue': true, 'composed': true }));
+    document.getElementById('txtPad').dispatchEvent(new KeyboardEvent('keypress', { 'key': key, 'keyCode': key.charCodeAt(0), 'which': key.charCodeAt(0), 'bubbles': true, 'cancelable': true, 'returnValue': true, 'composed': true }));
+    
+    var value = $("#txtPad").val();
+    var start = $("#txtPad")[0].selectionStart;
+    var end = $("#txtPad")[0].selectionEnd;
+    $("#txtPad").val(value.slice(0, start) + key + value.slice(end));
+    $("#txtPad")[0].selectionStart = $("#txtPad")[0].selectionEnd = start + key.length;
 }
 
 function tovertical() {
@@ -242,7 +253,7 @@ function optkeyboard(kbsel) {
 //keydown
 function txtPadKeyPressed(evt) {
     var evtK = evt.keyCode || evt.charCode;
-    if ((evtK == 17) || (evtK == 27) || ($("#rubytype").text().length >= 10)) { //CTRL or ESC
+    if ((evtK == 17) || (evtK == 27) || ([...$("#rubytype").text()].length >= 12)) { //CTRL or ESC
         contail = conqueue = "";
         conlenbuf = 0;
         delList();
@@ -4579,7 +4590,7 @@ function speakpad(accentcode) {
     }
 }
 
-function togglekeyboard() {
+function togglekeyboard(evt) {
     var ele = $("#keyboardbutton");
     if (ele.hasClass('active')) {
         ele.removeClass('active');

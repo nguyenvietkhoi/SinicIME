@@ -155,7 +155,7 @@ src: url('../fonts/CambriaTai.ttf') format('truetype')
     width: 200px;
     height: 30px;
     min-width: 200px;
-    overflow: auto;
+    overflow: visible;
     float: right;
     background-color: #101010;
     color: #fff;
