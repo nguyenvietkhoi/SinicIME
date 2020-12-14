@@ -235,7 +235,7 @@ function opttableselect(tablesel) {
         case 0:
         default: opttable = "rubynom";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>'+$("#HaNoi").val()+'</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HaNoi\')"><a>IPA: ' + $("#HaNoi").val() + '</a></li>' + '<li onclick="logo2ipa(\'SaiGon\')"><a>IPA: ' + $("#SaiGon").val() + '</a></li>' + '<li onclick="logo2ipa(\'SaiGon\')"><a>IPA: ' + $("#QuangNam").val() + '</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HaNoi\')"><a>IPA: ' + $("#HaNoi").val() + '</a></li>' + '<li onclick="logo2ipa(\'SaiGon\')"><a>IPA: ' + $("#SaiGon").val() + '</a></li>' + '<li onclick="logo2ipa(\'QuangNam\')"><a>IPA: ' + $("#QuangNam").val() + '</a></li>' + convertdeftext);
             break;
     }
     loadkeyboard();
