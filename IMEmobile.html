@@ -159,69 +159,71 @@
                         <li onclick="convertpad(1)"><a>→ 文</a></li>
                     </ul>
                 </li>
-                <li class="dropup" id="keyboardbutton"">
-                    <a onclick="togglekeyboard()>⌨️</a>
+                <li class="dropup" id="keyboardbutton">
+                    <a onclick="togglekeyboard()">⌨️</a>
                     <div class="dropdown-menu text-left" id="keyboard" style="z-index: 100; left: -228px; padding: 0px 0;">
                         <div dir="ltr" style="direction: ltr;user-select: none;">
                             <div style="white-space: nowrap; user-select: none;">
-                                <button id="K192" type="button" class="vk-btn-mob" style="user-select: none; width: 17px;" disabled="true">`</button>
-                                <button id="K49" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">1</button>
-                                <button id="K50" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">2</button>
-                                <button id="K51" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">3</button>
-                                <button id="K52" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">4</button>
-                                <button id="K53" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">5</button>
-                                <button id="K54" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">6</button>
-                                <button id="K55" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">7</button>
-                                <button id="K56" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">8</button>
-                                <button id="K57" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">9</button>
-                                <button id="K48" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">0</button>
-                                <button id="K189" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">-</button>
-                                <button id="K187" type="button" class="vk-btn-mob" style="user-select: none; width: 29px;" disabled="true">=</button>
+                                <button id="K192" type="button" class="vk-btn-mob" style="user-select: none; width: 17px;" onclick="virtualtypemob('`')">`</button>
+                                <button id="K49" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('1')">1</button>
+                                <button id="K50" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('2')">2</button>
+                                <button id="K51" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('3')">3</button>
+                                <button id="K52" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('4')">4</button>
+                                <button id="K53" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('5')">5</button>
+                                <button id="K54" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('6')">6</button>
+                                <button id="K55" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('7')">7</button>
+                                <button id="K56" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('8')">8</button>
+                                <button id="K57" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('9')">9</button>
+                                <button id="K48" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('0')">0</button>
+                                <button id="K189" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('-')">-</button>
+                                <button id="K187" type="button" class="vk-btn-mob" style="user-select: none; width: 29px;" onclick="virtualtypemob('=')">=</button>
                             </div><div style="white-space: nowrap; user-select: none;">
-                                <button id="K81" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">q</button>
-                                <button id="K87" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">w</button>
-                                <button id="K69" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">e</button>
-                                <button id="K82" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">r</button>
-                                <button id="K84" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">t</button>
-                                <button id="K89" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">y</button>
-                                <button id="K85" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">u</button>
-                                <button id="K73" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">i</button>
-                                <button id="K79" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">o</button>
-                                <button id="K80" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">p</button>
-                                <button id="K219" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">[</button>
-                                <button id="K221" type="button" class="vk-btn-mob" style="user-select: none;" disabled="true">]</button>
+                                      <button id="K81" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('q')">q</button>
+                                      <button id="K87" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('w')">w</button>
+                                      <button id="K69" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('e')">e</button>
+                                      <button id="K82" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('r')">r</button>
+                                      <button id="K84" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('t')">t</button>
+                                      <button id="K89" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('y')">y</button>
+                                      <button id="K85" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('u')">u</button>
+                                      <button id="K73" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('i')">i</button>
+                                      <button id="K79" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('o')">o</button>
+                                      <button id="K80" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('p')">p</button>
+                                      <button id="K219" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob('[')">[</button>
+                                      <button id="K221" type="button" class="vk-btn-mob" style="user-select: none;" onclick="virtualtypemob(']')">]</button>
                             </div><div style="white-space: nowrap; user-select: none;">
-                                <button id="K65" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">a</button>
-                                <button id="K83" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">s</button>
-                                <button id="K68" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">d</button>
-                                <button id="K70" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">f</button>
-                                <button id="K71" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">g</button>
-                                <button id="K72" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">h</button>
-                                <button id="K74" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">j</button>
-                                <button id="K75" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">k</button>
-                                <button id="K76" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">l</button>
-                                <button id="K186" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">;</button>
-                                <button id="K222" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">'</button>
-                                <button id="K220" type="button" class="vk-btn-mob" style="user-select: none; width: 17px;" disabled="true">\</button>
+                                      <button id="K65" type="button" class="vk-btn-mob" onclick="virtualtypemob('a')" style="user-select: none;">a</button>
+                                      <button id="K83" type="button" class="vk-btn-mob" onclick="virtualtypemob('s')" style="user-select: none;">s</button>
+                                      <button id="K68" type="button" class="vk-btn-mob" onclick="virtualtypemob('d')" style="user-select: none;">d</button>
+                                      <button id="K70" type="button" class="vk-btn-mob" onclick="virtualtypemob('f')" style="user-select: none;">f</button>
+                                      <button id="K71" type="button" class="vk-btn-mob" onclick="virtualtypemob('g')" style="user-select: none;">g</button>
+                                      <button id="K72" type="button" class="vk-btn-mob" onclick="virtualtypemob('h')" style="user-select: none;">h</button>
+                                      <button id="K74" type="button" class="vk-btn-mob" onclick="virtualtypemob('j')" style="user-select: none;">j</button>
+                                      <button id="K75" type="button" class="vk-btn-mob" onclick="virtualtypemob('k')" style="user-select: none;">k</button>
+                                      <button id="K76" type="button" class="vk-btn-mob" onclick="virtualtypemob('l')" style="user-select: none;">l</button>
+                                      <button id="K186" type="button" class="vk-btn-mob" onclick="virtualtypemob(';')" style="user-select: none;">;</button>
+                                      <button id="K222" type="button" class="vk-btn-mob" onclick="virtualtypemob('\'')" style="user-select: none;">'</button>
+                                      <button id="K220" type="button" class="vk-btn-mob" style="user-select: none; width: 17px;" onclick="virtualtypemob('\\')">\</button>
                             </div><div style="white-space: nowrap; user-select: none;">
-                                <button id="K16L" type="button" class="vk-btn-mob" disabled="true" style="user-select: none; width: 38px;"><span class="vk-cap" style="user-select: none;">⇧</button>
-                                <button id="K90" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">z</button>
-                                <button id="K88" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">x</button>
-                                <button id="K67" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">c</button>
-                                <button id="K86" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">v</button>
-                                <button id="K66" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">b</button>
-                                <button id="K78" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">n</button>
-                                <button id="K77" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">m</button>
-                                <button id="K188" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">,</button>
-                                <button id="K190" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">.</button>
-                                <button id="K191" type="button" class="vk-btn-mob" disabled="true" style="user-select: none;">/</button>
-                                <button id="K16R" type="button" class="vk-btn-mob" disabled="true" style="user-select: none; width: 32px;"><span class="vk-cap" style="user-select: none;">⇧</button>
+                                      <button id="K16L" type="button" class="vk-btn-mob" disabled="true" style="user-select: none; width: 38px;"><span class="vk-cap" style="user-select: none;">⇧</button>
+                                      <button id="K90" type="button" class="vk-btn-mob" onclick="virtualtypemob('z')" style="user-select: none;">z</button>
+                                      <button id="K88" type="button" class="vk-btn-mob" onclick="virtualtypemob('x')" style="user-select: none;">x</button>
+                                      <button id="K67" type="button" class="vk-btn-mob" onclick="virtualtypemob('c')" style="user-select: none;">c</button>
+                                      <button id="K86" type="button" class="vk-btn-mob" onclick="virtualtypemob('v')" style="user-select: none;">v</button>
+                                      <button id="K66" type="button" class="vk-btn-mob" onclick="virtualtypemob('b')" style="user-select: none;">b</button>
+                                      <button id="K78" type="button" class="vk-btn-mob" onclick="virtualtypemob('n')" style="user-select: none;">n</button>
+                                      <button id="K77" type="button" class="vk-btn-mob" onclick="virtualtypemob('m')" style="user-select: none;">m</button>
+                                      <button id="K188" type="button" class="vk-btn-mob" onclick="virtualtypemob(',')" style="user-select: none;">,</button>
+                                      <button id="K190" type="button" class="vk-btn-mob" onclick="virtualtypemob('.')" style="user-select: none;">.</button>
+                                      <button id="K191" type="button" class="vk-btn-mob" onclick="virtualtypemob('/')" style="user-select: none;">/</button>
+                                      <button id="K16R" type="button" class="vk-btn-mob" disabled="true" style="user-select: none; width: 32px;"><span class="vk-cap" style="user-select: none;">⇧</button>
+                            </div><div style="white-space: nowrap; user-select: none;">
+                                      <button type="button" class="vk-btn-mob" onclick="virtualtypemob(' ')" style="user-select: none;margin-right: 40px; width: 190px; height: 20px;"> </button>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li id="borrowings" onclick="myCheck(0)" style="background-color: #980600"><a>假</a></li>
-                <li id="variants" onclick="myCheck(1)" style="background-color: #006d39"><a>異</a></li>
+                <li id="borrowings" onclick="myCheck(0)" style="background-color: #980600"><a style="color: #fff;">假</a></li>
+                <li id="variants" onclick="myCheck(1)" style="background-color: #006d39"><a style="color: #fff;">異</a></li>
             </ul>
         </div>
         <div class="navbar-header" style="float: left;" id="myNavbar">

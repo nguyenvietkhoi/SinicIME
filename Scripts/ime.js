@@ -72,14 +72,15 @@ function isNoSpaceLang(qn) {
 }
 
 function virtualtype(key) {
-    document.getElementById('txtPad').dispatchEvent(new KeyboardEvent('keydown', { 'key': key, 'keyCode': key.charCodeAt(0), 'which': key.charCodeAt(0), 'bubbles': true, 'cancelable': true, 'returnValue': true, 'composed': true }));
-    document.getElementById('txtPad').dispatchEvent(new KeyboardEvent('keypress', { 'key': key, 'keyCode': key.charCodeAt(0), 'which': key.charCodeAt(0), 'bubbles': true, 'cancelable': true, 'returnValue': true, 'composed': true }));
-    
-    var value = $("#txtPad").val();
-    var start = $("#txtPad")[0].selectionStart;
-    var end = $("#txtPad")[0].selectionEnd;
-    $("#txtPad").val(value.slice(0, start) + key + value.slice(end));
-    $("#txtPad")[0].selectionStart = $("#txtPad")[0].selectionEnd = start + key.length;
+    document.getElementById('txtPad').dispatchEvent(new KeyboardEvent('keydown', { 'key': key, 'keyCode': key.charCodeAt(0), 'charCode': key.charCodeAt(0), 'which': key.charCodeAt(0), 'bubbles': true, 'cancelable': true, 'returnValue': true, 'composed': true }));
+    document.getElementById('txtPad').dispatchEvent(new KeyboardEvent('keypress', { 'key': key, 'keyCode': key.charCodeAt(0), 'charCode': key.charCodeAt(0), 'which': key.charCodeAt(0), 'bubbles': true, 'cancelable': true, 'returnValue': true, 'composed': true }));
+    if (key != " ") {
+        var value = $("#txtPad").val();
+        var start = $("#txtPad")[0].selectionStart;
+        var end = $("#txtPad")[0].selectionEnd;
+        $("#txtPad").val(value.slice(0, start) + key + value.slice(end));
+        $("#txtPad")[0].selectionStart = $("#txtPad")[0].selectionEnd = start + key.length;
+    }
 }
 
 function tovertical() {
@@ -441,6 +442,7 @@ function txtPadKeyTyped(evt) {
             conlentmp = $("#w" + selectedindex).text().length;
             putWord($("#w" + selectedindex).text());
         }
+        $("#txtPad").focus();
         return;
     } else if (((evtK > 31) && (evtK < 39)) || ((evtK > 39) && (evtK < 48)) || ((evtK > 57) && (evtK < 65)) || ((evtK > 90) && (evtK < 96)) || ((evtK > 122) && (evtK < 127))) {    //Punctuation
         if ((ind >= conrSz) && (ind < contrSz))

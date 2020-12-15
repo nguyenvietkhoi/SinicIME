@@ -1,4 +1,15 @@
 ﻿var curtxtPadlength = 0;
+
+function virtualtypemob(key) {
+    var value = $("#txtPad").val();
+    var start = $("#txtPad")[0].selectionStart;
+    var end = $("#txtPad")[0].selectionEnd;
+    $("#txtPad").val(value.slice(0, start) + key + value.slice(end));
+    $("#txtPad")[0].selectionStart = $("#txtPad")[0].selectionEnd = start + key.length;
+
+    document.getElementById('txtPad').dispatchEvent(new KeyboardEvent('keyup', { 'key': key, 'keyCode': key.charCodeAt(0), 'which': key.charCodeAt(0), 'bubbles': true, 'cancelable': true, 'returnValue': true, 'composed': true }));
+}
+
 //keydown mobile
 function txtPadKeyDown(evt) {
     
@@ -9,7 +20,7 @@ function txtPadKeyInput(evt) {
     var rubystr = $("#rubytype").text();
     var curcaret = $("#txtPad")[0].selectionEnd;
     var newtxtPadlength = document.getElementById("txtPad").value.length;
-    if ([...$("#rubytype").text()].text().length >= 12) {
+    if ([...$("#rubytype").text()].length >= 12) {
         contail = conqueue = "";
         conlenbuf = 0;
         delList();
@@ -120,6 +131,7 @@ function txtPadKeyInput(evt) {
               putWord($("#w" + selectedindex).text());
           }
           curtxtPadlength = document.getElementById("txtPad").value.length;
+          $("#txtPad").focus();
           return;
       } else if ((evtC == '.') || (evtC == ',')) {    //Punctuation
           $("#txtPad").val($("#txtPad").val().substring(0, curcaret - 1) + evtC + $("#txtPad").val().substring(curcaret, $("#txtPad").val().length));
