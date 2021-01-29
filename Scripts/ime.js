@@ -1821,7 +1821,7 @@ function TAIDON(text, ch) {
         case 'n': tch = "ꪙ"; break;
         case 'o': tch = "ꪮ"; break;
         case 'p': tch = "ꪜ"; break;
-        case 'q': tch = "ꪅ"; break;
+        case 'q': tch = "ꪅ‍"; break;
         case 'r': tch = "ꪭ"; break;
         case 's': tch = "ꪎ‍"; break;
         case 't': tch = "ꪔ"; break;
@@ -1852,7 +1852,7 @@ function TAIDON(text, ch) {
         case '\'x': roma = "ꪂ"; break;
         case '\'q': roma = "ꪃ"; break;
         case 'ꪀh': roma = "ꪆ"; break;
-        case 'ꪅh': roma = "ꪇ"; break;
+        case 'ꪅ‍h': roma = "ꪇ"; break;
         case 'ꪬg': roma = "ꪈ"; break;
         case '\'g': roma = "ꪉ"; break;
         case '\'c': roma = "ꪋ"; break;
@@ -1873,7 +1873,7 @@ function TAIDON(text, ch) {
         case '\'f': roma = "ꪡ"; break;
         case 'ꪬm': roma = "ꪢ"; break;
         case '\'m': roma = "ꪣ"; break;
-        case 'ꪬy': roma = "ꪤ"; break;
+        case 'ꪬy': roma = "ꪤ‍"; break;
         case '\'y': roma = "ꪥ"; break;
         case 'ꪭr': roma = "ꪦ"; break;
         case '\'r': roma = "ꪧ"; break;
@@ -4891,12 +4891,12 @@ function loadkeyboard() {
                 $('#K55').html("<br>ꪼ");
                 $('#K56').html("<br><span style='color: #ffc000;'>◌ꪸ</span>");
                 $('#K57').html("<br><span style='color: #ffc000;'>◌ꪳ</span>");
-                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br><span style='color: #13abbb;'>ꪇ   </span>ꪅ");
+                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br><span style='color: #13abbb;'>ꪇ   </span>ꪅ‍");
                 $('#K87').html("<span style='color: #b1bb13;'>◌꫎</span><br><span style='color: #7ba064;'>ꪷ</span>");
                 $('#K69').html("<br>ꪹ");
                 $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
                 $('#K84').html("<span style='color: #d22e9f;'>ꪕ   </span><br>ꪔ");
-                $('#K89').html("<span style='color: #13abbb;'>ꪤ   </span><br>ꪥ");
+                $('#K89').html("<span style='color: #13abbb;'>ꪤ‍   </span><br>ꪥ");
                 $('#K85').html("<br><span style='color: #ffc000;'>◌ꪴ</span>");
                 $('#K73').html("<br><span style='color: #ffc000;'>◌ꪲ</span>");
                 $('#K79').html("<span style='color: #d22e9f;'>ꪯ   </span><br>ꪮ");
