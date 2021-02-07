@@ -20,7 +20,7 @@ function loadDB() {
     $("#waitscreen").css({ display: 'block' });
         let i;
         var sheet = "";
-        sheet += "<thead style='font-size: 12px; font-weight: normal; background: url(/Resources/wave.png) fixed;'><tr><th>" +
+        sheet += "<thead style='font-size: 12px; font-weight: normal; background: url(./Resources/wave.png) fixed;'><tr><th>" +
           "Proto-Tai</th><th style='width: 40px'>" + "Sawndip</th>";
         columnlist = ["gsx$prototai", "gsx$ndip"];
         headerlist = ["A", "T"];
