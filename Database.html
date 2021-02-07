@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+<script type="text/javascript" src="./Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="./Scripts/sql.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="./Scripts/sheeteditor.js"></script>
+<!--<script src="https://spreadsheets.google.com/feeds/list/10QEwpszfwhcsprJalSO-mwhMg3VaYhdnlyaE6nq8rmQ/1/public/values?alt=json-in-script&callback=doData"></script>-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database - Linguaevum</title>
+    <link href="./Content/bootstrap.css" rel="stylesheet">
+    <link href="./Content/Site.css" rel="stylesheet">
+    <style>
+        #googleSheet {
+            color: #fff;
+            font-family: Cambria, Tahoma, "Tai Lanna", "Cambria Tai", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+        }
+        #googleSheet tbody td {
+            vertical-align: middle;
+            padding: 3px;
+        }
+        #googleSheet tbody th {
+            vertical-align: middle;
+            font-weight: normal;
+            font-size: 22px;
+            padding: 1px 9px;
+        }
+    </style>
+    <script src="./Scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<div id="waitscreen"></div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="position: fixed">
+    </div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#layoutbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="./Resources/tho.png" class="logo">
+            <a class="navbar-brand" href="http://linguaevum.ddns.net/">Linguaevum</a>
+        </div>
+        <div>
+        <select style="margin: 13px;" data-style="btn-primary" id="selLang" onchange="loadDB()">
+            <option value="none">Default</option>
+            <option value="yo">Tày Dọ</option>
+            <option value="deng">Tày Đeng</option>
+            <option value="don">Tày Đón</option>
+            <option value="dam">Tày Đăm</option>
+            <option value="lao">Lào</option>
+            <option value="lue">Tày Lự</option>
+            <option value="nuea">Tày Nưa</option>
+            <option value="yai">Shan</option>
+            <option value="lanna">Lạn Nà</option>
+            <option value="khuen">Khưn</option>
+            <option value="yay">Yay</option>
+            <option value="saek">Saek</option>
+        </select>
+            <span style="color: #fff">
+                Type to change (*: Pending)
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <table class="table table-bordered" style="height: 100%; min-width: 700px; background-color: rgba(0, 0, 0, 0.40); font-size: 16px" id="googleSheet">
+    </table>
+</div>
+<footer>
+    <p style="margin: 0 0 0 30px; font-size: 12px;">© 2020 - Linguaevum</p>
+</footer>
+<script src="./Scripts/jquery-1.10.2.js"></script>
+<script src="./Scripts/jquery-3.0.0.js"></script>
+<script src="./Scripts/bootstrap.js"></script>
+<script src="./Scripts/respond.js"></script>
