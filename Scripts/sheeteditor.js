@@ -186,6 +186,13 @@ function loadDB() {
         }
         document.getElementById("googleSheet").innerHTML = sheet;
         $("#waitscreen").css({ display: 'none' });
+        $("#googleSheet td[contenteditable]").keypress(function (evt) {
+            var keycode = evt.charCode || evt.keyCode;
+            if (keycode == 13) { //Enter key's keycode
+                $(this).blur();
+                return false;
+            }
+        });
 }
 
 function updatecell(x) {
