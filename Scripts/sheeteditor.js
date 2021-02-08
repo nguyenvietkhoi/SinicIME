@@ -309,8 +309,8 @@ function updatecell(x) {
     }
 }
 
-function sendupdate(ggdblink, row, field, value) {
-    var gurl = "row=" + row + "&field=" + field + "&value=" + value;
+function sendupdate(row, field, value) {
+    var gurl = ggdblink + "row=" + row + "&field=" + field + "&value=" + value;
     const Http = new XMLHttpRequest();
     Http.open("GET", gurl);
     Http.send();
