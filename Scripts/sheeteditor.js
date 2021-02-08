@@ -1,22 +1,4 @@
-﻿let xmlhttp = new XMLHttpRequest();
-let data;
-var columnlist = [];
-var headerlist = [];
-xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        data = JSON.parse(this.responseText).feed.entry;
-        loadDB();
-    }
-};
-
-xmlhttp.open(
-  "GET",
-  "https://spreadsheets.google.com/feeds/list/10QEwpszfwhcsprJalSO-mwhMg3VaYhdnlyaE6nq8rmQ/1/public/values?alt=json",
-  true
-);
-xmlhttp.send();
-
-function loadDB() {
+﻿function loadTaiDB() {
     $("#waitscreen").css({ display: 'block' });
     $("#googleSheet").css({ 'font-family': 'Cambria, Tahoma, "Tai Lanna", "Cambria Tai", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
         let i;
@@ -123,7 +105,7 @@ function loadDB() {
         sheet += "Siam</th><th>" +
         "Tày Nùng</th><th>" +
         "Cuengh</th><th>" +
-        "Viet</th><th>" +
+        "Việt</th><th>" +
         "English</th></tr></thead><tbody>";
 
         for (i = 0; i < data.length; i++) {
@@ -184,7 +166,7 @@ function loadDB() {
             sheet += data[i]["gsx$siam"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
             data[i]["gsx$taynung"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
             data[i]["gsx$zhuang"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
-            data[i]["gsx$viet"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+            data[i]["gsx$viet"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
             data[i]["gsx$english"]["$t"] + "</td></tr><tbody>";
         }
         document.getElementById("googleSheet").innerHTML = sheet;
@@ -198,10 +180,126 @@ function loadDB() {
         });
 }
 
+function loadAusAsiaDB() {
+    $("#waitscreen").css({ display: 'block' });
+    let i;
+    var sheet = "";
+    sheet += "<thead style='font-size: 12px; font-weight: normal; background: url(./Resources/wave.png) fixed;'><tr>" +
+      "<th style='width: 40px'>Nôm</th>";
+    columnlist = ["gsx$nom"];
+    headerlist = ["A"];
+    //"Aiton</th><th>" +
+    switch (document.getElementById("selLang").value) {
+        case 'khmer':
+            columnlist.push("gsx$khmer");
+            headerlist.push("J");
+            sheet += "<th>Khmer</th><th>";
+            break;
+        case 'bahnar':
+            columnlist.push("gsx$bahnar");
+            headerlist.push("M");
+            sheet += "<th>Bahnar</th><th>";
+            break;
+        case 'cuoi':
+            columnlist.push("gsx$cuoi");
+            headerlist.push("F");
+            sheet += "<th>Cuói</th><th>";
+            break;
+        case 'chut':
+            columnlist.push("gsx$chut");
+            headerlist.push("G");
+            sheet += "<th>Chứt</th><th>";
+            break;
+        case 'paco':
+            columnlist.push("gsx$pacoh");
+            headerlist.push("H");
+            sheet += "<th>Pa Kô</th><th>";
+            break;
+        case 'khmu':
+            columnlist.push("gsx$khmu");
+            headerlist.push("I");
+            sheet += "<th>Khmú</th><th>";
+            break;
+        case 'mon':
+            columnlist.push("gsx$mon");
+            headerlist.push("K");
+            sheet += "<th>Mon</th><th>";
+            break;
+        case 'santali':
+            columnlist.push("gsx$santali");
+            headerlist.push("L");
+            sheet += "<th>Santali</th><th>";
+            break;
+        default:
+            sheet += "<th>";
+            break;
+    }
+
+    columnlist.push("gsx$viet");
+    columnlist.push("gsx$muong");
+    columnlist.push("gsx$meaning");
+    headerlist.push("D");
+    headerlist.push("E");
+    headerlist.push("N");
+    sheet += "Việt</th><th>" +
+    "Mol</th><th>" +
+    "Meaning</th></tr></thead><tbody>";
+
+    for (i = 0; i < data.length; i++) {
+
+        sheet += "<tr><th>" +
+        data[i]["gsx$nom"]["$t"] + "</th>";
+
+        //data[i]["gsx$aiton"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
+        switch (document.getElementById("selLang").value) {
+            case 'khmer':
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>" + data[i]["gsx$khmer"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+            case 'bahnar':
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>" + data[i]["gsx$bahnar"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+            case 'cuoi':
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>" + data[i]["gsx$cuoi"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+            case 'chut':
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>" + data[i]["gsx$chut"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+            case 'paco':
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>" + data[i]["gsx$pacoh"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+            case 'khmu':
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>" + data[i]["gsx$khmu"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+            case 'mon':
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>" + data[i]["gsx$mon"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+            case 'santali':
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>" + data[i]["gsx$santali"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+            default:
+                sheet += "<td onblur='updatecell(this)' contenteditable='true'>";
+                break;
+        }
+
+        sheet += data[i]["gsx$viet"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
+        data[i]["gsx$muong"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
+        data[i]["gsx$meaning"]["$t"] + "</td></tr><tbody>";
+    }
+    document.getElementById("googleSheet").innerHTML = sheet;
+    $("#waitscreen").css({ display: 'none' });
+    $("#googleSheet td[contenteditable]").keypress(function (evt) {
+        var keycode = evt.charCode || evt.keyCode;
+        if (keycode == 13) { //Enter key's keycode
+            $(this).blur();
+            return false;
+        }
+    });
+}
+
 function updatecell(x) {
     var origincell = data[x.parentNode.rowIndex - 1][columnlist[x.cellIndex]]["$t"];
-    if (origincell != x.innerHTML.replace("*", "")) {
-        x.innerHTML = "*" + x.innerHTML.replace("*", "");
+    if (origincell != x.innerHTML.replace("*", "").replace("<br>", "")) {
+        x.innerHTML = "*" + x.innerHTML.replace("*", "").replace("<br>", "");
         var r = confirm("Update " + headerlist[x.cellIndex] + ": " + x.innerHTML + "\n" + x.parentNode.innerText);
         if (r == true) {
             sendupdate(x.parentNode.rowIndex + 1, headerlist[x.cellIndex], x.innerHTML);
@@ -211,8 +309,8 @@ function updatecell(x) {
     }
 }
 
-function sendupdate(row, field, value) {
-    var gurl = "https://script.google.com/macros/s/AKfycbzJEH_f4PU_KJsDHRtqRkywrnBVGPH8Geu0NAfxfkSy3dkmEEGePERYDw/exec?row=" + row + "&field=" + field + "&value=" + value;
+function sendupdate(ggdblink, row, field, value) {
+    var gurl = "row=" + row + "&field=" + field + "&value=" + value;
     const Http = new XMLHttpRequest();
     Http.open("GET", gurl);
     Http.send();
