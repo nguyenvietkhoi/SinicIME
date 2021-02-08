@@ -18,6 +18,7 @@ xmlhttp.send();
 
 function loadDB() {
     $("#waitscreen").css({ display: 'block' });
+    $("#googleSheet").css({ 'font-family': 'Cambria, Tahoma, "Tai Lanna", "Cambria Tai", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
         let i;
         var sheet = "";
         sheet += "<thead style='font-size: 12px; font-weight: normal; background: url(./Resources/wave.png) fixed;'><tr><th>" +
@@ -36,11 +37,13 @@ function loadDB() {
                 sheet += "<th>Dọ Pao</th><th>" + "Dọ Tay</th><th>" + "Dọ Latin</th><th>";
                 break;
             case 'deng':
+                $("#googleSheet").css({ 'font-family': $("#googleSheet").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
                 columnlist.push("gsx$red");
                 headerlist.push("F");
                 sheet += "<th>Đeng</th><th>";
                 break;
             case 'don':
+                $("#googleSheet").css({ 'font-family': $("#googleSheet").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
                 columnlist.push("gsx$white");
                 headerlist.push("G");
                 sheet += "<th>Đón</th><th>";
