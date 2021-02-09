@@ -87,7 +87,8 @@ function tovertical() {
     $("#txtPad").css({ 'width': '50%' });
     $("#txtPadout").css({ 'writing-mode': 'vertical-rl' });
     $("#txtPadout").css({ 'display': 'block' });
-    $("#txtPadout").html($("#txtPad").val());
+    var vertxt = $("#txtPad").val().replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙");
+    $("#txtPadout").html(vertxt);
 }
 
 function myCheck(boxclick) {
