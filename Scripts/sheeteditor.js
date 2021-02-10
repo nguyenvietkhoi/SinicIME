@@ -16,36 +16,36 @@
                 headerlist.push("C");
                 headerlist.push("D");
                 headerlist.push("E");
-                sheet += "<th>Dọ Pao</th><th>" + "Dọ Tay</th><th>" + "Dọ Latin</th><th>";
+                sheet += "<th>Lai Pao</th><th>" + "Lai Tay</th><th>" + "Yo Latin</th><th>";
                 break;
             case 'deng':
                 $("#googleSheet").css({ 'font-family': $("#googleSheet").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
                 columnlist.push("gsx$red");
                 headerlist.push("F");
-                sheet += "<th>Đeng</th><th>";
+                sheet += "<th>Daeng</th><th>";
                 break;
             case 'don':
                 $("#googleSheet").css({ 'font-family': $("#googleSheet").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
                 columnlist.push("gsx$white");
                 headerlist.push("G");
-                sheet += "<th>Đón</th><th>";
+                sheet += "<th>Don</th><th>";
                 break;
             case 'nuea':
                 columnlist.push("gsx$upper");
                 headerlist.push("I");
-                sheet += "<th>Nưa</th><th>";
+                sheet += "<th>Nuea</th><th>";
                 break;
             case 'dam':
                 columnlist.push("gsx$blacktai");
                 columnlist.push("gsx$blackrom");
                 headerlist.push("K");
                 headerlist.push("L");
-                sheet += "<th>Đăm</th><th>" + "Đăm Latin</th><th>";
+                sheet += "<th>Dam</th><th>" + "Latin</th><th>";
                 break;
             case 'lue':
                 columnlist.push("gsx$lue");
                 headerlist.push("M");
-                sheet += "<th>Lự</th><th>";
+                sheet += "<th>Lue</th><th>";
                 break;
             case 'lanna':
                 columnlist.push("gsx$lanna");
@@ -55,7 +55,7 @@
             case 'khuen':
                 columnlist.push("gsx$khuen");
                 headerlist.push("N");
-                sheet += "<th>Khưn</th><th>";
+                sheet += "<th>Khuen</th><th>";
                 break;
             case 'ahom':
                 columnlist.push("gsx$ahom");
