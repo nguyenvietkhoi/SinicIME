@@ -88,7 +88,7 @@ function txtPadKeyInput(evt) {
           $("#txtPad").val($("#txtPad").val().substring(0, curcaret - 1) + $("#txtPad").val().substring(curcaret, $("#txtPad").val().length));
           $("#txtPad")[0].selectionStart = $("#txtPad")[0].selectionEnd = curcaret - 1;
           if (optionlist.length == 1) {
-              if (quocngu == 8) {
+              if (isNoSpaceLang(quocngu)) {
                   listUpdate();
               } else {
                   $("#rubytype").html(rubystr + " ");
