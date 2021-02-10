@@ -224,7 +224,9 @@ function opttableselect(tablesel) {
             break;
         case 24: opttable = "rubytaiyo";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'QuyChau\')"><a>IPA: ' + $("#QuyChau").val() + '</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'QuyChau\')"><a>IPA: ' + $("#QuyChau").val() + '</a></li>' +
+                '<li onclick="logo2roman()"><a>→ abc</a></li>' +
+                '<li onclick="convertpad(0)"><a>→ 𖰑</a></li><li onclick="convertpad(1)"><a>→ 文</a></li><li onclick="tovertical()"><a>' + $('#Vertical').val() + '</a></li>');
             break;
         case 25: opttable = "rubytaipao";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
@@ -770,7 +772,52 @@ function logo2ipa(accent) {
         $("#txtPad").css({ 'width': '50%' });
         $("#txtPadout").css({ 'writing-mode': 'horizontal-tb' });
         $("#txtPadout").css({ 'display': 'block' });
-        $("#txtPadout").html(convtxt);
+        $("#txtPadout").html(convtxt.replace(/\n/g, "<br>").replace(/\r/g, "<br>"));
+    } else {
+        offpad();
+    }
+}
+
+function logo2roman() {
+    var phrase = "";
+    var convtxt = "";
+    var ipaword;
+    phrase = logo2phon($("#txtPad").val(), false);
+
+    if (phrase.length > 0) {
+        phrase = phrase.replace(/\./g, " | ");
+        phrase = phrase.replace(/,/g, " | ");
+        phrase = phrase.replace(/:/g, " | ");
+        phrase = phrase.replace(/;/g, " | ");
+        phrase = phrase.replace(/\//g, " / ");
+        phrase = phrase.replace(/\?/g, " ? ");
+        phrase = phrase.replace(/!/g, " ! ");
+        phrase = phrase.replace(/\t/g, " \t ");
+        phrase = phrase.replace(/\n/g, " \n ");
+        phrase = phrase.replace(/\r/g, " \r ");
+        phrase = phrase.replace(/  /g, " ");
+        var word = phrase.split(" ");
+        var prespace = "";
+        for (var i = 0; i < word.length; i++) {
+            if (i > 0)
+                prespace = " ";
+            if ("|/?!\t\n\r".includes(word[i]))
+                convtxt += prespace + word[i];
+            else {
+                switch (quocngu) {
+                    case 24:
+                        ipaword = TaiYoIPA(word[i], "roman");
+                        convtxt += (prespace + ipaword);
+                        break;
+                    default: break;
+                }
+            }
+        }
+        convtxt
+        $("#txtPad").css({ 'width': '50%' });
+        $("#txtPadout").css({ 'writing-mode': 'horizontal-tb' });
+        $("#txtPadout").css({ 'display': 'block' });
+        $("#txtPadout").html(convtxt.replace(/\n/g, "<br>").replace(/\r/g, "<br>"));
     } else {
         offpad();
     }

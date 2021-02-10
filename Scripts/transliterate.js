@@ -13,7 +13,7 @@ self.addEventListener('install', function (event) {
     event.waitUntil(
       caches.open('v1').then(function (cache) {
           return cache.addAll([
-            '../Resources/ipa.jpg',
+            './Resources/ipa.jpg',
           ]);
       })
     );
@@ -21,7 +21,7 @@ self.addEventListener('install', function (event) {
 
 // Connect to sqlite db file
 var xhr = new XMLHttpRequest();
-xhr.open('GET', './Resources/ipa.jpg', true);
+xhr.open('GET', '../Resources/ipa.jpg', true);
 xhr.responseType = 'arraybuffer';
 xhr.onload = function (e) {
     var uInt8Array = new Uint8Array(this.response);
@@ -369,9 +369,9 @@ function TaiYoIPA(w, accent) {
         if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰟𖰜𖰦𖰨𖰮𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰞𖰝𖰧𖰩𖰯".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
-                if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰟𖰜𖰦𖰨𖰮".includes(c))
+                if ("𖰰𖰀𖰂𖰆𖰪𖰬𖰄𖰈𖰌𖰠𖰎𖰐𖰒𖰔𖰊𖰢𖰤𖰖𖰘𖰚𖰞𖰜𖰦𖰨𖰮".includes(c))
                     ipa.toneclass = 1;
-                else if ("𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰞𖰝𖰧𖰩𖰯".includes(c))
+                else if ("𖰁𖰃𖰇𖰫𖰭𖰅𖰉𖰍𖰡𖰏𖰑𖰓𖰕𖰋𖰣𖰥𖰗𖰙𖰛𖰟𖰝𖰧𖰩𖰯".includes(c))
                     ipa.toneclass = 2;
             }
             else if ((ipa.rime == "") && (ipa.tone == "") && ("𖰁𖰂𖰃𖰄𖰅𖰇𖰆".includes(ipa.onset)) && (c == "𖰧") && (!ipa.onset2.endsWith("1"))) {
@@ -380,7 +380,10 @@ function TaiYoIPA(w, accent) {
             }
             else if ((ipa.rime != "") && ("𖰀𖰎𖰖".includes(c))) {
                 tmpconso = c;
-                ipa.tone = "4";
+                if ("𖰸𖰳𖰹𖰵𖰴".includes(ipa.rime))
+                    ipa.tone = "5";
+                else
+                    ipa.tone = "4";
                 ipa.rime += c;
 
                 ipalist.push(Object.assign({}, ipa));
@@ -427,6 +430,10 @@ function TaiYoIPA(w, accent) {
                 i--;
                 continue;
             }
+        }
+        else if ((ipa.rime == "") && ("𖱄𖱅𖱃".includes(c))) {
+            ipa.tone = "5";
+            ipa.rime += c;
         }
         else if ("𖱊𖱋".includes(c)) {
             ipa.tone = c;
@@ -504,10 +511,67 @@ function TaiYoIPA(w, accent) {
             continue;
         }
 
-        ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
+        if (accent == "roman")
+            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0]) + ipastr;
+        else
+            ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
     }
 
     return (ipastr.substring(1));
+}
+
+function TaiYorimetone(rime, tone) {
+    var rimetone = rime;
+    switch (tone) {
+        case "́":
+            rimetone = rime.replace("iê", "iế").replace("uô", "uố").replace("ươ", "ướ");
+            if (rimetone == rime) {
+                rimetone = rime.replace("a", "á").replace("ă", "ắ").replace("ơ", "ớ").replace("o", "ó").replace("ô", "ố").replace("e", "é").replace("ê", "ế").replace("u", "ú").replace("ư", "ứ");
+                if (rimetone == rime) {
+                    rimetone = rime.replace("i", "í");
+                }
+            }
+            break;
+        case "̀":
+            rimetone = rime.replace("iê", "iề").replace("uô", "uồ").replace("ươ", "ườ");
+            if (rimetone == rime) {
+                rimetone = rime.replace("a", "à").replace("ă", "ằ").replace("ơ", "ờ").replace("o", "ò").replace("ô", "ồ").replace("e", "è").replace("ê", "ề").replace("u", "ù").replace("ư", "ừ");
+                if (rimetone == rime) {
+                    rimetone = rime.replace("i", "ì");
+                }
+            }
+            break;
+        case "̣":
+            rimetone = rime.replace("iê", "iệ").replace("uô", "uộ").replace("ươ", "ượ");
+            if (rimetone == rime) {
+                rimetone = rime.replace("a", "ạ").replace("ă", "ặ").replace("ơ", "ợ").replace("o", "ọ").replace("ô", "ộ").replace("e", "ẹ").replace("ê", "ệ").replace("u", "ụ").replace("ư", "ự");
+                if (rimetone == rime) {
+                    rimetone = rime.replace("i", "ị");
+                }
+            }
+            break;
+        case "̄":
+            rimetone = rime.replace("iê", "iê̄").replace("uô", "uô̄").replace("ươ", "ươ̄");
+            if (rimetone == rime) {
+                rimetone = rime.replace("a", "ā").replace("ă", "ă̄").replace("ơ", "ơ̄").replace("o", "ō").replace("ô", "ô̄").replace("e", "ē").replace("ê", "ê̄").replace("u", "ū").replace("ư", "ư̄");
+                if (rimetone == rime) {
+                    rimetone = rime.replace("i", "ī");
+                }
+            }
+            break;
+        case "̌":
+            rimetone = rime.replace("iê", "iê̌").replace("uô", "uô̌").replace("ươ", "ươ̌");
+            if (rimetone == rime) {
+                rimetone = rime.replace("a", "ǎ").replace("ă", "ă̌").replace("ơ", "ơ̌").replace("o", "ǒ").replace("ô", "ô̌").replace("e", "ě").replace("ê", "ê̌").replace("u", "ǔ").replace("ư", "ư̌");
+                if (rimetone == rime) {
+                    rimetone = rime.replace("i", "ǐ");
+                }
+            }
+            break;
+        default:
+            break;
+    }
+    return rimetone;
 }
 
 function TayIPA(w, accent) {
