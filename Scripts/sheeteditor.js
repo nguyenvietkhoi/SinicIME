@@ -97,16 +97,19 @@
         columnlist.push("gsx$zhuang");
         columnlist.push("gsx$viet");
         columnlist.push("gsx$english");
+        columnlist.push("gsx$notes");
         headerlist.push("R");
         headerlist.push("S");
         headerlist.push("U");
         headerlist.push("AB");
         headerlist.push("AC");
+        headerlist.push("AF");
         sheet += "Siam</th><th>" +
         "Tày Nùng</th><th>" +
         "Cuengh</th><th>" +
         "Việt</th><th>" +
-        "English</th></tr></thead><tbody>";
+        "English</th><th>" +
+        "Notes</th></tr></thead><tbody>";
 
         for (i = 0; i < data.length; i++) {
 
@@ -167,10 +170,18 @@
             data[i]["gsx$taynung"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
             data[i]["gsx$zhuang"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
             data[i]["gsx$viet"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
-            data[i]["gsx$english"]["$t"] + "</td></tr><tbody>";
+            data[i]["gsx$english"]["$t"] + "</td><td onblur='updatecell(this)' contenteditable='true'>" +
+            data[i]["gsx$notes"]["$t"] + "</td></tr><tbody>";
         }
         document.getElementById("googleSheet").innerHTML = sheet;
         $("#waitscreen").css({ display: 'none' });
+        $("#googleSheet th[contenteditable]").keypress(function (evt) {
+            var keycode = evt.charCode || evt.keyCode;
+            if (keycode == 13) { //Enter key's keycode
+                $(this).blur();
+                return false;
+            }
+        });
         $("#googleSheet td[contenteditable]").keypress(function (evt) {
             var keycode = evt.charCode || evt.keyCode;
             if (keycode == 13) { //Enter key's keycode
@@ -287,14 +298,14 @@ function loadAusAsiaDB() {
     }
     document.getElementById("googleSheet").innerHTML = sheet;
     $("#waitscreen").css({ display: 'none' });
-    $("#googleSheet td[contenteditable]").keypress(function (evt) {
+    $("#googleSheet th[contenteditable]").keypress(function (evt) {
         var keycode = evt.charCode || evt.keyCode;
         if (keycode == 13) { //Enter key's keycode
             $(this).blur();
             return false;
         }
     });
-    $("#googleSheet th[contenteditable]").keypress(function (evt) {
+    $("#googleSheet td[contenteditable]").keypress(function (evt) {
         var keycode = evt.charCode || evt.keyCode;
         if (keycode == 13) { //Enter key's keycode
             $(this).blur();
@@ -305,9 +316,9 @@ function loadAusAsiaDB() {
 
 function updatecell(x) {
     var origincell = data[x.parentNode.rowIndex - 1][columnlist[x.cellIndex]]["$t"];
-    if (origincell != x.innerHTML.replace("*", "").replace("<br>", "")) {
+    if (origincell.replace("*", "") != x.innerHTML.replace("*", "").replace("<br>", "")) {
         x.innerHTML = "*" + x.innerHTML.replace("*", "").replace("<br>", "");
-        var r = confirm("Update " + headerlist[x.cellIndex] + ": " + x.innerHTML + "\n" + x.parentNode.innerText);
+        var r = confirm("Agree to Update to: \"" + x.innerHTML + "\" ?");
         if (r == true) {
             sendupdate(x.parentNode.rowIndex + 1, headerlist[x.cellIndex], x.innerHTML);
         } else {
