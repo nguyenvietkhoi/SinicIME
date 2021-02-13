@@ -8,9 +8,11 @@
 <script>
     let xmlhttp = new XMLHttpRequest();
     let data;
+    var ggdbload = "https://spreadsheets.google.com/feeds/list/12Ot3WcjkFHraoQYWrWxAgaMWKLtcPGwBHmdrRHUE4bc/1/public/values?alt=json";
     var ggdblink = "https://script.google.com/macros/s/AKfycbxVKlFcZk7WoZLjel3qD82Ung4sGEMsdyXlxbJoa851rC2SGIuxhwkacQ/exec?";
     var columnlist = [];
     var headerlist = [];
+    var hasChanged = false;
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText).feed.entry;
@@ -18,12 +20,19 @@
         }
     };
 
-    xmlhttp.open(
-      "GET",
-      "https://spreadsheets.google.com/feeds/list/12Ot3WcjkFHraoQYWrWxAgaMWKLtcPGwBHmdrRHUE4bc/1/public/values?alt=json",
-      true
-    );
+    xmlhttp.open("GET", ggdbload, true);
     xmlhttp.send();
+
+    function loaddb() {
+        if (hasChanged) {
+            xmlhttp.open("GET", ggdbload, true);
+            xmlhttp.send();
+            hasChanged = false;
+        }
+        else {
+            loadAusAsiaDB();
+        }
+    }
 </script>
 <script type="text/javascript" src="./Scripts/sheeteditor.js"></script>
 
@@ -73,7 +82,7 @@
             <a class="navbar-brand" href=".">Sinic IME</a>
         </div>
         <div>
-        <select style="margin: 13px;" data-style="btn-primary" id="selLang" onchange="loadAusAsiaDB()">
+        <select style="margin: 13px;" data-style="btn-primary" id="selLang" onchange="loaddb()">
             <option value="none">Default</option>
             <option value="khmer">Khmer</option>
             <option value="mon">Mon</option>

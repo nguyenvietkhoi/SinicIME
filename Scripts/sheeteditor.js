@@ -328,6 +328,7 @@ function updatecell(x) {
 }
 
 function sendupdate(row, field, value) {
+    hasChanged = true;
     var gurl = ggdblink + "row=" + row + "&field=" + field + "&value=" + value;
     const Http = new XMLHttpRequest();
     Http.open("GET", gurl);
