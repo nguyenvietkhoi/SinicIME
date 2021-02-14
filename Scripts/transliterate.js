@@ -380,7 +380,7 @@ function TaiYoIPA(w, accent) {
             }
             else if ((ipa.rime != "") && ("𖰀𖰎𖰖".includes(c))) {
                 tmpconso = c;
-                if ("𖰸𖰳𖰹𖰵𖰴".includes(ipa.rime))
+                if ("𖰸𖰳𖰹𖰵𖰴𖰾".includes(ipa.rime))
                     ipa.tone = "5";
                 else
                     ipa.tone = "4";
