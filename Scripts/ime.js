@@ -29,7 +29,7 @@ var optruby = "ruby";
 var optlev = "and level>1";
 var sugCB = false;
 var quocngu = 0;
-var convertdeftext = '<li onclick="convertpad(0)"><a>→ abc</a></li><li onclick="convertpad(1)"><a>→ 文</a></li><li onclick="tovertical()"><a>' + $('#Vertical').val() + '</a></li>';
+var convertdeftext = '<li onclick="convertpad(1)"><a>→ 文</a></li><li onclick="tovertical()"><a>' + $('#Vertical').val() + '</a></li>';
 
 var oo = false;
 self.addEventListener('fetch', function (event) {
@@ -40,17 +40,17 @@ self.addEventListener('fetch', function (event) {
     )
 })
 
-self.addEventListener('install', function (event) {
-    event.waitUntil(
-      caches.open('v1').then(function (cache) {
-          return cache.addAll([
-            './Resources/nomime.jpg',
-            './Resources/tho.png',
-            './Scripts/sql.js'
-          ]);
-      })
-    );
-});
+//self.addEventListener('install', function (event) {
+//    event.waitUntil(
+//      caches.open('v1').then(function (cache) {
+//          return cache.addAll([
+//            '../Resources/nomime.jpg',
+//            '../Resources/tho.png',
+//            '../Scripts/sql.js'
+//          ]);
+//      })
+//    );
+//});
 
 // Connect to sqlite db file
 var xhr = new XMLHttpRequest();
@@ -124,75 +124,77 @@ function opttableselect(tablesel) {
     switch (quocngu) {
         case 1: opttable = "rubytriung";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 2: opttable = "rubyhok";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>'+$("#Taipei").val()+'</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 3: opttable = "rubyfoo";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 4: opttable = "rubyhakk";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 5: opttable = "rubymand";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>'+$("#Beijing").val()+'</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 6: opttable = "rubycant";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>'+$("#HongKong").val()+'</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 7: opttable = "rubysou";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 8: opttable = "rubykor";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>'+$("#Seoul").val()+'</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ 한</a></li>' + convertdeftext);
             break;
         case 9: opttable = "rubyjap";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>'+$("#Tokyo").val()+'</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ かな</a></li>' + convertdeftext);
             break;
         case 10: opttable = "rubycuen";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 11: opttable = "rubyyay";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 12: opttable = "rubysaek";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 13: opttable = "rubyyang";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 14: opttable = "rubytay";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HoaAn\')"><a>IPA: '+$("#HoaAn").val()+'</a></li>' + '<li onclick="logo2ipa(\'CoXau\')"><a>IPA: '+$("#CoXau").val()+'</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HoaAn\')"><a>IPA: ' + $("#HoaAn").val() + '</a></li>' + '<li onclick="logo2ipa(\'CoXau\')"><a>IPA: ' + $("#CoXau").val() + '</a></li>' +
+                '<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 15: opttable = "rubythai";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>' + $("#Bangkok").val() + '</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ ท</a></li>' + convertdeftext);
             break;
         case 16: opttable = "rubylao";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>' + $("#Vientiane").val() + '</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ ທ</a></li>' + convertdeftext);
             break;
         case 17: opttable = "rubytaidam";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'SonLa\')"><a>IPA: ' + $("#SonLa").val() + '</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'SonLa\')"><a>IPA: ' + $("#SonLa").val() + '</a></li>' +
+                '<li onclick="convertpad(0)"><a>→ ꪕ</a></li>' + convertdeftext);
             break;
         case 18: opttable = "rubytaidon";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ ꪕ</a></li>' + convertdeftext);
             $("body").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
@@ -200,11 +202,11 @@ function opttableselect(tablesel) {
             break;
         case 19: opttable = "rubylanna";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ ᨴ</a></li>' + convertdeftext);
             break;
         case 20: opttable = "rubykhuen";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ ᨴ</a></li>' + convertdeftext);
             $("body").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Lanna", "Tai Khuen") });
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Lanna", "Tai Khuen") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Lanna", "Tai Khuen") });
@@ -212,33 +214,33 @@ function opttableselect(tablesel) {
             break;
         case 21: opttable = "rubytaiyai";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ တ</a></li>' + convertdeftext);
             break;
         case 22: opttable = "rubytainuea";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ ᥖ</a></li>' + convertdeftext);
             break;
         case 23: opttable = "rubytailue";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ ᦎ</a></li>' + convertdeftext);
             break;
         case 24: opttable = "rubytaiyo";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
             document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'QuyChau\')"><a>IPA: ' + $("#QuyChau").val() + '</a></li>' +
                 '<li onclick="logo2roman()"><a>→ abc</a></li>' +
-                '<li onclick="convertpad(0)"><a>→ 𖰑</a></li><li onclick="convertpad(1)"><a>→ 文</a></li><li onclick="tovertical()"><a>' + $('#Vertical').val() + '</a></li>');
+                '<li onclick="convertpad(0)"><a>→ 𖰑</a></li>' + convertdeftext);
             break;
         case 25: opttable = "rubytaipao";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ 𖱥</a></li>' + convertdeftext);
             break;
         case 26: opttable = "rubyahom";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ 𑜄</a></li>' + convertdeftext);
             break;
         case 27: opttable = "rubytaideng";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = (convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0)"><a>→ ꪕ</a></li>' + convertdeftext);
             $("body").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
@@ -247,7 +249,8 @@ function opttableselect(tablesel) {
         case 0:
         default: opttable = "rubynom";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ')"><a>'+$("#HaNoi").val()+'</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HaNoi\')"><a>IPA: ' + $("#HaNoi").val() + '</a></li>' + '<li onclick="logo2ipa(\'SaiGon\')"><a>IPA: ' + $("#SaiGon").val() + '</a></li>' + '<li onclick="logo2ipa(\'QuangNam\')"><a>IPA: ' + $("#QuangNam").val() + '</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HaNoi\')"><a>IPA: ' + $("#HaNoi").val() + '</a></li>' + '<li onclick="logo2ipa(\'SaiGon\')"><a>IPA: ' + $("#SaiGon").val() + '</a></li>' + '<li onclick="logo2ipa(\'QuangNam\')"><a>IPA: ' + $("#QuangNam").val() + '</a></li>' +
+                '<li onclick="convertpad(0)"><a>→ abc</a></li>' + convertdeftext);
             break;
     }
     loadkeyboard();

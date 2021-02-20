@@ -9,19 +9,20 @@ self.addEventListener('fetch', function (event) {
     )
 })
 
-self.addEventListener('install', function (event) {
-    event.waitUntil(
-      caches.open('v1').then(function (cache) {
-          return cache.addAll([
-            './Resources/ipa.jpg',
-          ]);
-      })
-    );
-});
+//self.addEventListener('install', function (event) {
+//    event.waitUntil(
+//      caches.open('v1').then(function (cache) {
+//          return cache.addAll([
+//            '../Resources/ipa.jpg',
+//          ]);
+//      })
+//    );
+//});
+
 
 // Connect to sqlite db file
 var xhr = new XMLHttpRequest();
-xhr.open('GET', './Resources/ipa.jpg', true);
+xhr.open('GET', '../Resources/ipa.jpg', true);
 xhr.responseType = 'arraybuffer';
 xhr.onload = function (e) {
     var uInt8Array = new Uint8Array(this.response);
@@ -207,7 +208,7 @@ function TaiDamIPA(w, accent) {
             continue;
         }
         else {
-            if ((ipa.onset == "") && (!"ꪵ◌ꪹ◌ꪶ◌".includes(c))) {
+            if ((ipa.onset == "") && (!"ꪵ◌ꪹ◌ꪶ◌ꪻ◌ꪼ◌".includes(c))) {
                 if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(tmpconso)) {
                     tmpconso = "";
                     var previpa = ipalist.pop();
