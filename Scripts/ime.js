@@ -1881,7 +1881,7 @@ function TAIDON(text, ch) {
         case 'n': tch = "ꪙ"; break;
         case 'o': tch = "ꪮ"; break;
         case 'p': tch = "ꪜ"; break;
-        case 'q': tch = "ꪅ‍"; break;
+        case 'q': tch = "ꪇ"; break;
         case 'r': tch = "ꪭ"; break;
         case 's': tch = "ꪎ‍"; break;
         case 't': tch = "ꪔ"; break;
@@ -1912,7 +1912,6 @@ function TAIDON(text, ch) {
         case '\'x': roma = "ꪂ"; break;
         case '\'q': roma = "ꪃ"; break;
         case 'ꪀh': roma = "ꪆ"; break;
-        case 'ꪅ‍h': roma = "ꪇ"; break;
         case 'ꪬg': roma = "ꪈ"; break;
         case '\'g': roma = "ꪉ"; break;
         case '\'c': roma = "ꪋ"; break;
@@ -1981,7 +1980,7 @@ function TAIDENG(text, ch) {
         case 'n': tch = "ꪙ"; break;
         case 'o': tch = "ꪮ‍"; break;
         case 'p': tch = "ꪜ"; break;
-        case 'q': tch = "ꪅ‍"; break;
+        case 'q': tch = "ꪅ"; break;
         case 'r': tch = "ꪭ"; break;
         case 's': tch = "ꪎ‍"; break;
         case 't': tch = "ꪔ"; break;
@@ -2014,11 +2013,11 @@ function TAIDENG(text, ch) {
         case '\'x': roma = "ꪂ‍"; break;
         case '\'q': roma = "ꪃ"; break;
         case 'ꪀh': roma = "ꪆ"; break;
-        case 'ꪅ‍h': roma = "ꪇ"; break;
+        case 'ꪅh': roma = "ꪇ"; break;
         case 'ꪬg': roma = "ꪈ‍"; break;
         case '\'g': roma = "ꪉ‍"; break;
         case '\'c': roma = "ꪋ"; break;
-        case 'ꪊh': roma = "ꪠ"; break;
+        case 'ꪊh': roma = "ꪠ‍"; break;
         case 'ꪎ‍h': roma = "ꪍ"; break;
         case '\'s': roma = "ꪏ‍"; break;
         case 'ꪬj': roma = "ꪐ"; break;
@@ -5053,7 +5052,7 @@ function loadkeyboard() {
                 $('#K55').html("<br>ꪼ");
                 $('#K56').html("<br><span style='color: #ffc000;'>◌ꪸ</span>");
                 $('#K57').html("<br><span style='color: #ffc000;'>◌ꪳ</span>");
-                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br><span style='color: #13abbb;'>ꪇ   </span>ꪅ‍");
+                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br><span style='color: #13abbb;'>ꪇ   </span>ꪇ");
                 $('#K87').html("<br><span style='color: #ffc000;'>ꪷ</span>");
                 $('#K69').html("<br>ꪹ");
                 $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
@@ -5101,7 +5100,7 @@ function loadkeyboard() {
                 $('#K55').html("<br>ꪼ");
                 $('#K56').html("<span style='color: #b1bb13;'>◌ꪸꪸ</span><br><span style='color: #7ba064;'>◌ꪸ</span>");
                 $('#K57').html("<span style='color: #b1bb13;'>◌ꪳꪳ</span><br><span style='color: #7ba064;'>◌ꪳ</span>");
-                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br><span style='color: #13abbb;'>ꪇ   </span>ꪅ‍");
+                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br><span style='color: #13abbb;'>ꪇ   </span>ꪅ");
                 $('#K87').html("<br><span style='color: #ffc000;'>ꪷ</span>");
                 $('#K69').html("<br>ꪹ");
                 $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
@@ -5126,7 +5125,7 @@ function loadkeyboard() {
                 $('#K222').html("<br><span style='color: #cc4444;'>'</span>");
                 $('#K90').html("<span style='color: #d22e9f;'>ꪗ‍   </span><br>ꪖ");
                 $('#K88').html("<span style='color: #d22e9f;'>ꪂ‍   </span><br>ꪄ‍");
-                $('#K67').html("<span style='color: #d22e9f;'>ꪋ   </span><br><span style='color: #13abbb;'>ꪠ  </span>ꪊ");
+                $('#K67').html("<span style='color: #d22e9f;'>ꪋ   </span><br><span style='color: #13abbb;'>ꪠ‍  </span>ꪊ");
                 $('#K86').html("<span style='color: #13abbb;'>ꪪ‍ </span><span style='color: #4fd454;'>ꪀ‍ꪫ‍</span><br>ꪫ‍");
                 $('#K66').html("<span style='color: #d22e9f;'>ꪛ   </span><br>ꪚ");
                 $('#K78').html("<span style='color: #13abbb;'>ꪘ </span><span style='color: #b59bff;'>ꪽ</span><br><span style='color: #4fd454;'>ꪀ‍ꪙ </span>ꪙ");
