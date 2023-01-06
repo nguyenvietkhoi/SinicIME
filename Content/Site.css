@@ -1,0 +1,348 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 75px;
+    padding-right: 45px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    padding: 0;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+@font-face {
+font-family: 'Han-Nom Gothic Supplement';
+src:
+	local('Han-Nom Gothic'),
+	url('../fonts/hannom-gothic-supplement.woff') format('woff'),
+	url('../fonts/hannom-gothic-supplement.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: SimSun-ExtB;
+src: url('../fonts/SIMSUNBZ.ttf#iefix') format('embedded-opentype')
+;
+}
+/*@font-face {
+font-family: MingLiU-ExtB;
+src: 
+    local(MingLiU-ExtB),
+    url(../fonts/MINGLIUB.TTC#1)
+;
+}*/
+@font-face {
+font-family: "Tai Lanna";
+src: url('../fonts/TaiLanna.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Yogyakarta";
+src: url('../fonts/Yogyakarta.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Lanexang Mon4";
+src: url('../fonts/Lanxang.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Aksara Bali";
+src: url('../fonts/AksaraBali.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: Sawndip;
+src: url('../fonts/Sawndip0.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Nom Na Tong";
+src: url('../fonts/NomNaTongLight.ttf#iefix') format('embedded-opentype')
+;
+}
+@font-face {
+font-family: HanaMinA;
+src: url('../fonts/HanaMinA.ttf') format('truetype')
+;
+unicode-range: U+4E00-9FFF, U+3400-4DBF;
+}
+@font-face {
+font-family: FSung-2;
+src: url('../fonts/FSung-2.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: FSung-3;
+src: url('../fonts/FSung-3.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: HanaMinB;
+src: url('../fonts/HanaMinB.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Tai Son La";
+src: url('../fonts/Tai-Son-La.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Tai Muong Lay";
+src: url('../fonts/Tai-Muong-Lay.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Tai Muong Deng";
+src: url('../fonts/Tai-Muong-Deng.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Cambria Tai Yo";
+src: url('../fonts/CambriaTaiYo.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Cambria Tai Yo Oldstyle";
+src: url('../fonts/CambriaTaiYoOld.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Sukhothai";
+src: url('../fonts/Sukhothai.ttf') format('truetype')
+;
+}
+@font-face {
+font-family: "Bravura Text";
+src: url('../fonts/BravuraText.ttf') format('truetype')
+;
+}
+
+#outlist .outopt:hover,
+#outlist .outopt:active,
+#outlist .outopt {
+    width: 200px;
+    background: none;
+    color: #f0e0c0;
+    font-weight: normal;
+    border-bottom: 0;
+}
+
+#outlist .outopt:hover,
+#outlist .outopt:active {
+    color: #000;
+    background: #eee;
+}
+
+#outlist {
+    width: 220px;
+    height: 327px;
+    margin: 0 0 0 9px;
+    padding: 0;
+    background: url(../Resources/wave.png) fixed;
+}
+
+#outlist tr td {
+    padding: 0 4px 0 4px;
+    background: #c19723;
+    color: #08112F;
+    font-weight: normal;
+    font-size: 20px;
+    border-bottom: solid 1px #08112F;
+}
+
+#rubytype {
+    width: 200px;
+    height: 30px;
+    min-width: 200px;
+    overflow: visible;
+    float: right;
+    background-color: #101010;
+    color: #fff;
+    margin: 4px -4px;
+    font-weight: normal;
+    padding: 0 2px;
+}
+
+#txtPad, #txtPadout {    
+    min-height: 500px;
+    font-family: Cambria, Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+    background-color: #0808088c;
+    color: #fff;
+}
+#txtPad, #txtPadout:focus {
+	outline:none;
+}
+.funcbutt {
+    cursor: pointer;
+}
+
+.speakbutt {
+    height: 30px; margin: 10px 8px;
+}
+
+.transbutt {
+    height: 46px; margin: 2px 0px;
+}
+
+#example {
+    font-family: inherit;
+    background: #101010; height: 40%; min-height: 220px; margin: 3px 0px 0px 9px; width: 220px; color: #eee; overflow: auto; text-align: right;
+}
+#example tr td {
+    padding: 5px 10px;
+    line-height: 1.2;
+}
+
+#example table {
+    min-width: 100%
+}
+
+.logo {
+    height: 48px; float: left; margin: 1px;
+}
+
+#waitscreen {
+    background: url('../Resources/loading.gif');
+    background-position: center;
+    opacity: 0.6;
+    position: fixed;
+    width: 100%; height: 100%; left: 0;
+    z-index:1001;
+}
+
+@media (max-width: 767px) {
+  
+    .speakbutt, .transbutt {
+        height: 30px;
+        margin: 2px 5px;
+    }
+      
+.body-content {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.logo {
+    height: 32px;
+}
+
+    #txtPad, #txtPadout {
+        min-height: 400px;
+    }
+
+    .jumbotron {
+        font-size: 14px;
+    }
+
+    #rubytype {
+        width: 95px;
+        min-width: 95px;
+        max-width: 95px;
+        overflow: auto;
+        height: 21px;
+        margin: 0;
+        padding: 0 1px;
+        margin: 1px -1px;
+    }
+    #outlist {
+        width: auto;
+        height: auto;
+        margin: 0;
+    }
+    #outlist .outopt {
+        width: 95px;
+        background: none;
+        max-width: 95px;
+        overflow: auto;
+        padding: 0 1px;
+    }
+    #outlist tr td {
+        width: 10px;
+        font-size: 14px;
+        padding: 0px 1px;
+        color: #08112F;
+        height: 23px;
+    }
+    #example {
+        min-height: 203px;height: 45%;
+        width: 105px;
+        margin: 0;
+    }
+
+    .navbar-nav > li > a {
+    padding: 7px;
+    }
+}
+@media (max-width: 590px) {
+    /*#example {
+        min-height: 203px;height: 45%;
+    }*/
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 480px;
+    overflow-y: auto;
+}
+	.scrollable-menu::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 4px;        
+    }    
+    .scrollable-menu::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background-color: #c19723;
+        -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);        
+    }	
+.vk-btn {
+    padding: 1px 1px;
+    width: 40px;
+    height: 60px;
+    font-size: 18px;
+    background: rgb(16, 16, 16);
+    border: outset 1px black;
+    color: #eeeeee;
+vertical-align:middle;
+}
+
+.vk-btn .label{
+    text-align: left;
+}
+.vk-btn-mob {
+    padding: 1px 0px;
+    margin: 0px -2px;
+    width: 24px;
+    height: 32px;
+    font-size: 9px;
+    background: rgb(16, 16, 16);
+    border: outset 1px #3b3b3b;
+    color: #eeeeee;
+vertical-align:middle;
+}
+
+.vk-btn-mob .label{
+    text-align: left;
+}

@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+<input type="hidden" id="Vertical" value="Vertical">
+<input type="hidden" id="English" value="English">
+<input type="hidden" id="German" value="German">
+<input type="hidden" id="Hochdeutsch" value="Hochdeutsch">
+<input type="hidden" id="RP" value="Received Pronunciation">
+<input type="hidden" id="US" value="General American">
+
+<input type="hidden" id="DictGuide" value="Press SHIFT">
+
+<script type="text/javascript">
+   /*/ if (navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ) {
+        window.location = "./IMEmobile";
+   }*/
+</script>
+<script type="text/javascript" src="./Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="./Scripts/sql.js"></script>
+<script type="text/javascript" src="./Scripts/sinicize.js"></script>
+<script type="text/javascript" src="./Scripts/transliterate.js"></script>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=oxZ9YHww"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinicisation - Linguaevum</title>
+    <link href="./Content/bootstrap.css" rel="stylesheet">
+	<link href="./Content/Site.css" rel="stylesheet">
+
+    <script src="./Scripts/modernizr-2.6.2.js"></script>
+
+    
+</head>
+
+<div id="waitscreen"></div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div style="position: fixed">
+        </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#layoutbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="./Resources/tho.png" class="logo">
+                                <a class="navbar-brand" href="./index">Sinic IME</a>
+                    <ul class="nav navbar-nav">            
+					</ul>
+            </div>
+        </div>
+    </div>
+	
+<div class="jumbotron">
+    <table style="width: 100%; height: 100%;">
+        <tr>
+            <td rowspan="5" style="width: 100%;">
+                <textarea id="txtPad" style="padding: 3px; width: 100%; height: 68vh; font-size: 20px" onkeypress="txtPadKeyTyped(event)" onkeydown="txtPadKeyPressed(event)" onkeyup="txtPadKeyReleased(event)" onclick="offpad()"></textarea>
+                <div id="txtPadout" style="padding: 3px; display: none; overflow:auto; width: 50%; height: 68vh; background-color: #fff; color: #000; font-size: 20px; float: right; " onchange="focuspad()" onfocus="focuspad()"></div>
+                <nav class="navbar navbar-inverse" style="background-image: url('./Resources/wave.png'); border-radius: 0; border: 0; margin: 0;">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="dropup">
+                                    <a class="dropdown-toggle" data-toggle="dropdown">
+                                        <span id="opttablename">English</span>
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu scrollable-menu">
+                                        <li onclick="opttableselect(0)"><a>English</a></li>
+                                        <li onclick="opttableselect(1)"><a>German</a></li>
+                                    </ul>
+                                <li class="dropup">
+                                    <a class="dropdown-toggle" data-toggle="dropdown">
+                                        <span id="kbname">E→文</span>
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li id="kb0" onclick="optkeyboard(0)"><a>QWERTY→Sinograms</a></li>
+                                        <li id="kb1" onclick="optkeyboard(1)"><a>QWERTY→Phonograms</a></li>
+                                        <li id="kb1" onclick="optkeyboard(2)"><a>Phonograms→Sinograms</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropup" id="keyboardbutton" style="background-color: #111;">
+                                    <a onclick="togglekeyboard(event)">⌨️</a>
+                                    <div class="dropdown-menu text-left" id="keyboard" style="z-index: 100; right: -100px; padding: 2px 0;">
+                                        <div dir="ltr" style="direction: ltr;user-select: none;">
+                                            <div style="white-space: nowrap; user-select: none;">
+                                                <button id="K192" type="button" class="vk-btn" style="user-select: none; width: 22px;" onclick="virtualtype('`')">`</button>
+                                                <button id="K49" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('1')">1</button>
+                                                <button id="K50" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('2')">2</button>
+                                                <button id="K51" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('3')">3</button>
+                                                <button id="K52" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('4')">4</button>
+                                                <button id="K53" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('5')">5</button>
+                                                <button id="K54" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('6')">6</button>
+                                                <button id="K55" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('7')">7</button>
+                                                <button id="K56" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('8')">8</button>
+                                                <button id="K57" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('9')">9</button>
+                                                <button id="K48" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('0')">0</button>
+                                                <button id="K189" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('-')">-</button>
+                                                <button id="K187" type="button" class="vk-btn" style="user-select: none; width: 22px;" onclick="virtualtype('=')">=</button>
+                                            </div><div style="white-space: nowrap; user-select: none;">
+                                                <button id="K81" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('q')">q</button>
+                                                <button id="K87" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('w')">w</button>
+                                                <button id="K69" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('e')">e</button>
+                                                <button id="K82" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('r')">r</button>
+                                                <button id="K84" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('t')">t</button>
+                                                <button id="K89" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('y')">y</button>
+                                                <button id="K85" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('u')">u</button>
+                                                <button id="K73" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('i')">i</button>
+                                                <button id="K79" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('o')">o</button>
+                                                <button id="K80" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('p')">p</button>
+                                                <button id="K219" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype('[')">[</button>
+                                                <button id="K221" type="button" class="vk-btn" style="user-select: none;" onclick="virtualtype(']')">]</button>
+                                            </div><div style="white-space: nowrap; user-select: none;">
+                                                <button id="K65" type="button" class="vk-btn" onclick="virtualtype('a')" style="user-select: none;">a</button>
+                                                <button id="K83" type="button" class="vk-btn" onclick="virtualtype('s')" style="user-select: none;">s</button>
+                                                <button id="K68" type="button" class="vk-btn" onclick="virtualtype('d')" style="user-select: none;">d</button>
+                                                <button id="K70" type="button" class="vk-btn" onclick="virtualtype('f')" style="user-select: none;">f</button>
+                                                <button id="K71" type="button" class="vk-btn" onclick="virtualtype('g')" style="user-select: none;">g</button>
+                                                <button id="K72" type="button" class="vk-btn" onclick="virtualtype('h')" style="user-select: none;">h</button>
+                                                <button id="K74" type="button" class="vk-btn" onclick="virtualtype('j')" style="user-select: none;">j</button>
+                                                <button id="K75" type="button" class="vk-btn" onclick="virtualtype('k')" style="user-select: none;">k</button>
+                                                <button id="K76" type="button" class="vk-btn" onclick="virtualtype('l')" style="user-select: none;">l</button>
+                                                <button id="K186" type="button" class="vk-btn" onclick="virtualtype(';')" style="user-select: none;">;</button>
+                                                <button id="K222" type="button" class="vk-btn" onclick="virtualtype('\'')" style="user-select: none;">'</button>
+                                                <button id="K220" type="button" class="vk-btn" style="user-select: none; width: 22px;" onclick="virtualtype('\\')">\</button>
+                                            </div><div style="white-space: nowrap; user-select: none;">
+                                                <button id="K16L" type="button" class="vk-btn" disabled="true" style="user-select: none; width: 40px;"><span class="vk-cap" style="user-select: none;">⇧</button>
+                                                <button id="K90" type="button" class="vk-btn" onclick="virtualtype('z')" style="user-select: none;">z</button>
+                                                <button id="K88" type="button" class="vk-btn" onclick="virtualtype('x')" style="user-select: none;">x</button>
+                                                <button id="K67" type="button" class="vk-btn" onclick="virtualtype('c')" style="user-select: none;">c</button>
+                                                <button id="K86" type="button" class="vk-btn" onclick="virtualtype('v')" style="user-select: none;">v</button>
+                                                <button id="K66" type="button" class="vk-btn" onclick="virtualtype('b')" style="user-select: none;">b</button>
+                                                <button id="K78" type="button" class="vk-btn" onclick="virtualtype('n')" style="user-select: none;">n</button>
+                                                <button id="K77" type="button" class="vk-btn" onclick="virtualtype('m')" style="user-select: none;">m</button>
+                                                <button id="K188" type="button" class="vk-btn" onclick="virtualtype(',')" style="user-select: none;">,</button>
+                                                <button id="K190" type="button" class="vk-btn" onclick="virtualtype('.')" style="user-select: none;">.</button>
+                                                <button id="K191" type="button" class="vk-btn" onclick="virtualtype('/')" style="user-select: none;">/</button>
+                                                <button id="K16R" type="button" class="vk-btn" disabled="true" style="user-select: none; width: 40px;"><span class="vk-cap" style="user-select: none;">⇧</button>
+                                            </div>
+                                            <div style="white-space: nowrap; user-select: none;">
+                                                <button type="button" class="vk-btn" onclick="virtualtype(' ')" style="user-select: none;margin-right: 100px; width: 240px; height: 25px;"> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropup" style="background-color: #69380e">
+                                    <a style="padding: 0px;" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span><img class="funcbutt speakbutt" src="./Resources/speak.png"/></span>
+                                    </a>
+                                    <ul id="accentspeak" class="dropdown-menu">
+                                        <li onclick="speakpad(0.0,20)"><a>Received Pronunciation</a></li>
+                                        <li onclick="speakpad(0.1,20)"><a>General American</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropup" style="background-color: #121890">
+                                    <a style="padding: 0px;" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span>
+                                            <img class="funcbutt transbutt" src="./Resources/transcript.png"/>
+                                        </span>
+                                    </a>
+                                    <ul id="accentipa" class="dropdown-menu">
+                                        <li onclick="convertpad(0,20)"><a>→ abc</a></li>
+                                        <li onclick="convertpad(1,20)"><a>→ 文</a></li>
+                                        <li onclick="tovertical()"><a>Vertical</a></li>
+                                    </ul>
+                                </li>
+                                <!--<li id="autocomplete" onclick="myCheck(2)"><a>…</a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </td>
+            <td valign="top" style="padding: 1px 2px; ">
+
+                <table id="outlist">
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div id="rubytype"></div>
+                        </td>
+                    </tr>
+                    <tr><td>1</td><td id="w1" class="outopt" onclick="setSelectedIndex(1)"></td></tr>
+                    <tr><td>2</td><td id="w2" class="outopt" onclick="setSelectedIndex(2)"></td></tr>
+                    <tr><td>3</td><td id="w3" class="outopt" onclick="setSelectedIndex(3)"></td></tr>
+                    <tr><td>4</td><td id="w4" class="outopt" onclick="setSelectedIndex(4)"></td></tr>
+                    <tr><td>5</td><td id="w5" class="outopt" onclick="setSelectedIndex(5)"></td></tr>
+                    <tr><td>6</td><td id="w6" class="outopt" onclick="setSelectedIndex(6)"></td></tr>
+                    <tr><td>7</td><td id="w7" class="outopt" onclick="setSelectedIndex(7)"></td></tr>
+                    <tr><td>8</td><td id="w8" class="outopt" onclick="setSelectedIndex(8)"></td></tr>
+                    <tr><td>9</td><td id="w9" class="outopt" onclick="setSelectedIndex(9)"></td></tr>
+                </table>
+                <div class="scrollable-menu" id="example">
+                    <table>
+                        <tr>
+                            <td>
+                                Press SHIFT
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<footer>
+        <p style="margin: 0 0 0 30px; font-size: 12px;">© 2020 - Linguaevum</p>
+    </footer>
+<script src="./Scripts/jquery-1.10.2.js"></script>
+<script src="./Scripts/jquery-3.0.0.js"></script>
+<script src="./Scripts/bootstrap.js"></script>
+<script src="./Scripts/respond.js"></script>

@@ -1,0 +1,575 @@
+﻿<!DOCTYPE html>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+<script type="text/javascript" src="./Scripts/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="./Scripts/sql.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+      var my_video_player;
+  window.fbAsyncInit = function() {
+    FB.init({
+      //appId            : '246754564115081',
+      appId            : '113869198637480',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v12.0'
+    });
+      FB.Event.subscribe('xfbml.ready', function(msg) {
+        if (msg.type === 'video') {
+          my_video_player = msg.instance;
+        }
+      });
+  };
+</script>
+  <div id="fb-root"></div>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+<fb:login-button autologoutlink="true"></fb:login-button>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subtitles — Linguaevum</title>
+    <link href="./Content/bootstrap.css" rel="stylesheet">
+    <link href="./Content/Site.css" rel="stylesheet">
+    <style>
+        body {
+              padding: 0;margin: 0;color: #fff;background: url(./Resources/trong.png);
+        }
+        #dict {
+            color:#eee;
+        }
+        #oriPad {
+            color: #000;max-width: 720px;width: 28em; display: none;
+        }
+        #yoSub {
+            width: 50px;
+            writing-mode: vertical-rl;
+            font-size: 28px;
+        }
+        #nomSub{
+            font-size: 44px;
+            color: #f79c22;
+			font-family: Cambria, "Tai Lanna", HanaMinA, HanaMinB, sim-ch_n5100, "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement";
+        }
+		#ipaSub {
+			color: #61d3a9;
+		}
+		#musSub {
+			color: white;
+            font-size: 40px;
+			font-family: "Bravura Text"
+		}
+		#engSub {
+			color: #aab500;
+		}
+        #latSub {
+            color: white;
+            font-family: "Segoe UI";
+        }
+
+        .Home_title {
+            float:left;text-align: left; margin: 0px;color: #CDAC24;padding: 15px 10px 15px 30px;font-size: 18px;line-height: 20px;
+        }
+        .Home_button {
+            background:#232323;color:#CDAC24; margin: 5px;flex-basis: 45%;text-align: left;text-decoration: none;transition: color .15s ease,border-color .15s ease;padding: 15px 10px;font-size: 2rem;line-height: 12px;cursor: pointer;border: 1px solid #CDAC24;border-radius: 4px;
+        }
+        .Home_button:hover {
+            background-color: #551780;
+        }
+        .Home_button a {
+            color: inherit;text-decoration: none;
+        }
+        .Home_box {
+            color:#000;max-width:420px;margin: 5px;flex-basis: 45%;padding: 1rem;text-align: left;color: inherit;font-size: 1.6rem;text-decoration: none;border: 1px solid #eaeaea;border-radius: 4px;transition: color 0.15s ease, border-color 0.15s ease;
+        }
+        .Home_container {
+            min-height: 94vh;padding: 5px 0;display: flex;flex-direction: column;justify-content: flex-start;align-items: center;
+        }
+        .Home_description {
+            text-align: center; line-height: 1.5; font-size: 2rem;
+        }
+        .Home_card {
+            margin: 5px;flex-basis: 45%;padding: 2rem;text-align: left;color: inherit;text-decoration: none;border: 1px solid #eaeaea;border-radius: 6px;transition: color 0.15s ease, border-color 0.15s ease;font-size:2rem;
+        }
+        .Home_card a {
+            text-decoration: none;color: #ff9900; font-weight: bold;cursor:text;
+        }
+        .Home_main {
+            padding: 0rem 0;flex: 1;display: flex;flex-direction: column;justify-content: center;align-items: center;
+        }
+
+        .textpad {
+            text-align: center;
+	        color: #DDC326;
+            font-size: 26px;
+	        font-family: Cambria, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement";
+        }
+@media (max-width: 500px) {
+  .Home_container {
+    padding: 25px 0;
+  }
+  .Home_button {
+      margin: 0;
+  }
+  #oriPad {
+      max-width: 180px;
+  }
+}
+
+.Home_button .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin: 4rem -3rem;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.Home_button:hover .tooltiptext {
+  visibility: visible;
+}
+#selVid {
+margin: 8px; padding: 5px; font-family: 'Segoe UI';
+}
+#player, #fbframe, #fbplayer, #ksplayer {
+height: 640px; width: 680px;
+max-height: 640px;
+}
+
+@media (max-width: 767px) {
+	#selVid {
+		padding: 2px 5px;
+		margin: 2px;
+	}
+}
+@media (max-width: 940px) {
+	#player, #fbframe, #fbplayer, #ksplayer {
+height: 360px; width: 480px;
+	}
+	#fbplayer > iframe, #fbplayer > span {
+height: 360px !important;
+}
+        .textpad {
+		font-size: 22px;
+		}
+		#yoSub {
+            width: 40px;
+            font-size: 22px;
+        }
+		#nomSub {
+            font-size: 35px;
+        }
+		
+}
+@media (max-width: 625px) {
+        .textpad {
+		font-size: 18px;
+		}
+		#yoSub {
+            width: 25px;
+            font-size: 18px;
+        }
+		#nomSub {
+            font-size: 22px;
+        }
+		
+	#player, #fbframe, #fbplayer, #ksplayer {
+height: 216px; width: 288px;
+	}
+	
+	#fbplayer > iframe, #fbplayer > span {
+height: 216px !important;
+}
+}
+
+#fbplayer > iframe, #fbplayer > span {
+width: 100% !important;
+height: 480px !important;
+}
+
+    </style>
+</head>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="position: fixed">
+    </div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#layoutbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="."><img src="./Resources/tho.png" class="logo"></a>
+            <select data-style="btn-primary" id="selVid" onchange="loadVid()">
+                <option value="UrT_ysrrqMo">Choose a video</option>
+                <option value="3FlPzr3jKgo">Hà Nội đêm trở gió by Mỹ Linh</option>
+                <option value="xYHeMhBOd8w">Con đường màu xanh by Hoàng Hải</option>
+                <option value="3x9p6psnvdigsxw" src="./Videos/3x9p6psnvdigsxw.mp4">Hoongl meeuz by 布依之花</option>
+                <option value="7037159603439766820" src="./Videos/7037159603439766820.mp4">Lṳm bō đǎy by 木棉組合</option>
+                <option value="7033712738882833699" src="./Videos/7033712738882833699.mp4">壮乡婚礼 by 壮族姑娘小彩儿呀</option>
+                <option value="PARGbYWLlsg">Một thoáng Tây Hồ by Thanh Lam</option>
+                <option value="H8ZgtjMOhIA">Ngồi tựa song đào by Thuý Hường</option>
+                <option value="4DgrsfDNnlk">Xẩm ngược đời by Hà Thị Cầu</option>
+                <option value="V_nrsEkJIk4">Em về kẻo trời mưa by Ánh Tuyết</option>
+                <option value="9Vpl67aNbQA">No̤ng Faa̱n Sli̤ng of Bắc Giang</option>
+                <option value="dvgnvSM9LrA">No̤ng Ïng of Hoà An</option>
+                <option value="tvv67koOTB8">Kô̄p kī bướn in Tă̄i Yǒ</option>
+                <option value="goIMag7srmo">Tày Đeng of Pù Luông</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="Home_container">
+    <div style="padding:30px 5px 5px 0px" >
+        <input type="text" class="Home_box" id="oriPad" placeholder="Link..." name="ori">
+        
+		
+    </div>
+  <div id="fb-root"></div>
+	<table class="textpad">
+	<tr>
+		<td style="vertical-align: top;padding-top: 20px;">
+		<button class="Home_button" onclick=share()>🔗<span class="tooltiptext">Share</span></button>
+		</td>
+		<td>
+			<div id="videoplayer">
+			<video id="ksplayer" controls="" autoplay="" name="media"><source type="video/mp4"></video>
+			</div>
+			<div id="player"></div>
+			<div id = "fbframe">
+<!-- 
+  <div id="fbplayer" class="fb-video" 
+    data-href="https://www.facebook.com/100002042844020/videos/4561105947259447/" 
+    data-height="470" data-allowfullscreen="true">
+	</div>
+	-->
+	
+<iframe id="fbplayer" src="https://www.facebook.com/plugins/video.php?height=476&href=https://www.facebook.com/100002042844020/videos/4561105947259447/" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+
+	</div>
+		</td>
+		<td>
+			<div id="yoSub"></div>
+		</td>
+	</tr>
+	</table>
+<table class="textpad" style="position: fixed; bottom: 5vh; background:#170f33b8">
+<tr>
+		<td>
+			<div id="oriSub"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div id="latSub"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div id="nomSub"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div id="ipaSub"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<div id="engSub"></div>
+		</td>
+</tr>
+	<tr>
+		<td>
+			<div id="musSub"></div>
+		</td>
+</tr>
+</table>
+    <div styles="Home_main" id="maincontent">
+	</div>
+</div>
+<footer style="margin: 0 0 0 30px; font-size: 12px;">
+    <p>© 2021 — Linguaevum</p>
+</footer>
+<script src="./Scripts/jquery-3.5.1.js"></script>
+<script src="./Scripts/bootstrap.js"></script>
+<script src="./Scripts/respond.js"></script>
+<script>
+    
+var Y = [];
+var N = [];
+var O = [];
+var L = [];
+var I = [];
+var E = [];
+var M = [];
+var lang;
+var timedict = new Map();
+var player;
+var mediaplayer;
+
+var vidID = new URLSearchParams(window.location.search).get("v");
+var fbID = new URLSearchParams(window.location.search).get("f");
+var ksID = new URLSearchParams(window.location.search).get("k");
+$("#player").hide();
+$("#fbframe").hide();
+$("#videoplayer").hide();
+if (vidID!=null) {
+	readTextFile("./Subs/" + vidID + ".ass");	
+$("#player").show();
+}
+else if (fbID!=null) {
+	readTextFile("./Subs/" + fbID + ".ass");
+$("#fbframe").show();
+}
+else if (ksID!=null) {
+$("#videoplayer").show();
+getKuaishou();
+}
+else {
+$("#player").show();
+}
+function getYoutube() {
+    VID_REGEX = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    var vid = document.getElementById("oriPad").value.match(VID_REGEX)[1];
+    readTextFile("./Subs/" + vid + ".ass");
+    player.loadVideoById(vid);
+}
+function getFacebook() {
+	document.getElementById("fbplayer").setAttribute("data-href", fbID.replace("_","/videos/"));	
+	document.getElementById("fbplayer").setAttribute("src", "https://www.facebook.com/plugins/video.php?height=476&href=https://www.facebook.com/" + fbID.replace("_","/videos/") + "/")
+	readTextFile("./Subs/" + fbID + ".ass");
+}
+function getKuaishou() {
+mediaplayer = document.getElementById("ksplayer");
+	mediaplayer.getElementsByTagName("source")[0].setAttribute("src", document.querySelector('#selVid option[value="' +ksID+'"]').getAttribute("src"));
+	readTextFile("./Subs/" + ksID + ".ass");
+	mediaplayer.load();
+	
+  var lastTimeUpdate = -1;
+mediaplayer.addEventListener('timeupdate', (event) => {
+        var time = Math.floor(mediaplayer.currentTime * 4);
+
+        if (time !== lastTimeUpdate) {
+            // It's now up to you to format the time.
+          if (timedict.has(time)) {
+              document.getElementById("yoSub").innerHTML = Y[timedict.get(time)] != null ? Y[timedict.get(time)] : "";
+              document.getElementById("nomSub").innerHTML = N[timedict.get(time)] != null ? N[timedict.get(time)] : "";
+              document.getElementById("oriSub").innerHTML = O[timedict.get(time)] != null ? O[timedict.get(time)] : "";
+              document.getElementById("latSub").innerHTML = L[timedict.get(time)] != null ? L[timedict.get(time)] : "";
+              document.getElementById("ipaSub").innerHTML = I[timedict.get(time)] != null ? I[timedict.get(time)] : "";
+              document.getElementById("engSub").innerHTML = E[timedict.get(time)] != null ? E[timedict.get(time)] : "";
+              document.getElementById("musSub").innerHTML = M[timedict.get(time)] != null ? M[timedict.get(time)] : "";
+          }
+        }
+  });
+}
+function share() {
+if (vidID!=null) {
+  navigator.clipboard.writeText(window.location.href.split("?")[0] + "?v="+vidID);
+  alert(window.location.href.split("?")[0] + "?v="+vidID+" is copied to the clipboard");
+}
+else if (fbID!=null) {
+  navigator.clipboard.writeText(window.location.href.split("?")[0] + "?f="+fbID);
+  alert(window.location.href.split("?")[0] + "?f="+fbID+" is copied to the clipboard");
+}
+else if (ksID!=null) {
+  navigator.clipboard.writeText(window.location.href.split("?")[0] + "?k="+ksID);
+  alert(window.location.href.split("?")[0] + "?k="+ksID+" is copied to the clipboard");
+}
+}
+
+function loadVid() {
+	var videosel = document.getElementById("selVid").value;
+$("#fbframe").hide();
+$("#player").hide();
+$("#videoplayer").hide();
+document.getElementById("ksplayer").pause();
+	vidID = null;
+	fbID = null;
+	ksID = null;
+player.stopVideo();
+if (videosel.length==11) {
+$("#player").show();
+	vidID = videosel;
+    document.getElementById("oriPad").value = "https://youtu.be/" + vidID;
+    getYoutube();
+}
+else if (videosel.length==32) {
+$("#fbframe").show();
+	fbID = videosel;
+    document.getElementById("oriPad").value = "https://www.facebook.com/" + fbID.replace("_","/videos/") + "/";
+    getFacebook();
+}
+else if (videosel.length>=15) {
+        document.getElementById("yoSub").innerHTML = "";
+        document.getElementById("nomSub").innerHTML = "";
+        document.getElementById("oriSub").innerHTML = "";
+        document.getElementById("latSub").innerHTML = "";
+        document.getElementById("ipaSub").innerHTML = "";
+        document.getElementById("engSub").innerHTML = "";
+        document.getElementById("musSub").innerHTML = "";
+	$("#videoplayer").show();
+	ksID = videosel;
+    document.getElementById("oriPad").value = "https://www.kuaishou.com/short-video/" + ksID;
+    getKuaishou();
+}
+}
+
+    // Load the IFrame Player API code asynchronously.
+var tag = document.createElement("script");
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// Instantiate the Player.
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player("player", {
+    height: "100%",
+    width: "100%",
+    videoId: vidID ? vidID : "UrT_ysrrqMo",
+    events: {
+        'onStateChange': onPlayerStateChange
+    }
+  });
+
+  // This is the source "window" that will emit the events.
+  var iframeWindow = player.getIframe().contentWindow;
+
+  // So we can compare against new updates.
+  var lastTimeUpdate = -1;
+
+  // Listen to events triggered by postMessage,
+  // this is how different windows in a browser
+  // (such as a popup or iFrame) can communicate.
+  // See: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+  window.addEventListener("message", function(event) {
+    // Check that the event was sent from the YouTube IFrame.
+    if (event.source === iframeWindow) {
+      var data = JSON.parse(event.data);
+
+      // The "infoDelivery" event is used by YT to transmit any
+      // kind of information change in the player,
+      // such as the current time or a playback quality change.
+      if (
+        data.event === "infoDelivery" &&
+        data.info &&
+        data.info.currentTime
+      ) {
+        // currentTime is emitted very frequently (milliseconds),
+        // but we only care about whole second changes.
+        var time = Math.floor(data.info.currentTime * 4);
+
+        if (time !== lastTimeUpdate) {
+
+            // It's now up to you to format the time.
+          if (timedict.has(time)) {
+              document.getElementById("yoSub").innerHTML = Y[timedict.get(time)] != null ? Y[timedict.get(time)] : "";
+              document.getElementById("nomSub").innerHTML = N[timedict.get(time)] != null ? N[timedict.get(time)] : "";
+              document.getElementById("oriSub").innerHTML = O[timedict.get(time)] != null ? O[timedict.get(time)] : "";
+              document.getElementById("latSub").innerHTML = L[timedict.get(time)] != null ? L[timedict.get(time)] : "";
+              document.getElementById("ipaSub").innerHTML = I[timedict.get(time)] != null ? I[timedict.get(time)] : "";
+              document.getElementById("engSub").innerHTML = E[timedict.get(time)] != null ? E[timedict.get(time)] : "";
+              document.getElementById("musSub").innerHTML = M[timedict.get(time)] != null ? M[timedict.get(time)] : "";
+          }
+        }
+      }
+    }
+  });
+  if (fbID!=null) {
+  $("#player").hide();
+  }
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.BUFFERING) {
+        document.getElementById("yoSub").innerHTML = "";
+        document.getElementById("nomSub").innerHTML = "";
+        document.getElementById("oriSub").innerHTML = "";
+        document.getElementById("latSub").innerHTML = "";
+        document.getElementById("ipaSub").innerHTML = "";
+        document.getElementById("engSub").innerHTML = "";
+        document.getElementById("musSub").innerHTML = "";
+    }
+}
+
+function readTextFile(file)
+{
+     Y = [];
+     N = [];
+     O = [];
+     L = [];
+     I = [];
+     E = [];
+     M = [];
+     lang;
+     timedict = new Map();
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var i = 0;
+                var allLines = rawFile.responseText.replace(/\r\n/g, "\n").split(/\n/);
+                allLines.forEach(function (line) {
+                    if (line.startsWith("Title:")) {
+                        lang = line.split(":")[1];
+                    }
+                    if (line.startsWith("Dialogue: 0")) {
+                        var header = line.replace(/, /g, "\t").split(",");
+                        starttime = header[1].split(":");
+                        if (timedict.has(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4))) {
+                            var t = timedict.get(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4));
+                            switch (header[3]) {
+								case 'Y': Y[t] = header[9].replace(/\{(.+?)\}/g, "").replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙"); break;
+                                case 'N': N[t] = header[9].replace(/\t/g, ", "); break;
+                                case 'O': O[t] = header[9].replace(/\t/g, ", "); break;
+                                case 'L': L[t] = header[9].replace(/\t/g, ", "); break;
+                                case 'I': I[t] = header[9].replace(/\t/g, ", "); break;
+                                case 'E': E[t] = header[9].replace(/\t/g, ", "); break;
+                                case 'M': M[t] = header[9].replace(/\t/g, ", "); break;
+                                default: break;
+                            }
+                        } else {
+                            timedict.set(Math.floor((parseFloat(starttime[2]) + parseFloat(starttime[1]) * 60 + parseFloat(starttime[0]) * 3600) * 4), i);
+                            switch (header[3]) {
+								case 'Y': Y[i] = header[9].replace(/\{(.+?)\}/g, "").replace(/\n/g, "<br>").replace(/、/g, "︑").replace(/。/g, "︒").replace(/：/g, "︓").replace(/；/g, "︔").replace(/！/g, "︕").replace(/？/g, "︖").replace(/…/g, "︙"); break;
+                                case 'N': N[i] = header[9].replace(/\t/g, ", "); break;
+                                case 'O': O[i] = header[9].replace(/\t/g, ", "); break;
+                                case 'L': L[i] = header[9].replace(/\t/g, ", "); break;
+                                case 'I': I[i] = header[9].replace(/\t/g, ", "); break;
+                                case 'E': E[i] = header[9].replace(/\t/g, ", "); break;
+                                case 'M': M[i] = header[9].replace(/\t/g, ", "); break;
+                                default: break;
+                            }
+                            i++;
+                        }
+                    }
+                });
+            }
+        }
+    }
+    rawFile.send(null);
+
+    $("#oriSub").css({ 'font-family': 'Cambria, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    switch (lang) {
+        case "taideng":
+            $("#oriSub").css({ 'font-family': $("#oriSub").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
+            break;
+        case "taidon":
+            $("#oriSub").css({ 'font-family': $("#oriSub").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
+            break;
+        default:
+            break;
+    }
+}
+</script>

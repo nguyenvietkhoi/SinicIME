@@ -1,0 +1,33 @@
+﻿body {
+    font-family: Cambria, Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+        'Aksara Bali', Yogyakarta;
+}
+
+#abgd tr td:hover,
+#abgd tr td:active,
+#abgd tr td {
+    width: 28px;
+    height: 40px;
+    background: #08112F;
+    color: #f0e0c0;
+    font-weight: normal;
+    border-bottom: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    border: solid 1px #c19723;
+    cursor: pointer;
+}
+
+#abgd tr td:hover,
+#abgd tr td:active {
+    color: #000;
+    background: #eee;
+}
+
+#abgd {
+    width: 330px;
+    margin: 0 0 0 9px;
+    padding: 0;
+}

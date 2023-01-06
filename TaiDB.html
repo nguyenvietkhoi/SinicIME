@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+<script type="text/javascript" src="./Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="./Scripts/sql.js"></script>
+<script type="text/javascript" src="./Scripts/ime.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js">
+    </script>
+<script>
+    let xmlhttp = new XMLHttpRequest();
+    let data;
+	var API_KEY = 'AIzaSyCEI2aM-lvqMGWQpS_uBgFSYn0vkExv1hM';
+    var spreadsheetId= '10QEwpszfwhcsprJalSO-mwhMg3VaYhdnlyaE6nq8rmQ';
+	var sheetId="Sheet6";
+    var ggdbload = "https://sheets.googleapis.com/v4/spreadsheets/10QEwpszfwhcsprJalSO-mwhMg3VaYhdnlyaE6nq8rmQ/values/Sheet6?key="+API_KEY;
+    var ggdblink = "https://script.google.com/macros/s/AKfycbx5hoRF1E-BBjRPDMeIr1y56fnmCCnAbDzDoxQq4Fqwc-deEMbifBbEvucJVVZAMV_z5Q/exec?";
+    var columnlist = [];
+    var headerlist = [];
+    var hasChanged = false;
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            data = JSON.parse(this.responseText).values;
+            loadTaiDB();
+        }
+    };
+    xmlhttp.open("GET", ggdbload, true);
+    xmlhttp.send();
+	
+    function loaddb() {
+        if (hasChanged) {
+            xmlhttp.open("GET", ggdbload, true);
+            xmlhttp.send();
+            hasChanged = false;
+        }
+        else {
+            loadTaiDB();
+        }
+    }
+</script>
+<script type="text/javascript" src="./Scripts/sheeteditor.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database - Linguaevum</title>
+    <link href="./Content/bootstrap.css" rel="stylesheet">
+    <link href="./Content/Site.css" rel="stylesheet">
+    <style>
+        #googleSheet {
+            border-collapse: unset;
+            color: #fff;
+            font-family: Cambria, Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, sim-ch_n5100, SimSun, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+        }
+        #googleSheet > tbody > tr > td, th {
+            border: 1px solid rgba(128, 128, 128, 0.61);
+        }
+        #googleSheet tbody td {
+            vertical-align: middle;
+            padding: 3px;
+        }
+        #googleSheet tbody th {
+            vertical-align: middle;
+            font-weight: normal;
+            font-size: 22px;
+            padding: 1px 9px;
+        }
+    </style>
+    <script src="./Scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<div id="waitscreen"></div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="position: fixed">
+    </div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#layoutbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="./Resources/tho.png" class="logo">
+            <a class="navbar-brand" href="http://linguaevum.ddns.net/">Linguaevum</a>
+            <a class="navbar-brand" href=".">Sinic IME</a>
+        </div>
+        <div>
+        <select style="margin: 13px;" data-style="btn-primary" id="selLang" onchange="loaddb()">
+            <option value="none">Default</option>
+            <option value="nung">Nung</option>
+            <option value="yang">Yang</option>
+            <option value="yo">Tai Yo</option>
+            <option value="deng">Tai Daeng</option>
+            <option value="don">Tai Don</option>
+            <option value="dam">Tai Dam</option>
+            <option value="lao">Lao</option>
+            <option value="lue">Tai Lue</option>
+            <option value="nuea">Tai Nuea</option>
+            <option value="yai">Tai Yai</option>
+            <option value="lanna">Lanna</option>
+            <option value="khuen">Khuen</option>
+            <option value="yay">Yay</option>
+            <option value="saek">Saek</option>
+        </select>
+            <span style="color: #fff">
+                Type to change (*: Pending)
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <table class="table table-bordered" style="height: 100%; min-width: 700px; background-color: rgba(0, 0, 0, 0.40); font-size: 16px" id="googleSheet">
+    </table>
+</div>
+<footer>
+    <p style="margin: 0 0 0 30px; font-size: 12px;">© 2020 - Linguaevum</p>
+</footer>
+<script src="./Scripts/jquery-1.10.2.js"></script>
+<script src="./Scripts/jquery-3.0.0.js"></script>
+<script src="./Scripts/bootstrap.js"></script>
+<script src="./Scripts/respond.js"></script>
