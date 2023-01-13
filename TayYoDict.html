@@ -87,9 +87,9 @@ var inputID = new URLSearchParams(window.location.search).get("i");
             contents = condb.exec('SELECT * FROM tayyo WHERE viet LIKE \'%' + orireq.slice(1) + '\' OR viet LIKE \'%' + orireq.slice(1) + ' %\'');
 	} else {
 		if (dictbool)
-            contents = condb.exec('SELECT * FROM tayyo WHERE ori LIKE \'% ' + orireq + ' %\' OR ori LIKE \'' + orireq + ' %\' OR ori LIKE \'% ' + orireq + '\' OR roma LIKE \'% ' + orireq + ' %\' OR roma LIKE \'' + orireq + ' %\' OR roma LIKE \'% ' + orireq + '\' OR laitay LIKE \'% ' + orireq + ' %\' OR laitay LIKE \'' + orireq + ' %\' OR laitay LIKE \'% ' + orireq + '\' OR laipao LIKE \'% ' + orireq + ' %\' OR laipao LIKE \'' + orireq + ' %\' OR laipao LIKE \'% ' + orireq + '\' UNION SELECT * FROM tayyo WHERE ori = \'' + orireq + '\' OR roma = \'' + orireq + '\' OR laitay = \'' + orireq + '\' OR laipao = \'' + orireq + '\'');
+            contents = condb.exec('SELECT * FROM tayyo WHERE ori = \'' + orireq + '\' OR roma = \'' + orireq + '\' OR laitay = \'' + orireq + '\' OR laipao = \'' + orireq + '\' UNION ALL SELECT * FROM tayyo WHERE ori LIKE \'% ' + orireq + ' %\' OR ori LIKE \'' + orireq + ' %\' OR ori LIKE \'% ' + orireq + '\' OR roma LIKE \'% ' + orireq + ' %\' OR roma LIKE \'' + orireq + ' %\' OR roma LIKE \'% ' + orireq + '\' OR laitay LIKE \'% ' + orireq + ' %\' OR laitay LIKE \'' + orireq + ' %\' OR laitay LIKE \'% ' + orireq + '\' OR laipao LIKE \'% ' + orireq + ' %\' OR laipao LIKE \'' + orireq + ' %\' OR laipao LIKE \'% ' + orireq + '\'');
         else
-            contents = condb.exec('SELECT * FROM tayyo WHERE viet LIKE \'% ' + orireq + ' %\' OR viet LIKE \'' + orireq + ' %\' OR viet LIKE \'% ' + orireq + '\' UNION SELECT * FROM tayyo WHERE viet = \'' + orireq + '\'');
+            contents = condb.exec('SELECT * FROM tayyo WHERE viet = \'' + orireq + '\' UNION ALL SELECT * FROM tayyo WHERE viet LIKE \'% ' + orireq + ' %\' OR viet LIKE \'' + orireq + ' %\' OR viet LIKE \'% ' + orireq + '\'');
 	}
         
         if (contents.length != 0) {

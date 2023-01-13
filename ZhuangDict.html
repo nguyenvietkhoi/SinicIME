@@ -80,9 +80,9 @@ var inputID = new URLSearchParams(window.location.search).get("i");
             contents = condb.exec('SELECT * FROM zhuang WHERE han LIKE \'%' + orireq.slice(1) + '%\'');
 	} else {
 		if (dictbool)
-            contents = condb.exec('SELECT * FROM zhuang WHERE ori LIKE \'% ' + orireq + ' %\' OR ori LIKE \'' + orireq + ' %\' OR ori LIKE \'% ' + orireq + '\' UNION SELECT * FROM zhuang WHERE ori = \'' + orireq + '\'');
+            contents = condb.exec('SELECT * FROM zhuang WHERE ori = \'' + orireq + '\' UNION ALL SELECT * FROM zhuang WHERE ori LIKE \'% ' + orireq + ' %\' OR ori LIKE \'' + orireq + ' %\' OR ori LIKE \'% ' + orireq + '\'');
         else
-            contents = condb.exec('SELECT * FROM zhuang WHERE han LIKE \'%' + orireq + '%\' UNION SELECT * FROM zhuang WHERE han = \'' + orireq + '\'');
+            contents = condb.exec('SELECT * FROM zhuang WHERE han = \'' + orireq + '\' UNION ALL SELECT * FROM zhuang WHERE han LIKE \'%' + orireq + '%\'');
 	}
         if (contents.length != 0) {
             contents[0].values.forEach(function (word) {
