@@ -1342,6 +1342,10 @@ function TaiPaoIPA(w, accent) {
                 tmpconso = c;
                 if ("𕊀𕊉𕊈𕊄𕊂𕊃𕊇".includes(ipa.rime) && ipa.tone != "𕊑")
                     ipa.tone = "5";
+				else if (ipa.tone != "𕊑") {
+                    ipa.tone = "5";
+					ipa.rime = "𕊑" + ipa.rime;
+				}
                 else {
                     if ("𕊀𕊉𕊄𕊂𕊃𕊇".includes(ipa.rime))
                         ipa.rime = ipa.rime + ipa.tone;
@@ -1876,6 +1880,11 @@ function TaiPaoRoma(w) {
             ipa.onset = ipa.onset.replace('`', '');
         }
     }
+	if ([...ipa.rime].includes('𕊑') && (ipa.tone == "̄ˀ")) {
+            toneclass = 1;
+            ipa.onset = ipa.onset.replace('`', '');
+			ipa.rime = ipa.rime.replace("𕊑", "");
+	}
 
     ipaSQL = ipadb.exec("SELECT phone FROM TaiPao where roman='" + ipa.onset + "' ");
     if (ipaSQL.length > 0)
@@ -2160,7 +2169,7 @@ function TaiYoRoma(w) {
 	if (([...ipa.rime][0]=="𞛼") && (ipa.tone == "̄ˀ")) {
             toneclass = 1;
             ipa.onset = ipa.onset.replace('`', '');
-			ipa.rime.replace("𞛼", "");
+			ipa.rime = ipa.rime.replace("𞛼", "");
 	}
     if ((ipa.onset == 'khw') || (ipa.onset == 'kh`w') || (ipa.onset == 'khw`')) {
         ipa.onset = ipa.onset.replace('w','');
