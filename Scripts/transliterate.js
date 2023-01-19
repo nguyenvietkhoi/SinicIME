@@ -2153,6 +2153,11 @@ function TaiYoRoma(w) {
             ipa.onset = ipa.onset.replace('`', '');
         }
     }
+	if (([...ipa.rime][0]=="𞛼") && (ipa.tone == "̄ˀ")) {
+            toneclass = 1;
+            ipa.onset = ipa.onset.replace('`', '');
+			ipa.rime.replace("𞛼", "");
+	}
     if ((ipa.onset == 'khw') || (ipa.onset == 'kh`w') || (ipa.onset == 'khw`')) {
         ipa.onset = ipa.onset.replace('w','');
         ipa.rime = "𞛮" + ipa.rime;
