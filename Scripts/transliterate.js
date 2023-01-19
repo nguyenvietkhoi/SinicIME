@@ -1924,6 +1924,10 @@ function TaiYoIPA(w, accent) {
                 tmpconso = c;
                 if ("𞛧𞛡𞛨𞛤𞛣𞛭𞛮𞛡𞛮𞛨".includes(ipa.rime) && ipa.tone != "𞛼")
                     ipa.tone = "5";
+				else if (ipa.tone != "𞛼") {
+                    ipa.tone = "5";
+					ipa.rime = "𞛼" + ipa.rime;
+				}
                 else {
                     ipa.rime = ipa.tone + ipa.rime;
                     ipa.tone = "4";
