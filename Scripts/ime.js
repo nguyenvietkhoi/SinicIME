@@ -219,7 +219,7 @@ function opttableselect(tablesel) {
             break;
         case 14: opttable = "rubytay";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HoaAn\',20)"><a>IPA: ' + $("#HoaAn").val() + '</a></li>' + '<li onclick="logo2ipa(\'CoXau\',20)"><a>IPA: ' + $("#CoXau").val() + '</a></li>' +
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'HoaAn\',20)"><a>IPA: ' + $("#HoaAn").val() + '</a></li>' + '<li onclick="logo2ipa(\'CoXau\',20)"><a>IPA: ' + $("#CoXau").val() + '</a></li>' + '<li onclick="logo2ipa(\'PhjaGha\',20)"><a>IPA: ' + $("#PhjaGha").val() + '</a></li>' +
                 '<li onclick="logo2roman(20)"><a>→ dha̤y</a></li>' +
                 '<li onclick="convertpad(0,12)"><a>→ tày: ' + $("#BaoYen").val() + '</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>→ tày: ' + $("#CaoBang").val() + '</a></li>' + convertdeftext);
@@ -818,7 +818,7 @@ function logo2ipa(accent, maxlevel) {
                 convtxt += prespace + word[i];
             else {
                 switch (accent) {
-                    case 'HoaAn': case 'CoXau':
+                    case 'HoaAn': case 'CoXau': case 'PhjaGha':
                         ipaword = TayIPA(word[i], accent);
                         convtxt += (prespace + ipaword.onset + ipaword.rime + ipaword.tone);
                         break;

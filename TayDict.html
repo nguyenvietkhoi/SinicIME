@@ -239,7 +239,10 @@ function phonetics(pad) {
 		ttt = ttt + "<br>Hoà An: <a>" + cog + "</a>";
 	cog = toIPA(pad, 20, "rubytay", "CoXau");
 	if (cog != "$")
-		ttt = ttt + "<br>Co Xầu: <a>" + cog + "</a>";
+		ttt = ttt + "<br>Co Chầu: <a>" + cog + "</a>";
+	cog = toIPA(pad, 20, "rubytay", "PhjaGha");
+	if (cog != "$")
+		ttt = ttt + "<br>Phja Ghà: <a>" + cog + "</a>";
 	
 	$("#ipalist").html(ttt);
 	$("#ipalist").show();
@@ -549,7 +552,7 @@ $('#ipalist').click(function(e){
         .textpad {
 	        color: #DDC326;
 			font: -apple-system-body;
-	        font-family: Cambria, "Cambria Tai Yo", Tahoma, "Tai Lanna", "Lanexang Mon4", "Microsoft New Tai Lue", "Times New Roman", serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+	        font-family: Cambria, "Times New Roman", "Cambria Tai Yo", Tahoma, "Tai Lanna", "Lanexang Mon4", "Microsoft New Tai Lue", serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
         }
 @media (max-width: 500px) {
   .Home_container {
@@ -604,7 +607,7 @@ $('#ipalist').click(function(e){
   color:#ddc326; text-decoration: blink;font-style: normal;font-size: 2.5rem;
 }
 #ipalist a {
-  color:#31d0f5; text-decoration: blink;font-style: normal;font-size: 2rem; font-family: Cambria;
+  color:#31d0f5; text-decoration: blink;font-style: normal;font-size: 2rem; font-family: Cambria, "Times New Roman";
 }
 
 body{font: -apple-system-body;}
