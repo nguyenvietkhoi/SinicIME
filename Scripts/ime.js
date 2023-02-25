@@ -3321,6 +3321,9 @@ function YANGPINYIN(text, ch) {
         ns = text.replace("oi", mcYANGPINYIN("ĩ", ch));
         if (text != ns)
             return ns;
+        ns = text.replace("ui", mcYANGPINYIN("ỹ", ch));
+        if (text != ns)
+            return ns;
         ns = text.replace("oe", mcYANGPINYIN("ẽ", ch));
         if (text != ns)
             return ns;
@@ -3495,6 +3498,11 @@ function mcYANGPINYIN(c, m) {
             if (m == '1') return "oí";
             if (m == '2') return "oì";
             if (m == '3') return "oî";
+            return "oi";
+        case 'ỹ':
+            if (m == '1') return "uí";
+            if (m == '2') return "uì";
+            if (m == '3') return "uî";
             return "oi";
         case 'ẽ':
             if (m == '1') return "oé";
