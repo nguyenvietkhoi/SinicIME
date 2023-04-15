@@ -5430,7 +5430,7 @@ function loadkeyboard() {
                 $('#K56').html("<span style='color: #d22e9f;'>๘   </span><br><span style='color: #7ba064;'>◌ำ</span>");
                 $('#K57').html("<span style='color: #d22e9f;'>๙   </span><br><span style='color: #7ba064;'>◌็</span>");
                 $('#K81').html("<span style='color: #d22e9f;'>ซ   </span><br><span style='color: #13abbb;'>ฌ </span>ช");
-                $('#K87').html("<span style='color: #b1bb13;'>◌ื</span><br><span style='color: #7ba064;'>◌ื</span>");
+                $('#K87').html("<span style='color: #b1bb13;'>◌ื</span><br><span style='color: #7ba064;'>◌ึ</span>");
                 $('#K69').html("<span style='color: #b1bb13;'>แ</span><br><span style='color: #7ba064;'>เ</span>");
                 $('#K82').html("<span style='color: #d22e9f;'>ฤ   </span><br>ร");
                 $('#K84').html("<span style='color: #d22e9f;'>ฏ   </span><br><span style='color: #13abbb;'>ฒ  </span>ต");
