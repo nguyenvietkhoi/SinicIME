@@ -168,6 +168,9 @@ function cognates(pad) {
 	var ttt = "<a>" + pad + "</a>";
 	var cog;
 	
+	cog = toABC(pad, 20, "rubytay");
+	if (cog != "$")
+		ttt = ttt + "<br>Tày Đông Bắc: <a>" + cog + "</a>";
 	cog = toABC(pad, 12, "rubytay");
 	if (cog != "$")
 		ttt = ttt + "<br>Tày Khao: <a>" + cog + "</a>";
@@ -499,7 +502,7 @@ $('#ipalist').click(function(e){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Từ điển Tày Việt — Linguaevum</title>
+    <title>Từ điển Tãy Đón - Việt — Linguaevum</title>
     <link href="./Content/bootstrap.css" rel="stylesheet">
     <link href="./Content/Site.css" rel="stylesheet">
     <style>
