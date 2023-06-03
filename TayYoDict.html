@@ -20,8 +20,8 @@ var inputID = new URLSearchParams(window.location.search).get("i");
         $("#dict").html(dictname2);
 	}
     var kbbool = false;
-    var dictname1 = "Tay Yọ → Việt";
-    var dictname2 = "Việt → Tay Yọ";
+    var dictname1 = "Tă̄i Yǒ → Việt";
+    var dictname2 = "Việt → Tă̄i Yǒ";
 
     // Connect to sqlite db file
     var xhr = new XMLHttpRequest();
@@ -171,7 +171,7 @@ else {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Từ điển Tay Yọ Việt — Linguaevum</title>
+    <title>Từ điển Tă̄i Yǒ Việt — Linguaevum</title>
     <link href="./Content/bootstrap.css" rel="stylesheet">
     <link href="./Content/Site.css" rel="stylesheet">
     <style>
@@ -282,7 +282,7 @@ body{font: -apple-system-body;}
             <a href="http://linguaevum.ddns.net/"><img src="./Resources/tho.png" class="logo"></a>
             <a class="navbar-brand" href="/SinicIME">Sinic IME</a>
             <div class="Home_title">
-                Từ điển <box class="Home_button" style="margin:0;border: none;border-radius:0" onclick=inverse()><a id="dict">Tay Dọ → Việt</a></box>
+                Từ điển <box class="Home_button" style="margin:0;border: none;border-radius:0" onclick=inverse()><a id="dict">Tă̄i Yǒ → Việt</a></box>
             </div>
         </div>
     <div>
