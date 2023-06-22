@@ -719,6 +719,12 @@ function TaiDaengIPA(w, accent) {
             ipa.rime += "̽";
         }
         else if ((ipa.rime != "") && ("ꪵꪹꪶꪻꪼ".includes(c))) {
+			if (i < w.length-1) {
+				if ((w.charAt(i+1) == "‍") && ("ꪶ".includes(c))) {
+					c += w.charAt(i+1);
+					i++;
+				}
+			}
             if (ipa.tone == "") {
                 ipa.tone = "0";
                 if ((ipa.onset2 != "") && ((ipa.rime == "ꪵ◌") || (ipa.rime == "ꪹ◌") || (ipa.rime == "ꪶ◌") || (ipa.rime == "ꪻ◌"))) {
