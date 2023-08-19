@@ -1612,7 +1612,7 @@ function TaiDonRoma(w) {
     else
         return w;
 
-    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
+    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ‍", "ꪷ‍꪿").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ‍", "ꪷ‍꫁").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
     return res;
 }
 function TaiDaengRoma(w) {
