@@ -116,6 +116,10 @@ src: url('../fonts/FSung-3.ttf') format('truetype')
 font-family: HanaMinB;
 src: url('../fonts/HanaMinB.ttf') format('truetype')
 ;
+@font-face {
+font-family: "BabelStone Han";
+src: url('../fonts/BabelStoneHan.ttf') format('truetype')
+;
 font-display: swap;
 }
 @font-face {
