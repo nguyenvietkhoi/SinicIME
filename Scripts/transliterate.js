@@ -2403,7 +2403,10 @@ function Nungrimetone(rime, tone) {
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ä").replace("â", "â̈").replace("ơ", "ơ̈").replace("ô", "ô̈").replace("e", "ë").replace("ê", "ê̈");
                 if (rimetone == rime) {
-                    rimetone = rime.replace("o", "ö").replace("u", "ü").replace("ư", "ư̈").replace("i", "ï");
+                    rimetone = rime.replace("o", "ö");
+					if (rimetone == rime) {
+						rimetone = rime.replace("u", "ü").replace("ư", "ư̈").replace("i", "ï");
+					}
                 }
             }
             break;
@@ -2412,7 +2415,10 @@ function Nungrimetone(rime, tone) {
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ā").replace("â", "â̄").replace("ơ", "ơ̄").replace("ô", "ô̄").replace("e", "ē").replace("ê", "ê̄");
                 if (rimetone == rime) {
-                    rimetone = rime.replace("o", "ō").replace("u", "ū").replace("ư", "ư̄").replace("i", "ī");
+                    rimetone = rime.replace("o", "ō");
+					if (rimetone == rime) {
+						rimetone = rime.replace("u", "ū").replace("ư", "ư̄").replace("i", "ī");
+					}
                 }
             }
             break;
@@ -2421,7 +2427,10 @@ function Nungrimetone(rime, tone) {
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ǎ").replace("â", "â̌").replace("ơ", "ơ̌").replace("ô", "ô̌").replace("e", "ě").replace("ê", "ê̌");
                 if (rimetone == rime) {
-                    rimetone = rime.replace("o", "ǒ").replace("u", "ǔ").replace("ư", "ư̌").replace("i", "ǐ");
+                    rimetone = rime.replace("o", "ǒ");
+					if (rimetone == rime) {
+						rimetone = rime.replace("u", "ǔ").replace("ư", "ư̌").replace("i", "ǐ");
+					}
                 }
             }
             break;
@@ -2430,7 +2439,10 @@ function Nungrimetone(rime, tone) {
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "a̤").replace("â", "â̤").replace("ơ", "ơ̤").replace("ô", "ô̤").replace("e", "e̤").replace("ê", "ê̤");
                 if (rimetone == rime) {
-                    rimetone = rime.replace("o", "o̤").replace("u", "ṳ").replace("ư", "ư̤").replace("i", "i̤");
+                    rimetone = rime.replace("o", "o̤");
+					if (rimetone == rime) {
+						rimetone = rime.replace("u", "ṳ").replace("ư", "ư̤").replace("i", "i̤");
+					}
                 }
             }
             break;
@@ -2439,7 +2451,10 @@ function Nungrimetone(rime, tone) {
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "a̱").replace("â", "â̱").replace("ơ", "ơ̱").replace("ô", "ô̱").replace("e", "e̱").replace("ê", "ê̱");
                 if (rimetone == rime) {
-                    rimetone = rime.replace("o", "o̱").replace("u", "u̱").replace("ư", "ư̱").replace("i", "i̱");
+                    rimetone = rime.replace("o", "o̱");
+					if (rimetone == rime) {
+						rimetone = rime.replace("u", "u̱").replace("ư", "ư̱").replace("i", "i̱");
+					}
                 }
             }
             break;
@@ -2448,7 +2463,10 @@ function Nungrimetone(rime, tone) {
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "a̬").replace("â", "â̬").replace("ơ", "ơ̬").replace("ô", "ô̬").replace("e", "e̬").replace("ê", "ê̬");
                 if (rimetone == rime) {
-                    rimetone = rime.replace("o", "o̬").replace("u", "u̬").replace("ư", "ư̬").replace("i", "i̬");
+                    rimetone = rime.replace("o", "o̬");
+					if (rimetone == rime) {
+						rimetone = rime.replace("u", "u̬").replace("ư", "ư̬").replace("i", "i̬");
+					}
                 }
             }
             break;
