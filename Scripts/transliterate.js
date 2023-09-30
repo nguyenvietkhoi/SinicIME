@@ -2534,7 +2534,7 @@ function TayIPA(w, accent) {
     if (ipa.onset == "") {
         ipa.onset = "∅";
     }
-    if (['c', 'k', 'qu', 'kr', 'ch', 'x', 't', 'p', 'pj', 'pr', 'f'].includes(ipa.onset) && (toneclass == 2)) {
+    if (['c', 'k', 'qu', 'kr', 'ch', 'x', 't', 'p', 'pj', 'pr', 'f', 'd', 'kj'].includes(ipa.onset) && (toneclass == 2)) {
         ipa.onset += "̤";
     }
 
