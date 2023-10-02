@@ -16,8 +16,8 @@
 var dicID = new URLSearchParams(window.location.search).get("d");
 var inputID = new URLSearchParams(window.location.search).get("i");
 
-    var kbbool = false;
-    var dictname = ["Nùng Cháo", "Anh → Nùng Cháo", "Hán → Nùng Cháo", "Việt → Nùng Cháo"];
+    var kbbool = true;
+    var dictname = ["Lungchow", "English → Lungchow", "漢 → Lungchow", "Việt → Lungchow"];
 
     var dictbool = dicID;
 	if (dicID == null) {
@@ -536,7 +536,7 @@ $('#ipalist').click(function(e){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Từ điển Nùng Cháo — Linguaevum</title>
+    <title>Từ điển Lungchow — Linguaevum</title>
     <link href="./Content/bootstrap.css" rel="stylesheet">
     <link href="./Content/Site.css" rel="stylesheet">
     <style>
@@ -673,13 +673,13 @@ body{font: -apple-system-body;}
             <a class="navbar-brand" href="/SinicIME">Sinic IME</a>
 									<div class="navbar-brand">Từ điển</div>
 									<a class="navbar-brand dropdown-toggle Home_button" style="margin:0;border: none;border-radius:0" data-toggle="dropdown">
-                                        <span id="dict">Nùng Cháo</span>
+                                        <span id="dict">Lungchow</span>
                                     </a>
                                     <ul class="dropdown-menu" style="left:19rem">
-                                        <li onclick="inverse(0)"><a class="navbar-brand" style="width: 100%;">Nùng Cháo</a></li>
-                                        <li onclick="inverse(1)"><a class="navbar-brand" style="width: 100%;">Anh → Nùng Cháo</a></li>
-                                        <li onclick="inverse(2)"><a class="navbar-brand" style="width: 100%;">Hán → Nùng Cháo</a></li>
-                                        <li onclick="inverse(3)"><a class="navbar-brand" style="width: 100%;">Việt → Nùng Cháo</a></li>
+                                        <li onclick="inverse(0)"><a class="navbar-brand" style="width: 100%;">Lungchow</a></li>
+                                        <li onclick="inverse(1)"><a class="navbar-brand" style="width: 100%;">Anh → Lungchow</a></li>
+                                        <li onclick="inverse(2)"><a class="navbar-brand" style="width: 100%;">Hán → Lungchow</a></li>
+                                        <li onclick="inverse(3)"><a class="navbar-brand" style="width: 100%;">Việt → Lungchow</a></li>
                                     </ul>
         </div>
     <div>
@@ -688,7 +688,7 @@ body{font: -apple-system-body;}
         <button class="Home_button" onclick=lookupOri()>🔍</button>
 		<button class="Home_button" onclick=share()>🔗<span class="tooltiptext">Share</span></button>
     </div>
-		<div id="alphabet" style="display: none;position: absolute;left: 25rem; padding-top:5px">
+		<div id="alphabet" style="display: block;position: absolute;left: 25rem; padding-top:5px">
 		<div style="white-space: nowrap; user-select: none;">
                                                 <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ä')">ä</button>
                                                 <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ǎ')">ǎ</button>
