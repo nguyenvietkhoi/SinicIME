@@ -194,7 +194,7 @@ if (dictbool==0) {
   alert(window.location.href.split("?")[0] + "?i="+document.getElementById("oriPad").value.replace(/\s/g, '%20')+" is copied to the clipboard");
 }
 else {
-  navigator.clipboard.writeText(window.location.href.split("?")[0] + "?d=0&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20'));
+  navigator.clipboard.writeText(window.location.href.split("?")[0] + "?d="+dictbool+"&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20'));
   alert(window.location.href.split("?")[0] + "?d="+dictbool+"&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20')+" is copied to the clipboard");
 }
 }
