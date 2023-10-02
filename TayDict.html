@@ -16,14 +16,14 @@
 var dicID = new URLSearchParams(window.location.search).get("d");
 var inputID = new URLSearchParams(window.location.search).get("i");
 
+    var kbbool = false;
+    var dictname1 = "Tày → Việt";
+    var dictname2 = "Việt → Tày";
     var dictbool = true;
 	if (dicID == "0") {
 		dictbool = false;
         $("#dict").html(dictname2);
 	}
-    var kbbool = false;
-    var dictname1 = "Tày → Việt";
-    var dictname2 = "Việt → Tày";
 
     // Connect to sqlite db file
     var xhr = new XMLHttpRequest();
