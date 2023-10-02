@@ -596,6 +596,9 @@ $('#ipalist').click(function(e){
   #oriPad {
       max-width: 180px;
   }
+  #alphabet {
+left: 0px;
+  }
 }
 @media (max-width: 767px) {
         .Home_title {
@@ -644,14 +647,17 @@ $('#ipalist').click(function(e){
 
 body{font: -apple-system-body;}
 
+#alphabet {
+display: block;position: absolute;left: 25rem; padding-top:5px;background: #111111;
+}
 .k-btn {
-    padding: 1px 1px;
+    padding: 0px 1px;
     width: 23px;
-    height: 30px;
+    height: 28px;
     font-size: 18px;
     background: rgb(16, 16, 16);
-    border: outset 1px black;
-    color: #eeeeee;
+    border: 1px solid #4b4b4b;
+    color: #ddc326;
     vertical-align: middle;
 }
     </style>
@@ -688,7 +694,7 @@ body{font: -apple-system-body;}
         <button class="Home_button" onclick=lookupOri()>🔍</button>
 		<button class="Home_button" onclick=share()>🔗<span class="tooltiptext">Share</span></button>
     </div>
-		<div id="alphabet" style="display: block;position: absolute;left: 25rem; padding-top:5px">
+		<div id="alphabet">
 		<div style="white-space: nowrap; user-select: none;">
                                                 <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ä')">ä</button>
                                                 <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ǎ')">ǎ</button>
