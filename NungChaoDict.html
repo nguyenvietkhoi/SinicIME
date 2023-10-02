@@ -22,7 +22,6 @@ var inputID = new URLSearchParams(window.location.search).get("i");
     var dictbool = dicID;
 	if (dicID == null) {
 		dictbool = 0;
-        $("#dict").html(dictname[dictbool]);
 	}
 	
     // Connect to sqlite db file
@@ -59,6 +58,7 @@ xhr1.onload = function (e) {
 };
 xhr1.send();
 	
+    $("#dict").html(dictname[dictbool]);
     window.onload = function () {
         var inputpad = document.getElementById("oriPad");
         inputpad.addEventListener("keyup", function (event) {
@@ -188,13 +188,13 @@ xhr1.send();
     }
 	
 function share() {
-if (dictbool) {
+if (dictbool==0) {
   navigator.clipboard.writeText(window.location.href.split("?")[0] + "?i="+document.getElementById("oriPad").value.replace(/\s/g, '%20'));
   alert(window.location.href.split("?")[0] + "?i="+document.getElementById("oriPad").value.replace(/\s/g, '%20')+" is copied to the clipboard");
 }
 else {
   navigator.clipboard.writeText(window.location.href.split("?")[0] + "?d=0&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20'));
-  alert(window.location.href.split("?")[0] + "?d=0&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20')+" is copied to the clipboard");
+  alert(window.location.href.split("?")[0] + "?d="+dictbool+"&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20')+" is copied to the clipboard");
 }
 }
 
