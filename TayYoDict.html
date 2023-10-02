@@ -17,7 +17,6 @@ var inputID = new URLSearchParams(window.location.search).get("i");
     var dictbool = true;
 	if (dicID == "0") {
 		dictbool = false;
-        $("#dict").html(dictname2);
 	}
     var kbbool = false;
     var dictname1 = "Tă̄i Yǒ → Việt";
@@ -43,6 +42,9 @@ var inputID = new URLSearchParams(window.location.search).get("i");
     };
     xhr.send();
     window.onload = function () {
+	if (!dictbool) {
+        $("#dict").html(dictname2);
+	}
         var inputpad = document.getElementById("oriPad");
         inputpad.addEventListener("keyup", function (event) {
             // Number 13 is the "Enter" key on the keyboard

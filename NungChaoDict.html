@@ -19,7 +19,7 @@ var inputID = new URLSearchParams(window.location.search).get("i");
     var kbbool = true;
     var dictname = ["Lungchow", "English → Lungchow", "漢 → Lungchow", "Việt → Lungchow"];
 
-    var dictbool = dicID;
+    var dictbool = parseInt(dicID);
 	if (dicID == null) {
 		dictbool = 0;
 	}
@@ -57,9 +57,10 @@ xhr1.onload = function (e) {
     $("#txtPad").focus();
 };
 xhr1.send();
-	
-    $("#dict").html(dictname[dictbool]);
+		
     window.onload = function () {
+    $("#dict").html(dictname[dictbool]);
+	
         var inputpad = document.getElementById("oriPad");
         inputpad.addEventListener("keyup", function (event) {
             // Number 13 is the "Enter" key on the keyboard
@@ -586,6 +587,25 @@ $('#ipalist').click(function(e){
 			font: -apple-system-body;
 	        font-family: Cambria, "Times New Roman", "Cambria Tai Yo", Tahoma, "Tai Lanna", "Lanexang Mon4", "Microsoft New Tai Lue", serif, "Tai Muong Lay", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
         }
+		
+.k-btn {
+    padding: 0px 1px;
+    width: 23px;
+    height: 28px;
+    font-size: 18px;
+    background: rgb(16, 16, 16);
+    border: 1px solid #4b4b4b;
+    color: #ddc326;
+    vertical-align: middle;
+	margin-left: -2px;
+}
+#alphabet {
+display: block;position: absolute;left: 25rem; padding-top:5px;background: #111111;
+}
+#dropdict {
+left:19rem;
+}
+
 @media (max-width: 500px) {
   .Home_container {
     padding: 25px 0;
@@ -596,9 +616,6 @@ $('#ipalist').click(function(e){
   #oriPad {
       max-width: 180px;
   }
-  #alphabet {
-left: 0px;
-  }
 }
 @media (max-width: 767px) {
         .Home_title {
@@ -607,6 +624,12 @@ left: 0px;
 		.Home_button {
 			padding: 7px;
 		}
+  #alphabet {
+left: 0px;
+  }
+#dropdict {
+left:5rem;
+}
 }
 .Home_button .tooltiptext {
   visibility: hidden;
@@ -647,19 +670,6 @@ left: 0px;
 
 body{font: -apple-system-body;}
 
-#alphabet {
-display: block;position: absolute;left: 25rem; padding-top:5px;background: #111111;
-}
-.k-btn {
-    padding: 0px 1px;
-    width: 23px;
-    height: 28px;
-    font-size: 18px;
-    background: rgb(16, 16, 16);
-    border: 1px solid #4b4b4b;
-    color: #ddc326;
-    vertical-align: middle;
-}
     </style>
 </head>
 
@@ -681,7 +691,7 @@ display: block;position: absolute;left: 25rem; padding-top:5px;background: #1111
 									<a class="navbar-brand dropdown-toggle Home_button" style="margin:0;border: none;border-radius:0" data-toggle="dropdown">
                                         <span id="dict">Lungchow</span>
                                     </a>
-                                    <ul class="dropdown-menu" style="left:19rem">
+                                    <ul class="dropdown-menu" id="dropdict">
                                         <li onclick="inverse(0)"><a class="navbar-brand" style="width: 100%;">Lungchow</a></li>
                                         <li onclick="inverse(1)"><a class="navbar-brand" style="width: 100%;">English → Lungchow</a></li>
                                         <li onclick="inverse(2)"><a class="navbar-brand" style="width: 100%;">漢 → Lungchow</a></li>
