@@ -94,7 +94,7 @@ xhr1.send();
     }
     function lookupOri() {
         var orireq = document.getElementById("oriPad").value.toLowerCase();
-		var orireq = orireq.replace("ợ","ợ");
+		orireq = orireq.replace("ợ","ợ");
         var words = [];
 	if (orireq.endsWith('*')) {
 		switch (dictbool) {
