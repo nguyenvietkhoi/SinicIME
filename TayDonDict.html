@@ -170,9 +170,9 @@ function cognates(pad) {
 	var ttt = "<a>" + pad + "</a>";
 	var cog;
 	
-	cog = toABC(pad, 20, "rubytay");
+	cog = toABC(pad, 11, "rubytay");
 	if (cog != "$")
-		ttt = ttt + "<br>Tày Đông Bắc: <a>" + cog + "</a>";
+		ttt = ttt + "<br>Tày Thổ: <a>" + cog + "</a>";
 	cog = toABC(pad, 12, "rubytay");
 	if (cog != "$")
 		ttt = ttt + "<br>Tày Khao: <a>" + cog + "</a>";
@@ -197,9 +197,6 @@ function cognates(pad) {
 	cog = toABC(pad, 20, "rubytaidam");
 	if (cog != "$")
 		ttt = ttt + "<br>Tãy Đăm: <a style='font-family:\"Tai Muong Lay\"'>" + cog + "</a>";
-	cog = toABC(pad, 20, "rubytaidon");
-	if (cog != "$")
-		ttt = ttt + "<br>Tãy Đón: <a style='font-family:\"Tai Muong Lay\"'>" + cog + "</a>";
 	cog = toABC(pad, 20, "rubytaideng");
 	if (cog != "$")
 		ttt = ttt + "<br>Tày Đeng: <a style='font-family:\"Tai Muong Deng\"'>" + cog + "</a>";
@@ -241,7 +238,7 @@ function phonetics(pad) {
 	
 	cog = toIPA(pad, 20, "rubytaidon", "MuongLay");
 	if (cog != "$")
-		ttt = ttt + "<br>Mường Lay: <a>" + cog + "</a>";
+		ttt = ttt + "Mường Lay: <a>" + cog + "</a>";
 	
 	
 	$("#ipalist").html(ttt);
@@ -251,20 +248,15 @@ function phonetics(pad) {
 function toIPA(pad, maxlevel, opttable, accent) {
     if (pad == "")
         return "";
-    var cubo = phoneof(pad, maxlevel, opttable, true);
+	var cubo = pad.split(" ");
     var i;
 	var ttt = "";
-	if (cubo[0].startsWith('$'))
-		return "$";
 	var ipaword = TaiDonIPA(cubo[0], accent);
-    ttt = ipaword.onset + ipaword.rime + ipaword.tone;
+    ttt = ipaword;
     for (i = 1; i < cubo.length; i++) {
-        if (cubo[i].startsWith('$')) {
-			return "$";
-        }
         var nextword = "";
 		ipaword = TaiDonIPA(cubo[i], accent)
-        nextword = ipaword.onset + ipaword.rime + ipaword.tone;
+        nextword = ipaword;
         
         if (ttt.slice(-1) == "\n")
             ttt = ttt + nextword;
@@ -640,7 +632,7 @@ body{font: -apple-system-body;}
     </div>
     </div>
 	<div id='cognatelist'></div>
-	<div id='ipalist' style='right:0'></div>
+	<div id='ipalist' style='right:5px'></div>
 </div>
 
 <div class="Home_container">
