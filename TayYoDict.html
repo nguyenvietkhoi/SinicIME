@@ -41,6 +41,22 @@ var inputID = new URLSearchParams(window.location.search).get("i");
 	}
     };
     xhr.send();
+
+var xhr1 = new XMLHttpRequest();
+xhr1.open('GET', './Resources/nomime.jpg', true);
+xhr1.responseType = 'arraybuffer';
+xhr1.onload = function (e) {
+    var uInt8Array = new Uint8Array(this.response);
+    condb1 = new SQL.Database(uInt8Array);
+    contents = condb1.exec("SELECT word FROM rubynom where ruby='là' ");
+    // contents is now [{columns:['col1','col2',...], values:[[first row], [second row], ...]}]
+    console.log(contents[0].values[0]);
+    //$("#waitscreen").css({ display: 'none' });
+    $("#txtPad").focus();
+};
+xhr1.send();
+
+
     window.onload = function () {
 	if (!dictbool) {
         $("#dict").html(dictname2);
