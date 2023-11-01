@@ -20,7 +20,7 @@ var inputID = new URLSearchParams(window.location.search).get("i");
 	if (dicID == "0") {
 		dictbool = false;
 	}
-    var kbbool = false;
+    var kbbool = true;
     var dictname1 = "Tãy Đón → Việt";
     var dictname2 = "Việt → Tãy Đón";
 
@@ -90,6 +90,10 @@ xhr1.send();
             $("#alphabet").show();
         else
             $("#alphabet").hide();
+    }
+    function virtualtype(key) {
+        document.getElementById("oriPad").value = (document.getElementById("oriPad").value + key);
+        document.getElementById("oriPad").focus();
     }
     function lookupOri() {
         var orireq = document.getElementById("oriPad").value.toLowerCase();
@@ -546,6 +550,23 @@ $('#ipalist').click(function(e){
 			font: -apple-system-body;
 	        font-family: Cambria, "Times New Roman", "Cambria Tai Yo", Tahoma, "Tai Lanna", "Lanexang Mon4", "Microsoft New Tai Lue", serif, "Tai Muong Lay", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
         }
+		
+		
+.k-btn {
+    padding: 0px 1px;
+    width: 19px;
+    height: 26px;
+    font-size: 16px;
+	font-family: "Tai Muong Lay";
+    background: rgb(16, 16, 16);
+    border: 1px solid #4b4b4b;
+    color: #ddc326;
+    vertical-align: middle;
+	margin-left: -2px;
+}		
+#alphabet {
+display: block;position: absolute;left: 23rem; padding-top:5px;background: #111111;
+}
 @media (max-width: 500px) {
   .Home_container {
     padding: 25px 0;
@@ -564,6 +585,9 @@ $('#ipalist').click(function(e){
 		.Home_button {
 			padding: 7px;
 		}
+  #alphabet {
+left: 0px;
+  }
 }
 .Home_button .tooltiptext {
   visibility: hidden;
@@ -626,10 +650,79 @@ body{font: -apple-system-body;}
         </div>
     <div>
         <input type="text" class="textpad Home_box" id="oriPad" placeholder="Từ cần tra..." name="ori">
+        <button class="Home_button" onclick=showAlphabet()>⌨️</button>
         <button class="Home_button" onclick=lookupOri()>🔍</button>
 		<button class="Home_button" onclick=share()>🔗<span class="tooltiptext">Share</span></button>
-        <!--<button class="Home_button" onclick=showAlphabet()>⌨️</button>-->
     </div>
+		<div id="alphabet">
+		<div style="white-space: nowrap; user-select: none;">
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪀ')">ꪀ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪁ')">ꪁ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪄ')">ꪄ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪇ')">ꪇ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪂ')">ꪂ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪃ')">ꪃ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪈ')">ꪈ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪉ')">ꪉ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪊ')">ꪊ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪋ')">ꪋ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪌ')">ꪌ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪍ')">ꪍ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪎ‍')">ꪎ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪏ‍')">ꪏ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪐ')">ꪐ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪑ')">ꪑ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪾ')">ꪾ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪽ')">ꪽ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪰ')">ꪰ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪰ‍ꪒ')">ꪰ‍ꪒ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('꪿')">꪿</button>
+        </div><div style="white-space: nowrap; user-select: none;">
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪒ')">ꪒ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪓ')">ꪓ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪔ')">ꪔ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪕ')">ꪕ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪖ')">ꪖ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪗ‍')">ꪗ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪘ')">ꪘ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪙ')">ꪙ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪚ')">ꪚ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪛ')">ꪛ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪜ')">ꪜ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪝ‍')">ꪝ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪞ')">ꪞ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪟ')">ꪟ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪠ')">ꪠ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪡ')">ꪡ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪢ')">ꪢ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪣ')">ꪣ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪹ')">ꪹ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪵ')">ꪵ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('꫁')">꫁</button>
+        </div><div style="white-space: nowrap; user-select: none;">
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪤ‍')">ꪤ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪥ')">ꪥ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪨ')">ꪨ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪩ‍')">ꪩ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪪ')">ꪪ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪫ')">ꪫ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪬ')">ꪬ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪭ')">ꪭ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪮ')">ꪮ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪯ')">ꪯ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪱ')">ꪱ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪷ‍')">ꪷ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪶ')">ꪶ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪺ')">ꪺ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪻ')">ꪻ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪲ')">ꪲ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪰ')">ꪰ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪴ')">ꪴ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪸ')">ꪸ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪷ')">ꪷ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪺ')">ꪺ</button>
+        </div>
+		</div>
     </div>
 	<div id='cognatelist'></div>
 	<div id='ipalist' style='right:5px'></div>
