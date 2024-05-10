@@ -1711,7 +1711,7 @@ function TaiDaengRoma(w) {
     else
         return w;
 
-    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꫁ꪶ‍", "ꪶ‍꫁").replace("꪿ꪲꪲ", "ꪲꪲ꪿").replace("꪿ꪳꪳ", "ꪳꪳ꪿").replace("ꪴꪴ꪿", "ꪴꪴ꪿").replace("꫁ꪲꪲ", "ꪲꪲ꫁").replace("꫁ꪳꪳ", "ꪳꪳ꫁").replace("ꪴꪴ꫁", "ꪴꪴ꫁").replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
+    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪶ‍", "ꪶ‍꪿").replace("꫁ꪶ‍", "ꪶ‍꫁").replace("꪿ꪸꪸ", "ꪸꪸ꪿").replace("꫁ꪸꪸ", "ꪸꪸ꫁").replace("꪿ꪲꪲ", "ꪲꪲ꪿").replace("꪿ꪳꪳ", "ꪳꪳ꪿").replace("ꪴꪴ꪿", "ꪴꪴ꪿").replace("꫁ꪲꪲ", "ꪲꪲ꫁").replace("꫁ꪳꪳ", "ꪳꪳ꫁").replace("ꪴꪴ꫁", "ꪴꪴ꫁").replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
     return res;
 }
 function TaiDamRoma(w) {
