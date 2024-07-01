@@ -196,7 +196,7 @@ function cognates(pad) {
 		ttt = ttt + "<br>Tãy Đăm: <a style='font-family:\"Tai Son La\"'>" + cog + "</a>";
 	cog = toABC(pad, 20, "rubytaidon");
 	if (cog != "$")
-		ttt = ttt + "<br>Tãy Đón: <a style='font-family:\"Tai Muong Lay\"'>" + cog + "</a>";
+		ttt = ttt + "<br>Tãy Đón: <a style='font-family:\"Tai Muong Lay\"' href='./TayDonDict.html?i="+cog+"'>" + cog + "</a>";
 	cog = toABC(pad, 20, "rubytaideng");
 	if (cog != "$")
 		ttt = ttt + "<br>Tày Đeng: <a style='font-family:\"Tai Muong Deng\"'>" + cog + "</a>";
@@ -205,7 +205,7 @@ function cognates(pad) {
 		ttt = ttt + "<br>Tă̄i Yǒ: <a href='./TayYoDict.html?i="+cog+"'>" + toABC(pad, 20, "rubytaiyo") + " | " + cog + "</a>";
 	cog = toABC(pad, 20, "rubytailue");
 	if (cog != "$")
-		ttt = ttt + "<br>Lự: <a>" + cog + "</a>";
+		ttt = ttt + "<br>Lự: <a href='./TayLueDict.html?i="+cog+"'>" + cog + "</a>";
 	cog = toABC(pad, 20, "rubytainuea");
 	if (cog != "$")
 		ttt = ttt + "<br>Tày Nưa: <a>" + cog + "</a>";
