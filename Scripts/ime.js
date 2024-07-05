@@ -276,7 +276,10 @@ function opttableselect(tablesel) {
             break;
         case 22: opttable = "rubytainuea";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>文 → ᥖ</a></li>' + convertdeftext);
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'MangShi\',20)"><a>IPA: ' + $("#MangShi").val() + '</a></li>' +
+                '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
+                '<li onclick="roma2phone()"><a>abc → ᥖ</a></li>' +
+                '<li onclick="convertpad(0,20)"><a>文 → ᥖ</a></li>' + convertdeftext);
             break;
         case 23: opttable = "rubytailue";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -846,6 +849,10 @@ function logo2ipa(accent, maxlevel) {
                         ipaword = TaiDamIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
                         break;
+                    case 'MangShi':
+                        ipaword = TaiNueaIPA(word[i], accent);
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 'PanNa':
                         ipaword = TaiLueIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
@@ -910,6 +917,10 @@ function logo2roman(maxlevel) {
                         break;
                     case 18:
                         ipaword = TaiDonIPA(word[i], "roman");
+                        convtxt += (prespace + ipaword);
+                        break;
+                    case 22:
+                        ipaword = TaiNueaIPA(word[i], "roman");
                         convtxt += (prespace + ipaword);
                         break;
                     case 27:
@@ -1099,6 +1110,10 @@ function roma2phone() {
                         break;
                     case 18:
                         ipaword = TaiDonRoma(word[i]);
+                        convtxt += (prespace + ipaword);
+                        break;
+                    case 22:
+                        ipaword = TaiNueaRoma(word[i]);
                         convtxt += (prespace + ipaword);
                         break;
                     case 27:
