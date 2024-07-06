@@ -2408,7 +2408,6 @@ function TaiNueaRoma(w) {
     ipaSQL = ipadb.exec("SELECT phone FROM TaiNuea where roman='" + ipa.tone + "' ");
     if (ipaSQL.length > 0) {
         ipa.tone = ipaSQL[0].values[0] + "";
-        ipa.tone = ipa.tone.replace('0', '').replace('4', '').replace('5', '');
     }
     else
         return w;
@@ -2423,7 +2422,7 @@ function TaiNueaRoma(w) {
         ipa.onset = ipaSQL[0].values[0] + ipa.glide;
     else
         return w;
-    var res = "" + ipa.onset.replace("`", "") + ipa.rime + ipa.tone ;
+    var res = "" + ipa.onset.replace("`", "") + ipa.rime.replace("-", "") + ipa.tone.replace('0', '').replace('4', '').replace('5', '') ;
     return res;
 }
 
