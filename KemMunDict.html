@@ -131,7 +131,8 @@ xhr1.send();
                     if (explaination.length > 1) {
                         for (var i = 1; i < explaination.length; i++) {
                             var example = explaination[i].split(":");
-                            examples.push({ oriEg: example[0], vietEg: example[1] });
+                            var munEg = example[0].split("=");
+                            examples.push({ oriEg: munEg[0], romEg: munEg[1], vietEg: example[1] });
                         }
                     }
                     newgloss.meanings.push({ mean: explaination[0], examples: examples });
@@ -147,7 +148,7 @@ xhr1.send();
                 for (var j=0; j<words[i].meanings.length; j++) {
                     mainstr += "<br/><p class='Home_description'>➢&nbsp;&nbsp;&nbsp;&nbsp;" + words[i].meanings[j].mean + "</p><div>";
                     for (var k=0; k<words[i].meanings[j].examples.length; k++) {
-                        mainstr += "<div><p class='textpad'>" + words[i].meanings[j].examples[k].oriEg.replace(/~/g, "<a>" + words[i].nom + "</a>") + "</p><p>&rarr; " + words[i].meanings[j].examples[k].vietEg + "</p></div>";
+                        mainstr += "<div><p class='textpad' style='font-size: 3rem;'>" + words[i].meanings[j].examples[k].oriEg.replace(/~/g, "<a style='font-weight: normal;'>" + words[i].nom + "</a>") + "</p><p style='color: #DDC326;font-style: italic;'>" + words[i].meanings[j].examples[k].romEg.replace(/~/g, "<a>" + words[i].roma + "</a>") + "</p><p>&rarr; " + words[i].meanings[j].examples[k].vietEg + "</p></div>";
                     }
                     mainstr += "</div>";
                 }
