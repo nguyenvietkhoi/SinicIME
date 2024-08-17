@@ -73,10 +73,7 @@ xhr1.send();
             }
         });
     }
-    function toneB2() {
-        document.getElementById("oriPad").value = (document.getElementById("oriPad").value + "̱");
-        document.getElementById("oriPad").focus();
-    }
+	
     function inverse() {
         dictbool = !dictbool;
         if (dictbool) 
@@ -575,7 +572,6 @@ body{font: -apple-system-body;}
         </div>
     <div>
         <input type="text" class="textpad Home_box" id="oriPad" placeholder="Từ cần tra..." name="ori">
-        <button class="Home_button" onclick=toneB2()>&nbsp;a̱&nbsp;<span class="tooltiptext">Thanh lửng</span></button>
         <button class="Home_button" onclick=lookupOri()>🔍</button>
 		<button class="Home_button" onclick=share()>🔗<span class="tooltiptext">Share</span></button>
         <!--<button class="Home_button" onclick=showAlphabet()>⌨️</button>-->
