@@ -729,7 +729,7 @@ function TaiDonIPA(w, accent) {
                 ipatmp.onset = ipatmp.onset.replace("w", "u");
                 ipatmp.rime = ipatmp.rime.replace("i", "y");
             }
-            else if (ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â")) {
+            else if (ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â") || ipatmp.rime.startsWith("y")) {
                 ipatmp.onset = ipatmp.onset.replace("w", "u");
             } else {
                 ipatmp.onset = ipatmp.onset.replace("w", "o");
@@ -1113,7 +1113,7 @@ function TaiDaengIPA(w, accent) {
                 ipatmp.rime = ipatmp.rime.replace("i", "y");
                 ipatmp.rime = ipatmp.rime.replace("yy", "yi");
             }
-            else if (ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â")) {
+            else if (ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â")|| ipatmp.rime.startsWith("y")) {
                 ipatmp.onset = ipatmp.onset.replace("w", "u");
             } else {
                 ipatmp.onset = ipatmp.onset.replace("w", "o");
@@ -1485,7 +1485,7 @@ function TaiDamIPA(w, accent) {
                 ipatmp.onset = ipatmp.onset.replace("w", "u");
                 ipatmp.rime = ipatmp.rime.replace("i", "y");
             }
-            else if (ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â")) {
+            else if (ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â") || ipatmp.rime.startsWith("y")) {
                 ipatmp.onset = ipatmp.onset.replace("w", "u");
             } else {
                 ipatmp.onset = ipatmp.onset.replace("w", "o");
