@@ -37,7 +37,7 @@ function TaiNueaIPA(w, accent) {
     var ipa = {};
     ipa.onset = "", ipa.rime = "", ipa.tone = "", ipa.toneclass = 0;
     w = w.replace('᧑', 'ᥢᥪᥒ');
-    w = w.replace('ᥨ', 'ᥔᥩᥒᥴ');
+	if (w=='ᥨ') w = 'ᥔᥩᥒᥴ';
     w = w.replace('၃', 'ᥔᥣᥛᥴ');
     w = w.replace('၄', 'ᥔᥤᥱ');
     w = w.replace('၅', 'ᥞᥣᥲ');
