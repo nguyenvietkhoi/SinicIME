@@ -188,7 +188,7 @@ function TaiNueaIPA(w, accent) {
         
         if (accent == "roman") {
             ipatmp.onset = (ipatmp.onset + "").replace('`', '');
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '')) + ipastr;
+            ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
@@ -354,7 +354,7 @@ function TaiLueIPA(w, accent) {
         
         if (accent == "roman") {
             ipatmp.onset = (ipatmp.onset + "").replace('`', '');
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '')) + ipastr;
+            ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
@@ -737,7 +737,7 @@ function TaiDonIPA(w, accent) {
             if ((ipatmp.tone == "́4") && (!ipatmp.rime.endsWith("c"))) {
                 ipatmp.tone = "";
             }
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
+            ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
@@ -1118,7 +1118,7 @@ function TaiDaengIPA(w, accent) {
             } else {
                 ipatmp.onset = ipatmp.onset.replace("w", "o");
             }
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
+            ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
@@ -1493,7 +1493,7 @@ function TaiDamIPA(w, accent) {
             if ((ipatmp.tone == "́4") && (!ipatmp.rime.endsWith("c"))) {
                 ipatmp.tone = "";
             }
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
+            ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
@@ -1662,7 +1662,7 @@ function TaiPaoIPA(w, accent) {
 
         if (accent == "roman") {
             ipatmp.onset = (ipatmp.onset + "").replace('`', '');
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '')) + ipastr;
+            ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
@@ -2262,7 +2262,7 @@ function TaiYoIPA(w, accent) {
 
         if (accent == "roman") {
             ipatmp.onset = (ipatmp.onset + "").replace('`', '');
-            ipastr = " " + ((ipatmp.onset == 'ʔ') ? '' : ipatmp.onset) + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '')) + ipastr;
+            ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime[0], ipatmp.tone[0].replace('ˀ', '')) + ipastr;
         }
         else
             ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
