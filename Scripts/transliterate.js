@@ -370,6 +370,7 @@ function TaiDonIPA(w, accent) {
     ipa.onset = "", ipa.onset2 = "", ipa.rime = "", ipa.tone = "", ipa.toneclass = 0;
     var ipalist = [];
     w = w.replace('ꫛ', 'ꪶꪁꪙ');
+    w = w.replace('ꫜ', 'ꪙꪳ꪿ꪉ');
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
         if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪇꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
@@ -1133,6 +1134,7 @@ function TaiDamIPA(w, accent) {
     ipa.onset = "", ipa.onset2 = "", ipa.rime = "", ipa.tone = "", ipa.toneclass = 0;
     var ipalist = [];
     w = w.replace('ꫛ', 'ꪶꪁꪙ');
+    w = w.replace('ꫜ', 'ꪙꪳ꪿ꪉ');
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
         if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(c)) {
