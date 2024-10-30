@@ -1,0 +1,741 @@
+﻿<!DOCTYPE html>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T99S46KJ26"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T99S46KJ26');
+</script>
+<script type="text/javascript" src="./Scripts/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="./Scripts/sql.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="./Scripts/transliterate.js"></script>
+<script>
+var dicID = new URLSearchParams(window.location.search).get("d");
+var inputID = new URLSearchParams(window.location.search).get("i");
+
+    var dictbool = true;
+	if (dicID == "0") {
+		dictbool = false;
+	}
+    var kbbool = true;
+    var dictname1 = "Tai Nuea → English";
+    var dictname2 = "English → Tai Nuea";
+
+    // Connect to sqlite db file
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', './Resources/tainuea.jpg', true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = function (e) {
+        var uInt8Array = new Uint8Array(this.response);
+        condb = new SQL.Database(uInt8Array);
+        contents = condb.exec("SELECT * FROM tainuea where su='ᥐᥤᥢ' ");
+        // contents is now [{columns:['col1','col2',...], values:[[first row], [second row], ...]}]
+        console.log(contents[0].values[0]);
+        $("#waitscreen").css({ display: 'none' });
+        $("#oriPad").focus();
+		
+	if (inputID != null) {
+		document.getElementById("oriPad").value = inputID;
+		lookupOri();
+	}
+    };
+    xhr.send();
+	
+var xhr1 = new XMLHttpRequest();
+xhr1.open('GET', './Resources/nomime.jpg', true);
+xhr1.responseType = 'arraybuffer';
+xhr1.onload = function (e) {
+    var uInt8Array = new Uint8Array(this.response);
+    condb1 = new SQL.Database(uInt8Array);
+    contents = condb1.exec("SELECT word FROM rubynom where ruby='là' ");
+    // contents is now [{columns:['col1','col2',...], values:[[first row], [second row], ...]}]
+    console.log(contents[0].values[0]);
+    //$("#waitscreen").css({ display: 'none' });
+    $("#txtPad").focus();
+};
+xhr1.send();
+	
+    window.onload = function () {
+	if (!dictbool) {
+        $("#dict").html(dictname2);
+	}
+        var inputpad = document.getElementById("oriPad");
+        inputpad.addEventListener("keyup", function (event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                lookupOri();
+            }
+        });
+    }
+    function toneB2() {
+        document.getElementById("oriPad").value = (document.getElementById("oriPad").value + "̱");
+        document.getElementById("oriPad").focus();
+    }
+    function inverse() {
+        dictbool = !dictbool;
+        if (dictbool) 
+            $("#dict").html(dictname1);
+        else
+            $("#dict").html(dictname2);
+    }
+    function showAlphabet() {
+        kbbool = !kbbool;
+        if (kbbool)
+            $("#alphabet").show();
+        else
+            $("#alphabet").hide();
+    }
+    function virtualtype(key) {
+        document.getElementById("oriPad").value = (document.getElementById("oriPad").value + key);
+        document.getElementById("oriPad").focus();
+    }
+    function lookupOri() {
+        var orireq = document.getElementById("oriPad").value.toLowerCase();
+        var words = [];
+	if (orireq.endsWith('*')) {
+		if (dictbool)
+            contents = condb.exec('SELECT * FROM tainuea WHERE su LIKE \'' + orireq.slice(0,-1) + '%\' OR su LIKE \'% ' + orireq.slice(0,-1) + '%\' OR roma LIKE \'' + orireq.slice(0,-1) + '%\' OR roma LIKE \'% ' + orireq.slice(0,-1) + '%\'');
+        else
+            contents = condb.exec('SELECT * FROM tainuea WHERE eng LIKE \'' + orireq.slice(0,-1) + '%\' OR eng LIKE \'% ' + orireq.slice(0,-1) + '%\'');
+	} else if (orireq.startsWith('*')) {
+		if (dictbool)
+            contents = condb.exec('SELECT * FROM tainuea WHERE su LIKE \'%' + orireq.slice(1) + '\' OR su LIKE \'%' + orireq.slice(1) + ' %\' or roma LIKE \'%' + orireq.slice(1) + '\' OR roma LIKE \'%' + orireq.slice(1) + ' %\'');
+        else
+            contents = condb.exec('SELECT * FROM tainuea WHERE eng LIKE \'%' + orireq.slice(1) + '\' OR eng LIKE \'%' + orireq.slice(1) + ' %\'');
+	} else {
+		if (dictbool)
+            contents = condb.exec('SELECT * FROM tainuea WHERE su = \'' + orireq + '\' OR roma = \'' + orireq + '\' OR nom LIKE \'%' + orireq + '%\' UNION ALL SELECT * FROM tainuea WHERE su LIKE \'% ' + orireq + ' %\' OR su LIKE \'' + orireq + ' %\' OR su LIKE \'% ' + orireq + '\' OR roma LIKE \'% ' + orireq + ' %\' OR roma LIKE \'' + orireq + ' %\' OR roma LIKE \'% ' + orireq + '\'');
+        else
+            contents = condb.exec('SELECT * FROM tainuea WHERE eng = \'' + orireq + '\' UNION ALL SELECT * FROM tainuea WHERE eng LIKE \'% ' + orireq + ' %\' OR eng LIKE \'' + orireq + ' %\' OR eng LIKE \'% ' + orireq + '\'');
+	}
+        
+        if (contents.length != 0) {
+            contents[0].values.forEach(function (word) {
+                var newgloss = {
+                    nom: (word[0] != null) ? word[0] : "",
+                    su: (word[1] != null) ? word[1] : "",
+                    roma: (word[2] != null) ? word[2] : "",
+                    ety: (word[3] != null) ? word[3] : "",
+                    eng: (word[4] != null) ? word[4] : "",
+                    meanings: []
+                }
+                var means = word[5].split("+");
+                means.forEach(function (mean) {
+                    var explaination = mean.split("@");
+                    var examples = [];
+                    if (explaination.length > 1) {
+                        for (var i = 1; i < explaination.length; i++) {
+                            var example = explaination[i].split(":");
+                            examples.push({ oriEg: example[0], engEg: example[1] });
+                        }
+                    }
+                    newgloss.meanings.push({ mean: explaination[0], examples: examples });
+                });
+                words.push(newgloss);
+            });
+        }
+
+        if (words != null) {
+            var mainstr = "";
+            for (var i=0; i<words.length; i++) {
+			    mainstr += "<div class='Home_card'><h1 class='textpad'><a class='nomblock' style='font-weight: normal;cursor: pointer;color: #ff0000;' onclick=cognates('"+words[i].nom+"')>◂</a><a style='font-weight: normal;font-size: 6rem;'>" + words[i].nom + "</a>&nbsp;&nbsp;<a style='color: #fff; font-weight: normal'>" + words[i].su + "</a>&nbsp;&nbsp;"+"<a style='font-size: 3rem'>" + words[i].roma + "</a>&nbsp;&nbsp;"+"<a style='color: #84ff8d;font-size: 2rem; font-weight: normal'>" + words[i].ety.replace("T:", "Proto-Tai: ").replace("Vietic:", "Proto-Vietic: ").replace("VN:", "Việt: ").replace("AV:", "Việt cổ đại: ") + "</a>&nbsp;&nbsp;<a class='readblock' style='cursor: pointer;color: #31d0f5' onclick=phonetics('"+words[i].su+"')>🔊</a></h1>";
+                for (var j=0; j<words[i].meanings.length; j++) {
+                    mainstr += "<br/><p class='Home_description'>➢&nbsp;&nbsp;&nbsp;&nbsp;" + words[i].meanings[j].mean + "</p><div>";
+                    for (var k=0; k<words[i].meanings[j].examples.length; k++) {
+                        mainstr += "<div><p class='textpad'>" + words[i].meanings[j].examples[k].oriEg.replace(/~/g, "<a>" + words[i].su + "</a>") + "</p><p>&rarr; " + words[i].meanings[j].examples[k].engEg + "</p></div>";
+                    }
+                    mainstr += "</div>";
+                }
+                mainstr += "</div>";
+            }
+            document.getElementById("maincontent").innerHTML =  (mainstr);
+        }
+		window.scrollTo(0, 0);
+    }
+	
+function share() {
+if (dictbool) {
+  navigator.clipboard.writeText(window.location.href.split("?")[0] + "?i="+document.getElementById("oriPad").value.replace(/\s/g, '%20'));
+  alert(window.location.href.split("?")[0] + "?i="+document.getElementById("oriPad").value.replace(/\s/g, '%20')+" is copied to the clipboard");
+}
+else {
+  navigator.clipboard.writeText(window.location.href.split("?")[0] + "?d=0&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20'));
+  alert(window.location.href.split("?")[0] + "?d=0&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20')+" is copied to the clipboard");
+}
+}
+
+function cognates(pad) {
+	var ttt = "<a>" + pad + "</a>";
+	var cog;
+	
+	cog = toABC(pad, 11, "rubytay");
+	if (cog != "$")
+		ttt = ttt + "<br>Tày Thổ: <a href='./TayDict.html?i="+cog+"'>" + cog + "</a>";
+	cog = toABC(pad, 12, "rubytay");
+	if (cog != "$")
+		ttt = ttt + "<br>Tày Khao: <a>" + cog + "</a>";
+	cog = toABC(pad, 11, "rubynung");
+	if (cog != "$")
+		ttt = ttt + "<br>Nồng Fa̱n Slình: <a>" + cog + "</a>";
+	cog = toABC(pad, 12, "rubynung");
+	if (cog != "$")
+		ttt = ttt + "<br>Nồng Cháo: <a href='./NungChao.html?i="+cog+"'>" + cog + "</a>";
+	cog = toABC(pad, 14, "rubynung");
+	if (cog != "$")
+		ttt = ttt + "<br>Nồng Inh: <a>" + cog + "</a>";
+	cog = toABC(pad, 16, "rubynung");
+	if (cog != "$")
+		ttt = ttt + "<br>Nồng Lòi: <a>" + cog + "</a>";
+	cog = toABC(pad, 14, "rubyyang");
+	if (cog != "$")
+		ttt = ttt + "<br>Nồng Dang: <a>" + cog + "</a>";
+	cog = toABC(pad, 11, "rubyyang");
+	if (cog != "$")
+		ttt = ttt + "<br>Nồng Dín: <a>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubytaidam");
+	if (cog != "$")
+		ttt = ttt + "<br>Tãy Đăm: <a style='font-family:\"Tai Son La\"'>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubytaideng");
+	if (cog != "$")
+		ttt = ttt + "<br>Tày Đeng: <a style='font-family:\"Tai Muong Deng\"'>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubytaipao");
+	if (cog != "$")
+		ttt = ttt + "<br>Tă̄i Yǒ: <a href='./TayYoDict.html?i="+cog+"'>" + toABC(pad, 20, "rubytaiyo") + " | " + cog + "</a>";
+	cog = toABC(pad, 20, "rubytailue");
+	if (cog != "$")
+		ttt = ttt + "<br>Lự: <a href='./TaiLueDict.html?i="+cog+"'>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubytainuea");
+	if (cog != "$")
+		ttt = ttt + "<br>Tày Nưa: <a>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubytaiyai");
+	if (cog != "$")
+		ttt = ttt + "<br>Tày Nháư: <a>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubythai");
+	if (cog != "$")
+		ttt = ttt + "<br>Xiêm: <a>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubylao");
+	if (cog != "$")
+		ttt = ttt + "<br>Lào: <a>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubysaek");
+	if (cog != "$")
+		ttt = ttt + "<br>Saek: <a>" + cog + "</a>";
+	cog = toABC(pad, 10, "rubycuen");
+	if (cog != "$")
+		ttt = ttt + "<br>Cuengh: <a href='./ZhuangDict.html?i="+cog+"'>" + cog + "</a>";
+	cog = toABC(pad, 20, "rubyyay");
+	if (cog != "$")
+		ttt = ttt + "<br>Yáy: <a>" + cog + "</a>";
+	
+	$("#cognatelist").html(ttt);
+	$("#cognatelist").show();
+}
+
+function phonetics(pad) {
+	var ttt = "";
+	var cog;
+	
+	cog = toIPA(pad, 20, "rubytaidon", "MuongLay");
+	if (cog != "$")
+		ttt = ttt + "Mường Lay: <a>" + cog + "</a>";
+	
+	
+	$("#ipalist").html(ttt);
+	$("#ipalist").show();
+}
+
+function toIPA(pad, maxlevel, opttable, accent) {
+    if (pad == "")
+        return "";
+	var cubo = pad.split(" ");
+    var i;
+	var ttt = "";
+	var ipaword = TaiDonIPA(cubo[0], accent);
+    ttt = ipaword;
+    for (i = 1; i < cubo.length; i++) {
+        var nextword = "";
+		ipaword = TaiDonIPA(cubo[i], accent)
+        nextword = ipaword;
+        
+        if (ttt.slice(-1) == "\n")
+            ttt = ttt + nextword;
+        else
+            ttt = ttt + " " + nextword;
+    }
+    return ttt;
+}
+function toABC(pad, maxlevel, opttable) {
+    if (pad == "")
+        return "";
+    var cubo = phoneof(pad, maxlevel, opttable, true);
+    var i;
+	if (cubo[0].startsWith('$'))
+		return "$";
+    var ttt = cubo[0];
+    for (i = 1; i < cubo.length; i++) {
+        var nextword = "";
+        nextword = cubo[i];
+        
+        if (nextword.startsWith('$')) {
+			return "$";
+        }
+        else if (ttt.slice(-1) == "\n")
+            ttt = ttt + nextword;
+        else
+            ttt = ttt + " " + nextword;
+    }
+    return ttt;
+}
+function phoneof(phrase, maxlevel, opttable, defa){
+    var ext = !defa;
+    if ((phrase.length == 1) && defa)
+        ext = true;
+    var outputarr = [];
+    var sss = "";
+    var word = phrase;
+    var k;
+    var sql = "";
+    var fullchar;
+
+    var pconlenbuf = 0;
+    var pconlentmp = 0;
+    var pconlentail = 0;
+    var pconcSz = 0;
+    var pconqSz = 0;
+    var pconrSz = 0;
+    var pcontcSz = 0;
+    var pcontqSz = 0;
+    var pcontrSz = 0;
+    var pcontail = "";
+    var pconqueue = "";
+    var xstr = [];
+    var pcubo = [];
+
+    for (k = 0; k != word.length; k++) {
+        pconqSz = pconrSz = pconcSz = pcontqSz = pcontrSz = pcontcSz = 0;
+        if ((word[k].charCodeAt(0) < 0xD800) || (word[k].charCodeAt(0) >= 0xE000)) {
+            fullchar = word[k];
+        } else {
+            fullchar = word[k] + word[k + 1];
+            //sql = "select "+optruby+" from "+opttable+" where HEX(word)='"+SuppChar.asHex(word2)+"' order by level desc";
+            if ((phrase.length == 2) && !ext)
+                ext = true;
+            k++;
+        }
+
+        pcubo = [];
+        if (pconqueue != "") {
+            var optta = opttable;
+            var cfullchar = pconqueue + fullchar;
+            var csize = cfullchar.split(":").length;
+            contents = condb1.exec("SELECT c" + optta + ", cword FROM cmpnom WHERE cword = '" + cfullchar + "' AND c" + optta + " <> '' AND c" + optta + " IS NOT NULL");
+            var split = null;
+            var i, j;
+
+            if (contents.length != 0) {
+                for (i = 0; i < contents[0].values.length; i++) {
+                    split = contents[0].values[i][0].split(" ");
+                    xstr = [];
+                    for (j = 0; j != csize; j++)
+                        xstr.push(split[j]);
+                    pcubo.push(xstr);
+                    pconlenbuf = pconlentmp;
+                }
+            }
+
+            pconqSz = pconrSz = pconcSz = pcubo.length;
+            contents = condb1.exec("SELECT c" + optta + ", cword FROM cmpnom WHERE cword like '" + cfullchar + ":%' AND c" + optta + " <> '' AND c" + optta + " IS NOT NULL");
+            xstr = [];
+            split = null;
+            var rubo = [];
+            if (contents.length != 0) {
+                for (i = 0; i < contents[0].values.length; i++) {
+                    split = contents[0].values[i][0].split(" ");
+                    xstr = [];
+                    for (j = 0; j != split.length; j++)
+                        xstr.push(split[j]);
+                    rubo.push(xstr);
+                    pconlenbuf = pconlentmp;
+                }
+            }
+            if (split != null) {
+                xstr = [];
+                for (i = 0; i != csize; i++)
+                    xstr.push(split[i]);
+                pconlentail = split[i - 1].length;
+                pcubo.push(xstr);
+                pcubo = pcubo.concat(rubo);
+                pconqSz++;
+                pconrSz = pcubo.length;
+            }
+            ptqSz = ptrSz = ptcSz = pcubo.length;
+
+            if (pcontail != "") {
+                var truby = pcontail + fullchar;
+                var tsize = truby.split(":").length;
+                contents = condb1.exec("SELECT c" + optta + ", cword FROM cmpnom WHERE cword = '" + truby + "' AND c" + optta + " <> '' AND c" + optta + " IS NOT NULL");
+                if (contents.length != 0) {
+                    for (i = 0; i < contents[0].values.length; i++) {
+                        split = contents[0].values[i][0].split(" ");
+                        xstr = [];
+                        for (j = 0; j != tsize; j++)
+                            xstr.push(split[j]);
+                        pcubo.push(xstr);
+                        pconlenbuf = pconlentmp;
+                    }
+                }
+                ptqSz = ptrSz = ptcSz = pcubo.length;
+                contents = condb1.exec("SELECT c" + optta + ", cword FROM cmpnom WHERE cword like '" + truby + ":%' AND c" + optta + " <> '' AND c" + optta + " IS NOT NULL");
+                xstr = [];
+                split = null;
+                rubo = [];
+                if (contents.length != 0) {
+                    for (i = 0; i < contents[0].values.length; i++) {
+                        split = contents[0].values[i][0].split(" ");
+                        xstr = [];
+                        for (j = 0; j != split.length; j++)
+                            xstr.push(split[j]);
+                        rubo.push(xstr);
+                        pconlenbuf = pconlentmp;
+                    }
+                }
+
+                if (split != null) {
+                    xstr = [];
+                    for (i = 0; i != csize; i++)
+                        xstr.push(split[i]);
+                    pconlentail = split[i - 1].length;
+                    pcubo.push(xstr);
+                    pcubo = pcubo.concat(rubo);
+                    pcontqSz++;
+                    pcontrSz = pcubo.length;
+                }
+            }
+        }
+        var q;
+
+        sql = "select ruby, (level % " + maxlevel + ") from " + opttable + " where (level >1 and word='" + fullchar + "') order by (level % " + maxlevel + ") desc";
+        contents = condb1.exec(sql);
+        if (contents.length != 0) {
+            sss = contents[0].values[0][0];
+        }
+
+        if (pconcSz > 0) {
+            if (pconcSz == pconqSz)
+                pconqueue = "";
+            else
+                pconqueue = pconqueue + fullchar + ":";
+            pcontail = "";
+        } else if (pconqSz > 0) {
+            pconqueue = pconqueue + fullchar + ":";
+            pcontail = fullchar + ":";
+        } else if (pconrSz > 0) {
+            pconqueue = pcontail = "";
+        } else if (pcontcSz > 0) {
+            pconlenbuf = pconlentail;
+            if (pcontcSz == pcontqSz)
+                pconqueue = "";
+            else
+                pconqueue = pcontail + fullchar + ":";
+            pcontail = "";
+        } else if (pcontqSz > 0) {
+            pconlenbuf = pconlentail;
+            pconqueue = pcontail + fullchar + ":";
+            pcontail = fullchar + ":";
+        } else if (pcontrSz > 0) {
+            pconlenbuf = pconlentail;
+            pconqueue = pcontail = "";
+        } else {
+            pconqueue = fullchar + ":";
+            pcontail = "";
+            pconlenbuf = 0;
+            pcubo = [];
+        }
+
+        if (pcubo.length != 0) {
+            for (q = 1; q < pcubo[0].length; q++) {
+                outputarr.pop();
+            }
+            for (q = 0; q != pcubo[0].length; q++) {
+                outputarr.push(pcubo[0][q]);
+            }
+        } else {
+            if (sss.length > 0)
+                outputarr.push(sss);
+            else
+                outputarr.push("$" + fullchar);
+        }
+        sss = "";
+    }
+
+    return outputarr;
+}
+
+$(document).click(function (e) {
+    if (!$(e.target).is("#cognatelist") && !$(e.target).is("#cognatelist a") && !$(e.target).is(".nomblock")) {
+        if ($('#cognatelist').is(':visible')) {
+            $('#cognatelist').hide();
+        }
+    }
+    if (!$(e.target).is("#ipalist") && !$(e.target).is("#ipalist a") && !$(e.target).is(".readblock")) {
+        if ($('#ipalist').is(':visible')) {
+            $('#ipalist').hide();
+        }
+    }
+});
+$('#cognatelist').click(function(e){
+   e.stopPropagation; // don't close modal by clicking inside modal and by clicking btn
+})
+$('#ipalist').click(function(e){
+   e.stopPropagation; // don't close modal by clicking inside modal and by clicking btn
+})
+
+</script>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ điển Tãy Đón - Việt — Linguaevum</title>
+    <link href="./Content/bootstrap.css" rel="stylesheet">
+    <link href="./Content/Site.css" rel="stylesheet">
+    <style>
+        body {
+              padding: 0;margin: 0;color: #fff;background: url(./Resources/trong.png);
+        }
+        #dict {
+            color:#eee;
+        }
+        #oriPad {
+            color: #000;max-width: 220px;margin-left: 2rem;
+        }
+		
+        .Home_title {
+            float:left;text-align: left; margin: 0px;color: #CDAC24;padding: 15px 10px 15px 30px;font-size: 18px;line-height: 20px;
+        }
+        .Home_button {
+            background:#232323;color:#CDAC24; margin: 0 5px;flex-basis: 45%;text-align: left;text-decoration: none;transition: color .15s ease,border-color .15s ease;padding: 15px 15px;font-size: 18px;line-height: 20px;cursor: pointer;border: 1px solid #CDAC24;border-radius: 4px;
+        }
+        .Home_button:hover {
+            background-color: #551780;
+        }
+        .Home_button a {
+            color: inherit;text-decoration: none;
+        }
+        .Home_box {
+            color:#000;max-width:220px;flex-basis: 45%;padding: 1rem;text-align: left;color: inherit;font-size: 2rem;text-decoration: none;border: 1px solid #eaeaea;border-radius: 4px;transition: color 0.15s ease, border-color 0.15s ease;
+        }
+        .Home_container {
+            min-height: 97vh;padding: 5px 0;display: flex;flex-direction: column;justify-content: flex-start;align-items: center;
+        }
+        .Home_description {
+            text-align: center; line-height: 1.5; font-size: 2rem;
+        }
+        .Home_card {
+            margin: 5px;flex-basis: 45%;padding: 2rem;text-align: left;color: inherit;text-decoration: none;border: 1px solid #eaeaea;border-radius: 6px;transition: color 0.15s ease, border-color 0.15s ease;font-size:2rem;
+        }
+        .Home_card a {
+            text-decoration: none;color: #ff9900; font-weight: bold;cursor:text;
+        }
+        .Home_main {
+            padding: 0rem 0;flex: 1;display: flex;flex-direction: column;justify-content: center;align-items: center;
+        }
+
+        .textpad {
+	        color: #DDC326;
+			font: -apple-system-body;
+	        font-family: Cambria, "Times New Roman", "Cambria Tai Yo", Tahoma, "Tai Lanna", "Lanexang Mon4", "Microsoft New Tai Lue", serif, "Tai Muong Lay", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+        }
+		
+		
+.k-btn {
+    padding: 0px 1px;
+    width: 19px;
+    height: 26px;
+    font-size: 16px;
+	font-family: "Tai Muong Lay";
+    background: rgb(16, 16, 16);
+    border: 1px solid #4b4b4b;
+    color: #ddc326;
+    vertical-align: middle;
+	margin-left: -2px;
+}		
+#alphabet {
+display: block;position: absolute;left: 23rem; padding-top:5px;background: #111111;
+}
+@media (max-width: 500px) {
+  .Home_container {
+    padding: 25px 0;
+  }
+  .Home_button {
+      margin: 0;
+  }
+  #oriPad {
+      max-width: 180px;
+  }
+}
+@media (max-width: 767px) {
+        .Home_title {
+			padding: 7px 3px;
+		}
+		.Home_button {
+			padding: 7px;
+		}
+  #alphabet {
+left: 0px;
+  }
+}
+.Home_button .tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  margin: 4rem -3rem;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.Home_button:hover .tooltiptext {
+  visibility: visible;
+}
+
+#cognatelist, #ipalist {
+  display: none;
+  background-color: black;
+  font-style: italic;
+  font-size:2rem;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+#cognatelist a {
+  color:#ddc326; text-decoration: blink;font-style: normal;font-size: 2.5rem;
+}
+#ipalist a {
+  color:#31d0f5; text-decoration: blink;font-style: normal;font-size: 2rem; font-family: Cambria, "Times New Roman";
+}
+
+body{font: -apple-system-body;}
+    </style>
+</head>
+
+<div id="waitscreen" style="z-index: 1031;"></div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="position: fixed">
+    </div>
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#layoutbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://linguaevum.ddns.net/"><img src="./Resources/tho.png" class="logo"></a>
+            <a class="navbar-brand" href="/SinicIME">Sinic IME</a>
+            <div class="Home_title">
+                Từ điển <box class="Home_button" style="margin:0;border: none;border-radius:0" onclick=inverse()><a id="dict">Tãy Đón → Việt</a></box>
+            </div>
+        </div>
+    <div>
+        <input type="text" class="textpad Home_box" id="oriPad" placeholder="Từ cần tra..." name="ori">
+        <button class="Home_button" onclick=showAlphabet()>⌨️</button>
+        <button class="Home_button" onclick=lookupOri()>🔍</button>
+		<button class="Home_button" onclick=share()>🔗<span class="tooltiptext">Share</span></button>
+    </div>
+		<div id="alphabet">
+		<div style="white-space: nowrap; user-select: none;">
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪀ')">ꪀ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪁ')">ꪁ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪄ')">ꪄ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪇ')">ꪇ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪂ')">ꪂ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪃ')">ꪃ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪈ')">ꪈ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪉ')">ꪉ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪊ')">ꪊ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪋ')">ꪋ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪌ')">ꪌ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪍ')">ꪍ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪎ‍')">ꪎ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪏ‍')">ꪏ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪐ')">ꪐ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪑ')">ꪑ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪾ')">ꪾ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪽ')">ꪽ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪰ')">ꪰ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪰ‍ꪒ')">ꪰ‍ꪒ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('꪿')">꪿</button>
+        </div><div style="white-space: nowrap; user-select: none;">
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪒ')">ꪒ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪓ')">ꪓ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪔ')">ꪔ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪕ')">ꪕ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪖ')">ꪖ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪗ‍')">ꪗ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪘ')">ꪘ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪙ')">ꪙ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪚ')">ꪚ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪛ')">ꪛ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪜ')">ꪜ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪝ‍')">ꪝ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪞ')">ꪞ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪟ')">ꪟ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪠ')">ꪠ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪡ')">ꪡ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪢ')">ꪢ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪣ')">ꪣ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪹ')">ꪹ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪵ')">ꪵ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('꫁')">꫁</button>
+        </div><div style="white-space: nowrap; user-select: none;">
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪤ‍')">ꪤ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪥ')">ꪥ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪨ')">ꪨ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪩ‍')">ꪩ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪪ')">ꪪ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪫ')">ꪫ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪬ')">ꪬ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪭ')">ꪭ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪮ')">ꪮ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪯ')">ꪯ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪱ')">ꪱ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪷ‍')">ꪷ‍</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪶ')">ꪶ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪼ')">ꪼ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪻ')">ꪻ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪲ')">ꪲ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪰ')">ꪰ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪴ')">ꪴ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪸ')">ꪸ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪷ')">ꪷ</button>
+                                                <button type="button" class="k-btn" style="user-select: none;" onclick="virtualtype('ꪺ')">ꪺ</button>
+        </div>
+		</div>
+    </div>
+	<div id='cognatelist'></div>
+	<div id='ipalist' style='right:5px'></div>
+</div>
+
+<div class="Home_container">
+
+    <div styles="Home_main" id="maincontent" style="margin-top: 100px;"></div>
+</div>
+<footer style="margin: 0 0 0 30px; font-size: 12px;">
+    <p>Păp san khhãm pák Tãy-Keo-Eng | Điêu Chính Nhìm lẹ Jean Donaldson </p>
+    <p>© 2023 — Linguaevum</p>
+</footer>
+<script src="./Scripts/jquery-3.5.1.js"></script>
+<script src="./Scripts/bootstrap.js"></script>
+<script src="./Scripts/respond.js"></script>
