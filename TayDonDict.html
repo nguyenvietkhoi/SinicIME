@@ -144,7 +144,7 @@ xhr1.send();
         if (words != null) {
             var mainstr = "";
             for (var i=0; i<words.length; i++) {
-			    mainstr += "<div class='Home_card'><h1 class='textpad'><a class='nomblock' style='font-weight: normal;cursor: pointer;color: #ff0000;' onclick=cognates('"+words[i].nom+"')>◂</a><a style='font-weight: normal;font-size: 6rem;'>" + words[i].nom + "</a>&nbsp;&nbsp;<a style='color: #fff; font-weight: normal'>" + words[i].su + "</a>&nbsp;&nbsp;"+"<a style='font-size: 3rem'>" + words[i].roma + "</a>&nbsp;&nbsp;"+"<a style='color: #84ff8d;font-size: 2rem; font-weight: normal'>" + words[i].ety.replace("T:", "Proto-Tai: ").replace("Vietic:", "Proto-Vietic: ").replace("VN:", "Việt: ").replace("AV:", "Việt cổ đại: ") + "</a>&nbsp;&nbsp;<a class='readblock' style='cursor: pointer;color: #31d0f5' onclick=phonetics('"+words[i].su+"')>🔊</a></h1>";
+			    mainstr += "<div class='Home_card'><h1 class='textpad'><a class='nomblock' style='font-weight: normal;cursor: pointer;color: #ff0000;' onclick=cognates('"+words[i].nom+"')>◂</a><a style='font-weight: normal;font-size: 6rem;'>" + words[i].nom + "</a>&nbsp;&nbsp;<a style='color: #fff; font-weight: normal'>" + words[i].su + "</a>&nbsp;&nbsp;"+"<a style='font-size: 2.5rem'>" + words[i].roma + "</a>&nbsp;&nbsp;"+"<a style='color: #84ff8d;font-size: 2rem; font-weight: normal'>" + words[i].ety.replace("T:", "Proto-Tai: ").replace("Vietic:", "Proto-Vietic: ").replace("VN:", "Việt: ").replace("AV:", "Việt cổ đại: ") + "</a>&nbsp;&nbsp;<a class='readblock' style='cursor: pointer;color: #31d0f5' onclick=phonetics('"+words[i].su+"')>🔊</a></h1>";
                 for (var j=0; j<words[i].meanings.length; j++) {
                     mainstr += "<br/><p class='Home_description'>➢&nbsp;&nbsp;&nbsp;&nbsp;" + words[i].meanings[j].mean + "</p><div>";
                     for (var k=0; k<words[i].meanings[j].examples.length; k++) {
@@ -548,7 +548,7 @@ $('#ipalist').click(function(e){
         .textpad {
 	        color: #DDC326;
 			font: -apple-system-body;
-	        font-family: Cambria, "Times New Roman", "Cambria Tai Yo", Tahoma, "Tai Lanna", "Lanexang Mon4", "Microsoft New Tai Lue", serif, "Tai Muong Lay", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+	        font-family: Cambria, "Times New Roman", "Cambria Tai Yo", serif, "Tai Lanna", "Lanexang Mon4", "Microsoft New Tai Lue", serif, "Tai Muong Lay", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, "Nom Na Tong", 'Han-Nom Gothic Supplement';
         }
 		
 		
