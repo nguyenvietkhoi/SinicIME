@@ -214,7 +214,7 @@ function cognates(pad) {
 		ttt = ttt + "<br>Tă̄i Yǒ: <a href='./TayYoDict.html?i="+cog+"'>" + toABC(pad, 20, "rubytaiyo") + " | " + cog + "</a>";
 	cog = toABC(pad, 20, "rubytainuea");
 	if (cog != "$")
-		ttt = ttt + "<br>Tày Nưa: <a>" + cog + "</a>";
+		ttt = ttt + "<br>Tày Nưa: <a href='./TaiNueaDict.html?i="+cog+"'>" + cog + "</a>";
 	cog = toABC(pad, 20, "rubytaiyai");
 	if (cog != "$")
 		ttt = ttt + "<br>Tày Nháư: <a>" + cog + "</a>";
@@ -644,8 +644,8 @@ body{font: -apple-system-body;}
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://linguaevum.ddns.net/"><img src="./Resources/tho.png" class="logo"></a>
-            <a class="navbar-brand" href="/SinicIME">Sinic IME</a>
+            <a href="/SinicIME"><img src="./Resources/tho.png" class="logo"></a>
+            <a class="navbar-brand" href="/SinicIME">IME</a>
             <div class="Home_title">
                 Từ điển <box class="Home_button" style="margin:0;border: none;border-radius:0" onclick=inverse()><a id="dict">Tai Lue → English</a></box>
             </div>

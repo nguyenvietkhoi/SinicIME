@@ -37,18 +37,21 @@ input[type="checkbox"].input-validation-error {
 }
 
 @font-face {
+font-family: 'Lexend';
+src: url('../fonts/Lexend-VariableFont_wght.ttf') format('truetype');
+font-display: swap;
+}
+@font-face {
 font-family: 'Han-Nom Gothic Supplement';
 src:
 	local('Han-Nom Gothic'),
 	url('../fonts/hannom-gothic-supplement.woff') format('woff'),
-	url('../fonts/hannom-gothic-supplement.ttf') format('truetype')
-;
+	url('../fonts/hannom-gothic-supplement.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: SimSun-ExtB;
-src: url('../fonts/SIMSUNBZ.ttf#iefix') format('embedded-opentype')
-;
+src: url('../fonts/SIMSUNBZ.ttf#iefix') format('embedded-opentype');
 font-display: swap;
 }
 /*@font-face {
@@ -60,110 +63,92 @@ src:
 }*/
 @font-face {
 font-family: "Tai Lanna";
-src: url('../fonts/TaiLanna.ttf') format('truetype')
-;
+src: url('../fonts/TaiLanna.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Yogyakarta";
-src: url('../fonts/Yogyakarta.ttf') format('truetype')
-;
+src: url('../fonts/Yogyakarta.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Lanexang Mon4";
-src: url('../fonts/Lanxang.ttf') format('truetype')
-;
+src: url('../fonts/Lanxang.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Aksara Bali";
-src: url('../fonts/AksaraBali.ttf') format('truetype')
-;
+src: url('../fonts/AksaraBali.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: Sawndip;
-src: url('../fonts/Sawndip0.ttf') format('truetype')
-;
+src: url('../fonts/Sawndip0.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Nom Na Tong";
-src: url('../fonts/NomNaTongLight.ttf#iefix') format('embedded-opentype')
-;
+src: url('../fonts/NomNaTongLight.ttf#iefix') format('embedded-opentype');
 font-display: swap;
 }
 @font-face {
 font-family: HanaMinA;
-src: url('../fonts/HanaMinA.ttf') format('truetype')
-;
+src: url('../fonts/HanaMinA.ttf') format('truetype');
 font-display: swap;
 unicode-range: U+4E00-9FFF, U+3400-4DBF;
 }
 @font-face {
 font-family: FSung-2;
-src: url('../fonts/FSung-2.ttf') format('truetype')
-;
+src: url('../fonts/FSung-2.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: FSung-3;
-src: url('../fonts/FSung-3.ttf') format('truetype')
-;
+src: url('../fonts/FSung-3.ttf') format('truetype');
 }
 @font-face {
 font-family: HanaMinB;
-src: url('../fonts/HanaMinB.ttf') format('truetype')
-;
+src: url('../fonts/HanaMinB.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "BabelStone Han";
-src: url('../fonts/BabelStoneHan.ttf') format('truetype')
-;
+src: url('../fonts/BabelStoneHan.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Tai Son La";
-src: url('../fonts/Tai-Son-La.ttf') format('truetype')
-;
+src: url('../fonts/Tai-Son-La.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Tai Muong Lay";
-src: url('../fonts/Tai-Muong-Lay.ttf') format('truetype')
-;
+src: url('../fonts/Tai-Muong-Lay.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Tai Muong Deng";
-src: url('../fonts/Tai-Muong-Deng.ttf') format('truetype')
-;
+src: url('../fonts/Tai-Muong-Deng.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Cambria Tai Yo";
-src: url('../fonts/CambriaTaiYo.ttf') format('truetype')
-;
+src: url('../fonts/CambriaTaiYo.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Cambria Tai Yo Oldstyle";
-src: url('../fonts/CambriaTaiYoOld.ttf') format('truetype')
-;
+src: url('../fonts/CambriaTaiYoOld.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Sukhothai";
-src: url('../fonts/Sukhothai.ttf') format('truetype')
-;
+src: url('../fonts/Sukhothai.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
 font-family: "Bravura Text";
-src: url('../fonts/BravuraText.ttf') format('truetype')
-;
+src: url('../fonts/BravuraText.ttf') format('truetype');
 font-display: swap;
 }
 
