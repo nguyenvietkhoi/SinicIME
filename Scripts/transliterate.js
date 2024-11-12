@@ -1494,7 +1494,7 @@ function TaiDamIPA(w, accent) {
             }
            // if ((ipatmp.tone == "́4") && (!ipatmp.rime.endsWith("c"))) {
            //     ipatmp.tone = "";
-            }
+           // }
             ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
         }
         else
