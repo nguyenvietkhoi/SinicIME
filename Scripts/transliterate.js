@@ -1157,7 +1157,7 @@ function TaiDamIPA(w, accent) {
                     tmpconso = c;
                     if (c == "ꪀ") {
                         if (ipa.tone == "") {
-                            ipa.tone = "ˀ";
+                            ipa.tone = "́ˀ";
                         }
                         else {
                             ipa.tone += "4";
@@ -1215,7 +1215,7 @@ function TaiDamIPA(w, accent) {
                             if ("ꪀꪒꪚ".includes(coda)) {
                                 if (coda == "ꪀ") {
                                     if (ipa.tone == "") {
-                                        ipa.tone = "ˀ";
+                                        ipa.tone = "́ˀ";
                                     }
                                     else {
                                         ipa.tone += "4";
@@ -1279,7 +1279,7 @@ function TaiDamIPA(w, accent) {
                     if ("ꪀꪒꪚ".includes(coda)) {
                         if (coda == "ꪀ") {
                             if (ipa.tone == "") {
-                                ipa.tone = "ˀ";
+                                ipa.tone = "́ˀ";
                             }
                             else {
                                 ipa.tone += "4";
@@ -1363,7 +1363,7 @@ function TaiDamIPA(w, accent) {
         if ("ꪀꪒꪚ".includes(coda)) {
             if (coda == "ꪀ") {
                 if (ipa.tone == "") {
-                    ipa.tone = "ˀ";
+                    ipa.tone = "́ˀ";
                 }
                 else {
                     ipa.tone += "4";
@@ -1492,8 +1492,8 @@ function TaiDamIPA(w, accent) {
             } else {
                 ipatmp.onset = ipatmp.onset.replace("w", "o");
             }
-            if ((ipatmp.tone == "́4") && (!ipatmp.rime.endsWith("c"))) {
-                ipatmp.tone = "";
+           // if ((ipatmp.tone == "́4") && (!ipatmp.rime.endsWith("c"))) {
+           //     ipatmp.tone = "";
             }
             ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
         }
