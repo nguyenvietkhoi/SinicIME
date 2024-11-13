@@ -1926,8 +1926,10 @@ function TaiDamRoma(w) {
     if ("k".includes(deadcons))
         ipa.tone += "ˀ";
     if ("h".includes(deadcons)) {
-        if ("ch".includes(ipa.rime.slice(ipa.rime.length - 2)))
+        if ("ch".includes(ipa.rime.slice(ipa.rime.length - 2))) {
+			deadcons = "ch";
 			ipa.tone += "4";
+		}
 	}
 
     if (ipa.tone == "") {
@@ -1962,22 +1964,13 @@ function TaiDamRoma(w) {
         ipa.rime = ipaSQL[0].values[0] + "";
     else
         return w;
-    if ("c".includes(deadcons)) {
+    if (("c".includes(deadcons) || ("ch".includes(deadcons)) {
         if (toneclass == 1)
             ipa.rime = ipa.rime.replace('̽', '꪿');
         else
             ipa.rime = ipa.rime.replace('̽', '꫁');
     }
 	
-    if ("h".includes(deadcons)) {		
-        if ("ch".includes(ipa.rime.slice(ipa.rime.length - 2))) {
-        if (toneclass == 1)
-            ipa.rime = ipa.rime.replace('̽', '꪿');
-        else
-            ipa.rime = ipa.rime.replace('̽', '꫁');
-		}
-    }
-
     if ("pt".includes(deadcons)) {
         if (ipa.rime.startsWith("ă") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("ê") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("i") || ipa.rime.startsWith("u") || ipa.rime.startsWith("ư") || ipa.rime.startsWith("uơ") || ipa.rime.startsWith("ơ")) {
             ipa.tone += "4";
