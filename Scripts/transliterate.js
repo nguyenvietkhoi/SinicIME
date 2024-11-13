@@ -1926,7 +1926,7 @@ function TaiDamRoma(w) {
     if ("k".includes(deadcons))
         ipa.tone += "ˀ";
     if ("h".includes(deadcons)) {
-        if ("ch".ipa.rime.slice(ipa.rime.length - 2))
+        if ("ch".includes(ipa.rime.slice(ipa.rime.length - 2)))
 			ipa.tone += "4";
 	}
 
@@ -1970,7 +1970,7 @@ function TaiDamRoma(w) {
     }
 	
     if ("h".includes(deadcons)) {		
-        if ("ch".ipa.rime.slice(ipa.rime.length - 2)) {
+        if ("ch".includes(ipa.rime.slice(ipa.rime.length - 2))) {
         if (toneclass == 1)
             ipa.rime = ipa.rime.replace('̽', '꪿');
         else
