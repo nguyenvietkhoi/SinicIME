@@ -1925,6 +1925,10 @@ function TaiDamRoma(w) {
         ipa.tone += "4";
     if ("k".includes(deadcons))
         ipa.tone += "ˀ";
+    if ("h".includes(deadcons)) {
+        if ("ch".ipa.rime.slice(ipa.rime.length - 2))
+			ipa.tone += "4";
+	}
 
     if (ipa.tone == "") {
         ipa.tone = "0";
@@ -1963,6 +1967,15 @@ function TaiDamRoma(w) {
             ipa.rime = ipa.rime.replace('̽', '꪿');
         else
             ipa.rime = ipa.rime.replace('̽', '꫁');
+    }
+	
+    if ("h".includes(deadcons)) {		
+        if ("ch".ipa.rime.slice(ipa.rime.length - 2)) {
+        if (toneclass == 1)
+            ipa.rime = ipa.rime.replace('̽', '꪿');
+        else
+            ipa.rime = ipa.rime.replace('̽', '꫁');
+		}
     }
 
     if ("pt".includes(deadcons)) {
