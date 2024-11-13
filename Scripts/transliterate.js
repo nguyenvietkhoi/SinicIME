@@ -1964,7 +1964,7 @@ function TaiDamRoma(w) {
         ipa.rime = ipaSQL[0].values[0] + "";
     else
         return w;
-    if (("c".includes(deadcons) || ("ch".includes(deadcons))) {
+    if (("c".includes(deadcons) || "ch".includes(deadcons))) {
         if (toneclass == 1)
             ipa.rime = ipa.rime.replace('̽', '꪿');
         else
