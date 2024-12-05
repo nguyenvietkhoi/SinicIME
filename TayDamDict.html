@@ -125,6 +125,9 @@ xhr1.send();
                     viet: (word[4] != null) ? word[4] : "",
                     meanings: []
                 }
+				if (word[5]==null) {
+					word[5]="";
+				}
                 var means = word[5].split("+");
                 means.forEach(function (mean) {
                     var explaination = mean.split("@");
@@ -152,6 +155,9 @@ xhr1.send();
                     }
                     mainstr += "</div>";
                 }
+				if (word[6]!=null) {
+					mainstr += "<div>"+"<p class='textpad'>👀&nbsp;&nbsp;" + word[6].replace("&","") + "</p>"+"</div>";
+				}
                 mainstr += "</div>";
             }
             document.getElementById("maincontent").innerHTML =  (mainstr);
