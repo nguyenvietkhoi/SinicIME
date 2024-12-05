@@ -262,11 +262,11 @@ function toIPA(pad, maxlevel, opttable, accent) {
 	var cubo = pad.split(" ");
     var i;
 	var ttt = "";
-	var ipaword = TaiDonIPA(cubo[0], accent);
+	var ipaword = TaiDamIPA(cubo[0], accent);
     ttt = ipaword;
     for (i = 1; i < cubo.length; i++) {
         var nextword = "";
-		ipaword = TaiDonIPA(cubo[i], accent)
+		ipaword = TaiDamIPA(cubo[i], accent)
         nextword = ipaword;
         
         if (ttt.slice(-1) == "\n")
