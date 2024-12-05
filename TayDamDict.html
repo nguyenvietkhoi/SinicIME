@@ -123,6 +123,7 @@ xhr1.send();
                     roma: (word[2] != null) ? word[2] : "",
                     ety: (word[3] != null) ? word[3] : "",
                     viet: (word[4] != null) ? word[4] : "",
+                    ref: (word[6] != null) ? word[6] : "",
                     meanings: []
                 }
 				if (word[5]==null) {
@@ -156,7 +157,7 @@ xhr1.send();
                     mainstr += "</div>";
                 }
 				if (word[6]!=null) {
-					mainstr += "<div>"+"<p class='textpad'>👀&nbsp;&nbsp;" + word[6].replace("&","") + "</p>"+"</div>";
+					mainstr += "<div>"+"<p class='textpad'>👀&nbsp;&nbsp;" + words[i].ref.replace("&","") + "</p>"+"</div>";
 				}
                 mainstr += "</div>";
             }
