@@ -122,6 +122,11 @@ src: url('../fonts/Tai-Son-La.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
+font-family: "Tai Son La Oldstyle";
+src: url('../fonts/TaiSonLaOldstyle-Regular.ttf') format('truetype');
+font-display: swap;
+}
+@font-face {
 font-family: "Muong Lo Cursive";
 src: url('../fonts/MuongLoCursive-Regular.ttf') format('truetype');
 font-display: swap;
