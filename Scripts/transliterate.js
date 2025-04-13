@@ -1162,13 +1162,18 @@ function TaiDamIPA(w, accent) {
                         else {
                             ipa.tone += "4";
                         }
-                    } else if (ipa.tone == "") {
+                    } else if ((ipa.tone == "") && (ipa.toneclass==2)) {
                         if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
                             ipa.tone = "5";
                         }
                         else {
                             ipa.tone = "4";
+							c = "̽"+c;
                         }
+                    } else if ((ipa.tone == "") && (ipa.toneclass==1)) {
+                            ipa.tone = "5";
+                    } else if ((ipa.tone == "꪿") && (ipa.toneclass==1)) {
+                            ipa.tone = "4";
                     }
                     ipa.rime += c;
 
@@ -1220,14 +1225,19 @@ function TaiDamIPA(w, accent) {
                                     else {
                                         ipa.tone += "4";
                                     }
-                                } else if (ipa.tone == "") {
-                                    if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
-                                        ipa.tone = "5";
-                                    }
-                                    else {
-                                        ipa.tone = "4";
-                                    }
-                                }
+                                } else if ((ipa.tone == "") && (ipa.toneclass==2)) {
+                        if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
+                            ipa.tone = "5";
+                        }
+                        else {
+                            ipa.tone = "4";
+							coda = "̽"+coda;
+                        }
+                    } else if ((ipa.tone == "") && (ipa.toneclass==1)) {
+                            ipa.tone = "5";
+                    } else if ((ipa.tone == "꪿") && (ipa.toneclass==1)) {
+                            ipa.tone = "4";
+                    }
                                 ipa.rime += coda;
                                 ipa.onset2 = ipa.onset2.slice(0, -1);
                             }
@@ -1284,14 +1294,19 @@ function TaiDamIPA(w, accent) {
                             else {
                                 ipa.tone += "4";
                             }
-                        } else if (ipa.tone == "") {
-                            if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
-                                ipa.tone = "5";
-                            }
-                            else {
-                                ipa.tone = "4";
-                            }
+                        }  else if ((ipa.tone == "") && (ipa.toneclass==2)) {
+                        if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
+                            ipa.tone = "5";
                         }
+                        else {
+                            ipa.tone = "4";
+							coda = "̽"+coda;
+                        }
+                    } else if ((ipa.tone == "") && (ipa.toneclass==1)) {
+                            ipa.tone = "5";
+                    } else if ((ipa.tone == "꪿") && (ipa.toneclass==1)) {
+                            ipa.tone = "4";
+                    }
                         ipa.rime += coda;
                         ipa.onset2 = ipa.onset2.slice(0, -1);
                     }
@@ -1368,14 +1383,19 @@ function TaiDamIPA(w, accent) {
                 else {
                     ipa.tone += "4";
                 }
-            } else if (ipa.tone == "") {
-                if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
-                    ipa.tone = "5";
-                }
-                else {
-                    ipa.tone = "4";
-                }
-            }
+            }  else if ((ipa.tone == "") && (ipa.toneclass==2)) {
+                        if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
+                            ipa.tone = "5";
+                        }
+                        else {
+                            ipa.tone = "4";
+							coda = "̽"+coda;
+                        }
+                    } else if ((ipa.tone == "") && (ipa.toneclass==1)) {
+                            ipa.tone = "5";
+                    } else if ((ipa.tone == "꪿") && (ipa.toneclass==1)) {
+                            ipa.tone = "4";
+                    }
             ipa.rime += coda;
             ipa.onset2 = ipa.onset2.slice(0, -1);
         }
@@ -1397,7 +1417,9 @@ function TaiDamIPA(w, accent) {
             ipa.tone = "0";
         }
     }
-    ipa.rime = ipa.rime.replace("̽", "");
+	if (ipa.tone!="4") {
+		ipa.rime = ipa.rime.replace("̽", "");
+	}
     if (ipa.tone == "") {
         ipa.tone = "0";
     }
@@ -1921,14 +1943,17 @@ function TaiDamRoma(w) {
         }
     }
     var deadcons = ipa.rime.slice(ipa.rime.length - 1)
-    if ("c".includes(deadcons))
+    if ("c".includes(deadcons)) {
         ipa.tone += "4";
+		ipa.rime += "`";
+	}
     if ("k".includes(deadcons))
         ipa.tone += "ˀ";
     if ("h".includes(deadcons)) {
         if ("ch".includes(ipa.rime.slice(ipa.rime.length - 2))) {
 			deadcons = "ch";
 			ipa.tone += "4";
+			ipa.rime += "`";
 		}
 	}
 
@@ -1959,6 +1984,23 @@ function TaiDamRoma(w) {
     if ((ipa.glide == "ꪫ") && (ipa.rime == "e")) {
         ipa.rime = "e`";
     }
+	
+    if ("pt".includes(deadcons)) {
+	  if (ipa.tone=="̣") {
+        if (ipa.rime.startsWith("ă") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("ê") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("i") || ipa.rime.startsWith("u") || ipa.rime.startsWith("ư") || ipa.rime.startsWith("uơ") || ipa.rime.startsWith("ơ")) {
+            ipa.tone += "4";
+			ipa.rime += "`";
+        } else {
+            ipa.tone += "5";
+        }
+	  } else if (ipa.tone=="́") {
+            ipa.tone += "4";
+			ipa.rime += "`";
+	  } else {
+            ipa.tone += "5";
+        }
+    }
+	
     ipaSQL = ipadb.exec("SELECT phone FROM TaiDam where roman='" + ipa.rime + "' ");
     if (ipaSQL.length > 0)
         ipa.rime = ipaSQL[0].values[0] + "";
@@ -1970,13 +2012,11 @@ function TaiDamRoma(w) {
         else
             ipa.rime = ipa.rime.replace('̽', '꫁');
     }
-	
     if ("pt".includes(deadcons)) {
-        if (ipa.rime.startsWith("ă") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("ê") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("i") || ipa.rime.startsWith("u") || ipa.rime.startsWith("ư") || ipa.rime.startsWith("uơ") || ipa.rime.startsWith("ơ")) {
-            ipa.tone += "4";
-        } else {
-            ipa.tone += "5";
-        }
+        if (toneclass == 1)
+            ipa.rime = ipa.rime.replace('̽', '꪿');
+        else
+            ipa.rime = ipa.rime.replace('̽', '');
     }
 
     ipaSQL = ipadb.exec("SELECT phone FROM TaiDam where roman='" + ipa.onset + "' ");
