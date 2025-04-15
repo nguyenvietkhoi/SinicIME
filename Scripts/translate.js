@@ -89,6 +89,7 @@ function translatepad(maxlevel) {
     phrase = phrase.replace(/\./g, " .|");
     phrase = phrase.replace(/\?/g, " ?|");
     phrase = phrase.replace(/!/g, " !|");
+    phrase = phrase.replace(/\n/g, " \n|");
     phrase = phrase.replace(/,/g, " ,");
     phrase = phrase.replace(/:/g, " :");
     phrase = phrase.replace(/;/g, " ;");
@@ -111,10 +112,10 @@ ttt = ttt.trim();
 if (ttt.length > 0) {
     ttt = ttt[0].toLocaleUpperCase("vi") + ttt.slice(1);
 }
-ttt = ttt.replace(/([.!?])\s+([a-záàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ])/gi, 
+ttt = ttt.replace(/([.!?\n])\s+([a-záàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ])/gi, 
     (_, punc, letter) => punc + ' ' + letter.toLocaleUpperCase("vi")
-  );
-$("#txtPadout").html(ttt.replace(/\n/g, " <br> "));
+  ).replace(/\n /g, "\n");
+$("#txtPadout").html(ttt);
 }
 
 function searchbetween(phrase, maxlevel) {
