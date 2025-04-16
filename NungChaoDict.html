@@ -82,12 +82,13 @@ xhr1.send();
     }
     function showAlphabet() {
         kbbool = !kbbool;
-        if (kbbool)
+        if (kbbool) {
             $("#alphabet").show();
 			document.getElementById("maincontent").style.marginTop = "130px";
-        else
+        } else {
             $("#alphabet").hide();
 			document.getElementById("maincontent").style.marginTop = "100px";
+		}
     }
 	
     function virtualtype(key) {

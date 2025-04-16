@@ -85,12 +85,13 @@ xhr1.send();
     }
     function showAlphabet() {
         kbbool = !kbbool;
-        if (kbbool)
+        if (kbbool) {
             $("#alphabet").show();
 			document.getElementById("maincontent").style.marginTop = "155px";
-        else
+        } else {
             $("#alphabet").hide();
 			document.getElementById("maincontent").style.marginTop = "100px";
+		}
     }
     function lookupOri() {
         var orireq = document.getElementById("oriPad").value.toLowerCase();
