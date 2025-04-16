@@ -87,8 +87,10 @@ xhr1.send();
         kbbool = !kbbool;
         if (kbbool)
             $("#alphabet").show();
+			document.getElementById("maincontent").style.marginTop = "155px";
         else
             $("#alphabet").hide();
+			document.getElementById("maincontent").style.marginTop = "100px";
     }
     function lookupOri() {
         var orireq = document.getElementById("oriPad").value.toLowerCase();
@@ -591,6 +593,18 @@ $('#ipalist').click(function(e){
 		.Home_button {
 			padding: 7px;
 		}
+}
+@media (max-width: 895px) {
+        .Home_title {
+			padding: 15px 7px;
+		}
+		.Home_button {
+			padding: 15px 7px;
+		}
+  #oriPad {
+      max-width: 200px;
+	  margin-left: 0rem;
+  }
 }
 
 .Home_button .tooltiptext {

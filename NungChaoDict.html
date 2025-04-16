@@ -84,8 +84,10 @@ xhr1.send();
         kbbool = !kbbool;
         if (kbbool)
             $("#alphabet").show();
+			document.getElementById("maincontent").style.marginTop = "130px";
         else
             $("#alphabet").hide();
+			document.getElementById("maincontent").style.marginTop = "100px";
     }
 	
     function virtualtype(key) {
@@ -631,6 +633,18 @@ left: 0px;
 #dropdict {
 left:5rem;
 }
+}
+@media (max-width: 895px) {
+        .Home_title {
+			padding: 15px 7px;
+		}
+		.Home_button {
+			padding: 15px 7px;
+		}
+  #oriPad {
+      max-width: 200px;
+	  margin-left: 0rem;
+  }
 }
 .Home_button .tooltiptext {
   visibility: hidden;
