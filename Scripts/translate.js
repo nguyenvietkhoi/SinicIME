@@ -38,6 +38,13 @@ function translatesentence(sentence, maxlevel) {
 	var output = [];
     var words = sentence.split(" ");
     words = words.filter(function (a) { return a !== '' });	
+	
+	//duplicator
+	for (j = 1; j < words.length; j++) {
+		if (words[j] == "꫟")
+			words[j] = words[j-1];
+	}
+	
 	let i = 0;
 	while (i < words.length) {
 		let matched = false;
@@ -93,6 +100,9 @@ function translatepad(maxlevel) {
     phrase = phrase.replace(/,/g, " ,");
     phrase = phrase.replace(/:/g, " :");
     phrase = phrase.replace(/;/g, " ;");
+	
+    phrase = phrase.replace(/ꫜ/g, "ꪙꪳ꪿ꪉ");
+    phrase = phrase.replace(/ꫛ/g, "ꪶꪁꪙ");
     var sentence = phrase.split("|");
     sentence = sentence.filter(function (a) { return a !== '' });	
 	
