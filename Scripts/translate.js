@@ -51,7 +51,7 @@ function translatesentence(sentence, maxlevel) {
     // Try the longest possible match from current word
     for (let len = Math.min(5, words.length - i); len > 0; len--) {
       var compound = words.slice(i, i + len).join(' ');
-	  contents = condb3.exec("SELECT viet, " + transtable + " FROM trans" + transtable + " WHERE " + transtable + " = '" + compound.toLowerCase().replace(/\'/g, "''") + "'");
+	  contents = condb3.exec("SELECT viet,(level % " + maxlevel + ") FROM trans" + transtable + " WHERE " + transtable + " = '" + compound.toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc");
       if (contents.length != 0) {
         output.push(contents[0].values[0][0]);
         i += len;
