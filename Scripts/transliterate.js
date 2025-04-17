@@ -1870,8 +1870,8 @@ function TaiDaengRoma(w) {
     ipa.onset = ipa.onset.replace("gh", "g");
     if ((ipa.onset == "c") || (ipa.onset == "c`"))
         ipa.onset = ipa.onset.replace("c", "k");
-    if ((ipa.glide == "ꪫ‍") && (ipa.rime == "e")) {
-        ipa.rime = "e`";
+    if ((ipa.glide == "ꪫ‍") && ((ipa.rime == "e") || (ipa.rime == "ê"))) {
+        ipa.rime += "`";
     }
     ipaSQL = ipadb.exec("SELECT phone FROM TaiDaeng where roman='" + ipa.rime + "' ");
     if (ipaSQL.length > 0)
@@ -1981,8 +1981,8 @@ function TaiDamRoma(w) {
     ipa.onset = ipa.onset.replace("gh", "g");
     if ((ipa.onset == "c") || (ipa.onset == "c`"))
         ipa.onset = ipa.onset.replace("c", "k");
-    if ((ipa.glide == "ꪫ") && (ipa.rime == "e")) {
-        ipa.rime = "e`";
+    if ((ipa.glide == "ꪫ") && ((ipa.rime == "e") || (ipa.rime == "ê"))) {
+        ipa.rime += "`";
     }
 	
     if ("pt".includes(deadcons)) {
