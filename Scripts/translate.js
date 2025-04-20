@@ -36,6 +36,7 @@ function inverse() {
 	
 function translatesentence(sentence, maxlevel) {
 	var output = [];
+	var outpos = [];
     var words = sentence.split(" ");
     words = words.filter(function (a) { return a !== '' });	
 	
@@ -51,9 +52,10 @@ function translatesentence(sentence, maxlevel) {
     // Try the longest possible match from current word
     for (let len = Math.min(5, words.length - i); len > 0; len--) {
       var compound = words.slice(i, i + len).join(' ');
-	  contents = condb3.exec("SELECT viet,(level % " + maxlevel + ") FROM trans" + transtable + " WHERE " + transtable + " = '" + compound.toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc");
+	  contents = condb3.exec("SELECT viet,pos,(level % " + maxlevel + ") FROM trans" + transtable + " WHERE " + transtable + " = '" + compound.toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc");
       if (contents.length != 0) {
         output.push(contents[0].values[0][0]);
+        outpos.push(contents[0].values[0][1]);
         i += len;
         matched = true;
         break;
@@ -61,13 +63,15 @@ function translatesentence(sentence, maxlevel) {
 		  var outsyntax = [];
 		  [matched, outsyntax] = searchbetween(compound, maxlevel);
 		  if (matched) {
-			output.push(outsyntax);
+					output.push(outsyntax.res);
+					outpos.push(outsyntax.pos);
 			i += len;			  
 			break;
 		  } else {
 				[matched, outsyntax] = searchend(compound, maxlevel);
 				if (matched) {
-					output.push(outsyntax);
+					output.push(outsyntax.res);
+					outpos.push(outsyntax.pos);
 					i += len;			  
 					break;
 				}
@@ -77,17 +81,19 @@ function translatesentence(sentence, maxlevel) {
 
     // If no match found, keep the original word
     if (!matched) {
-      contents = condb3.exec("select viet,(level % " + maxlevel + ") from trans" + transtable + " where " + transtable + "='" + words[i].toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc");
+      contents = condb3.exec("select viet,pos,(level % " + maxlevel + ") from trans" + transtable + " where " + transtable + "='" + words[i].toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc");
 	  if (contents.length != 0) {
 		  output.push(contents[0].values[0][0]);
+		  outpos.push(contents[0].values[0][1]);
 	  } else {
 		  output.push(words[i]);
+		  outpos.push(null);
 	  }
       i++;
     }
 	}
   
-  return output;
+  return {res: output, pos: outpos};
 }
 
 function translatepad(maxlevel) {
@@ -109,7 +115,7 @@ function translatepad(maxlevel) {
 	var output = [];
 	for (var ise=0; ise<sentence.length; ise++) {	
 		output = translatesentence(sentence[ise], maxlevel);
-		outputarr.push(...output);
+		outputarr.push(...output.res);
 	}
 
     var ttt = outputarr[0];
@@ -131,10 +137,11 @@ $("#txtPadout").html(ttt);
 function searchbetween(phrase, maxlevel) {
 	const words = phrase.trim().replace(/[.,!?;:()"]/g, '').split(/\s+/);
 	
-	contents = condb3.exec("SELECT viet, id, " + transtable + "S, " + transtable + "E, (level % " + maxlevel + ") FROM between" + transtable + " WHERE " + transtable + "S = '" + words[0].toLowerCase().replace(/\'/g, "''") + "' AND " + transtable + "E = '" + words[words.length - 1].toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc limit 1");
+	var contents = condb3.exec("SELECT viet, id, " + transtable + "S, " + transtable + "E, (level % " + maxlevel + ") FROM between" + transtable + " WHERE " + transtable + "S = '" + words[0].toLowerCase().replace(/\'/g, "''") + "' AND " + transtable + "E = '" + words[words.length - 1].toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc limit 1");
 	if (contents.length != 0) {
 		var middle = words.length > 2 ? words.slice(1, -1).join(' ') : '';		
 		if (middle.length != 0) {
+var pos = null;
 switch(Math.floor(contents[0].values[0][1])) {
   case 1: //ngày
     if (!middle.includes(" ") && (middle != "ꪏꪱꪫ")) {
@@ -142,57 +149,44 @@ switch(Math.floor(contents[0].values[0][1])) {
 	} else {
 		contents = condb3.exec("SELECT viet, id, " + transtable + "S, " + transtable + "E, (level % " + maxlevel + ") FROM between" + transtable + " WHERE id = 1.1");
 	}
+	pos = "N";
     break;
   default:
 }
-			return [true, contents[0].values[0][0].replace(/\$/g, translatesentence(middle, maxlevel))];
+			return [true, {res: contents[0].values[0][0].replace(/\$/g, translatesentence(middle, maxlevel).res), pos: pos}];
 		} else {
-			return [false, []];
+			return [false, null];
 		}
 	} else {
-		return [false, []];
+		return [false, null];
 	}
 }
 
 function searchend(phrase, maxlevel) {
 	const words = phrase.trim().replace(/[.,!?;:()"]+$/g, '').split(/\s+/);
-	
-	contents = condb3.exec("SELECT viet, id, " + transtable + ", (level % " + maxlevel + ") FROM end" + transtable + " WHERE " + transtable + " = '" + words[words.length - 1].toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc limit 1");
+	var countablenoun;
+	var contents = condb3.exec("SELECT viet, id, " + transtable + ", (level % " + maxlevel + ") FROM end" + transtable + " WHERE " + transtable + " = '" + words[words.length - 1].toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc limit 1");
 	if (contents.length != 0) {
-		var middle = words.length > 1 ? words.slice(0, -1).join(' ') : '';		
-		if (middle.length != 0) {
+		var init = words.length > 1 ? words.slice(0, -1).join(' ') : '';		
+		if (init.length != 0) {
 switch(Math.floor(contents[0].values[0][1])) {
   case 1: //một
-    countablenoun = condb3.exec("SELECT viet, " + transtable + ",pos FROM trans" + transtable + " WHERE " + transtable + " = '" + middle.toLowerCase().replace(/\'/g, "''") + "'");
-    if (countablenoun.length != 0) {
-		var pos = countablenoun[0].values[0][2].split(",");
-		if (pos.includes("N")) {
-			return [true, contents[0].values[0][0].replace(/\$/g, countablenoun[0].values[0][0])];	
-		} else {		
-			return [false, []];	
-		}
-    } else {		
-		return [false, []];	
-	}
-	break;
   case 2: //mỗi một
-	if (middle.includes(" ")) {
-		return [false, []];		
-	}
-    if (middle == "ꪀꪷ") {
-		contents = condb3.exec("SELECT viet, id, " + transtable + ", (level % " + maxlevel + ") FROM end" + transtable + " WHERE id = 2.1");
-	} else {
-		contents = condb3.exec("SELECT viet, id, " + transtable + ", (level % " + maxlevel + ") FROM end" + transtable + " WHERE id = 2.0");
-	}
-    break;
+    var phrasalnoun = translatesentence(init, maxlevel);
+	  if (phrasalnoun.pos[0].includes("N") || phrasalnoun.pos[0].includes("Cl")) {
+			return [true, {res: contents[0].values[0][0].replace(/\$/g, phrasalnoun.res.join(' ')), pos: "N"}];	
+		} else {
+			return [false, null];	
+		}
+	break;
   default:
 }
-			return [true, contents[0].values[0][0].replace(/\$/g, translatesentence(middle, maxlevel))];
+			return [true, {res: contents[0].values[0][0].replace(/\$/g, translatesentence(init, maxlevel).res.join(' ')), pos: null}];
 		} else {
-			return [false, []];
+			return [false, null];
 		}
 	} else {
-		return [false, []];
+		return [false, null];
 	}
 }
 
