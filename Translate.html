@@ -211,7 +211,7 @@ float: right;
             <td rowspan="5" style="width: 100%;">
                 <textarea id="txtPad" style="padding: 3px; width: 50%; height: 68vh; font-size: 20px; border-color: #555;" onkeypress="txtPadKeyTyped(event)" onkeydown="txtPadKeyPressed(event)" onkeyup="txtPadKeyReleased(event)"></textarea>
                 <textarea id="txtPadout" style="padding: 3px; display: block !important; overflow:auto; width: 50%; height: 68vh;     background: #111; color: #fff; font-size: 20px; float: right; "></textarea>
-                <button id="copy_button" onclick="share()" style="display: none;">Copy</button>
+                <!--<button id="copy_button" onclick="share()" style="display: none;">Copy</button>-->
 				<nav class="navbar navbar-inverse" style="background-image: url('./Resources/wave.png'); border-radius: 0; border: 0; margin: 0;">
                     <div class="container-fluid">
                         <div class="navbar-collapse" id="myNavbar">
@@ -285,28 +285,39 @@ float: right;
         </div>
 		</div>
                                 </li>
-                                <li class="dropup" style="background-color: #69380e">
+                                <!--<li class="dropup" style="background-color: #69380e">
                                     <a style="padding: 0px;" class="dropdown-toggle" data-toggle="dropdown">
                                         <span><img class="funcbutt speakbutt" src="./Resources/speak.png"/></span>
                                     </a>
                                     <ul id="accentspeak" class="dropdown-menu">
                                         <li><a>N/A</a></li>
                                     </ul>
-                                </li>
+                                </li>-->
                                 <li class="dropup" style="background-color: #121890">
                                     <a style="padding: 0px;" class="dropdown-toggle" data-toggle="dropdown">
                                         <span>
-                                            <img class="funcbutt transbutt" src="./Resources/transcript.png"/>
+                                            <img class="funcbutt transbutt" src="./Resources/ipa.png"/>
                                         </span>
                                     </a>
                                     <ul id="accentipa" class="dropdown-menu">
                                         <li onclick="logo2ipa('SonLa',20)"><a>IPA: Mường La</a></li>
-                                        <li onclick="translatepad(20)"><a>→ abc</a></li>
-                                        <li onclick="convertpad(1,20)"><a>→ 文</a></li>
-                                        <li onclick="tovertical()"><a>Vertical</a></li>
                                     </ul>
                                 </li>
-                                
+								<!--<li onclick="tovertical()" style="background-color: #980600">
+									<a style="padding: 0px;">
+                                        <span><img class="funcbutt speakbutt" src="./Resources/vertical.png"/></span>
+                                    </a>
+								</li>
+                                <li onclick="convertpad(1,20)" style="background-color: #980600">
+									<a style="color: #fff;font-size: x-large;padding: 15px 13px;">文</a>
+								</li>-->
+                                <li class="dropup" style="background-color: #006d39" onclick="translatepad(20)">
+                                    <a style="padding: 0px;">
+                                        <span>
+                                            <img class="funcbutt transbutt" src="./Resources/translate.png"/>
+                                        </span>
+                                    </a>
+                                </li>
                                 <!--<li id="autocomplete" onclick="myCheck(2)"><a>…</a></li>-->
                             </ul>
                         </div>

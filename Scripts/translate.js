@@ -173,11 +173,13 @@ switch(Math.floor(contents[0].values[0][1])) {
   case 1: //một
   case 2: //mỗi một
     var phrasalnoun = translatesentence(init, maxlevel);
-	  if (phrasalnoun.pos[0].includes("N") || phrasalnoun.pos[0].includes("Cl")) {
+	if (phrasalnoun.pos[0]==null)
+		return [false, null];	
+	if (phrasalnoun.pos[0].includes("N") || phrasalnoun.pos[0].includes("Cl")) {
 			return [true, {res: contents[0].values[0][0].replace(/\$/g, phrasalnoun.res.join(' ')), pos: "N"}];	
-		} else {
+	} else {
 			return [false, null];	
-		}
+	}
 	break;
   default:
 }
