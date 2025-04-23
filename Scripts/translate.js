@@ -181,6 +181,8 @@ function searchend(phrase, maxlevel) {
 switch(Math.floor(contents[0].values[0][1])) {
   case 1: //một
 	if ((words.slice(-2)[0] == "ꪜꪱꪥ") && init.includes(" "))
+		return [false, null];
+	if (words.slice(0, -1).includes("ꪙꪳ꪿ꪉ"))
 		return [false, null];	
   case 2: //mỗi một
     var phrasalnoun = translatesentence(init, maxlevel);
