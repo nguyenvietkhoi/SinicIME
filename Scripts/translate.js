@@ -76,7 +76,8 @@ function translatesentence(sentence, maxlevel) {
 					i += len;			  
 					break;
 				}  else {
-					[matched, outsyntax] = searchend(compound, maxlevel);
+					var next = i < words.length-1 ? words[i+1] : null;
+					[matched, outsyntax] = searchend(compound, maxlevel, next);
 						if (matched) {
 						output.push(outsyntax.res);
 						outpos.push(outsyntax.pos);
@@ -171,7 +172,7 @@ switch(Math.floor(contents[0].values[0][1])) {
 	}
 }
 
-function searchend(phrase, maxlevel) {
+function searchend(phrase, maxlevel, next) {
 	const words = phrase.split(" ");
 	var countablenoun;
 	var contents = condb3.exec("SELECT viet, id, " + transtable + ", (level % " + maxlevel + ") FROM end" + transtable + " WHERE " + transtable + " = '" + words.slice(-1)[0].toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc limit 1");
@@ -190,6 +191,34 @@ switch(Math.floor(contents[0].values[0][1])) {
 		return [false, null];	
 	if (phrasalnoun.pos[0].split(',').includes("N") || phrasalnoun.pos[0].split(',').includes("Cl")) {
 			return [true, {res: contents[0].values[0][0].replace(/\$/g, phrasalnoun.res.join(' ')), pos: "N"}];	
+	} else {
+			return [false, null];	
+	}
+	break;
+  case 3: //chỉ
+    var phrasalverb = translatesentence(init, maxlevel);
+	if (phrasalverb.pos.length!=1)
+		return [false, null];
+	if (phrasalverb.pos[0]==null)
+		return [false, null];
+	var contents2 = condb3.exec("SELECT viet,pos,(level % " + maxlevel + ") FROM trans" + transtable + " WHERE " + transtable + " = '" + (words.slice(-1)[0] + " " + next).toLowerCase().replace(/\'/g, "''") + "' order by (level % " + maxlevel + ") desc");
+	if (contents.length != 0) {
+			return [false, null];			
+	}
+	if (phrasalverb.pos[0].split(',').includes("V")) {
+			return [true, {res: contents[0].values[0][0].replace(/\$/g, phrasalverb.res.join(' ')), pos: "V"}];	
+	} else {
+			return [false, null];	
+	}
+	break;
+  case 4: //động từ + vào
+    var phrasalverb = translatesentence(init, maxlevel);
+	if (phrasalverb.pos.length!=1)
+		return [false, null];
+	if (phrasalverb.pos[0]==null)
+		return [false, null];
+	if (phrasalverb.pos[0].split(',').includes("V")) {
+			return [true, {res: contents[0].values[0][0].replace(/\$/g, phrasalverb.res.join(' ')), pos: "V"}];	
 	} else {
 			return [false, null];	
 	}
