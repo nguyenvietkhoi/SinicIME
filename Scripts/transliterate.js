@@ -1548,14 +1548,14 @@ function TaiPaoIPA(w, accent) {
             }
             else if ((ipa.rime != "") && ("𕉐𕉢𕉪".includes(c))) {
                 tmpconso = c;
-                if ("𕊀𕊉𕊈𕊄𕊂𕊃𕊇".includes(ipa.rime) && ipa.tone != "𕊑")
+                if ("𕊀𕊉𕊈𕊄𕊂𕊃𕊇𕊋".includes(ipa.rime) && ipa.tone != "𕊑")
                     ipa.tone = "5";
 				else if (ipa.tone != "𕊑") {
                     ipa.tone = "5";
 					ipa.rime = "𕊑" + ipa.rime;
 				}
                 else {
-                    if ("𕊀𕊉𕊄𕊂𕊃𕊇".includes(ipa.rime))
+                    if ("𕊀𕊉𕊄𕊂𕊃𕊇𕊋".includes(ipa.rime))
                         ipa.rime = ipa.rime + ipa.tone;
                     else
                         ipa.rime = ipa.tone + ipa.rime;
@@ -2092,9 +2092,6 @@ function TaiPaoRoma(w) {
     if (ipa.rime[0] == "w") {
         ipa.glide = "𕉻";
         ipa.rime = ipa.rime.substring(1);
-    }
-    if (ipa.rime == "â") {
-        ipa.rime = "ơ";
     }
 
     ipaSQL = ipadb.exec("SELECT phone FROM TaiPao where roman='" + ipa.rime + "' ");
