@@ -95,17 +95,17 @@ xhr1.send();
 		if (dictbool)
             contents = condb.exec('SELECT * FROM yay WHERE roma LIKE \'' + orireq.slice(0,-1) + '%\' OR roma LIKE \'% ' + orireq.slice(0,-1) + '%\'');
         else
-            contents = condb.exec('SELECT * FROM yay WHERE viet LIKE \'' + orireq.slice(0,-1) + '%\' OR viet LIKE \'% ' + orireq.slice(0,-1) + '%\'');
+            contents = condb.exec('SELECT * FROM yay WHERE viet LIKE \'%' + orireq.slice(0,-1) + '%\'');
 	} else if (orireq.startsWith('*')) {
 		if (dictbool)
             contents = condb.exec('SELECT * FROM yay WHERE roma LIKE \'%' + orireq.slice(1) + '\' OR roma LIKE \'%' + orireq.slice(1) + ' %\'');
         else
-            contents = condb.exec('SELECT * FROM yay WHERE viet LIKE \'%' + orireq.slice(1) + '\' OR viet LIKE \'%' + orireq.slice(1) + ' %\'');
+            contents = condb.exec('SELECT * FROM yay WHERE viet LIKE \'%' + orireq.slice(1) + '%\'');
 	} else {
 		if (dictbool)
             contents = condb.exec('SELECT * FROM yay WHERE roma = \'' + orireq + '\' OR nom LIKE \'%' + orireq + '%\' UNION ALL SELECT * FROM yay WHERE roma LIKE \'% ' + orireq + ' %\' OR roma LIKE \'' + orireq + ' %\' OR roma LIKE \'% ' + orireq + '\'');
         else
-            contents = condb.exec('SELECT * FROM yay WHERE viet = \'' + orireq + '\' UNION ALL SELECT * FROM yay WHERE viet LIKE \'% ' + orireq + ' %\' OR viet LIKE \'' + orireq + ' %\' OR viet LIKE \'% ' + orireq + '\'');
+            contents = condb.exec('SELECT * FROM yay WHERE viet = \'' + orireq + '\' UNION ALL SELECT * FROM yay WHERE viet LIKE \'%' + orireq + '%\'');
 	}
         
         if (contents.length != 0) {
