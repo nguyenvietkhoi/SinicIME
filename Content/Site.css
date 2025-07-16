@@ -317,6 +317,11 @@ font-display: swap;
     padding: 7px;
     }
 }
+@media (max-width: 698px) {
+    .jumbotron {
+		margin-top: 34px;
+    }
+}
 @media (max-width: 590px) {
     /*#example {
         min-height: 203px;height: 45%;
