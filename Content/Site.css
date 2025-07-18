@@ -50,18 +50,6 @@ src:
 font-display: swap;
 }
 @font-face {
-font-family: SimSun-ExtB;
-src: url('../fonts/SIMSUNBZ.ttf#iefix') format('embedded-opentype');
-font-display: swap;
-}
-/*@font-face {
-font-family: MingLiU-ExtB;
-src: 
-    local(MingLiU-ExtB),
-    url(../fonts/MINGLIUB.TTC#1)
-;
-}*/
-@font-face {
 font-family: "Tai Lanna";
 src: url('../fonts/TaiLanna.ttf') format('truetype');
 font-display: swap;
@@ -92,23 +80,18 @@ src: url('../fonts/NomNaTongLight.ttf#iefix') format('embedded-opentype');
 font-display: swap;
 }
 @font-face {
-font-family: HanaMinA;
-src: url('../fonts/HanaMinA.ttf') format('truetype');
-font-display: swap;
-unicode-range: U+4E00-9FFF, U+3400-4DBF;
-}
-@font-face {
-font-family: FSung-2;
-src: url('../fonts/FSung-2.ttf') format('truetype');
+font-family: SimSun;
+src: url('../fonts/simsun.ttc') format('truetype');
 font-display: swap;
 }
 @font-face {
-font-family: FSung-3;
-src: url('../fonts/FSung-3.ttf') format('truetype');
+font-family: SimSun-ExtB;
+src: url('../fonts/simsunb.ttf') format('truetype');
+font-display: swap;
 }
 @font-face {
-font-family: HanaMinB;
-src: url('../fonts/HanaMinB.ttf') format('truetype');
+font-family: SimSun-ExtG;
+src: url('../fonts/SimsunExtG.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
@@ -210,7 +193,7 @@ font-display: swap;
 
 #txtPad, #txtPadout {    
     min-height: 500px;
-    font-family: Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+    font-family: Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
     background-color: #0808088c;
     color: #fff;
 }
