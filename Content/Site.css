@@ -193,6 +193,7 @@ font-display: swap;
 
 #txtPad, #txtPadout {    
     min-height: 500px;
+    resize: none;
     font-family: Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
     background-color: #0808088c;
     color: #fff;
