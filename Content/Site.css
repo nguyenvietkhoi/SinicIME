@@ -115,8 +115,8 @@ src: url('../fonts/MuongLoCursive-Regular.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
-font-family: "Tai Muong Lay";
-src: url('../fonts/Tai-Muong-Lay.ttf') format('truetype');
+font-family: "Muong So Cursive";
+src: url('../fonts/MuongSoCursive-Regular.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {

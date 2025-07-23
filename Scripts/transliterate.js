@@ -373,13 +373,13 @@ function TaiDonIPA(w, accent) {
     w = w.replace('ꫜ', 'ꪙꪳ꪿ꪉ');
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪇꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
+        if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
                 ipa.rime += "◌";
                 if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪ".includes(c))
                     ipa.toneclass = 1;
-                else if ("ꪁꪇꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c))
+                else if ("ꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c))
                     ipa.toneclass = 2;
             }
             else if (((ipa.rime == "") || (ipa.rime.endsWith("◌"))) && (c != "ꪮ") && (!ipa.onset2.endsWith("1"))) {
@@ -565,7 +565,7 @@ function TaiDonIPA(w, accent) {
         }
         else {
             if ((ipa.onset == "") && (!"ꪵ◌ꪹ◌ꪶ◌ꪻ◌ꪼ◌".includes(c))) {
-                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪇꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(tmpconso)) {
+                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(tmpconso)) {
                     tmpconso = "";
                     var previpa = ipalist.pop();
                     previpa.rime = previpa.rime.slice(0, -1);
@@ -1801,7 +1801,7 @@ function TaiDonRoma(w) {
     else
         return w;
 
-    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ‍", "ꪷ‍꪿").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ‍", "ꪷ‍꫁").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
+    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷꪷ", "ꪷꪷ꪿").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷꪷ", "ꪷꪷ꫁").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
     return res;
 }
 function TaiDaengRoma(w) {

@@ -253,10 +253,10 @@ function opttableselect(tablesel) {
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
                 '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
-            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
-            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
-            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
-            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Tai Muong Lay") });
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Muong So Cursive") });
+            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Muong So Cursive") });
+            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Muong So Cursive") });
+            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Muong So Cursive") });
             break;
         case 19: opttable = "rubylanna";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -2264,7 +2264,7 @@ function TAIDON(text, ch) {
         case 'n': tch = "ꪙ"; break;
         case 'o': tch = "ꪮ"; break;
         case 'p': tch = "ꪜ"; break;
-        case 'q': tch = "ꪇ"; break;
+        case 'q': tch = "ꪅ"; break;
         case 'r': tch = "ꪭ"; break;
         case 's': tch = "ꪎ"; break;
         case 't': tch = "ꪔ"; break;
@@ -2288,7 +2288,7 @@ function TAIDON(text, ch) {
     }
     var roma = t + ch;
     switch (roma) {
-        case 'ꪷw': roma = "ꪷ‍"; break;
+        case 'ꪷw': roma = "ꪷꪷ"; break;
         case 'ꪱa': roma = "꫏"; break;
         case 'ꪶ3': roma = "ꪶ‍"; break;
         case '\'h': roma = "ꪬ"; break;
@@ -5686,8 +5686,8 @@ function loadkeyboard() {
                 $('#K55').html("<br>ꪼ");
                 $('#K56').html("<br><span style='color: #ffc000;'>◌ꪸ</span>");
                 $('#K57').html("<br><span style='color: #ffc000;'>◌ꪳ</span>");
-                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br>ꪇ");
-                $('#K87').html("<span style='color: #b1bb13;'>ꪷ‍</span><br><span style='color: #7ba064;'>ꪷ</span>");
+                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br>ꪅ");
+                $('#K87').html("<span style='color: #b1bb13;'>◌ꪷꪷ</span><br><span style='color: #7ba064;'>ꪷ</span>");
                 $('#K69').html("<br>ꪹ");
                 $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
                 $('#K84').html("<span style='color: #d22e9f;'>ꪕ   </span><br>ꪔ");
