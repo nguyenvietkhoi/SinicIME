@@ -389,7 +389,7 @@ function TaiDonIPA(w, accent) {
                 ipa.onset2 += c;
             }
             else {
-                if ("ꪀꪒꪚꪰ‍ꪒ".includes(c)) {
+                if ("ꪀꪒꪚ꫉".includes(c)) {
                     tmpconso = c;
                     if (c == "ꪀ") {
                         if (ipa.tone == "") {
@@ -448,7 +448,7 @@ function TaiDonIPA(w, accent) {
                                 ipa.onset2 = ipa.onset2.slice(0, -1);
                                 coda = ipa.onset2.slice(-1);
                             }
-                            if ("ꪀꪒꪚꪰ‍ꪒ".includes(coda)) {
+                            if ("ꪀꪒꪚ꫉".includes(coda)) {
                                 if (coda == "ꪀ") {
                                     if (ipa.tone == "") {
                                         ipa.tone = "ˀ";
@@ -515,7 +515,7 @@ function TaiDonIPA(w, accent) {
                         ipa.onset2 = ipa.onset2.slice(0, -1);
                         coda = ipa.onset2.slice(-1);
                     }
-                    if ("ꪀꪒꪚꪰ‍ꪒ".includes(coda)) {
+                    if ("ꪀꪒꪚ꫉".includes(coda)) {
                         if (coda == "ꪀ") {
                             if (ipa.tone == "") {
                                 ipa.tone = "ˀ";
@@ -599,7 +599,7 @@ function TaiDonIPA(w, accent) {
             ipa.onset2 = ipa.onset2.slice(0, -1);
             coda = ipa.onset2.slice(-1);
         }
-        if ("ꪀꪒꪚꪰ‍ꪒ".includes(coda)) {
+        if ("ꪀꪒꪚ꫉".includes(coda)) {
             if (coda == "ꪀ") {
                 if (ipa.tone == "") {
                     ipa.tone = "ˀ";
