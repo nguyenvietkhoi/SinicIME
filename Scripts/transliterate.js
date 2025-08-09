@@ -726,7 +726,7 @@ function TaiDonIPA(w, accent) {
             if ((ipatmp.onset == "k") && !ipatmp.rime.startsWith("i") && !ipatmp.rime.startsWith("e") && !ipatmp.rime.startsWith("ê")) {
                 ipatmp.onset = ipatmp.onset.replace("k", "c").replace("g", "gh").replace("ng", "ngh");
             }
-			if (ipatmp.rime.startsWith("i") && ipatmp.onset.endsWith("w")) {
+			if (ipatmp.rime.startsWith("i") && (ipatmp.onset.endsWith("w") || ipatmp.onset.endsWith("qu"))) {
                 ipatmp.onset = ipatmp.onset.replace("w", "u");
                 ipatmp.rime = ipatmp.rime.replace("i", "y");
             }
@@ -1109,7 +1109,7 @@ function TaiDaengIPA(w, accent) {
             if ((ipatmp.onset == "k") && !ipatmp.rime.startsWith("i") && !ipatmp.rime.startsWith("e") && !ipatmp.rime.startsWith("ê")) {
                 ipatmp.onset = ipatmp.onset.replace("k", "c").replace("g", "gh").replace("ng", "ngh");
             }
-			if (ipatmp.rime.startsWith("i") && ipatmp.onset.endsWith("w")){
+			if (ipatmp.rime.startsWith("i") && (ipatmp.onset.endsWith("w") || ipatmp.onset.endsWith("qu"))) {
                 ipatmp.onset = ipatmp.onset.replace("w", "u");
                 ipatmp.rime = ipatmp.rime.replace("i", "y");
                 ipatmp.rime = ipatmp.rime.replace("yy", "yi");
@@ -1505,7 +1505,7 @@ function TaiDamIPA(w, accent) {
             if ((ipatmp.onset == "k") && !ipatmp.rime.startsWith("i") && !ipatmp.rime.startsWith("e") && !ipatmp.rime.startsWith("ê")) {
                 ipatmp.onset = ipatmp.onset.replace("k", "c").replace("g", "gh").replace("ng", "ngh");
             }
-			if (ipatmp.rime.startsWith("i") && ipatmp.onset.endsWith("w")) {
+			if (ipatmp.rime.startsWith("i") && (ipatmp.onset.endsWith("w") || ipatmp.onset.endsWith("qu"))) {
                 ipatmp.onset = ipatmp.onset.replace("w", "u");
                 ipatmp.rime = ipatmp.rime.replace("i", "y");
             }
