@@ -3,7 +3,7 @@
 }
 
 var shiftbool = false;
-var opttablelist = [$('#Hannom').val(), $('#Midchinese').val(), $('#Southmin').val(), $('#Eastmin').val(), $('#Hakka').val(), $('#Mandarin').val(), $('#Yue').val(), $('#Wu').val(), $('#Hankor').val(), $('#Japanese').val(), $('#Sawndip').val(), $('#SinoYay').val(), $('#SinoSaek').val(), $('#SinoYang').val(), $('#Tay').val(), $('#SinoThai').val(), $('#SinoLao').val(), $('#SinoTaidam').val(), $('#SinoTaidon').val(), $('#SinoLanna').val(), $('#SinoKhuen').val(), $('#SinoTaiyai').val(), $('#SinoTainuea').val(), $('#SinoTailue').val(), $('#SinoTaiyo').val(), $('#SinoTaipao').val(), $('#SinoAhom').val(), $('#SinoTaideng').val(), $('#SinoNung').val(), $('#Muong').val(), $('#Sukhothai').val(), $('#Kemmun').val(), $('#Iumien').val()];
+var opttablelist = [$('#Hannom').val(), $('#Midchinese').val(), $('#Southmin').val(), $('#Eastmin').val(), $('#Hakka').val(), $('#Mandarin').val(), $('#Yue').val(), $('#Wu').val(), $('#Hankor').val(), $('#Japanese').val(), $('#Sawndip').val(), $('#SinoYay').val(), $('#SinoSaek').val(), $('#SinoYang').val(), $('#Tay').val(), $('#SinoThai').val(), $('#SinoLao').val(), $('#SinoTaidam').val(), $('#SinoTaidon').val(), $('#SinoLanna').val(), $('#SinoKhuen').val(), $('#SinoTaiyai').val(), $('#SinoTainuea').val(), $('#SinoTailue').val(), $('#SinoTaiyo').val(), $('#SinoTaipao').val(), $('#SinoAhom').val(), $('#SinoTaideng').val(), $('#SinoNung').val(), $('#Muong').val(), $('#Sukhothai').val(), $('#Kemmun').val(), $('#Iumien').val(), $('#SinoAiton').val()];
 var kblist = ["E→文", "E→อ", "อ→文"];
 var keyboard = 0;
 var contents = [];
@@ -135,10 +135,10 @@ function myCheck(boxclick) {
 
 function opttableselect(tablesel) {
     quocngu = tablesel;
-    $("#keyboard").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("body").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("#txtPad").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("#txtPadout").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#keyboard").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("body").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#txtPad").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#txtPadout").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
     switch (quocngu) {
         case 1: opttable = "rubytriung";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -305,6 +305,17 @@ function opttableselect(tablesel) {
         case 26: opttable = "rubyahom";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
             document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>文 → 𑜄</a></li>' + convertdeftext);
+            break;
+        case 33: opttable = "rubyaiton";
+			document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'Golaghat\',20)"><a>IPA: ' + $("#Golaghat").val() + '</a></li>' +
+                '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
+                '<li onclick="roma2phone()"><a>abc → တ</a></li>' +
+                '<li onclick="convertpad(0,20)"><a>文 → တ</a></li>' + convertdeftext);
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Myanmar Text", "Lik Tai Aiton") });
+            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Myanmar Text", "Lik Tai Aiton") });
+            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Myanmar Text", "Lik Tai Aiton") });
+            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Myanmar Text", "Lik Tai Aiton") });
             break;
         case 27: opttable = "rubytaideng";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -853,6 +864,10 @@ function logo2ipa(accent, maxlevel) {
                         ipaword = TaiNueaIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
                         break;
+                    case 'Golaghat':
+                        ipaword = TaiAitonIPA(word[i], accent);
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 'PanNa':
                         ipaword = TaiLueIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
@@ -921,6 +936,10 @@ function logo2roman(maxlevel) {
                         break;
                     case 22:
                         ipaword = TaiNueaIPA(word[i], "roman");
+                        convtxt += (prespace + ipaword);
+                        break;
+                    case 33:
+                        ipaword = TaiAitonIPA(word[i], "roman");
                         convtxt += (prespace + ipaword);
                         break;
                     case 27:
@@ -1114,6 +1133,10 @@ function roma2phone() {
                         break;
                     case 22:
                         ipaword = TaiNueaRoma(word[i]);
+                        convtxt += (prespace + ipaword);
+                        break;
+                    case 33:
+                        ipaword = TaiAitonRoma(word[i]);
                         convtxt += (prespace + ipaword);
                         break;
                     case 27:
@@ -1691,6 +1714,7 @@ function typeChar(text, ch) {
             case 27: return TAIDENG(text, ch);
             case 24: return TAIYO(text, ch);
             case 25: return LAIPAO(text, ch);
+            case 33: return TAIAITON(text, ch);
             case 26: return TAIAHOM(text, ch);
         }
     }
@@ -2484,6 +2508,16 @@ function TAIYAI(text, ch) {
     var t = text[text.length - 1];
     var roma = t + ch;
     switch (roma) {
+        case '်1': roma = "႑"; break;
+        case 'ႇ2': roma = "႒"; break;
+        case 'ႈ3': roma = "႓"; break;
+        case 'း4': roma = "႔"; break;
+        case 'ႉ5': roma = "႕"; break;
+        case 'ႊ6': roma = "႖"; break;
+        case 'ဵ7': roma = "႗"; break;
+        case 'ႅ8': roma = "႘"; break;
+        case 'ႆ9': roma = "႙"; break;
+        case 'ႂ0': roma = "႐"; break;
         case 'ၢa': roma = "ႃ"; break;
         case 'ိi': roma = "ီ"; break;
         case 'ၽh': roma = "ၾ"; break;
@@ -2494,6 +2528,76 @@ function TAIYAI(text, ch) {
         case 'ပh': roma = "ၿ"; break;
         case 'တh': roma = "ၻ"; break;
         case 'သh': roma = "ႀ"; break;
+        default: roma = t + tch; break;
+    }
+    return text.substring(0, text.length - 1) + roma;
+}
+
+function TAIAITON(text, ch) {
+    var tch = "";
+    switch (ch) {
+        case '0': tch = "ံ"; break;
+        case '1': tch = "်"; break;
+        case '2': tch = "ႇ"; break;
+        case '3': tch = "ႈ"; break;
+        case '4': tch = "း"; break;
+        case '5': tch = "ႉ"; break;
+        case '6': tch = "ႛ"; break;
+        case '7': tch = "ႋ"; break;
+        case '8': tch = "ႊ"; break;
+        case '9': tch = "ႝ"; break;
+        case 'a': tch = "ႃ"; break;
+        case 'b': tch = "ဗ"; break;
+        case 'c': tch = "ꩡ"; break;
+        case 'd': tch = "ဒ"; break;
+        case 'e': tch = "ေ"; break;
+        case 'f': tch = "ၸ"; break;
+        case 'g': tch = "င"; break;
+        case 'h': tch = "ꩭ"; break;
+        case 'i': tch = "ိ"; break;
+        case 'j': tch = "ၺ"; break;
+        case 'k': tch = "က"; break;
+        case 'l': tch = "လ"; break;
+        case 'm': tch = "မ"; break;
+        case 'n': tch = "ꩫ"; break;
+        case 'o': tch = "ူ"; break;
+        case 'p': tch = "ပ"; break;
+        case 'q': tch = "ဢ"; break;
+        case 'r': tch = "ꩺ"; break;
+        case 's': tch = "ꩬ"; break;
+        case 't': tch = "တ"; break;
+        case 'u': tch = "ု"; break;
+        case 'v': tch = "ဝ"; break;
+        case 'w': tch = "ွ"; break;
+        case 'x': tch = "ၵ"; break;
+        case 'y': tch = "ယ"; break;
+        case 'z': tch = "ထ"; break;
+        case '\'': tch = "꩷"; break;
+        default: tch = ch; break;
+    }
+    if (text == "") {
+        return tch;
+    }
+
+    var t = text[text.length - 1];
+    var roma = t + ch;
+    switch (roma) {
+        case '်1': roma = "꩸"; break;
+        case 'ႇ2': roma = "꩹"; break;
+        case 'ႈ3': roma = "၃"; break;
+        case 'း4': roma = "၄"; break;
+        case 'ႉ5': roma = "၅"; break;
+        case 'ႛ6': roma = "၆"; break;
+        case 'ႋ7': roma = "၇"; break;
+        case 'ႊ8': roma = "၈"; break;
+        case 'ႝ9': roma = "၉"; break;
+        case 'ံ0': roma = "၀"; break;
+        case 'ဢq': roma = "ၞ"; break;
+        case 'ႃa': roma = "ႜ"; break;
+        case 'ိi': roma = "ီ"; break;
+        case 'ယy': roma = "ျ"; break;
+        case 'လl': roma = "ၠ"; break;
+        case 'ꩺr': roma = "ြ"; break;
         default: roma = t + tch; break;
     }
     return text.substring(0, text.length - 1) + roma;
@@ -5821,32 +5925,32 @@ function loadkeyboard() {
                 break;
             case 21:
                 $('#K192').html("<br>`");
-                $('#K48').html("<br><span style='color: #ffc000;'>ႂ</span>");
-                $('#K49').html("<br><span style='color: #ffc000;'>်</span>");
-                $('#K50').html("<br><span style='color: #d48600;'>ႇ</span>");
-                $('#K51').html("<br><span style='color: #d48600;'>ႈ</span>");
-                $('#K52').html("<br><span style='color: #d48600;'>း</span>");
-                $('#K53').html("<br><span style='color: #d48600;'>ႉ</span>");
-                $('#K54').html("<br><span style='color: #13abbb;'>ႊ</span>");
-                $('#K55').html("<br><span style='color: #ffc000;'>ဵ</span>");
-                $('#K56').html("<br><span style='color: #ffc000;'>ႅ</span>");
-                $('#K57').html("<br><span style='color: #ffc000;'>ႆ</span>");
+                $('#K48').html("<span style='color: #b1bb13;'>႐</span><br><span style='color: #7ba064;'>◌ႂ</span>");
+                $('#K49').html("<span style='color: #b1bb13;'>႑</span><br><span style='color: #7ba064;'>◌်</span>");
+                $('#K50').html("<span style='color: #b1bb13;'>႒</span><br><span style='color: #7ba064;'>ႇ</span>");
+                $('#K51').html("<span style='color: #b1bb13;'>႓</span><br><span style='color: #7ba064;'>ႈ</span>");
+                $('#K52').html("<span style='color: #b1bb13;'>႔</span><br><span style='color: #7ba064;'>း</span>");
+                $('#K53').html("<span style='color: #b1bb13;'>႕</span><br><span style='color: #7ba064;'>ႉ</span>");
+                $('#K54').html("<span style='color: #b1bb13;'>႖</span><br><span style='color: #7ba064;'>ႊ</span>");
+                $('#K55').html("<span style='color: #b1bb13;'>႗</span><br><span style='color: #7ba064;'>◌ဵ</span>");
+                $('#K56').html("<span style='color: #b1bb13;'>႘</span><br><span style='color: #7ba064;'>◌ႅ</span>");
+                $('#K57').html("<span style='color: #b1bb13;'>႙</span><br><span style='color: #7ba064;'>◌ႆ</span>");
                 $('#K81').html("<br>ဢ");
-                $('#K87').html("<br><span style='color: #ffc000;'>ွ</span>");
-                $('#K69').html("<br><span style='color: #ffc000;'>ေ</span>");
+                $('#K87').html("<br><span style='color: #ffc000;'>◌ွ</span>");
+                $('#K69').html("<br><span style='color: #ffc000;'>◌ေ</span>");
                 $('#K82').html("<span style='color: #b1bb13;'>ရ</span><br><span style='color: #7ba064;'>ြ</span>");
                 $('#K84').html("<br>ထ");
                 $('#K89').html("<br>ယ");
-                $('#K85').html("<br><span style='color: #ffc000;'>ု</span>");
+                $('#K85').html("<br><span style='color: #ffc000;'>◌ု</span>");
                 $('#K73').html("<span style='color: #b1bb13;'>ီ</span><br><span style='color: #7ba064;'>ိ</span>");
-                $('#K79').html("<br><span style='color: #ffc000;'>ူ</span>");
+                $('#K79').html("<br><span style='color: #ffc000;'>◌ူ</span>");
                 $('#K80').html("<br><span style='color: #13abbb;'>ၾ</span>ၽ");
                 $('#K219').html("<br>[");
                 $('#K221').html("<br>]");
                 $('#K65').html("<span style='color: #b1bb13;'>ႃ</span><br><span style='color: #7ba064;'>ၢ</span>");
                 $('#K83').html("<br><span style='color: #13abbb;'>ႀ</span>သ");
                 $('#K68').html("<br><span style='color: #13abbb;'>ၻ</span>တ");
-                $('#K70').html("<br><span style='color: #ffc000;'>ႄ</span>");
+                $('#K70').html("<br><span style='color: #ffc000;'>◌ႄ</span>");
                 $('#K71').html("<br>င");
                 $('#K72').html("<br><span style='color: #2f80b9;'>ႁ</span>");
                 $('#K74').html("<br>ၺ");
@@ -5854,12 +5958,60 @@ function loadkeyboard() {
                 $('#K76').html("<br>လ");
                 $('#K186').html("<br>;");
                 $('#K222').html("<br>'");
-                $('#K90').html("<br>ျ");
+                $('#K90').html("<br>◌ျ");
                 $('#K88').html("<br>ၶ");
                 $('#K67').html("<br><span style='color: #13abbb;'>ၹ</span>ၸ");
                 $('#K86').html("<br>ဝ");
                 $('#K66').html("<br><span style='color: #13abbb;'>ၿ  </span>ပ");
                 $('#K78').html("<br>ၼ");
+                $('#K77').html("<br>မ");
+                $('#K188').html("<br>,");
+                $('#K190').html("<br>.");
+                $('#K191').html("<br>/");
+                $('#K16R').html("<br>⇧");
+                $('#K16L').html("<br>⇧");
+                break;
+            case 33:
+                $('#K192').html("<br>`");
+                $('#K48').html("<span style='color: #b1bb13;'>၀</span><br><span style='color: #7ba064;'>◌ံ</span>");
+                $('#K49').html("<span style='color: #b1bb13;'>꩸</span><br><span style='color: #7ba064;'>◌်</span>");
+                $('#K50').html("<span style='color: #b1bb13;'>꩹</span><br><span style='color: #7ba064;'>ႇ</span>");
+                $('#K51').html("<span style='color: #b1bb13;'>၃</span><br><span style='color: #7ba064;'>ႈ</span>");
+                $('#K52').html("<span style='color: #b1bb13;'>၄</span><br><span style='color: #7ba064;'>း</span>");
+                $('#K53').html("<span style='color: #b1bb13;'>၅</span><br><span style='color: #7ba064;'>ႉ</span>");
+                $('#K54').html("<span style='color: #b1bb13;'>၆</span><br><span style='color: #7ba064;'>ႛ</span>");
+                $('#K55').html("<span style='color: #b1bb13;'>၇</span><br><span style='color: #7ba064;'>ႋ</span>");
+                $('#K56').html("<span style='color: #b1bb13;'>၈</span><br><span style='color: #7ba064;'>ႊ</span>");
+                $('#K57').html("<span style='color: #b1bb13;'>၉</span><br><span style='color: #7ba064;'>◌ႝ</span>");
+                $('#K81').html("<span style='color: #b1bb13;'>◌ၞ</span><br><span style='color: #7ba064;'>ဢ</span>");
+                $('#K87').html("<br><span style='color: #ffc000;'>◌ွ</span>");
+                $('#K69').html("<br><span style='color: #ffc000;'>◌ေ</span>");
+                $('#K82').html("<span style='color: #b1bb13;'>ြ</span><br><span style='color: #7ba064;'>ꩺ</span>");
+                $('#K84').html("<br>တ");
+                $('#K89').html("<span style='color: #b1bb13;'>ျ</span><br><span style='color: #7ba064;'>ယ</span>");
+                $('#K85').html("<br><span style='color: #ffc000;'>◌ု</span>");
+                $('#K73').html("<span style='color: #b1bb13;'>ီ</span><br><span style='color: #7ba064;'>ိ</span>");
+                $('#K79').html("<br><span style='color: #ffc000;'>◌ူ</span>");
+                $('#K80').html("<br>ပ");
+                $('#K219').html("<br>[");
+                $('#K221').html("<br>]");
+                $('#K65').html("<span style='color: #b1bb13;'>ႜ</span><br><span style='color: #7ba064;'>ႃ</span>");
+                $('#K83').html("<br>ꩬ");
+                $('#K68').html("<br>ဒ");
+                $('#K70').html("<br>ၸ");
+                $('#K71').html("<br>င");
+                $('#K72').html("<br>ꩭ");
+                $('#K74').html("<br>ၺ");
+                $('#K75').html("<br>က");
+                $('#K76').html("<span style='color: #b1bb13;'>ၠ</span><br><span style='color: #7ba064;'>လ</span>");
+                $('#K186').html("<br>;");
+                $('#K222').html("<br>꩷");
+                $('#K90').html("<br>ထ");
+                $('#K88').html("<br>ၵ");
+                $('#K67').html("<br>ꩡ");
+                $('#K86').html("<br>ဝ");
+                $('#K66').html("<br>ဗ");
+                $('#K78').html("<br>ꩫ");
                 $('#K77').html("<br>မ");
                 $('#K188').html("<br>,");
                 $('#K190').html("<br>.");
