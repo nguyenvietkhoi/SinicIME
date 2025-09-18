@@ -200,6 +200,7 @@ function TaiNueaIPA(w, accent) {
 function TaiAitonIPA(w, accent) {
     var ipastr = "";
     var ipa = {};
+	w = w.replace("်ြ","ြ်");
     ipa.onset = "", ipa.rime = "", ipa.tone = "", ipa.toneclass = 0;
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
@@ -2670,8 +2671,8 @@ function TaiAitonRoma(w) {
         ipa.onset = ipaSQL[0].values[0] + ipa.glide;
     else
         return w;
-    var res = "" + ipa.onset.replace("`", "") + ipa.rime.replace("-", "") + ipa.tone.replace('0', '').replace('4', '').replace('5', '') ;
-    return res;
+    var res = "" + ipa.onset + ipa.rime + ipa.tone.replace('0', '').replace('4', '').replace('5', '') ;
+    return res.replace("ြ်","်ြ");
 }
 
 function TaiLueRoma(w) {
