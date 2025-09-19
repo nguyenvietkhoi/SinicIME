@@ -2142,7 +2142,7 @@ function TaiDamRoma(w) {
 	
     if ("pt".includes(deadcons)) {
 	  if (ipa.tone=="̣") {
-        if ((ipa.rime.startsWith("ă") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("ê") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("i") || ipa.rime.startsWith("u") || ipa.rime.startsWith("ư") || ipa.rime.startsWith("uơ") || ipa.rime.startsWith("ơ")) && !ipa.rime.startsWith("ươ") && !ipa.rime.startsWith("iê") && !ipa.rime.startsWith("yê") && !ipa.rime.startsWith("uô")) {
+        if ((ipa.rime.startsWith("ă") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("ê") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("i") || ipa.rime.startsWith("ô") || ipa.rime.startsWith("u") || ipa.rime.startsWith("ư") || ipa.rime.startsWith("uơ") || ipa.rime.startsWith("ơ")) && !ipa.rime.startsWith("ươ") && !ipa.rime.startsWith("iê") && !ipa.rime.startsWith("yê") && !ipa.rime.startsWith("uô")) {
             ipa.tone += "4";
 			ipa.rime += "`";
         } else {
