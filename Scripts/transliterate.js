@@ -554,7 +554,7 @@ function TaiDonIPA(w, accent) {
                             ipa.tone += "4";
                         }
                     } else if (ipa.tone == "") {
-                        if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
+                        if ("◌ꪳ◌ꪷ◌ꪱ◌ꪮꪵ◌◌ꪸ◌ꪺ".includes(ipa.rime)) {
                             ipa.tone = "5";
                         }
                         else {
@@ -612,7 +612,7 @@ function TaiDonIPA(w, accent) {
                                         ipa.tone += "4";
                                     }
                                 } else if (ipa.tone == "") {
-                                    if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
+                                    if ("◌ꪳ◌ꪷ◌ꪱ◌ꪮꪵ◌◌ꪸ◌ꪺ".includes(ipa.rime)) {
                                         ipa.tone = "5";
                                     }
                                     else {
@@ -679,7 +679,7 @@ function TaiDonIPA(w, accent) {
                                 ipa.tone += "4";
                             }
                         } else if (ipa.tone == "") {
-                            if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
+                            if ("◌ꪳ◌ꪷ◌ꪱ◌ꪮꪵ◌◌ꪸ◌ꪺ".includes(ipa.rime)) {
                                 ipa.tone = "5";
                             }
                             else {
@@ -763,7 +763,7 @@ function TaiDonIPA(w, accent) {
                     ipa.tone += "4";
                 }
             } else if (ipa.tone == "") {
-                if ("◌ꪳ◌ꪱ◌ꪮꪹ◌ꪵ◌◌ꪸ◌ꪺꪹ◌ꪷ".includes(ipa.rime)) {
+                if ("◌ꪳ◌ꪷ◌ꪱ◌ꪮꪵ◌◌ꪸ◌ꪺ".includes(ipa.rime)) {
                     ipa.tone = "5";
                 }
                 else {
@@ -901,6 +901,343 @@ function TaiDonIPA(w, accent) {
 
     return (ipastr.substring(1));
 }
+
+function TaiKhaoIPA(w, accent) {
+    var ipastr = "";
+    var ipa = {};
+    var tmpconso = "";
+    ipa.onset = "", ipa.onset2 = "", ipa.rime = "", ipa.tone = "", ipa.toneclass = 0;
+    var ipalist = [];
+    w = w.replace('ꫛ', 'ꪶꪁꪙ');
+    w = w.replace('ꫜ', 'ꪙꪳ꪿ꪉ');
+    for (var i = 0; i < w.length; i++) {
+        var c = w.charAt(i);
+        if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
+            if (ipa.onset == "") {
+                ipa.onset = c;
+                ipa.rime += "◌";
+                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪ".includes(c))
+                    ipa.toneclass = 1;
+                else if ("ꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c))
+                    ipa.toneclass = 2;
+            }
+            else if (((ipa.rime == "") || (ipa.rime.endsWith("◌"))) && (c != "ꪮ") && (!ipa.onset2.endsWith("1"))) {
+                if (c == "ꪫ") {
+                    c = "ꪫ1";
+                }
+                ipa.onset2 += c;
+            }
+            else {
+                if ("ꪀꪒꪚ".includes(c)) {
+                    tmpconso = c;
+                    if (ipa.tone == "") {
+                        ipa.tone = "5";
+                    }
+                    ipa.rime += c;
+
+                    ipalist.push(Object.assign({}, ipa));
+                    ipa.onset = "";
+                    ipa.onset2 = "";
+                    ipa.rime = "";
+                    ipa.tone = "";
+                    ipa.toneclass = 0;
+                    continue;
+                }
+                else if ("ꪥꪫꪉꪙꪣ".includes(c)) {
+                    tmpconso = c;
+                    if (ipa.tone == "") {
+                        ipa.tone = "0";
+                    }
+                    if (ipa.onset == "") {
+                        ipa.onset = "∅";
+                    }
+                    ipa.rime += c;
+                    ipa.rime = ipa.rime.replace("̽", "");
+
+                    ipalist.push(Object.assign({}, ipa));
+                    ipa.onset = "";
+                    ipa.onset2 = "";
+                    ipa.rime = "";
+                    ipa.tone = "";
+                    ipa.toneclass = 0;
+                    continue;
+                }
+                else if (c == "ꪮ") {
+                    tmpconso = c;
+                    ipa.rime += c;
+                }
+                else {
+                    if (ipa.tone == "") {
+                        ipa.tone = "0";
+                        if ((ipa.onset2 != "") && ((ipa.rime == "ꪵ◌") || (ipa.rime == "ꪹ◌") || (ipa.rime == "ꪶ◌") || (ipa.rime == "ꪻ◌"))) {
+                            var coda = ipa.onset2.slice(-1);
+                            if (coda == "1") {
+                                ipa.onset2 = ipa.onset2.slice(0, -1);
+                                coda = ipa.onset2.slice(-1);
+                            }
+                            if ("ꪀꪒꪚ".includes(coda)) {
+                                if (ipa.tone == "") {
+									ipa.tone = "5";
+								}
+                                ipa.rime += coda;
+                                ipa.onset2 = ipa.onset2.slice(0, -1);
+                            }
+                            else if ("ꪥꪫꪉꪙꪣ".includes(coda)) {
+                                if (ipa.tone == "") {
+                                    ipa.tone = "0";
+                                }
+                                if (ipa.onset == "") {
+                                    ipa.onset = "∅";
+                                }
+                                ipa.rime += coda;
+                                ipa.onset2 = ipa.onset2.slice(0, -1);
+                            }
+                            else if (coda == "ꪮ") {
+                                ipa.rime += coda;
+                                ipa.onset2 = ipa.onset2.slice(0, -1);
+                            }
+                            else {
+                                ipa.tone = "0";
+                            }
+                        }
+                    }
+                    tmpconso = "";
+                    ipa.rime = ipa.rime.replace("̽", "");
+                    ipalist.push(Object.assign({}, ipa));
+                    ipa.onset = "";
+                    ipa.onset2 = "";
+                    ipa.rime = "";
+                    ipa.tone = "";
+                    ipa.toneclass = 0;
+                    i--;
+                    continue;
+                }
+            }
+        }
+        else if ((c == "‍") && ("ꪤꪗꪎꪏꪩꪝ".includes(ipa.onset))) {
+            ipa.onset += c;
+        }
+        else if ("꪿꫁".includes(c)) {
+            ipa.tone = c;
+            ipa.rime += "̽";
+        }
+        else if ((ipa.rime != "") && ("ꪵꪹꪶꪻꪼ".includes(c))) {
+            if (ipa.tone == "") {
+                ipa.tone = "0";
+                if ((ipa.onset2 != "") && ((ipa.rime == "ꪵ◌") || (ipa.rime == "ꪹ◌") || (ipa.rime == "ꪶ◌") || (ipa.rime == "ꪻ◌"))) {
+                    var coda = ipa.onset2.slice(-1);
+                    if (coda == "1") {
+                        ipa.onset2 = ipa.onset2.slice(0, -1);
+                        coda = ipa.onset2.slice(-1);
+                    }
+                    if ("ꪀꪒꪚ".includes(coda)) {
+                        if (ipa.tone == "") {
+							ipa.tone = "5";
+						}
+                        ipa.rime += coda;
+                        ipa.onset2 = ipa.onset2.slice(0, -1);
+                    }
+                    else if ("ꪥꪫꪉꪙꪣ".includes(coda)) {
+                        if (ipa.tone == "") {
+                            ipa.tone = "0";
+                        }
+                        if (ipa.onset == "") {
+                            ipa.onset = "∅";
+                        }
+                        ipa.rime += coda;
+                        ipa.onset2 = ipa.onset2.slice(0, -1);
+                    }
+                    else if (coda == "ꪮ") {
+                        ipa.rime += coda;
+                        ipa.onset2 = ipa.onset2.slice(0, -1);
+                    }
+                    else {
+                        ipa.tone = "0";
+                    }
+                }
+            }
+            ipa.rime = ipa.rime.replace("̽", "");
+            ipalist.push(Object.assign({}, ipa));
+            ipa.onset = "";
+            ipa.onset2 = "";
+            ipa.rime = "";
+            ipa.tone = "";
+            ipa.toneclass = 0;
+            i--;
+            continue;
+        }
+        else {
+            if ((ipa.onset == "") && (!"ꪵ◌ꪹ◌ꪶ◌ꪻ◌ꪼ◌".includes(c))) {
+                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(tmpconso)) {
+                    tmpconso = "";
+                    var previpa = ipalist.pop();
+                    previpa.rime = previpa.rime.slice(0, -1);
+                    if ((previpa.tone == "ˀ") || (previpa.tone == "4") || (previpa.tone == "5"))
+                        previpa.tone = "0";
+                    else if (previpa.tone.endsWith("4")) {
+                        previpa.tone = previpa.tone[0];
+                    }
+                    previpa.rime = previpa.rime.replace("̽", "");
+                    ipalist.push(Object.assign({}, previpa));
+                    ipa.onset = "";
+                    ipa.onset2 = "";
+                    ipa.rime = "";
+                    ipa.tone = "";
+                    ipa.toneclass = 0;
+                    i -= 2;
+                    continue;
+                }
+                else {
+                    tmpconso = "";
+                    ipa.onset = "∅";
+                }
+            }
+            ipa.rime += c;
+        }
+    }
+
+    if ((ipa.onset2 != "") && ((ipa.rime == "ꪵ◌") || (ipa.rime == "ꪹ◌") || (ipa.rime == "ꪶ◌") || (ipa.rime == "ꪻ◌"))) {
+        var coda = ipa.onset2.slice(-1);
+        if (coda == "1") {
+            ipa.onset2 = ipa.onset2.slice(0, -1);
+            coda = ipa.onset2.slice(-1);
+        }
+        if ("ꪀꪒꪚ".includes(coda)) {
+            if (ipa.tone == "") {
+                ipa.tone = "5";
+            }
+            ipa.rime += coda;
+            ipa.onset2 = ipa.onset2.slice(0, -1);
+        }
+        else if ("ꪥꪫꪉꪙꪣ".includes(coda)) {
+            if (ipa.tone == "") {
+                ipa.tone = "0";
+            }
+            if (ipa.onset == "") {
+                ipa.onset = "∅";
+            }
+            ipa.rime += coda;
+            ipa.onset2 = ipa.onset2.slice(0, -1);
+        }
+        else if (coda == "ꪥꪫꪉꪙꪣ") {
+            ipa.rime += coda;
+            ipa.onset2 = ipa.onset2.slice(0, -1);
+        }
+        else {
+            ipa.tone = "0";
+        }
+    }
+    ipa.rime = ipa.rime.replace("̽", "");
+    if (ipa.tone == "") {
+        ipa.tone = "0";
+    }
+    if (ipa.onset == "") {
+        ipa.onset = "∅";
+        if (ipalist.length == 0)
+            ipalist.push(Object.assign({}, ipa));
+    }
+    else
+        ipalist.push(Object.assign({}, ipa));
+
+    var minorsyllable = "";
+    ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiKhao where phone='◌' ");
+    if (ipaSQL.length > 0)
+        minorsyllable = ipaSQL[0].values[0][0];
+
+    while (ipalist.length != 0) {
+        var ipatmp = ipalist.pop();
+        var minortone = "";
+        ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiKhao where phone='ˀ" + ipatmp.toneclass + "' ");
+        if (ipaSQL.length > 0)
+            minortone = ipaSQL[0].values[0][0];
+        var onsets = [ipatmp.onset];
+        if (ipatmp.onset2.endsWith("1")) {
+            onsets = onsets.concat(ipatmp.onset2.slice(0, -2).split(''));
+            ipatmp.onset2 = ipatmp.onset2.slice(-2);
+        }
+        else {
+            onsets = onsets.concat(ipatmp.onset2.split(''));
+            ipatmp.onset2 = "";
+        }
+
+        ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiKhao where phone='" + onsets.join('') + "' ");
+        if (ipaSQL.length > 0)
+            ipatmp.onset = ipaSQL[0].values[0][0];
+        else {
+            ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiKhao where phone='" + onsets[onsets.length - 1] + "' ");
+            if (ipaSQL.length > 0)
+                ipatmp.onset = ipaSQL[0].values[0][0];
+            else {
+                ipatmp.onset = "∅";
+            }
+            for (var j = (onsets.length - 2) ; j >= 0; j--) {
+                ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiKhao where phone='" + onsets[j] + "' ");
+                if (ipaSQL.length > 0)
+                    ipatmp.onset = ipaSQL[0].values[0][0] + minorsyllable + minortone + " " + ipatmp.onset;
+                else {
+                    ipatmp.onset = "∅";
+                }
+            }
+        }
+        if (ipatmp.onset2 != "") {
+            ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiKhao where phone='" + ipatmp.onset2 + "' ");
+            if (ipaSQL.length > 0)
+                ipatmp.onset += ipaSQL[0].values[0][0];
+            else {
+                ipastr = (" ∅") + ipastr;
+                continue;
+            }
+        }
+        if (ipatmp.rime == '◌')
+            ipatmp.tone = 'ˀ';
+        ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiKhao where phone='" + ipatmp.rime + "' ");
+        if (ipaSQL.length > 0)
+            ipatmp.rime = ipaSQL[0].values[0][0];
+        else {
+            ipastr = (" ∅") + ipastr;
+            continue;
+        }
+        ipatmp.tone = ipatmp.tone.replace("꪿4", "4").replace("꫁4", "4");
+        ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiKhao where phone='" + ipatmp.tone + ipatmp.toneclass + "' ");
+        if (ipaSQL.length > 0)
+            ipatmp.tone = ipaSQL[0].values[0][0];
+        else {
+            ipastr = (" ∅") + ipastr;
+            continue;
+        }
+
+        if (accent == "roman") {
+            ipatmp.onset = ipatmp.onset.replace('`', '');
+            ipatmp.rime = ipatmp.rime.replace('`', '');
+            ipatmp.onset = ipatmp.onset.replace("kw", "qu");
+            if (ipatmp.onset == "∅") {
+                ipastr = (" ∅") + ipastr;
+                continue;
+            }
+            if ((ipatmp.onset == "k") && !ipatmp.rime.startsWith("i") && !ipatmp.rime.startsWith("e") && !ipatmp.rime.startsWith("ê")) {
+                ipatmp.onset = ipatmp.onset.replace("k", "c").replace("g", "gh").replace("ng", "ngh");
+            }
+			if (ipatmp.rime.startsWith("i") && (ipatmp.onset.endsWith("w") || ipatmp.onset.endsWith("qu"))) {
+                ipatmp.onset = ipatmp.onset.replace("w", "u");
+                ipatmp.rime = ipatmp.rime.replace("i", "y");
+            }
+            else if (ipatmp.rime.startsWith("ơ") || ipatmp.rime.startsWith("ê") || ipatmp.rime.startsWith("â") || ipatmp.rime.startsWith("y")) {
+                ipatmp.onset = ipatmp.onset.replace("w", "u");
+            } else {
+                ipatmp.onset = ipatmp.onset.replace("w", "o");
+            }
+            if ((ipatmp.tone == "́4") && (!ipatmp.rime.endsWith("c"))) {
+                ipatmp.tone = "";
+            }
+            ipastr = " " + ipatmp.onset.replace('ʔ','') + TaiYorimetone(ipatmp.rime, ipatmp.tone.replace('ˀ', '').replace('0', '').replace('4', '').replace('5', '')) + ipastr;
+        }
+        else
+            ipastr = " " + ipatmp.onset + ipatmp.rime + ipatmp.tone + ipastr;
+    }
+
+    return (ipastr.substring(1));
+}
+
 function TaiDaengIPA(w, accent) {
     var ipastr = "";
     var ipa = {};
@@ -1292,13 +1629,13 @@ function TaiDamIPA(w, accent) {
     w = w.replace('ꫜ', 'ꪙꪳ꪿ꪉ');
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(c)) {
+        if ("ꪟꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
                 ipa.rime += "◌";
                 if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪ".includes(c))
                     ipa.toneclass = 1;
-                else if ("ꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(c))
+                else if ("ꪟꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(c))
                     ipa.toneclass = 2;
             }
             else if (((ipa.rime == "") || (ipa.rime.endsWith("◌"))) && (c != "ꪮ") && (!ipa.onset2.endsWith("1"))) {
@@ -1496,7 +1833,7 @@ function TaiDamIPA(w, accent) {
         }
         else {
             if ((ipa.onset == "") && (!"ꪵ◌ꪹ◌ꪶ◌ꪻ◌ꪼ◌".includes(c))) {
-                if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(tmpconso)) {
+                if ("ꪟꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(tmpconso)) {
                     tmpconso = "";
                     var previpa = ipalist.pop();
                     previpa.rime = previpa.rime.slice(0, -1);
@@ -1889,7 +2226,7 @@ function TaiDonRoma(w) {
             break;
         }
     }
-    var deadcons = ipa.rime.slice(ipa.rime.length - 1)
+    var deadcons = ipa.rime.slice(ipa.rime.length - 1);
     if ("c".includes(deadcons))
         ipa.tone += "4";
     if ("k".includes(deadcons))
@@ -1959,6 +2296,107 @@ function TaiDonRoma(w) {
     var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷꪷ", "ꪷꪷ꪿").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷꪷ", "ꪷꪷ꫁").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
     return res;
 }
+
+function TaiKhaoRoma(w) {
+    var ipa = {};
+    ipa.onset = "", ipa.rime = "", ipa.tone = "", ipa.glide = "";
+    var toneclass = 1;
+    w = w.replace("qu", "kw");
+    for (var i = 0; i < w.length; i++) {
+        var c = w.charAt(i);
+        if ("qrtpsdđfghjklzxcvbnmw".includes(c)) {
+            ipa.onset += c;
+        }
+        else {
+            ipa.rime = w.substring(i);
+            break;
+        }
+    }
+
+    for (var i = 0; i < ipa.rime.length; i++) {
+        var c = ipa.rime.charAt(i);
+        var c_plain = "";
+        switch (c) {
+            case 'á': ipa.tone = "́"; c_plain = 'a'; break; case 'à': ipa.tone = "̀"; c_plain = 'a'; toneclass = 2; break; case 'ả': ipa.tone = "̉"; c_plain = 'a'; break; case 'ã': ipa.tone = "̃"; c_plain = 'a'; toneclass = 2; break; case 'ạ': ipa.tone = "̣"; c_plain = 'a'; toneclass = 2; break;
+            case 'ấ': ipa.tone = "́"; c_plain = 'â'; break; case 'ầ': ipa.tone = "̀"; c_plain = 'â'; toneclass = 2; break; case 'ẩ': ipa.tone = "̉"; c_plain = 'â'; break; case 'ẫ': ipa.tone = "̃"; c_plain = 'â'; toneclass = 2; break; case 'ậ': ipa.tone = "̣"; c_plain = 'â'; toneclass = 2; break;
+            case 'ắ': ipa.tone = "́"; c_plain = 'ă'; break; case 'ằ': ipa.tone = "̀"; c_plain = 'ă'; toneclass = 2; break; case 'ẳ': ipa.tone = "̉"; c_plain = 'ă'; break; case 'ẵ': ipa.tone = "̃"; c_plain = 'ă'; toneclass = 2; break; case 'ặ': ipa.tone = "̣"; c_plain = 'ă'; toneclass = 2; break;
+            case 'é': ipa.tone = "́"; c_plain = 'e'; break; case 'è': ipa.tone = "̀"; c_plain = 'e'; toneclass = 2; break; case 'ẻ': ipa.tone = "̉"; c_plain = 'e'; break; case 'ẽ': ipa.tone = "̃"; c_plain = 'e'; toneclass = 2; break; case 'ẹ': ipa.tone = "̣"; c_plain = 'e'; toneclass = 2; break;
+            case 'ế': ipa.tone = "́"; c_plain = 'ê'; break; case 'ề': ipa.tone = "̀"; c_plain = 'ê'; toneclass = 2; break; case 'ể': ipa.tone = "̉"; c_plain = 'ê'; break; case 'ễ': ipa.tone = "̃"; c_plain = 'ê'; toneclass = 2; break; case 'ệ': ipa.tone = "̣"; c_plain = 'ê'; toneclass = 2; break;
+            case 'í': ipa.tone = "́"; c_plain = 'i'; break; case 'ì': ipa.tone = "̀"; c_plain = 'i'; toneclass = 2; break; case 'ỉ': ipa.tone = "̉"; c_plain = 'i'; break; case 'ĩ': ipa.tone = "̃"; c_plain = 'i'; toneclass = 2; break; case 'ị': ipa.tone = "̣"; c_plain = 'i'; toneclass = 2; break;
+            case 'ó': ipa.tone = "́"; c_plain = 'o'; break; case 'ò': ipa.tone = "̀"; c_plain = 'o'; toneclass = 2; break; case 'ỏ': ipa.tone = "̉"; c_plain = 'o'; break; case 'õ': ipa.tone = "̃"; c_plain = 'o'; toneclass = 2; break; case 'ọ': ipa.tone = "̣"; c_plain = 'o'; toneclass = 2; break;
+            case 'ố': ipa.tone = "́"; c_plain = 'ô'; break; case 'ồ': ipa.tone = "̀"; c_plain = 'ô'; toneclass = 2; break; case 'ổ': ipa.tone = "̉"; c_plain = 'ô'; break; case 'ỗ': ipa.tone = "̃"; c_plain = 'ô'; toneclass = 2; break; case 'ộ': ipa.tone = "̣"; c_plain = 'ô'; toneclass = 2; break;
+            case 'ớ': ipa.tone = "́"; c_plain = 'ơ'; break; case 'ờ': ipa.tone = "̀"; c_plain = 'ơ'; toneclass = 2; break; case 'ở': ipa.tone = "̉"; c_plain = 'ơ'; break; case 'ỡ': ipa.tone = "̃"; c_plain = 'ơ'; toneclass = 2; break; case 'ợ': ipa.tone = "̣"; c_plain = 'ơ'; toneclass = 2; break;
+            case 'ú': ipa.tone = "́"; c_plain = 'u'; break; case 'ù': ipa.tone = "̀"; c_plain = 'u'; toneclass = 2; break; case 'ủ': ipa.tone = "̉"; c_plain = 'u'; break; case 'ũ': ipa.tone = "̃"; c_plain = 'u'; toneclass = 2; break; case 'ụ': ipa.tone = "̣"; c_plain = 'u'; toneclass = 2; break;
+            case 'ứ': ipa.tone = "́"; c_plain = 'ư'; break; case 'ừ': ipa.tone = "̀"; c_plain = 'ư'; toneclass = 2; break; case 'ử': ipa.tone = "̉"; c_plain = 'ư'; break; case 'ữ': ipa.tone = "̃"; c_plain = 'ư'; toneclass = 2; break; case 'ự': ipa.tone = "̣"; c_plain = 'ư'; toneclass = 2; break;
+            case 'ý': ipa.tone = "́"; c_plain = 'y'; break; case 'ỳ': ipa.tone = "̀"; c_plain = 'y'; toneclass = 2; break; case 'ỷ': ipa.tone = "̉"; c_plain = 'y'; break; case 'ỹ': ipa.tone = "̃"; c_plain = 'y'; toneclass = 2; break; case 'ỵ': ipa.tone = "̣"; c_plain = 'y'; toneclass = 2; break;
+            default: c_plain = c; break;
+        }
+        if (c_plain != c) {
+            ipa.rime = ipa.rime.substr(0, i) + c_plain + ipa.rime.substr(i + 1);
+            break;
+        }
+    }
+	
+    var deadcons = ipa.rime.slice(ipa.rime.length - 1);
+	if ("cpt".includes(deadcons)) {
+        if ("́̀".includes(ipa.tone)) {
+            ipa.tone += "4";
+        } else {
+            ipa.tone += "5";
+        }
+    }
+
+    if (ipa.tone == "") {
+        ipa.tone = "0";
+    }
+    if (ipa.onset == "") {
+        ipa.onset = "ʔ";
+    }
+    if (toneclass == 2) {
+        ipa.onset += "`";
+    }
+    if (ipa.rime.startsWith("oa") || ipa.rime.startsWith("oă") || ipa.rime.startsWith("uâ") || ipa.rime.startsWith("oe") || ipa.rime.startsWith("uê") || ipa.rime.startsWith("uy") || ipa.rime.startsWith("uơ")) {
+        ipa.glide = "ꪫ";
+        ipa.rime = ipa.rime.substring(1);
+    }
+    if ((ipa.onset == "kw")) {
+        ipa.onset = "k";
+        ipa.glide = "ꪫ";
+    }
+    else if ((ipa.onset == "kw`")) {
+        ipa.onset = "k`";
+        ipa.glide = "ꪫ";
+    }
+    ipa.onset = ipa.onset.replace("gh", "g");
+    if ((ipa.onset == "c") || (ipa.onset == "c`"))
+        ipa.onset = ipa.onset.replace("c", "k");
+    if ((ipa.glide == "ꪫ") && ((ipa.rime == "e") || (ipa.rime == "ê"))) {
+        ipa.rime += "`";
+    }
+
+    ipaSQL = ipadb.exec("SELECT phone FROM TaiKhao where roman='" + ipa.rime + "' ");
+    if (ipaSQL.length > 0)
+        ipa.rime = ipaSQL[0].values[0] + "";
+    else
+        return w;
+
+    ipaSQL = ipadb.exec("SELECT phone FROM TaiKhao where roman='" + ipa.onset + "' ");
+    if (ipaSQL.length > 0)
+        ipa.onset = ipaSQL[0].values[0] + ipa.glide;
+    else
+        return w;
+    ipaSQL = ipadb.exec("SELECT phone FROM TaiKhao where roman='" + ipa.tone + "' ");
+    if (ipaSQL.length > 0) {
+        ipa.tone = ipaSQL[0].values[0] + "";
+        ipa.tone = ipa.tone.replace('0', '').replace('1', '').replace('2', '').replace('4', '').replace('5', '').replace('ˀ', '');
+    }
+    else
+        return w;
+
+    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷꪷ", "ꪷꪷ꪿").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷꪷ", "ꪷꪷ꫁").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
+    return res;
+}
+
 function TaiDaengRoma(w) {
     var ipa = {};
     ipa.onset = "", ipa.rime = "", ipa.tone = "", ipa.glide = "";
@@ -2058,6 +2496,7 @@ function TaiDaengRoma(w) {
     var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪶ‍", "ꪶ‍꪿").replace("꫁ꪶ‍", "ꪶ‍꫁").replace("꪿ꪸꪸ", "ꪸꪸ꪿").replace("꫁ꪸꪸ", "ꪸꪸ꫁").replace("꪿ꪲꪲ", "ꪲꪲ꪿").replace("꪿ꪳꪳ", "ꪳꪳ꪿").replace("ꪴꪴ꪿", "ꪴꪴ꪿").replace("꫁ꪲꪲ", "ꪲꪲ꫁").replace("꫁ꪳꪳ", "ꪳꪳ꫁").replace("ꪴꪴ꫁", "ꪴꪴ꫁").replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
     return res;
 }
+
 function TaiDamRoma(w) {
     var ipa = {};
     ipa.onset = "", ipa.rime = "", ipa.tone = "", ipa.glide = "";
@@ -2757,7 +3196,7 @@ function TaiYorimetone(rime, tone) {
     var rimetone = rime;
     switch (tone) {
         case "̃":
-            rimetone = rime.replace("iê", "iễ").replace("uô", "uỗ").replace("ươ", "ưỡ").replace("ơơ", "ơỡ").replace("uu", "uũ").replace("yi", "yĩ").replace("ii", "iĩ").replace("ưư", "ưữ").replace("iu", "ĩu").replace("ia", "ĩa").replace("ua", "ũa").replace("ưa", "ữa");
+            rimetone = rime.replace("iê", "iễ").replace("uô", "uỗ").replace("ươ", "ưỡ").replace("ơơ", "ơỡ").replace("uu", "uũ").replace("yi", "yĩ").replace("ii", "iĩ").replace("ưư", "ưữ").replace("iu", "ĩu").replace("ia", "ĩa").replace("ya", "ỹa").replace("ua", "ũa").replace("ưa", "ữa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ã").replace("ă", "ẵ").replace("â", "ẫ").replace("ơ", "ỡ").replace("ô", "ỗ").replace("e", "ẽ").replace("ê", "ễ");
                 if (rimetone == rime) {
@@ -2769,7 +3208,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̉":
-            rimetone = rime.replace("iê", "iể").replace("uô", "uổ").replace("ươ", "ưở").replace("ơơ", "ơở").replace("uu", "uủ").replace("yi", "yỉ").replace("ii", "iỉ").replace("ưư", "ưử").replace("iu", "ỉu").replace("ia", "ỉa").replace("ua", "ủa").replace("ưa", "ửa");
+            rimetone = rime.replace("iê", "iể").replace("uô", "uổ").replace("ươ", "ưở").replace("ơơ", "ơở").replace("uu", "uủ").replace("yi", "yỉ").replace("ii", "iỉ").replace("ưư", "ưử").replace("iu", "ỉu").replace("ia", "ỉa").replace("ya", "ỷa").replace("ua", "ủa").replace("ưa", "ửa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ả").replace("ă", "ẳ").replace("â", "ẩ").replace("ơ", "ở").replace("ô", "ổ").replace("e", "ẻ").replace("ê", "ể");
                 if (rimetone == rime) {
@@ -2781,7 +3220,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "́":
-            rimetone = rime.replace("iê", "iế").replace("uô", "uố").replace("ươ", "ướ").replace("ơơ", "ơớ").replace("uu", "uú").replace("yi", "yí").replace("ii", "ií").replace("ưư", "ưứ").replace("iu", "íu").replace("ia", "ía").replace("ua", "úa").replace("ưa", "ứa");
+            rimetone = rime.replace("iê", "iế").replace("uô", "uố").replace("ươ", "ướ").replace("ơơ", "ơớ").replace("uu", "uú").replace("yi", "yí").replace("ii", "ií").replace("ưư", "ưứ").replace("iu", "íu").replace("ia", "ía").replace("ya", "ýa").replace("ua", "úa").replace("ưa", "ứa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "á").replace("ă", "ắ").replace("â", "ấ").replace("ơ", "ớ").replace("ô", "ố").replace("e", "é").replace("ê", "ế");
                 if (rimetone == rime) {
@@ -2793,7 +3232,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̀":
-            rimetone = rime.replace("iê", "iề").replace("uô", "uồ").replace("ươ", "ườ").replace("ơơ", "ơờ").replace("uu", "uù").replace("yi", "yì").replace("ii", "iì").replace("ưư", "ưừ").replace("iu", "ìu").replace("ia", "ìa").replace("ua", "ùa").replace("ưa", "ừa");
+            rimetone = rime.replace("iê", "iề").replace("uô", "uồ").replace("ươ", "ườ").replace("ơơ", "ơờ").replace("uu", "uù").replace("yi", "yì").replace("ii", "iì").replace("ưư", "ưừ").replace("iu", "ìu").replace("ia", "ìa").replace("ya", "ỳa").replace("ua", "ùa").replace("ưa", "ừa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "à").replace("ă", "ằ").replace("â", "ầ").replace("ơ", "ờ").replace("ô", "ồ").replace("e", "è").replace("ê", "ề");
                 if (rimetone == rime) {
@@ -2805,7 +3244,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̣":
-            rimetone = rime.replace("iê", "iệ").replace("uô", "uộ").replace("ươ", "ượ").replace("ơơ", "ơợ").replace("uu", "uụ").replace("yi", "yị").replace("ii", "iị").replace("ưư", "ưự").replace("iu", "ịu").replace("ia", "ịa").replace("ua", "ụa").replace("ưa", "ựa");
+            rimetone = rime.replace("iê", "iệ").replace("uô", "uộ").replace("ươ", "ượ").replace("ơơ", "ơợ").replace("uu", "uụ").replace("yi", "yị").replace("ii", "iị").replace("ưư", "ưự").replace("iu", "ịu").replace("ia", "ịa").replace("ya", "ỵa").replace("ua", "ụa").replace("ưa", "ựa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ạ").replace("ă", "ặ").replace("â", "ậ").replace("ơ", "ợ").replace("ô", "ộ").replace("e", "ẹ").replace("ê", "ệ");
                 if (rimetone == rime) {
@@ -2817,7 +3256,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̄":
-            rimetone = rime.replace("iê", "iê̄").replace("uô", "uô̄").replace("ươ", "ươ̄").replace("ơơ", "ơơ̄").replace("uu", "uū").replace("yi", "yī").replace("ii", "iī").replace("ưư", "ưư̄").replace("iu", "īu").replace("ia", "īa").replace("ua", "ūa").replace("ưa", "ư̄a");
+            rimetone = rime.replace("iê", "iê̄").replace("uô", "uô̄").replace("ươ", "ươ̄").replace("ơơ", "ơơ̄").replace("uu", "uū").replace("yi", "yī").replace("ii", "iī").replace("ưư", "ưư̄").replace("iu", "īu").replace("ia", "īa").replace("ya", "ȳa").replace("ua", "ūa").replace("ưa", "ư̄a");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ā").replace("ă", "ă̄").replace("â", "â̄").replace("ơ", "ơ̄").replace("ô", "ô̄").replace("e", "ē").replace("ê", "ê̄");
                 if (rimetone == rime) {
@@ -2829,7 +3268,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̱":
-            rimetone = rime.replace("iê", "iê̱").replace("uô", "uô̱").replace("ươ", "ươ̱").replace("ơơ", "ơơ̱").replace("uu", "uu̱").replace("yi", "yi̱").replace("ii", "ii̱").replace("ưư", "ưư̱").replace("iu", "i̱u").replace("ia", "i̱a").replace("ua", "u̱a").replace("ưa", "ư̱a");
+            rimetone = rime.replace("iê", "iê̱").replace("uô", "uô̱").replace("ươ", "ươ̱").replace("ơơ", "ơơ̱").replace("uu", "uu̱").replace("yi", "yi̱").replace("ii", "ii̱").replace("ưư", "ưư̱").replace("iu", "i̱u").replace("ia", "i̱a").replace("ya", "y̱a").replace("ua", "u̱a").replace("ưa", "ư̱a");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "a̱").replace("ă", "ă̱").replace("â", "â̱").replace("ơ", "ơ̱").replace("ô", "ô̱").replace("e", "e̱").replace("ê", "ê̱");
                 if (rimetone == rime) {
@@ -2841,7 +3280,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̌":
-            rimetone = rime.replace("iê", "iê̌").replace("uô", "uô̌").replace("ươ", "ươ̌").replace("ơơ", "ơơ̌").replace("uu", "uǔ").replace("yi", "yǐ").replace("ii", "iǐ").replace("ưư", "ưư̌").replace("iu", "ǐu").replace("ia", "ǐa").replace("ua", "ǔa").replace("ưa", "ư̌a");
+            rimetone = rime.replace("iê", "iê̌").replace("uô", "uô̌").replace("ươ", "ươ̌").replace("ơơ", "ơơ̌").replace("uu", "uǔ").replace("yi", "yǐ").replace("ii", "iǐ").replace("ưư", "ưư̌").replace("iu", "ǐu").replace("ia", "ǐa").replace("ya", "y̌a").replace("ua", "ǔa").replace("ưa", "ư̌a");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ǎ").replace("ă", "ă̌").replace("â", "â̌").replace("ơ", "ơ̌").replace("ô", "ô̌").replace("e", "ě").replace("ê", "ê̌");
                 if (rimetone == rime) {

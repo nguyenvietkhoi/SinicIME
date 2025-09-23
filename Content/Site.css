@@ -75,6 +75,11 @@ src: url('../fonts/Sawndip0.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
+font-family: Jigmo3;
+src: url('../fonts/Jigmo3.ttf') format('truetype');
+font-display: swap;
+}
+@font-face {
 font-family: "Nom Na Tong";
 src: url('../fonts/NomNaTongLight.ttf#iefix') format('embedded-opentype');
 font-display: swap;
@@ -117,6 +122,11 @@ font-display: swap;
 @font-face {
 font-family: "Muong So Cursive";
 src: url('../fonts/MuongSoCursive-Regular.ttf') format('truetype');
+font-display: swap;
+}
+@font-face {
+font-family: "Muong Chieng Cursive";
+src: url('../fonts/MuongChiengCursive-Regular.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
@@ -199,7 +209,7 @@ font-display: swap;
 #txtPad, #txtPadout {    
     min-height: 500px;
     resize: none;
-    font-family: Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+    font-family: Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
     background-color: #0808088c;
     color: #fff;
 }

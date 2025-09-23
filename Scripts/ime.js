@@ -3,7 +3,7 @@
 }
 
 var shiftbool = false;
-var opttablelist = [$('#Hannom').val(), $('#Midchinese').val(), $('#Southmin').val(), $('#Eastmin').val(), $('#Hakka').val(), $('#Mandarin').val(), $('#Yue').val(), $('#Wu').val(), $('#Hankor').val(), $('#Japanese').val(), $('#Sawndip').val(), $('#SinoYay').val(), $('#SinoSaek').val(), $('#SinoYang').val(), $('#Tay').val(), $('#SinoThai').val(), $('#SinoLao').val(), $('#SinoTaidam').val(), $('#SinoTaidon').val(), $('#SinoLanna').val(), $('#SinoKhuen').val(), $('#SinoTaiyai').val(), $('#SinoTainuea').val(), $('#SinoTailue').val(), $('#SinoTaiyo').val(), $('#SinoTaipao').val(), $('#SinoAhom').val(), $('#SinoTaideng').val(), $('#SinoNung').val(), $('#Muong').val(), $('#Sukhothai').val(), $('#Kemmun').val(), $('#Iumien').val(), $('#SinoAiton').val()];
+var opttablelist = [$('#Hannom').val(), $('#Midchinese').val(), $('#Southmin').val(), $('#Eastmin').val(), $('#Hakka').val(), $('#Mandarin').val(), $('#Yue').val(), $('#Wu').val(), $('#Hankor').val(), $('#Japanese').val(), $('#Sawndip').val(), $('#SinoYay').val(), $('#SinoSaek').val(), $('#SinoYang').val(), $('#Tay').val(), $('#SinoThai').val(), $('#SinoLao').val(), $('#SinoTaidam').val(), $('#SinoTaidon').val(), $('#SinoLanna').val(), $('#SinoKhuen').val(), $('#SinoTaiyai').val(), $('#SinoTainuea').val(), $('#SinoTailue').val(), $('#SinoTaiyo').val(), $('#SinoTaipao').val(), $('#SinoAhom').val(), $('#SinoTaideng').val(), $('#SinoNung').val(), $('#Muong').val(), $('#Sukhothai').val(), $('#Kemmun').val(), $('#Iumien').val(), $('#SinoAiton').val(), $('#SinoTaikhao').val()];
 var kblist = ["E→文", "E→อ", "อ→文"];
 var keyboard = 0;
 var contents = [];
@@ -135,10 +135,10 @@ function myCheck(boxclick) {
 
 function opttableselect(tablesel) {
     quocngu = tablesel;
-    $("#keyboard").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("body").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("#txtPad").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("#txtPadout").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#keyboard").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("body").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#txtPad").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#txtPadout").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
     switch (quocngu) {
         case 1: opttable = "rubytriung";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -257,6 +257,17 @@ function opttableselect(tablesel) {
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Muong So Cursive") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Muong So Cursive") });
             $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Muong So Cursive") });
+            break;
+        case 34: opttable = "rubytaikhao";
+            document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'MuongMun\',20)"><a>IPA: ' + $("#MuongMun").val() + '</a></li>' +
+                '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
+                '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
+                '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Muong Chieng Cursive") });
+            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Muong Chieng Cursive") });
+            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Muong Chieng Cursive") });
+            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Muong Chieng Cursive") });
             break;
         case 19: opttable = "rubylanna";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -852,6 +863,10 @@ function logo2ipa(accent, maxlevel) {
                         ipaword = TaiDonIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
                         break;
+                    case 'MuongMun':
+                        ipaword = TaiKhaoIPA(word[i], accent);
+                        convtxt += (prespace + ipaword);
+                        break;
                     case 'MuongDaeng':
                         ipaword = TaiDaengIPA(word[i], accent);
                         convtxt += (prespace + ipaword);
@@ -932,6 +947,10 @@ function logo2roman(maxlevel) {
                         break;
                     case 18:
                         ipaword = TaiDonIPA(word[i], "roman");
+                        convtxt += (prespace + ipaword);
+                        break;
+                    case 34:
+                        ipaword = TaiKhaoIPA(word[i], "roman");
                         convtxt += (prespace + ipaword);
                         break;
                     case 22:
@@ -1129,6 +1148,10 @@ function roma2phone() {
                         break;
                     case 18:
                         ipaword = TaiDonRoma(word[i]);
+                        convtxt += (prespace + ipaword);
+                        break;
+                    case 34:
+                        ipaword = TaiKhaoRoma(word[i]);
                         convtxt += (prespace + ipaword);
                         break;
                     case 22:
@@ -1707,6 +1730,7 @@ function typeChar(text, ch) {
             case 16: return LAO(text, ch);
             case 17: return TAIDAM(text, ch);
             case 18: return TAIDON(text, ch);
+            case 34: return TAIKHAO(text, ch);
             case 19: case 20: return TAITHAM(text, ch);
             case 21: return TAIYAI(text, ch);
             case 22: return TAILE(text, ch);
@@ -2314,7 +2338,7 @@ function TAIDON(text, ch) {
     switch (roma) {
         case 'ꪷw': roma = "ꪷꪷ"; break;
         case 'ꪱa': roma = "꫏"; break;
-        case 'ꪶ3': roma = "ꪶ‍"; break;
+        case 'ꪶ3': roma = "꫎"; break;
         case '\'h': roma = "ꪬ"; break;
         case '\'k': roma = "ꪁ"; break;
         case '\'x': roma = "ꪂ"; break;
@@ -2342,8 +2366,6 @@ function TAIDON(text, ch) {
         case '\'m': roma = "ꪣ"; break;
         case 'ꪬy': roma = "ꪤ"; break;
         case '\'y': roma = "ꪥ"; break;
-        case 'ꪭr': roma = "ꪦ"; break;
-        case '\'r': roma = "ꪧ"; break;
         case 'ꪬl': roma = "ꪨ"; break;
         case '\'l': roma = "ꪩ"; break;
         case 'ꪬv': roma = "ꪪ"; break;
@@ -2352,8 +2374,100 @@ function TAIDON(text, ch) {
         case 'ꪰn': roma = "ꪽ"; break;
         case 'ꪰm': roma = "ꪾ"; break;
         case 'ꪰd': roma = "꫉"; break;
-        case '꪿h': roma = "ꫀ"; break;
-        case '꫁h': roma = "ꫂ"; break;
+        default: roma = t + tch; break;
+    }
+    return text.substring(0, text.length - alt) + roma;
+}
+
+function TAIKHAO(text, ch) {
+    var tch = "";
+    switch (ch) {
+        case '0': tch = "ꪰ"; break;
+        case '1': tch = "꪿"; break;
+        case '2': tch = "꫁"; break;
+        case '3': tch = "ꪶ"; break;
+        case '4': tch = "ꪵ"; break;
+        case '5': tch = "ꪺ"; break;
+        case '6': tch = "ꪻ"; break;
+        case '7': tch = "ꪼ"; break;
+        case '8': tch = "ꪸ"; break;
+        case '9': tch = "ꪳ"; break;
+        case 'a': tch = "ꪱ"; break;
+        case 'b': tch = "ꪚ"; break;
+        case 'c': tch = "ꪊ"; break;
+        case 'd': tch = "ꪒ"; break;
+        case 'e': tch = "ꪹ"; break;
+        case 'f': tch = "ꪠ"; break;
+        case 'g': tch = "ꪉ"; break;
+        case 'h': tch = "ꪬ"; break;
+        case 'i': tch = "ꪲ"; break;
+        case 'j': tch = "ꪑ"; break;
+        case 'k': tch = "ꪀ"; break;
+        case 'l': tch = "ꪩ"; break;
+        case 'm': tch = "ꪣ"; break;
+        case 'n': tch = "ꪙ"; break;
+        case 'o': tch = "ꪮ"; break;
+        case 'p': tch = "ꪜ"; break;
+        case 'q': tch = "ꪁ"; break;
+        case 'r': tch = "ꪭ"; break;
+        case 's': tch = "ꪎ"; break;
+        case 't': tch = "ꪔ"; break;
+        case 'u': tch = "ꪴ"; break;
+        case 'v': tch = "ꪫ"; break;
+        case 'w': tch = "꫎"; break;
+        case 'x': tch = "ꪄ"; break;
+        case 'y': tch = "ꪥ"; break;
+        case 'z': tch = "ꪖ"; break;
+        default: tch = ch; break;
+    }
+    if (text == "") {
+        return tch;
+    }
+
+    var t = text[text.length - 1];
+    var alt = 1;
+    if ((t == "‍") && (text.length >= 2)) {
+        t = text[text.length - 2].concat(text[text.length - 1]);
+        alt = 2;
+    }
+    var roma = t + ch;
+    switch (roma) {
+        case 'ꪷ0': roma = "꫊"; break;
+        case '\'h': roma = "ꪬ"; break;
+        case '\'k': roma = "ꪅ"; break;
+        case '\'x': roma = "ꪂ"; break;
+        case '\'q': roma = "ꪃ"; break;
+        case 'ꪀh': roma = "ꪆ"; break;
+        case 'ꪬg': roma = "ꪈ"; break;
+        case '\'g': roma = "ꪉ"; break;
+        case '\'c': roma = "ꪋ"; break;
+        case 'ꪊh': roma = "ꪌ"; break;
+        case 'ꪎh': roma = "ꪍ"; break;
+        case '\'s': roma = "ꪏ"; break;
+        case 'ꪬj': roma = "ꪐ"; break;
+        case '\'j': roma = "ꪑ"; break;
+        case '\'d': roma = "ꪓ"; break;
+        case '\'t': roma = "ꪕ"; break;
+        case '\'z': roma = "ꪗ"; break;
+        case 'ꪬn': roma = "ꪘ"; break;
+        case '\'n': roma = "ꪙ"; break;
+        case '\'b': roma = "ꪛ"; break;
+        case '\'p': roma = "ꪝ"; break;
+        case 'ꪜh': roma = "ꪟ"; break;
+        case '\'f': roma = "ꪡ"; break;
+        case 'ꪬm': roma = "ꪢ"; break;
+        case '\'m': roma = "ꪣ"; break;
+        case 'ꪬy': roma = "ꪤ"; break;
+        case '\'y': roma = "ꪥ"; break;
+        case 'ꪭr': roma = "ꪦ"; break;
+        case '\'r': roma = "ꪧ"; break;
+        case 'ꪬl': roma = "ꪨ"; break;
+        case '\'l': roma = "ꪩ"; break;
+        case 'ꪬv': roma = "ꪪ"; break;
+        case '\'v': roma = "ꪫ"; break;
+        case '\'o': roma = "ꪯ"; break;
+        case 'ꪙn': roma = "ꪽ"; break;
+        case 'ꪣm': roma = "ꪾ"; break;
         default: roma = t + tch; break;
     }
     return text.substring(0, text.length - alt) + roma;
@@ -2415,7 +2529,7 @@ function TAIDENG(text, ch) {
         case 'ꪀn': roma = "ꪀ‍ꪙ"; break;
         case 'ꪀv': roma = "ꪀ‍ꪫ‍"; break;
         case 'ꪷ0': roma = "꫊"; break;
-        case 'ꪶ3': roma = "ꪶ‍"; break;
+        case 'ꪶ3': roma = "꫎"; break;
         case '\'h': roma = "ꪬ"; break;
         case '\'k': roma = "ꪁ‍"; break;
         case '\'x': roma = "ꪂ‍"; break;
@@ -5427,6 +5541,8 @@ function loadkeyboard() {
         return;
     }
     if ($('#keyboard').css("display") == "block") {
+		$('.vk-btn').css("font-size", 18);
+		$('.vk-btn').css("line-height", 1.5);
         switch (quocngu) {
             case 11:
                 defaultkeyboard();
@@ -5781,9 +5897,9 @@ function loadkeyboard() {
             case 18:
                 $('#K192').html("<br>`");
                 $('#K48').html("<br><span style='color: #6551d9;'>◌ꪰ</span>");
-                $('#K49').html("<br><span style='color: #13abbb;'>ꫀ  </span><span style='color: #d48600;'>◌꪿</span>");
-                $('#K50').html("<br><span style='color: #13abbb;'>ꫂ  </span><span style='color: #d48600;'>◌꫁</span>");
-                $('#K51').html("<span style='color: #b1bb13;'>ꪶ‍ </span><br><span style='color: #7ba064;'>ꪶ</span>");
+                $('#K49').html("<br><span style='color: #d48600;'>◌꪿</span>");
+                $('#K50').html("<br><span style='color: #d48600;'>◌꫁</span>");
+                $('#K51').html("<span style='color: #b1bb13;'>◌꫎</span><br><span style='color: #7ba064;'>ꪶ</span>");
                 $('#K52').html("<br>ꪵ");
                 $('#K53').html("<br>ꪺ");
                 $('#K54').html("<br>ꪻ");
@@ -5791,21 +5907,21 @@ function loadkeyboard() {
                 $('#K56').html("<br><span style='color: #ffc000;'>◌ꪸ</span>");
                 $('#K57').html("<br><span style='color: #ffc000;'>◌ꪳ</span>");
                 $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br>ꪅ");
-                $('#K87').html("<span style='color: #b1bb13;'>◌ꪷꪷ</span><br><span style='color: #7ba064;'>ꪷ</span>");
+                $('#K87').html("<span style='color: #b1bb13;'>◌ꪷꪷ</span><br><span style='color: #7ba064;'>◌ꪷ</span>");
                 $('#K69').html("<br>ꪹ");
-                $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
+                $('#K82').html("<br>ꪭ");
                 $('#K84').html("<span style='color: #d22e9f;'>ꪕ   </span><br>ꪔ");
                 $('#K89').html("<span style='color: #13abbb;'>ꪤ   </span><br>ꪥ");
                 $('#K85').html("<br><span style='color: #ffc000;'>◌ꪴ</span>");
                 $('#K73').html("<br><span style='color: #ffc000;'>◌ꪲ</span>");
                 $('#K79').html("<span style='color: #d22e9f;'>ꪯ   </span><br>ꪮ");
-                $('#K80').html("<span style='color: #d22e9f;'>ꪝ   </span><br><span style='color: #13abbb;'>ꪟ   </span>ꪜ");
+                $('#K80').html("<span style='color: #d22e9f;'>ꪝ   </span><br><span style='color: #13abbb;'>ꪟ </span>ꪜ");
                 $('#K219').html("<br>[");
                 $('#K221').html("<br>]");
                 $('#K65').html("<span style='color: #b1bb13;'>◌꫏</span><br><span style='color: #7ba064;'>ꪱ</span>");
-                $('#K83').html("<span style='color: #d22e9f;'>ꪏ   </span><br><span style='color: #13abbb;'>ꪍ   </span>ꪎ");
-                $('#K68').html("<span style='color: #d22e9f;'>ꪓ </span><span style='color: #b59bff;'>​꫉</span><br>ꪒ");
-                $('#K70').html("<span style='color: #d22e9f;'>ꪡ   </span><br><span style='color: #13abbb;'>ꪞ  </span>ꪠ");
+                $('#K83').html("<span style='color: #d22e9f;'>ꪏ   </span><br><span style='color: #13abbb;'>ꪍ </span>ꪎ");
+                $('#K68').html("<span style='color: #d22e9f;'>ꪓ </span><span style='color: #b59bff;'>​꫉</span><br> ꪒ");
+                $('#K70').html("<span style='color: #d22e9f;'>ꪡ   </span><br><span style='color: #13abbb;'>ꪞ </span>ꪠ");
                 $('#K71').html("<span style='color: #13abbb;'>ꪈ   </span><br>ꪉ");
                 $('#K72').html("<br><span style='color: #2f80b9;'>ꪬ</span>");
                 $('#K74').html("<span style='color: #13abbb;'>ꪐ   </span><br>ꪑ");
@@ -5815,11 +5931,61 @@ function loadkeyboard() {
                 $('#K222').html("<br><span style='color: #cc4444;'>'</span>");
                 $('#K90').html("<span style='color: #d22e9f;'>ꪗ   </span><br>ꪖ");
                 $('#K88').html("<span style='color: #d22e9f;'>ꪂ   </span><br>ꪄ");
-                $('#K67').html("<span style='color: #d22e9f;'>ꪋ   </span><br><span style='color: #13abbb;'>ꪌ  </span>ꪊ");
+                $('#K67').html("<span style='color: #d22e9f;'>ꪋ   </span><br><span style='color: #13abbb;'>ꪌ </span>ꪊ");
                 $('#K86').html("<span style='color: #13abbb;'>ꪪ  </span><br>ꪫ");
                 $('#K66').html("<span style='color: #d22e9f;'>ꪛ   </span><br>ꪚ");
-                $('#K78').html("<span style='color: #13abbb;'>ꪘ </span><span style='color: #b59bff;'>ꪽ</span><br>ꪙ");
-                $('#K77').html("<span style='color: #13abbb;'>ꪢ  </span><span style='color: #b59bff;'>◌ꪾ</span><br>ꪣ");
+                $('#K78').html("<span style='color: #13abbb;'>ꪘ </span><span style='color: #b59bff;'>ꪽ</span><br>ꪙ");
+                $('#K77').html("<span style='color: #13abbb;'>ꪢ </span><span style='color: #b59bff;'>◌ꪾ</span><br>ꪣ");
+                $('#K188').html("<br>,");
+                $('#K190').html("<br>.");
+                $('#K191').html("<br>/");
+                $('#K16R').html("<br>⇧");
+                $('#K16L').html("<br>⇧");
+                break;
+            case 34:
+				$('.vk-btn').css("font-size", 15);
+				$('.vk-btn').css("line-height", 1.8);
+                $('#K192').html("<br>`");
+                $('#K48').html("<span style='color: #b1bb13;'>꫊</span><br><span style='color: #7ba064;'>◌ꪰ</span>");
+                $('#K49').html("<br><span style='color: #d48600;'>◌꪿</span>");
+                $('#K50').html("<br><span style='color: #d48600;'>◌꫁</span>");
+                $('#K51').html("<br>ꪶ  ");
+                $('#K52').html("<br>ꪵ");
+                $('#K53').html("<br>ꪺ");
+                $('#K54').html("<br>ꪻ");
+                $('#K55').html("<br>ꪼ");
+                $('#K56').html("<br><span style='color: #ffc000;'>◌ꪸ</span>");
+                $('#K57').html("<br><span style='color: #ffc000;'>◌ꪳ</span>");
+                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br>ꪁ");
+                $('#K87').html("<br><span style='color: #ffc000;'>꫎◌</span>");
+                $('#K69').html("<br>ꪹ");
+                $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
+                $('#K84').html("<span style='color: #d22e9f;'>ꪕ   </span><br>ꪔ");
+                $('#K89').html("<span style='color: #13abbb;'>ꪤ    </span><br>ꪥ");
+                $('#K85').html("<br><span style='color: #ffc000;'>◌ꪴ</span>");
+                $('#K73').html("<br><span style='color: #ffc000;'>◌ꪲ</span>");
+                $('#K79').html("<span style='color: #d22e9f;'>ꪯ   </span><br>ꪮ");
+                $('#K80').html("<span style='color: #d22e9f;'>ꪝ   </span><br><span style='color: #13abbb;'>ꪟ </span>ꪜ ");
+                $('#K219').html("<br>[");
+                $('#K221').html("<br>]");
+                $('#K65').html("<br>ꪱ");
+                $('#K83').html("<span style='color: #d22e9f;'>ꪏ   </span><br><span style='color: #13abbb;'>ꪍ   </span>ꪎ");
+                $('#K68').html("<span style='color: #d22e9f;'>ꪓ   </span><br>ꪒ");
+                $('#K70').html("<span style='color: #d22e9f;'>ꪡ   </span><br>ꪠ");
+                $('#K71').html("<span style='color: #13abbb;'>ꪈ   </span><br>ꪉ");
+                $('#K72').html("<br><span style='color: #2f80b9;'>ꪬ</span>");
+                $('#K74').html("<span style='color: #13abbb;'>ꪐ   </span><br>ꪑ");
+                $('#K75').html("<span style='color: #d22e9f;'>ꪅ   </span><br><span style='color: #13abbb;'>ꪆ  </span>ꪀ");
+                $('#K76').html("<span style='color: #13abbb;'>ꪨ   </span><br>ꪩ");
+                $('#K186').html("<br>;");
+                $('#K222').html("<br><span style='color: #cc4444;'>'</span>");
+                $('#K90').html("<span style='color: #d22e9f;'>ꪗ   </span><br>ꪖ");
+                $('#K88').html("<span style='color: #d22e9f;'>ꪂ   </span><br>ꪄ");
+                $('#K67').html("<span style='color: #d22e9f;'>ꪋ   </span><br><span style='color: #13abbb;'>ꪌ   </span>ꪊ");
+                $('#K86').html("<span style='color: #13abbb;'>ꪪ  </span><br>ꪫ");
+                $('#K66').html("<span style='color: #d22e9f;'>ꪛ   </span><br>ꪚ");
+                $('#K78').html("<span style='color: #13abbb;'>ꪘ </span><span style='color: #b1bb13;'>ꪽ</span><br><span style='color: #7ba064;'>ꪙ</span>");
+                $('#K77').html("<span style='color: #13abbb;'>ꪢ  </span><span style='color: #b1bb13;'>◌ꪾ</span><br><span style='color: #7ba064;'>ꪣ</span>");
                 $('#K188').html("<br>,");
                 $('#K190').html("<br>.");
                 $('#K191').html("<br>/");
@@ -5831,7 +5997,7 @@ function loadkeyboard() {
                 $('#K48').html("<span style='color: #b59bff;'>꫊</span><br><span style='color: #6551d9;'>ꪷ</span>");
                 $('#K49').html("<br><span style='color: #13abbb;'>ꫀ  </span><span style='color: #d48600;'>◌꪿</span>");
                 $('#K50').html("<br><span style='color: #13abbb;'>ꫂ  </span><span style='color: #d48600;'>◌꫁</span>");
-                $('#K51').html("<span style='color: #b1bb13;'>ꪶ‍ </span><br><span style='color: #7ba064;'>ꪶ</span>");
+                $('#K51').html("<span style='color: #b1bb13;'>◌꫎</span><br><span style='color: #7ba064;'>ꪶ</span>");
                 $('#K52').html("<br>ꪵ");
                 $('#K53').html("<br>ꪺ");
                 $('#K54').html("<br>ꪻ");
