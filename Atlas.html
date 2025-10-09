@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T99S46KJ26"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T99S46KJ26');
+</script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas - Linguaevum</title>
+    <link href="./Content/bootstrap.css" rel="stylesheet">
+	<link href="./Content/Site.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol/ol.css">    
+</head>
+
+
+<div class="navbar navbar-inverse" style="margin: 0">
+        <div >
+        </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#layoutbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="./Resources/tho.png" class="logo">
+                                <a class="navbar-brand" href="./">Linguaevum</a>
+            </div>
+        </div>
+    </div>
+
+<table style="height: 100%; width: 100%">
+    <tr>
+        <td style="width: 200px; height: 100%; background-color: #2f2f2f; vertical-align: top;">
+            <select id="labelscripttype" style="width: 100%; margin-top:5px" onchange="scriptChange()">
+                <option value=0 selected>Sinogram</option>
+                <option value=1>Alphabet</option>
+                <option value=2>No label</option>
+            </select>
+			<div class="infobox">
+			<table style="height: 100%; width: 100%">
+				<tr><td id="nameNom"></td></tr>
+				<tr><td id="nameLatin"></td></tr>
+				<tr><td id="nameHan"></td></tr>
+			</table>
+			</div>
+        </td>
+        <td rowspan="2">
+<div id="basicMap"></div>
+            
+        </td>
+    </tr>
+    <tr>
+        <td style="height: 20px; background-color: #111;">
+        <p style="margin: 0 0 0 30px; font-size: 12px; color: #eee">© 2020 - Linguaevum</p></td>
+    </tr>
+</table>
+<script src="./Scripts/jquery-1.10.2.js"></script>
+<script src="./Scripts/jquery-3.0.0.js"></script>
+<script src="./Scripts/bootstrap.js"></script>
+<script src="./Scripts/respond.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ol@latest/dist/ol.js"></script> 
+<script type="text/javascript" src="./Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="./Scripts/sql.js"></script>
+<script src="./Scripts/map.js"></script>
+
+<style>
+body {
+	padding: 0px;
+}
+	#basicMap {
+      width: 100%;
+      height: 100vh; /* Full screen height */
+    }
+	
+    .markerLabel {
+      position: absolute;
+      background-color: white;
+      border: 1px solid #666;
+      border-radius: 4px;
+      padding: 3px 6px;
+      white-space: nowrap;
+      font-size: 13px;
+      pointer-events: none;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+	
+    .infobox {
+	  color: #fff;
+      text-align: center;
+      padding: 3px 6px;
+      font-size: 22px;
+    }
+	
+	#nameLatin {
+      font-size: 18px;
+	}
+</style>

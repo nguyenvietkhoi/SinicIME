@@ -331,7 +331,7 @@ html {
 }
 
 body {
-      font-family: "Lexend", "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+      font-family: "Lexend", "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, HanaMinA, HanaMinB, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
   font-size: 16px;
   line-height: 1.428571429;
   color: #101010;
