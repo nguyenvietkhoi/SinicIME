@@ -2312,7 +2312,7 @@ function TAIDON(text, ch) {
         case 'n': tch = "ꪙ"; break;
         case 'o': tch = "ꪮ"; break;
         case 'p': tch = "ꪜ"; break;
-        case 'q': tch = "ꪅ"; break;
+        case 'q': tch = "ꪆ"; break;
         case 'r': tch = "ꪭ"; break;
         case 's': tch = "ꪎ"; break;
         case 't': tch = "ꪔ"; break;
@@ -2340,10 +2340,10 @@ function TAIDON(text, ch) {
         case 'ꪱa': roma = "꫏"; break;
         case 'ꪶ3': roma = "꫎"; break;
         case '\'h': roma = "ꪬ"; break;
-        case '\'k': roma = "ꪁ"; break;
+        case '\'k': roma = "ꪇ"; break;
         case '\'x': roma = "ꪂ"; break;
         case '\'q': roma = "ꪃ"; break;
-        case 'ꪀh': roma = "ꪆ"; break;
+        case 'ꪀh': roma = "ꪁ"; break;
         case 'ꪬg': roma = "ꪈ"; break;
         case '\'g': roma = "ꪉ"; break;
         case '\'c': roma = "ꪋ"; break;
@@ -2434,10 +2434,9 @@ function TAIKHAO(text, ch) {
     switch (roma) {
         case 'ꪷ0': roma = "꫊"; break;
         case '\'h': roma = "ꪬ"; break;
-        case '\'k': roma = "ꪅ"; break;
+        case '\'k': roma = "ꪇ"; break;
         case '\'x': roma = "ꪂ"; break;
-        case '\'q': roma = "ꪃ"; break;
-        case 'ꪀh': roma = "ꪆ"; break;
+        case '\'q': roma = "ꪅ"; break;
         case 'ꪬg': roma = "ꪈ"; break;
         case '\'g': roma = "ꪉ"; break;
         case '\'c': roma = "ꪋ"; break;
@@ -5906,7 +5905,7 @@ function loadkeyboard() {
                 $('#K55').html("<br>ꪼ");
                 $('#K56').html("<br><span style='color: #ffc000;'>◌ꪸ</span>");
                 $('#K57').html("<br><span style='color: #ffc000;'>◌ꪳ</span>");
-                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br>ꪅ");
+                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br>ꪆ");
                 $('#K87').html("<span style='color: #b1bb13;'>◌ꪷꪷ</span><br><span style='color: #7ba064;'>◌ꪷ</span>");
                 $('#K69').html("<br>ꪹ");
                 $('#K82').html("<br>ꪭ");
@@ -5925,7 +5924,7 @@ function loadkeyboard() {
                 $('#K71').html("<span style='color: #13abbb;'>ꪈ   </span><br>ꪉ");
                 $('#K72').html("<br><span style='color: #2f80b9;'>ꪬ</span>");
                 $('#K74').html("<span style='color: #13abbb;'>ꪐ   </span><br>ꪑ");
-                $('#K75').html("<span style='color: #d22e9f;'>ꪁ   </span><br><span style='color: #13abbb;'>ꪆ  </span>ꪀ");
+                $('#K75').html("<span style='color: #d22e9f;'>ꪇ   </span><br><span style='color: #13abbb;'>ꪁ  </span>ꪀ");
                 $('#K76').html("<span style='color: #13abbb;'>ꪨ   </span><br>ꪩ");
                 $('#K186').html("<br>;");
                 $('#K222').html("<br><span style='color: #cc4444;'>'</span>");
@@ -5956,7 +5955,7 @@ function loadkeyboard() {
                 $('#K55').html("<br>ꪼ");
                 $('#K56').html("<br><span style='color: #ffc000;'>◌ꪸ</span>");
                 $('#K57').html("<br><span style='color: #ffc000;'>◌ꪳ</span>");
-                $('#K81').html("<span style='color: #d22e9f;'>ꪃ   </span><br>ꪁ");
+                $('#K81').html("<span style='color: #d22e9f;'>ꪅ   </span><br>ꪁ");
                 $('#K87').html("<br><span style='color: #ffc000;'>꫎◌</span>");
                 $('#K69').html("<br>ꪹ");
                 $('#K82').html("<span style='color: #d22e9f;'>ꪧ   </span><span style='color: #b1bb13;'>ꪦ</span><br><span style='color: #7ba064;'>ꪭ</span>");
@@ -5975,7 +5974,7 @@ function loadkeyboard() {
                 $('#K71').html("<span style='color: #13abbb;'>ꪈ   </span><br>ꪉ");
                 $('#K72').html("<br><span style='color: #2f80b9;'>ꪬ</span>");
                 $('#K74').html("<span style='color: #13abbb;'>ꪐ   </span><br>ꪑ");
-                $('#K75').html("<span style='color: #d22e9f;'>ꪅ   </span><br><span style='color: #13abbb;'>ꪆ  </span>ꪀ");
+                $('#K75').html("<span style='color: #d22e9f;'>ꪇ   </span><br>ꪀ");
                 $('#K76').html("<span style='color: #13abbb;'>ꪨ   </span><br>ꪩ");
                 $('#K186').html("<br>;");
                 $('#K222').html("<br><span style='color: #cc4444;'>'</span>");

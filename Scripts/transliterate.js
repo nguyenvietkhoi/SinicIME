@@ -524,17 +524,17 @@ function TaiDonIPA(w, accent) {
     var tmpconso = "";
     ipa.onset = "", ipa.onset2 = "", ipa.rime = "", ipa.tone = "", ipa.toneclass = 0;
     var ipalist = [];
-    w = w.replace('ꫛ', 'ꪶꪁꪙ');
+    w = w.replace('ꫛ', 'ꪇꪴꪙ');
     w = w.replace('ꫜ', 'ꪙꪳ꪿ꪉ');
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
+        if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪇꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
                 ipa.rime += "◌";
                 if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪ".includes(c))
                     ipa.toneclass = 1;
-                else if ("ꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c))
+                else if ("ꪇꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c))
                     ipa.toneclass = 2;
             }
             else if (((ipa.rime == "") || (ipa.rime.endsWith("◌"))) && (c != "ꪮ") && (!ipa.onset2.endsWith("1"))) {
@@ -720,7 +720,7 @@ function TaiDonIPA(w, accent) {
         }
         else {
             if ((ipa.onset == "") && (!"ꪵ◌ꪹ◌ꪶ◌ꪻ◌ꪼ◌".includes(c))) {
-                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(tmpconso)) {
+                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪇꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(tmpconso)) {
                     tmpconso = "";
                     var previpa = ipalist.pop();
                     previpa.rime = previpa.rime.slice(0, -1);
@@ -908,17 +908,17 @@ function TaiKhaoIPA(w, accent) {
     var tmpconso = "";
     ipa.onset = "", ipa.onset2 = "", ipa.rime = "", ipa.tone = "", ipa.toneclass = 0;
     var ipalist = [];
-    w = w.replace('ꫛ', 'ꪶꪁꪙ');
+    w = w.replace('ꫛ', 'ꪶꪇꪙ');
     w = w.replace('ꫜ', 'ꪙꪳ꪿ꪉ');
     for (var i = 0; i < w.length; i++) {
         var c = w.charAt(i);
-        if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
+        if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪇꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c)) {
             if (ipa.onset == "") {
                 ipa.onset = c;
                 ipa.rime += "◌";
                 if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪ".includes(c))
                     ipa.toneclass = 1;
-                else if ("ꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c))
+                else if ("ꪁꪇꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(c))
                     ipa.toneclass = 2;
             }
             else if (((ipa.rime == "") || (ipa.rime.endsWith("◌"))) && (c != "ꪮ") && (!ipa.onset2.endsWith("1"))) {
@@ -1068,7 +1068,7 @@ function TaiKhaoIPA(w, accent) {
         }
         else {
             if ((ipa.onset == "") && (!"ꪵ◌ꪹ◌ꪶ◌ꪻ◌ꪼ◌".includes(c))) {
-                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(tmpconso)) {
+                if ("ꪀꪄꪂꪈꪬꪮꪊꪌꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪞꪪꪁꪇꪅꪃꪉꪭꪯꪋꪍꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪟꪡꪫ".includes(tmpconso)) {
                     tmpconso = "";
                     var previpa = ipalist.pop();
                     previpa.rime = previpa.rime.slice(0, -1);
