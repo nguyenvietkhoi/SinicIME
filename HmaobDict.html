@@ -49,10 +49,15 @@ var inputID = new URLSearchParams(window.location.search).get("i");
             }
         });
     }
-    function toneB2() {
-        document.getElementById("oriPad").value = (document.getElementById("oriPad").value + "̱");
-        document.getElementById("oriPad").focus();
-    }
+	
+document.addEventListener('keydown', function (e) {
+  // Check if Ctrl (or Cmd on Mac) + B is pressed
+if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+    e.preventDefault(); // prevent default browser action (e.g. bold in editors)
+    inverse(); // call your function
+  }
+});
+
     function inverse() {
         dictbool = !dictbool;
         if (dictbool) 
