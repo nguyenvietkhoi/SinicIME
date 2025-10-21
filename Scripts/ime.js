@@ -2440,6 +2440,7 @@ function TAIKHAO(text, ch) {
         case 'ꪬg': roma = "ꪈ"; break;
         case '\'g': roma = "ꪉ"; break;
         case '\'c': roma = "ꪋ"; break;
+        case 'ꪰ0': roma = "꫊"; break;
         case 'ꪊh': roma = "ꪌ"; break;
         case 'ꪎh': roma = "ꪍ"; break;
         case '\'s': roma = "ꪏ"; break;
