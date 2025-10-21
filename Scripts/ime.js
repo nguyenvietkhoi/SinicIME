@@ -2453,6 +2453,7 @@ function TAIKHAO(text, ch) {
         case '\'b': roma = "ꪛ"; break;
         case '\'p': roma = "ꪝ"; break;
         case 'ꪜh': roma = "ꪟ"; break;
+        case 'ꪠh': roma = "ꪞ"; break;
         case '\'f': roma = "ꪡ"; break;
         case 'ꪬm': roma = "ꪢ"; break;
         case '\'m': roma = "ꪣ"; break;
@@ -5970,7 +5971,7 @@ function loadkeyboard() {
                 $('#K65').html("<br>ꪱ");
                 $('#K83').html("<span style='color: #d22e9f;'>ꪏ   </span><br><span style='color: #13abbb;'>ꪍ   </span>ꪎ");
                 $('#K68').html("<span style='color: #d22e9f;'>ꪓ   </span><br>ꪒ");
-                $('#K70').html("<span style='color: #d22e9f;'>ꪡ   </span><br>ꪠ");
+                $('#K70').html("<span style='color: #d22e9f;'>ꪡ   </span><br><span style='color: #13abbb;'>ꪞ </span>ꪠ");
                 $('#K71').html("<span style='color: #13abbb;'>ꪈ   </span><br>ꪉ");
                 $('#K72').html("<br><span style='color: #2f80b9;'>ꪬ</span>");
                 $('#K74').html("<span style='color: #13abbb;'>ꪐ   </span><br>ꪑ");
