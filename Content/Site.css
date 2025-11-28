@@ -130,8 +130,8 @@ src: url('../fonts/MuongChiengCursive-Regular.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
-font-family: "Tai Muong Deng";
-src: url('../fonts/Tai-Muong-Deng.ttf') format('truetype');
+font-family: "Muong Khong Sans";
+src: url('../fonts/MuongKhongSans-Regular.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {

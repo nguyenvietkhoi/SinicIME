@@ -334,10 +334,10 @@ function opttableselect(tablesel) {
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
                 '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
-            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
-            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
-            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
-            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Tai Muong Deng") });
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Muong Khong Sans") });
+            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Muong Khong Sans") });
+            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Muong Khong Sans") });
+            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Muong Khong Sans") });
             break;
         case 0:
         default: opttable = "rubynom";
