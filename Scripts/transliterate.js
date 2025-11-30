@@ -654,7 +654,7 @@ function TaiDonIPA(w, accent) {
                 }
             }
         }
-        else if ((c == "‍") && ("ꪤꪗꪎꪏꪩꪝ".includes(ipa.onset))) {
+        else if ((c == "‍") && ("ꪦꪤꪗꪎꪏꪩꪝ".includes(ipa.onset))) {
             ipa.onset += c;
         }
         else if ("꪿꫁".includes(c)) {
@@ -1249,7 +1249,7 @@ function TaiDaengIPA(w, accent) {
         var c = w.charAt(i);
         if ("ꪀꪄꪈꪬꪮꪆꪊꪐꪤꪒꪔꪖꪘꪎꪦꪨꪚꪜꪢꪠꪪꪁꪅꪉꪭꪯꪇꪋꪑꪥꪓꪕꪗꪙꪏꪧꪩꪛꪝꪣꪡꪫ".includes(c)) {
 			if (i < w.length-1) {
-				if ((w.charAt(i+1) == "‍") && ("ꪁꪄꪈꪉꪀꪎꪏꪟꪪꪫꪤꪗ".includes(c))) {
+				if ((w.charAt(i+1) == "‍") && ("ꪦꪁꪄꪈꪉꪀꪎꪏꪟꪪꪫꪤꪗ".includes(c))) {
 					c += w.charAt(i+1);
 					i++;
 				}
