@@ -196,7 +196,7 @@ font-display: swap;
 
 #rubytype {
     width: 200px;
-    height: 50px;
+    min-height: 50px;
     min-width: 200px;
     overflow: visible;
     float: right;
