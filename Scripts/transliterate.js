@@ -2393,7 +2393,7 @@ function TaiKhaoRoma(w) {
     else
         return w;
 
-    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷꪷ", "ꪷꪷ꪿").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷꪷ", "ꪷꪷ꫁").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
+    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷꪷ", "ꪷꪷ꪿").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷꪷ", "ꪷꪷ꫁").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁").replace("꫁ꫂ", "ꫂ꫁").replace("꪿ꫂ", "ꫂ꪿");
     return res;
 }
 
@@ -2493,7 +2493,7 @@ function TaiDaengRoma(w) {
     else
         return w;
 
-    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꪶ‍", "ꪶ‍꪿").replace("꫁ꪶ‍", "ꪶ‍꫁").replace("꪿ꪸꪸ", "ꪸꪸ꪿").replace("꫁ꪸꪸ", "ꪸꪸ꫁").replace("꪿ꪲꪲ", "ꪲꪲ꪿").replace("꪿ꪳꪳ", "ꪳꪳ꪿").replace("ꪴꪴ꪿", "ꪴꪴ꪿").replace("꫁ꪲꪲ", "ꪲꪲ꫁").replace("꫁ꪳꪳ", "ꪳꪳ꫁").replace("ꪴꪴ꫁", "ꪴꪴ꫁").replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
+    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꫂ", "ꫂ꪿").replace("꫁ꫂ", "ꫂ꫁").replace("꪿ꪸꪸ", "ꪸꪸ꪿").replace("꫁ꪸꪸ", "ꪸꪸ꫁").replace("꪿ꪲꪲ", "ꪲꪲ꪿").replace("꪿ꪳꪳ", "ꪳꪳ꪿").replace("ꪴꪴ꪿", "ꪴꪴ꪿").replace("꫁ꪲꪲ", "ꪲꪲ꫁").replace("꫁ꪳꪳ", "ꪳꪳ꫁").replace("ꪴꪴ꫁", "ꪴꪴ꫁").replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
     return res;
 }
 
