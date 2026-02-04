@@ -135,10 +135,10 @@ function myCheck(boxclick) {
 
 function opttableselect(tablesel) {
     quocngu = tablesel;
-    $("#keyboard").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("body").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("#txtPad").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
-    $("#txtPadout").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#keyboard").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("body").css({ 'font-family': 'Lexend, "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#txtPad").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, SimSun-ExtG, Jigmo3, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
+    $("#txtPadout").css({ 'font-family': 'Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", "Han-Nom Gothic Supplement"' });
     switch (quocngu) {
         case 1: opttable = "rubytriung";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -253,10 +253,10 @@ function opttableselect(tablesel) {
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
                 '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
-            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Muong So Cursive") });
-            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Muong So Cursive") });
-            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Muong So Cursive") });
-            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Muong So Cursive") });
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Muong Lo Cursive", "Muong So Cursive") });
+            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Muong Lo Cursive", "Muong So Cursive") });
+            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Muong Lo Cursive", "Muong So Cursive") });
+            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Muong Lo Cursive", "Muong So Cursive") });
             break;
         case 34: opttable = "rubytaikhao";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -264,10 +264,10 @@ function opttableselect(tablesel) {
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
                 '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
-            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Muong Chieng Cursive") });
-            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Muong Chieng Cursive") });
-            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Muong Chieng Cursive") });
-            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Muong Chieng Cursive") });
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Muong Lo Cursive", "Muong Chieng Cursive") });
+            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Muong Lo Cursive", "Muong Chieng Cursive") });
+            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Muong Lo Cursive", "Muong Chieng Cursive") });
+            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Muong Lo Cursive", "Muong Chieng Cursive") });
             break;
         case 19: opttable = "rubylanna";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
@@ -334,10 +334,10 @@ function opttableselect(tablesel) {
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
                 '<li onclick="roma2phone()"><a>abc → ꪕ</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → ꪕ</a></li>' + convertdeftext);
-            $("body").css({ 'font-family': $("body").css('font-family').replace("Tai Son La", "Muong Khong Sans") });
-            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Tai Son La", "Muong Khong Sans") });
-            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Tai Son La", "Muong Khong Sans") });
-            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Tai Son La", "Muong Khong Sans") });
+            $("body").css({ 'font-family': $("body").css('font-family').replace("Muong Lo Cursive", "Muong Khong Sans") });
+            $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Muong Lo Cursive", "Muong Khong Sans") });
+            $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Muong Lo Cursive", "Muong Khong Sans") });
+            $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Muong Lo Cursive", "Muong Khong Sans") });
             break;
         case 0:
         default: opttable = "rubynom";
