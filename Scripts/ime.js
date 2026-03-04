@@ -6399,7 +6399,7 @@ function loadkeyboard() {
                 $('#K65').html("<span style='color: #d22e9f;'>𑜾     </span><br>𑜡");
                 $('#K83').html("<span style='color: #d22e9f;'>𑜺   </span><br>𑜏");
                 $('#K68').html("<br>𑜓");
-                $('#K70').html("<span style='color: #b1bb13;'>𑜙</span><br><span style='color: #7ba064;'>𑜊</span>");
+                $('#K70').html("<span style='color: #b1bb13;'>𑜘</span><br><span style='color: #7ba064;'>𑜇</span>");
                 $('#K71').html("<br>𑜂");
                 $('#K72').html("<br>𑜑");
                 $('#K74').html("<br>𑜐");

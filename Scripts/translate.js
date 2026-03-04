@@ -180,12 +180,12 @@ function searchend(phrase, maxlevel, next) {
 		var init = words.length > 1 ? words.slice(0, -1).join(' ') : '';		
 		if (init.length != 0) {
 switch(Math.floor(contents[0].values[0][1])) {
-  case 1: //một
+  case 1: //một + lượng từ / danh từ
 	if ((words.slice(-2)[0] == "ꪜꪱꪥ") && init.includes(" "))
 		return [false, null];
 	if (words.slice(0, -1).includes("ꪙꪳ꪿ꪉ"))
 		return [false, null];	
-  case 2: //mỗi một
+  case 2: //mỗi một + lượng từ / danh từ
     var phrasalnoun = translatesentence(init, maxlevel);
 	if (phrasalnoun.pos[0]==null)
 		return [false, null];	
@@ -195,7 +195,7 @@ switch(Math.floor(contents[0].values[0][1])) {
 			return [false, null];	
 	}
 	break;
-  case 3: //chỉ
+  case 3: //chỉ + động từ
     var phrasalverb = translatesentence(init, maxlevel);
 	if (phrasalverb.pos.length!=1)
 		return [false, null];
@@ -238,7 +238,7 @@ switch(Math.floor(contents[0].values[0][1])) {
 				var init = words.length > 1 ? words.slice(0, -keyword.split(" ").length).join(' ') : '';		
 				if (init.length != 0) {
 switch(Math.floor(contents[0].values[i][1])) {
-  case 5: //rất
+  case 5: //rất + tính từ
     var phrasalnoun = translatesentence(init, maxlevel);
 	if (phrasalnoun.pos[0]==null)
 		return [false, null];	
