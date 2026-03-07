@@ -141,7 +141,7 @@ if (ttt.length > 0) {
 ttt = ttt.replace(/([.!?\n])\s+([a-záàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ])/gi, 
     (_, punc, letter) => punc + ' ' + letter.toLocaleUpperCase("vi")
   ).replace(/\n /g, "\n");
-$("#txtPadout").html(ttt);
+$("#txtPadout").html(ttt.replace(/\n/g, "<br>").replace(/\r/g, "<br>"));
 }
 
 function searchbetween(phrase, maxlevel) {

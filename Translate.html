@@ -100,7 +100,7 @@ background-color: #c197239c;
     width: 21px;
     height: 35px;
     font-size: 17px;
-    font-family: "Tai Son La Oldstyle", "Muong Lo Cursive";
+    font-family: "Muong Lo Cursive";
     background: rgb(16, 16, 16);
     border: 1px solid #4b4b4b;
     color: #ddc326;
@@ -168,8 +168,7 @@ float: right;
                 </button>
                 <img src="./Resources/tho.png" class="logo">
                                 <a class="navbar-brand" href="./">Linguaevum</a>
-                                <a class="navbar-brand" href="./TaiDB">Kra-Dai</a>
-                                <a class="navbar-brand" href="./AustroasiaticDB">Austroasiatic</a>
+                                <a class="navbar-brand" href="./Atlas">Atlas</a>
                                 <a class="navbar-brand" href="./Subtitles">Subtitles</a>
                     <ul class="nav navbar-nav">            
 					<li class="dropdown">
@@ -198,7 +197,7 @@ float: right;
         <tr>
             <td rowspan="5" style="width: 100%;">
                 <textarea id="txtPad" style="padding: 3px; width: 50%; height: 68vh; font-size: 20px; border-color: #555;" onkeypress="txtPadKeyTyped(event)" onkeydown="txtPadKeyPressed(event)" onkeyup="txtPadKeyReleased(event)"></textarea>
-                <textarea id="txtPadout" style="padding: 3px; display: block !important; overflow:auto; width: 50%; height: 68vh;     background: #111; color: #fff; font-size: 20px; float: right; "></textarea>
+                <div contenteditable="true" id="txtPadout" style="padding: 3px; display: block !important;border: solid #555 1px; overflow:auto; width: 50%; height: 68vh;     background: #111; color: #fff; font-size: 20px; float: right; "></div>
                 <!--<button id="copy_button" onclick="share()" style="display: none;">Copy</button>-->
 				<nav class="navbar navbar-inverse" style="background-image: url('./Resources/wave.png'); border-radius: 0; border: 0; margin: 0;">
                     <div class="container-fluid">
@@ -211,7 +210,7 @@ float: right;
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropup" id="keyboardbutton" style="background-color: #111">
                                     <a onclick="togglekeyboard(event)">⌨️</a>
-                                    <div id="keyboard" class="dropdown-menu text-left" style="text-align-last: left;z-index: 100; display: none; padding: 2px 0px; font-family: Lexend, 'Leelawadee UI', Tahoma, 'Tai Lanna', 'Cambria Tai Yo', 'Lanexang Mon4', 'Microsoft New Tai Lue', sans-serif, 'Tai Son La', TaiViet, 'Segoe Ahom Print', 'Helvetica Neue', Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, 'Malgun Gothic', 'BabelStone Han', Sawndip, SimSun-ExtB, Sukhothai, 'Nom Na Tong', 'Han-Nom Gothic Supplement';">
+                                    <div id="keyboard" class="dropdown-menu text-left" style="text-align-last: left;z-index: 100; display: none; padding: 2px 0px; font-family: Lexend, 'Leelawadee UI', Tahoma, 'Tai Lanna', 'Cambria Tai Yo', 'Lanexang Mon4', 'Microsoft New Tai Lue', sans-serif, 'Muong Lo Cursive', TaiViet, 'Segoe Ahom Print', 'Helvetica Neue', Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, 'Malgun Gothic', 'BabelStone Han', Sawndip, SimSun-ExtB, Sukhothai, 'Nom Na Tong', 'Han-Nom Gothic Supplement';">
 		<div style="white-space: nowrap; user-select: none;">
                                                 <button type="button" class="k-btn" style="user-select: none;" onclick="virtualkey('ꪀ')">ꪀ</button>
                                                 <button type="button" class="k-btn" style="user-select: none;" onclick="virtualkey('ꪁ')">ꪁ</button>
