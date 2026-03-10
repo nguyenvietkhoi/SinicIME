@@ -290,13 +290,39 @@ switch(Math.floor(contents[0].values[0][1])) {
 		return [false, null];
 	}
     break;
+
   default:
 }
 		} else {
 			return [false, null];
 		}
 	} else {
+		contents = condb3.exec("SELECT viet, id, " + transtable + ", (level % " + maxlevel + ") FROM start" + transtable + " WHERE " + transtable + " like '" + words[0].toLowerCase().replace(/\'/g, "''") + " %' order by (level % " + maxlevel + ") desc limit 1");
+		if (contents.length != 0) {
+		  for (let i = 0; i < contents[0].values.length; i++) {
+			var keyword = contents[0].values[i][2];
+			if (words.slice(0, keyword.split(" ").length).join(' ')==keyword) {
+				var tail = words.length > 1 ? words.slice(keyword.split(" ").length).join(' ') : '';		
+				if (tail.length != 0) {
+switch(Math.floor(contents[0].values[i][1])) {	
+  case 2: //sáng sớm
+    if (!tail.startsWith("ꪣꪳ꫁"))
 		return [false, null];
+	contents = condb3.exec("SELECT viet, id, " + transtable + ", (level % " + maxlevel + ") FROM start" + transtable + " WHERE id = 2");
+    var phrasalnoun = translatesentence(tail, maxlevel);
+	return [true, {res: contents[0].values[0][0].replace(/\$/g, phrasalnoun.res.join(' ')), pos: "No"}];
+    break;
+  default:
+}
+       return [true, {res: contents[0].values[i][0].replace(/\$/g, translatesentence(init, maxlevel).res.join(' ')), pos: null}];
+				} else {
+					return [false, null];
+				}
+			}
+		  }
+		} else {
+				return [false, null];
+		}
 	}
 }
 
