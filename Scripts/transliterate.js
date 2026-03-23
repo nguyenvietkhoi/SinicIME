@@ -2493,7 +2493,7 @@ function TaiDaengRoma(w) {
     else
         return w;
 
-    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꫂ", "ꫂ꪿").replace("꫁ꫂ", "ꫂ꫁").replace("꪿ꪸꪸ", "ꪸꪸ꪿").replace("꫁ꪸꪸ", "ꪸꪸ꫁").replace("꪿ꪲꪲ", "ꪲꪲ꪿").replace("꪿ꪳꪳ", "ꪳꪳ꪿").replace("ꪴꪴ꪿", "ꪴꪴ꪿").replace("꫁ꪲꪲ", "ꪲꪲ꫁").replace("꫁ꪳꪳ", "ꪳꪳ꫁").replace("ꪴꪴ꫁", "ꪴꪴ꫁").replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
+    var res = ("" + ipa.rime.replace('◌', ipa.onset + ipa.tone)).replace("꪿ꫂ", "ꫂ꪿").replace("꫁ꫂ", "ꫂ꫁").replace("꪿ꫀ", "ꫀ꪿").replace("꫁ꫀ", "ꫀ꫁").replace("꪿ꪲꪲ", "ꪲꪲ꪿").replace("꪿ꪳꪳ", "ꪳꪳ꪿").replace("ꪴꪴ꪿", "ꪴꪴ꪿").replace("꫁ꪲꪲ", "ꪲꪲ꫁").replace("꫁ꪳꪳ", "ꪳꪳ꫁").replace("ꪴꪴ꫁", "ꪴꪴ꫁").replace("꪿ꪰ", "ꪰ꪿").replace("꫁ꪰ", "ꪰ꫁").replace("꪿ꪲ", "ꪲ꪿").replace("꫁ꪲ", "ꪲ꫁").replace("꪿ꪳ", "ꪳ꪿").replace("꫁ꪳ", "ꪳ꫁").replace("꪿ꪸ", "ꪸ꪿").replace("꫁ꪸ", "ꪸ꫁").replace("꪿ꪷ", "ꪷ꪿").replace("꫁ꪷ", "ꪷ꫁").replace("ꪴ꪿", "ꪴ꪿").replace("ꪴ꫁", "ꪴ꫁").replace("꪿ꪾ", "ꪾ꪿").replace("꫁ꪾ", "ꪾ꫁");
     return res;
 }
 
