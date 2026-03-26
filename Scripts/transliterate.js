@@ -3196,7 +3196,7 @@ function TaiYorimetone(rime, tone) {
     var rimetone = rime;
     switch (tone) {
         case "̃":
-            rimetone = rime.replace("iê", "iễ").replace("uô", "uỗ").replace("ươ", "ưỡ").replace("ơơ", "ơỡ").replace("uu", "uũ").replace("yi", "yĩ").replace("ii", "iĩ").replace("ưư", "ưữ").replace("iu", "ĩu").replace("ia", "ĩa").replace("ya", "ỹa").replace("ua", "ũa").replace("ưa", "ữa");
+            rimetone = rime.replace("iê", "iễ").replace("uô", "uỗ").replace("ươ", "ưỡ").replace("ơơ", "ơỡ").replace("ôô", "ôỗ").replace("êê", "êễ").replace("uu", "uũ").replace("yi", "yĩ").replace("ii", "iĩ").replace("ưư", "ưữ").replace("iu", "ĩu").replace("ia", "ĩa").replace("ya", "ỹa").replace("ua", "ũa").replace("ưa", "ữa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ã").replace("ă", "ẵ").replace("â", "ẫ").replace("ơ", "ỡ").replace("ô", "ỗ").replace("e", "ẽ").replace("ê", "ễ");
                 if (rimetone == rime) {
@@ -3208,7 +3208,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̉":
-            rimetone = rime.replace("iê", "iể").replace("uô", "uổ").replace("ươ", "ưở").replace("ơơ", "ơở").replace("uu", "uủ").replace("yi", "yỉ").replace("ii", "iỉ").replace("ưư", "ưử").replace("iu", "ỉu").replace("ia", "ỉa").replace("ya", "ỷa").replace("ua", "ủa").replace("ưa", "ửa");
+            rimetone = rime.replace("iê", "iể").replace("uô", "uổ").replace("ươ", "ưở").replace("ơơ", "ơở").replace("ôô", "ôổ").replace("êê", "êể").replace("uu", "uủ").replace("yi", "yỉ").replace("ii", "iỉ").replace("ưư", "ưử").replace("iu", "ỉu").replace("ia", "ỉa").replace("ya", "ỷa").replace("ua", "ủa").replace("ưa", "ửa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ả").replace("ă", "ẳ").replace("â", "ẩ").replace("ơ", "ở").replace("ô", "ổ").replace("e", "ẻ").replace("ê", "ể");
                 if (rimetone == rime) {
@@ -3220,7 +3220,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "́":
-            rimetone = rime.replace("iê", "iế").replace("uô", "uố").replace("ươ", "ướ").replace("ơơ", "ơớ").replace("uu", "uú").replace("yi", "yí").replace("ii", "ií").replace("ưư", "ưứ").replace("iu", "íu").replace("ia", "ía").replace("ya", "ýa").replace("ua", "úa").replace("ưa", "ứa");
+            rimetone = rime.replace("iê", "iế").replace("uô", "uố").replace("ươ", "ướ").replace("ơơ", "ơớ").replace("ôô", "ôố").replace("êê", "êế").replace("uu", "uú").replace("yi", "yí").replace("ii", "ií").replace("ưư", "ưứ").replace("iu", "íu").replace("ia", "ía").replace("ya", "ýa").replace("ua", "úa").replace("ưa", "ứa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "á").replace("ă", "ắ").replace("â", "ấ").replace("ơ", "ớ").replace("ô", "ố").replace("e", "é").replace("ê", "ế");
                 if (rimetone == rime) {
@@ -3232,7 +3232,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̀":
-            rimetone = rime.replace("iê", "iề").replace("uô", "uồ").replace("ươ", "ườ").replace("ơơ", "ơờ").replace("uu", "uù").replace("yi", "yì").replace("ii", "iì").replace("ưư", "ưừ").replace("iu", "ìu").replace("ia", "ìa").replace("ya", "ỳa").replace("ua", "ùa").replace("ưa", "ừa");
+            rimetone = rime.replace("iê", "iề").replace("uô", "uồ").replace("ươ", "ườ").replace("ơơ", "ơờ").replace("ôô", "ôồ").replace("êê", "êề").replace("uu", "uù").replace("yi", "yì").replace("ii", "iì").replace("ưư", "ưừ").replace("iu", "ìu").replace("ia", "ìa").replace("ya", "ỳa").replace("ua", "ùa").replace("ưa", "ừa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "à").replace("ă", "ằ").replace("â", "ầ").replace("ơ", "ờ").replace("ô", "ồ").replace("e", "è").replace("ê", "ề");
                 if (rimetone == rime) {
@@ -3244,7 +3244,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̣":
-            rimetone = rime.replace("iê", "iệ").replace("uô", "uộ").replace("ươ", "ượ").replace("ơơ", "ơợ").replace("uu", "uụ").replace("yi", "yị").replace("ii", "iị").replace("ưư", "ưự").replace("iu", "ịu").replace("ia", "ịa").replace("ya", "ỵa").replace("ua", "ụa").replace("ưa", "ựa");
+            rimetone = rime.replace("iê", "iệ").replace("uô", "uộ").replace("ươ", "ượ").replace("ơơ", "ơợ").replace("ôô", "ôộ").replace("êê", "êệ").replace("uu", "uụ").replace("yi", "yị").replace("ii", "iị").replace("ưư", "ưự").replace("iu", "ịu").replace("ia", "ịa").replace("ya", "ỵa").replace("ua", "ụa").replace("ưa", "ựa");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ạ").replace("ă", "ặ").replace("â", "ậ").replace("ơ", "ợ").replace("ô", "ộ").replace("e", "ẹ").replace("ê", "ệ");
                 if (rimetone == rime) {
@@ -3256,7 +3256,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̄":
-            rimetone = rime.replace("iê", "iê̄").replace("uô", "uô̄").replace("ươ", "ươ̄").replace("ơơ", "ơơ̄").replace("uu", "uū").replace("yi", "yī").replace("ii", "iī").replace("ưư", "ưư̄").replace("iu", "īu").replace("ia", "īa").replace("ya", "ȳa").replace("ua", "ūa").replace("ưa", "ư̄a");
+            rimetone = rime.replace("iê", "iê̄").replace("uô", "uô̄").replace("ươ", "ươ̄").replace("ơơ", "ơơ̄").replace("ôô", "ôô̄").replace("êê", "êê̄").replace("uu", "uū").replace("yi", "yī").replace("ii", "iī").replace("ưư", "ưư̄").replace("iu", "īu").replace("ia", "īa").replace("ya", "ȳa").replace("ua", "ūa").replace("ưa", "ư̄a");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ā").replace("ă", "ă̄").replace("â", "â̄").replace("ơ", "ơ̄").replace("ô", "ô̄").replace("e", "ē").replace("ê", "ê̄");
                 if (rimetone == rime) {
@@ -3268,7 +3268,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̱":
-            rimetone = rime.replace("iê", "iê̱").replace("uô", "uô̱").replace("ươ", "ươ̱").replace("ơơ", "ơơ̱").replace("uu", "uu̱").replace("yi", "yi̱").replace("ii", "ii̱").replace("ưư", "ưư̱").replace("iu", "i̱u").replace("ia", "i̱a").replace("ya", "y̱a").replace("ua", "u̱a").replace("ưa", "ư̱a");
+            rimetone = rime.replace("iê", "iê̱").replace("uô", "uô̱").replace("ươ", "ươ̱").replace("ơơ", "ơơ̱").replace("ôô", "ôô̱").replace("êê", "êê̱").replace("uu", "uu̱").replace("yi", "yi̱").replace("ii", "ii̱").replace("ưư", "ưư̱").replace("iu", "i̱u").replace("ia", "i̱a").replace("ya", "y̱a").replace("ua", "u̱a").replace("ưa", "ư̱a");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "a̱").replace("ă", "ă̱").replace("â", "â̱").replace("ơ", "ơ̱").replace("ô", "ô̱").replace("e", "e̱").replace("ê", "ê̱");
                 if (rimetone == rime) {
@@ -3280,7 +3280,7 @@ function TaiYorimetone(rime, tone) {
             }
             break;
         case "̌":
-            rimetone = rime.replace("iê", "iê̌").replace("uô", "uô̌").replace("ươ", "ươ̌").replace("ơơ", "ơơ̌").replace("uu", "uǔ").replace("yi", "yǐ").replace("ii", "iǐ").replace("ưư", "ưư̌").replace("iu", "ǐu").replace("ia", "ǐa").replace("ya", "y̌a").replace("ua", "ǔa").replace("ưa", "ư̌a");
+            rimetone = rime.replace("iê", "iê̌").replace("uô", "uô̌").replace("ươ", "ươ̌").replace("ơơ", "ơơ̌").replace("ôô", "ôô̌").replace("êê", "êê̌").replace("uu", "uǔ").replace("yi", "yǐ").replace("ii", "iǐ").replace("ưư", "ưư̌").replace("iu", "ǐu").replace("ia", "ǐa").replace("ya", "y̌a").replace("ua", "ǔa").replace("ưa", "ư̌a");
             if (rimetone == rime) {
                 rimetone = rime.replace("a", "ǎ").replace("ă", "ă̌").replace("â", "â̌").replace("ơ", "ơ̌").replace("ô", "ô̌").replace("e", "ě").replace("ê", "ê̌");
                 if (rimetone == rime) {
