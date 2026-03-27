@@ -135,6 +135,11 @@ src: url('../fonts/MuongKhongSans-Regular.ttf') format('truetype');
 font-display: swap;
 }
 @font-face {
+font-family: "Muong Deng Sans";
+src: url('../fonts/MuongDengSans-Regular.ttf') format('truetype');
+font-display: swap;
+}
+@font-face {
 font-family: "Cambria Tai Yo";
 src: url('../fonts/CambriaTaiYo.ttf') format('truetype');
 font-display: swap;
