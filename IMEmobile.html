@@ -121,7 +121,7 @@ background-color: #c197239c;
 }
 @media (max-width: 698px) {
     .jumbotron {
-        margin-top: 0;
+        margin-top: 1px;
     }
 </style>
     
@@ -167,13 +167,13 @@ background-color: #c197239c;
     <table style="width: 100%; height: 100%;">
         <tr>
             <td style="width: 100%;">
-                <textarea id="txtPad" style="width: 100%; height: 80vh; min-height: 452px; font-size: 16px" onkeydown="txtPadKeyDown(event)" onkeyup="txtPadKeyInput(event)" onclick="offpad()"></textarea>
+                <textarea id="txtPad" style="width: 100%; height: 100%; min-height: 452px; font-size: 16px" onkeydown="txtPadKeyDown(event)" onkeyup="txtPadKeyInput(event)" onclick="offpad()"></textarea>
                 <div id="txtPadout" style="display: none; overflow:auto; width: 50%; min-height: 452px; height: 80vh; background-color: #fff; color: #000; font-size: 16px; float: right; " onchange="focuspad()" onfocus="focuspad()"></div>
 				<button id="copy_button" onclick="share()" style="display: none;">Copy</button>
             </td>
-            <td valign="top" style="padding: 1px 2px; ">
+            <td valign="top" style="padding: 1px 0px; ">
 
-                <table id="outlist">
+                <table id="outlist" style="margin: 0px;">
                     <tr>
                         <td></td>
                         <td>
@@ -192,12 +192,12 @@ background-color: #c197239c;
                 </table>
     <table style="width: 100%; text-align: center; color: #000;">
         <tr>
-            <td style="background: #c19723; font-size: 12px" onclick="leftopt()"><</td>
+            <td style="background: #c19723; font-size: 12px; border-right: solid 1px;" onclick="leftopt()"><</td>
             <td></td>
-            <td style="background: #c19723; font-size: 12px" onclick="rightopt()">></td>
+            <td style="background: #c19723; font-size: 12px; border-left: solid 1px;" onclick="rightopt()">></td>
         </tr>
     </table>
-                <div id="example">
+                <div id="example" style="margin: 0px;">
                 </div>
             </td>
         </tr>

@@ -324,7 +324,7 @@ font-display: swap;
     padding: 7px;
     }
 }
-@media (max-width: 698px) {
+@media (max-width: 639px) {
     .jumbotron {
 		margin-top: 34px;
     }
