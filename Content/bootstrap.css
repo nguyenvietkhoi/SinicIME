@@ -333,7 +333,7 @@ html {
 body {
       font-family: "Lexend", "Leelawadee UI", Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, HanaMinA, HanaMinB, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
   font-size: 16px;
-  line-height: 1.428571429;
+  line-height: 1;
   color: #101010;
   background-color: #565245;
     padding-top: 50px;
