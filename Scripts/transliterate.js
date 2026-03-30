@@ -1489,6 +1489,18 @@ function TaiDaengIPA(w, accent) {
     while (ipalist.length != 0) {
         var ipatmp = ipalist.pop();
         var minortone = "";
+		
+		if (ipatmp.onset2=="ꪫ1") {
+			if (ipatmp.rime.startsWith("ꪶ◌")) {
+				ipatmp.rime = ipatmp.rime.replace("ꪶ◌","ꪶ◌ꪫ");
+				ipatmp.onset2="";
+			}
+			if (ipatmp.rime.startsWith("◌ꪴ")) {
+				ipatmp.rime = ipatmp.rime.replace("◌ꪴ","◌ꪫꪴ");
+				ipatmp.onset2="";
+			}
+		}
+		
         ipaSQL = ipadb.exec("SELECT " + accent + " FROM TaiDaeng where phone='ˀ" + ipatmp.toneclass + "' ");
         if (ipaSQL.length > 0)
             minortone = ipaSQL[0].values[0][0];
