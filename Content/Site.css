@@ -238,7 +238,7 @@ font-display: swap;
 
 #example {
     font-family: inherit;
-    background: #101010; height: 40%; min-height: 220px; margin: 3px 0px 0px 9px; width: 220px; color: #eee; overflow: auto; text-align: right;
+    background: #101010; height: 37%; min-height: 200px; margin: 3px 0px 0px 9px; width: 220px; color: #eee; overflow: auto; text-align: right;
 }
 #example tr td {
     padding: 5px 10px;
