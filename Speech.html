@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Text to MP3 - ResponsiveVoice</title>
+
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=oxZ9YHww"></script>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f3f3f3;
+        margin:0;
+        padding:20px;
+    }
+
+    .container{
+        max-width:700px;
+        margin:auto;
+        background:white;
+        padding:20px;
+        border-radius:12px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    textarea{
+        width:100%;
+        height:250px;
+        resize:vertical;
+        font-size:16px;
+        padding:12px;
+        box-sizing:border-box;
+        border-radius:8px;
+        border:1px solid #ccc;
+    }
+
+    .controls{
+        margin-top:15px;
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+    }
+
+    button{
+        padding:12px 20px;
+        border:none;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:16px;
+        color:white;
+    }
+
+    .speak{
+        background:#2196f3;
+    }
+
+    .record{
+        background:#ff5722;
+    }
+
+    .stop{
+        background:#9c27b0;
+    }
+
+    select{
+        padding:10px;
+        border-radius:8px;
+    }
+
+    .status{
+        margin-top:10px;
+        font-size:14px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Text → Audio</h2>
+
+    <textarea id="text" placeholder="Nhập văn bản..."></textarea>
+
+    <div class="controls">
+        <select id="voice">
+            <option value="Vietnamese Male">Vietnamese Male</option>
+            <option value="Vietnamese Female">Vietnamese Female</option>
+        </select>
+
+        <button class="speak" onclick="speakText()">
+            Speak
+        </button>
+
+        <button class="record" onclick="startRecording()">
+            Start Recording
+        </button>
+
+        <button class="stop" onclick="stopRecording()">
+            Stop Recording
+        </button>
+    </div>
+
+    <div class="status" id="status"></div>
+</div>
+
+<script>
+let mediaRecorder;
+let recordedChunks = [];
+let stream;
+
+function setStatus(text){
+    document.getElementById("status").innerText = text;
+}
+
+function speakText() {
+
+    const text = document.getElementById("text").value;
+    const voice = document.getElementById("voice").value;
+
+    responsiveVoice.speak(text, voice);
+}
+
+async function startRecording() {
+
+    try {
+
+        // Browser bắt buộc phải có video=true
+        const displayStream = await navigator.mediaDevices.getDisplayMedia({
+            video: true,
+            audio: true
+        });
+
+        // Chỉ lấy audio track
+        const audioTracks = displayStream.getAudioTracks();
+
+        if (audioTracks.length === 0) {
+            alert("No browser audio detected");
+            return;
+        }
+
+        stream = new MediaStream(audioTracks);
+
+        recordedChunks = [];
+
+        mediaRecorder = new MediaRecorder(stream, {
+            mimeType: "audio/webm"
+        });
+
+        mediaRecorder.ondataavailable = function(event) {
+
+            if (event.data.size > 0) {
+                recordedChunks.push(event.data);
+            }
+        };
+
+        mediaRecorder.onstop = function() {
+
+            const blob = new Blob(recordedChunks, {
+                type: "audio/webm"
+            });
+
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+
+            a.href = url;
+            a.download = "browser-audio.webm";
+
+            a.click();
+
+            URL.revokeObjectURL(url);
+
+            setStatus("Audio downloaded");
+        };
+
+        mediaRecorder.start();
+
+        setStatus("Recording browser audio...");
+
+    } catch(err) {
+
+        console.error(err);
+
+        setStatus("Recording failed");
+    }
+}
+
+function stopRecording() {
+
+    if (mediaRecorder && mediaRecorder.state !== "inactive") {
+
+        mediaRecorder.stop();
+
+        setStatus("Stopping...");
+    }
+}
+</script>
+
+</body>
+</html>
