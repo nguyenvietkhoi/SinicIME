@@ -63,6 +63,10 @@
     .stop{
         background:#9c27b0;
     }
+	
+    .help{
+        background:#545454;
+    }
 
     select{
         padding:10px;
@@ -73,12 +77,58 @@
         margin-top:10px;
         font-size:14px;
     }
+	
+	.popup{
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,0.7);
+        justify-content:center;
+        align-items:center;
+        z-index:999;
+    }
+
+    .popup-content{
+        position:relative;
+        background:white;
+        padding:10px;
+        border-radius:12px;
+        max-width:90%;
+        max-height:90%;
+    }
+
+    .popup img{
+        max-width:100%;
+        max-height:80vh;
+        display:block;
+        border-radius:8px;
+    }
+
+    .close{
+		position: absolute;
+		padding: 0px 10px;
+		top: -10px;
+		right: -10px;
+		background: #5d2121;
+		color: white;
+		border: none;
+		font-size: 40px;
+		cursor: pointer;
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Văn bản</h2>
+    <button class="help" onclick="openPopup()">Hướng dẫn</button>
+<h2></h2>
+
+<div class="popup" id="popup">
+    <div class="popup-content">
+        <button class="close" onclick="closePopup()">×</button>
+        <img src="./Resources/howtospeak.png" alt="Hướng dẫn">
+    </div>
+</div>
 
     <textarea id="text" placeholder="Nhập văn bản..."></textarea>
 
@@ -195,6 +245,21 @@ function stopRecording() {
         setStatus("Dừng...");
     }
 }
+
+function openPopup(){
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
+// Click ra ngoài để đóng
+document.getElementById("popup").addEventListener("click", function(e){
+    if(e.target === this){
+        closePopup();
+    }
+});
 </script>
 
 </body>
