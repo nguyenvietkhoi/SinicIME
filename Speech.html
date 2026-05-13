@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Text to MP3 - ResponsiveVoice</title>
+<title>Nói</title>
 
 <script src="https://code.responsivevoice.org/responsivevoice.js?key=oxZ9YHww"></script>
 
@@ -16,7 +16,7 @@
     }
 
     .container{
-        max-width:700px;
+        max-width:1000px;
         margin:auto;
         background:white;
         padding:20px;
@@ -25,8 +25,9 @@
     }
 
     textarea{
+        font-family: Arial, sans-serif;
         width:100%;
-        height:250px;
+        height:450px;
         resize:vertical;
         font-size:16px;
         padding:12px;
@@ -77,26 +78,26 @@
 <body>
 
 <div class="container">
-    <h2>Text → Audio</h2>
+    <h2>Văn bản</h2>
 
     <textarea id="text" placeholder="Nhập văn bản..."></textarea>
 
     <div class="controls">
         <select id="voice">
-            <option value="Vietnamese Male">Vietnamese Male</option>
-            <option value="Vietnamese Female">Vietnamese Female</option>
+            <option value="Vietnamese Male">Giọng trống</option>
+            <option value="Vietnamese Female">Giọng mái</option>
         </select>
 
         <button class="speak" onclick="speakText()">
-            Speak
+            Nói
         </button>
 
         <button class="record" onclick="startRecording()">
-            Start Recording
+            Ghi
         </button>
 
         <button class="stop" onclick="stopRecording()">
-            Stop Recording
+            Ngừng ghi
         </button>
     </div>
 
@@ -134,7 +135,7 @@ async function startRecording() {
         const audioTracks = displayStream.getAudioTracks();
 
         if (audioTracks.length === 0) {
-            alert("No browser audio detected");
+            alert("Chưa có tiếng");
             return;
         }
 
@@ -164,24 +165,24 @@ async function startRecording() {
             const a = document.createElement("a");
 
             a.href = url;
-            a.download = "browser-audio.webm";
+            a.download = "Recording.webm";
 
             a.click();
 
             URL.revokeObjectURL(url);
 
-            setStatus("Audio downloaded");
+            setStatus("Đã tải xong");
         };
 
         mediaRecorder.start();
 
-        setStatus("Recording browser audio...");
+        setStatus("Đang ghi...");
 
     } catch(err) {
 
         console.error(err);
 
-        setStatus("Recording failed");
+        setStatus("Ghi không được");
     }
 }
 
@@ -191,7 +192,7 @@ function stopRecording() {
 
         mediaRecorder.stop();
 
-        setStatus("Stopping...");
+        setStatus("Dừng...");
     }
 }
 </script>
