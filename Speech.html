@@ -8,9 +8,11 @@
 <script src="https://code.responsivevoice.org/responsivevoice.js?key=oxZ9YHww"></script>
 
 <style>
+	html{
+		background: #6a3c1b;
+}
     body{
         font-family: Arial, sans-serif;
-        background:#f3f3f3;
         margin:0;
         padding:20px;
     }
@@ -18,7 +20,7 @@
     .container{
         max-width:1000px;
         margin:auto;
-        background:white;
+        background: #3b1919;
         padding:20px;
         border-radius:12px;
         box-shadow:0 4px 12px rgba(0,0,0,0.1);
@@ -40,6 +42,7 @@
         margin-top:15px;
         display:flex;
         gap:10px;
+		color: white;
         flex-wrap:wrap;
     }
 
@@ -120,9 +123,6 @@
 <body>
 
 <div class="container">
-    <button class="help" onclick="openPopup()">Hướng dẫn</button>
-<h2></h2>
-
 <div class="popup" id="popup">
     <div class="popup-content">
         <button class="close" onclick="closePopup()">×</button>
@@ -133,9 +133,11 @@
     <textarea id="text" placeholder="Nhập văn bản..."></textarea>
 
     <div class="controls">
+		<button class="help" onclick="openPopup()">Hướng dẫn</button>
+		<div style="padding: 12px 0px;">Giọng</div>
         <select id="voice">
-            <option value="Vietnamese Male">Giọng trống</option>
-            <option value="Vietnamese Female">Giọng mái</option>
+            <option value="Vietnamese Male">Hữu Năm</option>
+            <option value="Vietnamese Female">Hoài Thương</option>
         </select>
 
         <button class="speak" onclick="speakText()">
