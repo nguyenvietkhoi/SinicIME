@@ -1,6 +1,5 @@
 ﻿body {
-    font-family: Cambria, Tahoma, "Tai Lanna", "Cambria Tai Yo", "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Tai Son La", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, HanaMinA, HanaMinB, SimSun, FSung-2, FSung-3, "Malgun Gothic", "BabelStone Han", Sawndip, SimSun-ExtB, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
-        'Aksara Bali', Yogyakarta;
+    font-family: Cambria, serif, "Tai Lanna", "Cambria Tai Yo", "Leelawadee UI", Tahoma, "Lanexang Mon4", "Microsoft New Tai Lue", sans-serif, "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Myanmar Text", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, Sukhothai, "Nom Na Tong", 'Han-Nom Gothic Supplement';
 }
 
 #abgd tr td:hover,
