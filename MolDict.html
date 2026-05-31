@@ -73,7 +73,15 @@ xhr1.send();
             }
         });
     }
-	
+		
+document.addEventListener('keydown', function (e) {
+  // Check if Ctrl (or Cmd on Mac) + B is pressed
+if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+    e.preventDefault(); // prevent default browser action (e.g. bold in editors)
+    inverse(); // call your function
+  }
+});
+
     function inverse() {
         dictbool = !dictbool;
         if (dictbool) 
