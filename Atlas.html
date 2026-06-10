@@ -38,15 +38,17 @@
     <tr>
         <td style="width: 200px; height: 100%; background-color: #2f2f2f; vertical-align: top;">
             <select id="labelscripttype" style="width: 100%; margin-top:5px" onchange="scriptChange()">
-                <option value=0 selected>Sinogram</option>
-                <option value=1>Alphabet</option>
+                <option value=1 selected>Alphabet</option>
+                <option value=0>Sinogram</option>
                 <option value=2>No label</option>
             </select>
 			<div class="infobox">
 			<table style="height: 100%; width: 100%">
 				<tr><td id="nameNom"></td></tr>
 				<tr><td id="nameLatin"></td></tr>
+				<tr><td>&nbsp</td></tr>
 				<tr><td id="nameHan"></td></tr>
+				<tr><td id="nameViet"></td></tr>
 			</table>
 			</div>
         </td>
@@ -80,12 +82,13 @@ body {
 	
     .markerLabel {
       position: absolute;
-      background-color: white;
+      background-color: #2f2f2f;
+	  color: #f5f8bc;
       border: 1px solid #666;
       border-radius: 4px;
       padding: 3px 6px;
       white-space: nowrap;
-      font-size: 13px;
+      font-size: 20px;
       pointer-events: none;
       box-shadow: 0 0 5px rgba(0,0,0,0.3);
     }
@@ -97,7 +100,13 @@ body {
       font-size: 22px;
     }
 	
-	#nameLatin {
+	#nameViet {
       font-size: 18px;
+	}
+	#nameLatin{
+      font-size: 22px;
+	}
+	#nameNom {
+      font-size: 28px;
 	}
 </style>

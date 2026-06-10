@@ -24,7 +24,7 @@ const map = new ol.Map({
       ],
       view: new ol.View({
         center: ol.proj.fromLonLat([105.85, 21.02]), // Hanoi coords [lon, lat]
-        zoom: 11
+        zoom: 9
       })
 });
 const iconStyle = new ol.style.Style({
@@ -36,7 +36,7 @@ const iconStyle = new ol.style.Style({
       })
 var markerFeatures;
 var markerLayer;
-var labeltype = 'name';
+var labeltype = 'label';
 map.getView().on('change:resolution', updateMarkerVisibility);
 
     // markerLabel element
@@ -56,7 +56,12 @@ map.getView().on('change:resolution', updateMarkerVisibility);
       const feature = map.forEachFeatureAtPixel(evt.pixel, f => f);
       if (feature) {
         const coordinates = feature.getGeometry().getCoordinates();
-        markerLabel.innerHTML = feature.get('label');
+        markerLabel.innerHTML = feature.get(($('#labelscripttype').val()==1) ? 'name' : 'label');
+		if ((feature.get('langid') == "tyj")||($('#labelscripttype').val()==1)) {
+			markerLabel.style.writingMode = 'vertical-rl';
+		} else {
+			markerLabel.style.writingMode = 'horizontal-tb';
+		}
         overlay.setPosition(coordinates);
         markerLabel.style.display = 'block';
       } else {
@@ -74,11 +79,30 @@ map.on('singleclick', function (evt) {
   if (clickedMarker) {    
     document.getElementById('nameNom').innerHTML = clickedMarker.get('name');
     document.getElementById('nameLatin').innerHTML = clickedMarker.get('label');
-    document.getElementById('nameHan').innerHTML = clickedMarker.get('name');
+    document.getElementById('nameHan').innerHTML = clickedMarker.get('han');
+    document.getElementById('nameViet').innerHTML = clickedMarker.get('viet');
+
+	document.getElementById('nameLatin').style.writingMode = "horizontal-tb";
+	document.getElementById('nameLatin').style.fontFamily = "Lexend";
+
+	switch (clickedMarker.get('langid')) {
+		case 'blt':
+			document.getElementById('nameLatin').style.fontFamily = "Muong Lo Cursive";
+			break;
+		case 'tyj':
+			document.getElementById('nameLatin').style.fontFamily = "Cambria Tai Yo";
+			document.getElementById('nameLatin').style.writingMode = "vertical-rl";
+			break;
+		case 'tyr':
+			document.getElementById('nameLatin').style.fontFamily = "Muong Min Sans";
+			break;
+        default: break;
+	}
   } else {
     document.getElementById('nameNom').innerHTML = "";
     document.getElementById('nameLatin').innerHTML = "";
     document.getElementById('nameHan').innerHTML = "";
+    document.getElementById('nameViet').innerHTML = "";
   }
 });
 
@@ -119,8 +143,12 @@ function initLabel() {
       const feature = new ol.Feature({
         geometry: new ol.geom.Point(ol.proj.fromLonLat([m[6], m[5]])),
 		minZoom: m[7],
+		maxZoom: m[8],
+		langid: m[10],
         label: m[2],
-        name: m[1]
+        name: m[1],
+        viet: m[3],
+        han: m[4]
       });
       return feature;
     });
@@ -152,14 +180,35 @@ function updateMarkerVisibility() {
 
     // clone your base icon style
     const style = iconStyle.clone();
-
+	var fontsz = '15px ';
+	var fontstr = '"Lexend", sans-serif, "SimSun", "SimSun-ExtB", "SimSun-ExtG", "Jigmo3"';
+	var rotation = 0;
+	if ($('#labelscripttype').val() == 1) {
+	  switch (f.get('langid')) {
+		case 'vie':
+			fontsz = '12px ';
+			break;
+		case 'blt':
+			fontstr += ', "Muong Lo Cursive"';
+			break;
+		case 'tyj':
+			fontstr += ', "Cambria Tai Yo"';
+			rotation = Math.PI / 2;
+			break;
+		case 'tyr':
+			fontstr += ', "Muong Min Sans"';
+			break;
+        default: break;
+	  }
+	}
     // add the marker name text label
     style.setText(new ol.style.Text({
       text: f.get(labeltype) || '',
       offsetY: -10, // move label above the circle
-      font: '14px "Lexend", sans-serif, "SimSun-ExtB", "SimSun-ExtG", "Jigmo3"',
+      font: fontsz + fontstr,
       fill: new ol.style.Fill({ color: '#000' }),
-      stroke: new ol.style.Stroke({ color: '#fff', width: 3 })
+      stroke: new ol.style.Stroke({ color: '#fff', width: 3 }),
+	  rotation: rotation
     }));
 
     f.setStyle(style);
