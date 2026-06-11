@@ -30,8 +30,8 @@ const map = new ol.Map({
 const iconStyle = new ol.style.Style({
         image: new ol.style.Circle({
         radius: 3,
-        fill: new ol.style.Fill({ color: 'red' }),
-        stroke: new ol.style.Stroke({ color: 'black', width: 1 })
+        fill: new ol.style.Fill({ color: '#a00' }),
+        stroke: new ol.style.Stroke({ color: '#fbba', width: 2 })
       })
       })
 var markerFeatures;
