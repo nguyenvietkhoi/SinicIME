@@ -222,8 +222,8 @@ function opttableselect(tablesel) {
             document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,11)"><a>→ abc: ' + $("#NungMin").val() + '</a></li>' +
                 '<li onclick="convertpad(0,15)"><a>→ abc: ' + $("#NungLoi").val() + '</a></li>' +
                 '<li onclick="convertpad(0,11)"><a>→ abc: ' + $("#NungFS").val() + '</a></li>' +
-                '<li onclick="convertpad(0,12)"><a>→ abc: ' + $("#NungChao").val() + '</a></li>' +
-                '<li onclick="convertpad(0,14)"><a>→ abc: ' + $("#NungInh").val() + '</a></li>' + convertdeftext);
+                '<li onclick="convertpad(0,14)"><a>→ abc: ' + $("#NungChao").val() + '</a></li>' +
+                '<li onclick="convertpad(0,15)"><a>→ abc: ' + $("#NungInh").val() + '</a></li>' + convertdeftext);
             break;
         case 14: opttable = "rubytay";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
