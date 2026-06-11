@@ -47,7 +47,7 @@ map.getView().on('change:resolution', updateMarkerVisibility);
     // Overlay for markerLabel
     const overlay = new ol.Overlay({
       element: markerLabel,
-      offset: [10, 0],
+      offset: [-36, 10],
       positioning: 'bottom-left'
     });
     map.addOverlay(overlay);
@@ -180,7 +180,7 @@ function updateMarkerVisibility() {
 
     // clone your base icon style
     const style = iconStyle.clone();
-	var fontsz = '15px ';
+	var fontsz = '17px ';
 	var fontstr = '"Lexend", sans-serif, "SimSun", "SimSun-ExtB", "SimSun-ExtG", "Jigmo3"';
 	var rotation = 0;
 	if ($('#labelscripttype').val() == 1) {
@@ -204,10 +204,10 @@ function updateMarkerVisibility() {
     // add the marker name text label
     style.setText(new ol.style.Text({
       text: f.get(labeltype) || '',
-      offsetY: -10, // move label above the circle
+      offsetY: -11, // move label above the circle
       font: fontsz + fontstr,
-      fill: new ol.style.Fill({ color: '#000' }),
-      stroke: new ol.style.Stroke({ color: '#fff', width: 3 }),
+      fill: new ol.style.Fill({ color: '#fff' }),
+      stroke: new ol.style.Stroke({ color: '#000', width: 5 }),
 	  rotation: rotation
     }));
 
