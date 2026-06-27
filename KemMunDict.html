@@ -184,7 +184,7 @@ function cognates(pad) {
 	
 	cog = toABC(pad, 11, "rubymien");
 	if (cog != "$")
-		ttt = ttt + "<br>Iuh Mienh: <a>" + cog + "</a>";
+		ttt = ttt + "<br>Iuh Mienh: <a href='./IuMienDict.html?i="+cog+"'>" + cog + "</a>";
 	
 	$("#cognatelist").html(ttt);
 	$("#cognatelist").show();
@@ -196,7 +196,7 @@ function phonetics(pad) {
 	
 	cog = toIPA(pad, 20, "rubytaidon", "MuongLay");
 	if (cog != "$")
-		ttt = ttt + "Mường Lay: <a>" + cog + "</a>";
+		ttt = ttt + ": <a>" + cog + "</a>";
 	
 	
 	$("#ipalist").html(ttt);
