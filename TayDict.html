@@ -148,7 +148,7 @@ if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
         if (words != null) {
             var mainstr = "";
             for (var i=0; i<words.length; i++) {
-			    mainstr += "<div class='Home_card'><h1 class='textpad'><a class='nomblock' style='font-weight: normal;font-size: 3rem;cursor: pointer;color: #ff0000;' onclick=cognates('"+words[i].nom+"')>◂</a><a style='font-weight: normal;font-size: 6rem;'>" + words[i].nom + "</a>&nbsp;&nbsp;<a style='font-size: 3rem'>" + words[i].roma + "</a>&nbsp;&nbsp;"+"<a style='color: #ddc326;font-size: 3rem'>" + words[i].ori + "</a>&nbsp;&nbsp;"+"<a style='color: #84ff8d;font-size: 2rem; font-weight: normal'>" + words[i].ety.replace("T:", "Proto-Tai: ").replace("Vietic:", "Proto-Vietic: ").replace("VN:", "Việt: ").replace("AV:", "Việt cổ đại: ") + "</a>&nbsp;&nbsp;<a class='readblock' style='cursor: pointer;font-size: 3rem;color: #31d0f5' onclick='phonetics(\""+words[i].nom+"\")'>🔊</a></h1>";
+			    mainstr += "<div class='Home_card'><h1 class='textpad'><a class='nomblock' style='font-weight: normal;font-size: 3rem;cursor: pointer;color: #ff0000;' onclick=cognates('"+words[i].nom+"')>◂</a><a style='font-weight: normal;font-size: 6rem;'>" + words[i].nom + "</a>&nbsp;&nbsp;<a style='color: #ddc326;font-size: 3rem'>" + words[i].ori + "</a>&nbsp;&nbsp;"+"<a style='color: #84ff8d;font-size: 2rem; font-weight: normal'>" + words[i].ety.replace("T:", "Proto-Tai: ").replace("Vietic:", "Proto-Vietic: ").replace("VN:", "Việt: ").replace("AV:", "Việt cổ đại: ") + "</a>&nbsp;&nbsp;<a class='readblock' style='cursor: pointer;font-size: 3rem;color: #31d0f5' onclick='phonetics(\""+words[i].nom+"\")'>🔊</a></h1>";
                 for (var j=0; j<words[i].meanings.length; j++) {
                     mainstr += "<br/><p class='Home_description'>➢&nbsp;&nbsp;&nbsp;&nbsp;" + words[i].meanings[j].mean + "</p><div>";
                     for (var k=0; k<words[i].meanings[j].examples.length; k++) {
@@ -244,15 +244,24 @@ function phonetics(pad) {
 	var ttt = "";
 	var cog;
 	
-	cog = toIPA(pad, 20, "rubytay", "HoaAn");
+	cog = toIPA(pad, 10, "rubytay", "HoaAn");
 	if (cog != "$")
 		ttt = ttt + "Hoà An: <a>" + cog + "</a>";
-	cog = toIPA(pad, 20, "rubytay", "CoXau");
+	cog = toIPA(pad, 10, "rubytay", "CoXau");
 	if (cog != "$")
 		ttt = ttt + "<br>Co Chầu: <a>" + cog + "</a>";
-	cog = toIPA(pad, 20, "rubytay", "PhjaGha");
+	cog = toIPA(pad, 10, "rubytay", "PhjaGha");
 	if (cog != "$")
 		ttt = ttt + "<br>Phja Ghà: <a>" + cog + "</a>";
+	cog = toIPA(pad, 13, "rubytay", "LocBinh");
+	if (cog != "$")
+		ttt = ttt + "<br>Lộc Bình: <a>" + cog + "</a>";
+	cog = toIPA(pad, 14, "rubytay", "DinhHoa");
+	if (cog != "$")
+		ttt = ttt + "<br>Định Hoá: <a>" + cog + "</a>";
+	cog = toIPA(pad, 10, "rubytay", "TraLinh");
+	if (cog != "$")
+		ttt = ttt + "<br>Trà Lĩnh: <a>" + cog + "</a>";
 	
 	$("#ipalist").html(ttt);
 	$("#ipalist").show();
@@ -627,7 +636,7 @@ $('#ipalist').click(function(e){
   z-index: 1;
 }
 #cognatelist a {
-  color:#ddc326; text-decoration: blink;font-style: normal;font-size: 2.5rem;
+  color:#ddc326; text-decoration: blink;font-style: normal;font-size: 2rem;
   font-family: Cambria, "Times New Roman", "Cambria Tai Yo", "Tai Lanna", "Leelawadee UI", Tahoma, "Microsoft New Tai Lue", serif, "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, "Nom Na Tong", 'Han-Nom Gothic Supplement';
 }
 #ipalist a {
