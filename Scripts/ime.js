@@ -345,10 +345,10 @@ function opttableselect(tablesel) {
             document.getElementById('accentipa').innerHTML = ('<li onclick="proto(\'ProtoVietic\')"><a>Proto-Vietic</a></li>' +
 			'<li onclick="logo2ipa(\'HaNoi\',20)"><a>IPA: ' + $("#HaNoi").val() + '</a></li>' +
                 '<li onclick="logo2ipa(\'NamDinh\',20)"><a>IPA: ' + $("#NamDinh").val() + '</a></li>' +
-                '<li onclick="logo2ipa(\'Vinh\',20)"><a>IPA: ' + $("#Vinh").val() + '</a></li>' +
-                '<li onclick="logo2ipa(\'QuangNam\',20)"><a>IPA: ' + $("#QuangNam").val() + '</a></li>' +
-                '<li onclick="logo2ipa(\'BinhDinh\',20)"><a>IPA: ' + $("#BinhDinh").val() + '</a></li>' +
-                '<li onclick="logo2ipa(\'SaiGon\',20)"><a>IPA: ' + $("#SaiGon").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'Vinh\',10)"><a>IPA: ' + $("#Vinh").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'QuangNam\',10)"><a>IPA: ' + $("#QuangNam").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'BinhDinh\',10)"><a>IPA: ' + $("#BinhDinh").val() + '</a></li>' +
+                '<li onclick="logo2ipa(\'SaiGon\',10)"><a>IPA: ' + $("#SaiGon").val() + '</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>→ abc</a></li>' + convertdeftext);
             break;
     }
