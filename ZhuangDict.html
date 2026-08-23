@@ -122,7 +122,7 @@ if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
         if (words != null) {
             var mainstr = "";
             for (var i=0; i<words.length; i++) {
-                mainstr += "<div class='Home_card'><h1 class='textpad'><a style='font-size: 6rem; font-weight: normal'>" + words[i].ndip + "</a>&nbsp;&nbsp;<a style='font-size: 3rem'>" + words[i].ori + "</a>&nbsp;&nbsp;<a style='color: #eee;font-size: 2rem; font-weight: normal'>" + words[i].ety + "</a></h1>";
+                mainstr += "<div class='Home_card'><h1 class='textpad'><a style='font-size: 6rem; font-weight: normal'>" + words[i].ndip + "</a>&nbsp;&nbsp;<a style='color: #DDC326;font-size: 3rem'>" + words[i].ori + "</a>&nbsp;&nbsp;<a style='color: #eee;font-size: 2rem; font-weight: normal'>" + words[i].ety + "</a></h1>";
                 for (var j=0; j<words[i].meanings.length; j++) {
                     mainstr += "<br/><p class='Home_description'>➢&nbsp;&nbsp;&nbsp;&nbsp;" + words[i].meanings[j].mean + "</p><div>";
                     for (var k=0; k<words[i].meanings[j].examples.length; k++) {
