@@ -87,7 +87,7 @@ map.on('singleclick', function (evt) {
 
 	switch (clickedMarker.get('langid')) {
 		case 'blt':
-			document.getElementById('nameLatin').style.fontFamily = "Muong Lo Cursive";
+			document.getElementById('nameLatin').style.fontFamily = "Muong Muok Cursive";
 			break;
 		case 'tyj':
 			document.getElementById('nameLatin').style.fontFamily = "Cambria Tai Yo";
@@ -189,7 +189,7 @@ function updateMarkerVisibility() {
 			fontsz = '12px ';
 			break;
 		case 'blt':
-			fontstr += ', "Muong Lo Cursive"';
+			fontstr += ', "Muong Muok Cursive"';
 			break;
 		case 'tyj':
 			fontstr += ', "Cambria Tai Yo"';

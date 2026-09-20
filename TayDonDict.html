@@ -211,7 +211,7 @@ function cognates(pad) {
 		ttt = ttt + "<br>Nồng Dín: <a>" + cog + "</a>";
 	cog = toABC(pad, 20, "rubytaidam");
 	if (cog != "$")
-		ttt = ttt + "<br>Tãy Đăm: <a style='font-family:\"Muong Lo Cursive\"' href='./TayDamDict.html?i="+cog+"'>" + cog + "</a>";
+		ttt = ttt + "<br>Tãy Đăm: <a style='font-family:\"Muong Muok Cursive\"' href='./TayDamDict.html?i="+cog+"'>" + cog + "</a>";
 	cog = toABC(pad, 20, "rubytaideng");
 	if (cog != "$")
 		ttt = ttt + "<br>Tày Đeng: <a style='font-family:\"Muong Deng Sans\"'>" + cog + "</a>";
@@ -564,10 +564,10 @@ $('#ipalist').click(function(e){
 		
 		
 .k-btn {
-    padding: 0px 1px;
+    padding: 0px 0px;
     width: 23px;
-    height: 30px;
-    font-size: 15px;
+    height: 33px;
+    font-size: 14px;
 	font-family: "Muong So Cursive";
     background: rgb(16, 16, 16);
     border: 1px solid #4b4b4b;
@@ -592,6 +592,9 @@ display: block;position: absolute;left: 15rem; padding-top:5px;
   }
 }
 @media (max-width: 767px) {
+  .Home_container {
+    padding: 20px 0;
+  }
         .Home_title {
 			padding: 7px 3px;
 		}
@@ -603,14 +606,11 @@ left: 5px;
   }
   .k-btn {
     width: 17px;
-    height: 25px;
-    font-size: 13px;
+    height: 29px;
+    font-size: 12px;
 }
 }
 @media (max-width: 500px) {
-  .Home_container {
-    padding: 25px 0;
-  }
   .Home_button {
       margin: 0;
   }
@@ -651,7 +651,7 @@ left: 5px;
 }
 #cognatelist a {
   color:#ddc326; text-decoration: blink;font-style: normal;font-size: 2rem;
-  font-family: Cambria, "Times New Roman", "Cambria Tai Yo", "Tai Lanna", "Leelawadee UI", Tahoma, "Microsoft New Tai Lue", serif, "Muong Lo Cursive", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+  font-family: Cambria, "Times New Roman", "Cambria Tai Yo", "Tai Lanna", "Leelawadee UI", Tahoma, "Microsoft New Tai Lue", serif, "Muong Muok Cursive", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, "Nom Na Tong", 'Han-Nom Gothic Supplement';
 }
 #ipalist a {
   color:#31d0f5; text-decoration: blink;font-style: normal;font-size: 2rem; font-family: Cambria, "Times New Roman";
