@@ -166,7 +166,7 @@ if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
                     mainstr += "</div>";
                 }
 				if (words[i].ref != "") {
-					mainstr += "<div><a style='color: #eee;font-size: 2rem; font-weight: normal'>" + words[i].ref.replace("「x.」","xem: ") + "</a></div>";
+					mainstr += "<div><a style='color: #eee;font-size: 2rem; font-weight: normal'>" + words[i].ref.replace("「x.」","👀&nbsp;&nbsp;") + "</a></div>";
 				}
                 mainstr += "</td><td style='vertical-align: top;'><div class='laitay'>" + words[i].laitay + "</div></td></tr></table></div>";
             }
@@ -645,7 +645,7 @@ left: 5px;
   }
   #oriPad {
         font-size: medium;
-		max-width: 135px;
+		max-width: 125px;
   }
 }
 
