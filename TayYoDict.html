@@ -11,6 +11,7 @@
 <script type="text/javascript" src="./Scripts/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="./Scripts/sql.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="./Scripts/transliterate.js"></script>
 <script>
 var dicID = new URLSearchParams(window.location.search).get("d");
 var inputID = new URLSearchParams(window.location.search).get("i");
@@ -161,7 +162,8 @@ if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
                 for (var j=0; j<words[i].meanings.length; j++) {
                     mainstr += "<br/><p class='Home_description'>➢&nbsp;&nbsp;&nbsp;&nbsp;" + words[i].meanings[j].mean + "</p><div>";
                     for (var k=0; k<words[i].meanings[j].examples.length; k++) {
-                        mainstr += "<div><p class='textpad'>" + words[i].meanings[j].examples[k].oriEg.replace("~", "<a>" + words[i].ori + "</a>") + "</p><p>&rarr; " + words[i].meanings[j].examples[k].vietEg + "</p></div>";
+						var egLaiTay = words[i].meanings[j].examples[k].oriEg.replace("~", "<a>" + words[i].ori + "</a>")
+                        mainstr += "<div><p class='textpad'>" + egLaiTay + "</p><p>"+ toLaiPao(egLaiTay) +"</p><p>&rarr; " + words[i].meanings[j].examples[k].vietEg + "</p></div>";
                     }
                     mainstr += "</div>";
                 }
@@ -271,15 +273,32 @@ function phonetics(pad) {
 	var ttt = "";
 	var cog;
 	
-	cog = toIPA(pad, 20, "rubytay", "QuyChau");
+	cog = toIPA(pad, 20, "rubytaiyo", "QuyChau");
 	if (cog != "$")
 		ttt = ttt + "Quỳ Châu: <a>" + cog + "</a>";
-	cog = toIPA(pad, 20, "rubytay", "ChauLi");
+	cog = toIPA(pad, 20, "rubytaiyo", "ChauLi");
 	if (cog != "$")
 		ttt = ttt + "<br>Châu Lí: <a>" + cog + "</a>";
 	
 	$("#ipalist").html(ttt);
 	$("#ipalist").show();
+}
+
+function toLaiPao(pad) {
+	var ttt = "";
+	var cog;
+	
+	cog = toIPA(pad, 20, "rubytaiyo", "roman");
+	if (cog != "$") {
+		ttt = cog;
+		var cubo = cog.split(" ");
+		var i;
+		ttt = TaiPaoRoma(cubo[0]);
+      for (i = 1; i < cubo.length; i++) {
+        ttt += (" " + TaiPaoRoma(cubo[i]));
+      }
+	}
+    return ttt;
 }
 
 function toIPA(pad, maxlevel, opttable, accent) {
