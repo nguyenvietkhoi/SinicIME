@@ -311,7 +311,12 @@ function toIPA(pad, maxlevel, opttable, accent) {
     ttt = ipaword;
     for (i = 1; i < cubo.length; i++) {
         var nextword = "";
-		ipaword = TaiYoIPA(cubo[i], accent)
+		if (cubo[i]==".")
+		   ipaword = "。";
+		else if (cubo[i]==",")
+		   ipaword = "、";
+		else
+		   ipaword = TaiYoIPA(cubo[i], accent);
         nextword = ipaword;
         
         if (ttt.slice(-1) == "\n")
