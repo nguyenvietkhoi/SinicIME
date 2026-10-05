@@ -157,7 +157,7 @@ xhr1.send();
                     viet: (word[5] != null) ? word[5] : "",
                     meanings: []
                 }
-                var means = word[6].split("+");
+                var means = (word[6] != null) ? word[6].split("+") : "";
                 means.forEach(function (mean) {
                     var explaination = mean.split("@");
                     var trans = explaination[0].split("=");
