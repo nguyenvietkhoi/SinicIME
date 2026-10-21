@@ -276,6 +276,15 @@ function phonetics(pad) {
 	cog = toIPA(pad, 20, "rubytaiyo", "QuyChau");
 	if (cog != "$")
 		ttt = ttt + "Quỳ Châu: <a>" + cog + "</a>";
+	cog = toIPA(pad, 20, "rubytaiyo", "QuePhong");
+	if (cog != "$")
+		ttt = ttt + "<br>Quế Phong: <a>" + cog + "</a>";
+	cog = toIPA(pad, 20, "rubytaiyo", "ThuongXuan");
+	if (cog != "$")
+		ttt = ttt + "<br>Thường Xuân: <a>" + cog + "</a>";
+	cog = toIPA(pad, 20, "rubytaiyo", "QuyHop");
+	if (cog != "$")
+		ttt = ttt + "<br>Quỳ Hợp: <a>" + cog + "</a>";
 	cog = toIPA(pad, 20, "rubytaiyo", "ChauLi");
 	if (cog != "$")
 		ttt = ttt + "<br>Châu Lí: <a>" + cog + "</a>";

@@ -2712,7 +2712,7 @@ function TaiYoIPA(w, accent) {
                 else if ("𞛗𞛋𞛐𞛜".includes(c))
                     ipa.toneclass = 3;
             }
-            else if ((ipa.rime == "") && (ipa.tone == "") && (ipa.onset == "𞛚") && ("𞛘𞛙𞛖𞛏𞛅".includes(c))) {
+            else if ((ipa.rime == "") && (ipa.tone == "") && (ipa.onset == "𞛚") && ("𞛉𞛘𞛙𞛖𞛏𞛅".includes(c))) {
                 ipa.onset += c;
             }
             else if ((ipa.rime == "") && (ipa.tone == "") && ("𞛁𞛂𞛃𞛄𞜅𞛅𞛚𞛅".includes(ipa.onset)) && (c == "𞛙") && (!ipa.onset2.endsWith("1"))) {

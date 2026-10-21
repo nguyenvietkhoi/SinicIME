@@ -301,7 +301,11 @@ function opttableselect(tablesel) {
             break;
         case 24: opttable = "rubytaiyo";
             document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
-            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'QuyChau\',20)"><a>IPA: ' + $("#QuyChau").val() + '</a></li>' + '<li onclick="logo2ipa(\'ChauLi\',20)"><a>IPA: ' + $("#ChauLi").val() +
+            document.getElementById('accentipa').innerHTML = ('<li onclick="logo2ipa(\'QuyChau\',20)"><a>IPA: ' + $("#QuyChau").val() +
+			'</a></li>' + '<li onclick="logo2ipa(\'QuePhong\',20)"><a>IPA: ' + $("#QuePhong").val() +
+			'</a></li>' + '<li onclick="logo2ipa(\'ThuongXuan\',20)"><a>IPA: ' + $("#ThuongXuan").val() +
+			'</a></li>' + '<li onclick="logo2ipa(\'QuyHop\',20)"><a>IPA: ' + $("#QuyHop").val() +
+			'</a></li>' + '<li onclick="logo2ipa(\'ChauLi\',20)"><a>IPA: ' + $("#ChauLi").val() +
                 '<li onclick="logo2roman(20)"><a>→ abc</a></li>' +
                 '<li onclick="roma2phone()"><a>abc → 𞛍</a></li>' +
                 '<li onclick="convertpad(0,20)"><a>文 → 𞛍</a></li>' + convertdeftext);
