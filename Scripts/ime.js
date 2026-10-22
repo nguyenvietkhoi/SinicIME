@@ -3,7 +3,7 @@
 }
 
 var shiftbool = false;
-var opttablelist = [$('#Hannom').val(), $('#Midchinese').val(), $('#Southmin').val(), $('#Eastmin').val(), $('#Hakka').val(), $('#Mandarin').val(), $('#Yue').val(), $('#Wu').val(), $('#Hankor').val(), $('#Japanese').val(), $('#Sawndip').val(), $('#SinoYay').val(), $('#SinoSaek').val(), $('#SinoYang').val(), $('#Tay').val(), $('#SinoThai').val(), $('#SinoLao').val(), $('#SinoTaidam').val(), $('#SinoTaidon').val(), $('#SinoLanna').val(), $('#SinoKhuen').val(), $('#SinoTaiyai').val(), $('#SinoTainuea').val(), $('#SinoTailue').val(), $('#SinoTaiyo').val(), $('#SinoTaipao').val(), $('#SinoAhom').val(), $('#SinoTaideng').val(), $('#SinoNung').val(), $('#Muong').val(), $('#Sukhothai').val(), $('#Kemmun').val(), $('#Iumien').val(), $('#SinoAiton').val(), $('#SinoTaikhao').val()];
+var opttablelist = [$('#Hannom').val(), $('#Midchinese').val(), $('#Southmin').val(), $('#Eastmin').val(), $('#Hakka').val(), $('#Mandarin').val(), $('#Yue').val(), $('#Wu').val(), $('#Hankor').val(), $('#Japanese').val(), $('#Sawndip').val(), $('#SinoYay').val(), $('#SinoSaek').val(), $('#SinoYang').val(), $('#Tay').val(), $('#SinoThai').val(), $('#SinoLao').val(), $('#SinoTaidam').val(), $('#SinoTaidon').val(), $('#SinoLanna').val(), $('#SinoKhuen').val(), $('#SinoTaiyai').val(), $('#SinoTainuea').val(), $('#SinoTailue').val(), $('#SinoTaiyo').val(), $('#SinoTaipao').val(), $('#SinoAhom').val(), $('#SinoTaideng').val(), $('#SinoNung').val(), $('#Muong').val(), $('#Sukhothai').val(), $('#Kemmun').val(), $('#Iumien').val(), $('#SinoAiton').val(), $('#SinoTaikhao').val(), $('#SinoHmaob').val(), $('#SinoHmoobdawb').val()];
 var kblist = ["E→文", "E→อ", "อ→文"];
 var keyboard = 0;
 var contents = [];
@@ -342,6 +342,14 @@ function opttableselect(tablesel) {
             $("#keyboard").css({ 'font-family': $("#keyboard").css('font-family').replace("Muong Muok Cursive", "Muong Deng Sans") });
             $("#txtPad").css({ 'font-family': $("#txtPad").css('font-family').replace("Muong Muok Cursive", "Muong Deng Sans") });
             $("#txtPadout").css({ 'font-family': $("#txtPadout").css('font-family').replace("Muong Muok Cursive", "Muong Deng Sans") });
+            break;
+        case 35: opttable = "rubyhmaob";
+            document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>→ abc</a></li>' + convertdeftext);
+            break;
+        case 36: opttable = "rubyhmoobdawb";
+            document.getElementById('accentspeak').innerHTML = ('<li onclick="speakpad(' + quocngu + ',20)"><a>N/A</a></li>');
+            document.getElementById('accentipa').innerHTML = ('<li onclick="convertpad(0,20)"><a>→ abc</a></li>' + convertdeftext);
             break;
         case 0:
         default: opttable = "rubynom";
