@@ -34,6 +34,21 @@ var inputID = new URLSearchParams(window.location.search).get("i");
 	}
     };
     xhr.send();
+	
+var xhr1 = new XMLHttpRequest();
+xhr1.open('GET', './Resources/nomime.jpg', true);
+xhr1.responseType = 'arraybuffer';
+xhr1.onload = function (e) {
+    var uInt8Array = new Uint8Array(this.response);
+    condb1 = new SQL.Database(uInt8Array);
+    contents = condb1.exec("SELECT word FROM rubynom where ruby='là' ");
+    // contents is now [{columns:['col1','col2',...], values:[[first row], [second row], ...]}]
+    console.log(contents[0].values[0]);
+    //$("#waitscreen").css({ display: 'none' });
+    $("#txtPad").focus();
+};
+xhr1.send();
+
     window.onload = function () {
 	if (!dictbool) {
         $("#dict").html(dictname2);
@@ -119,7 +134,7 @@ if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
         if (words != null) {
             var mainstr = "";
             for (var i=0; i<words.length; i++) {
-                mainstr += "<div class='Home_card'><h1 class='textpad'><a style='font-size: 6rem; font-weight: normal'>" + words[i].nom + "</a>&nbsp;&nbsp;<a style='font-size: 3rem'>" + words[i].ori + "</a></h1>";
+                mainstr += "<div class='Home_card'><h1 class='textpad'><a class='nomblock' style='font-weight: normal;font-size: 3rem;cursor: pointer;color: #ff0000;' onclick=cognates('"+words[i].nom+"')>◂</a><a style='font-size: 6rem; font-weight: normal'>" + words[i].nom + "</a>&nbsp;&nbsp;<a style='color: #fff; font-size: 3rem'>" + words[i].ori + "</a></h1>";
                 for (var j=0; j<words[i].meanings.length; j++) {
                     mainstr += "<br/><p class='Home_description'>➢&nbsp;&nbsp;&nbsp;&nbsp;" + words[i].meanings[j].mean + "</p><div>";
                     for (var k=0; k<words[i].meanings[j].examples.length; k++) {
@@ -144,12 +159,251 @@ else {
   alert(window.location.href.split("?")[0] + "?d=0&i="+document.getElementById("oriPad").value.replace(/\s/g, '%20')+" is copied to the clipboard");
 }
 }
+
+function cognates(pad) {
+	var ttt = "<a>" + pad + "</a>";
+	var cog;
+	
+	cog = toABC(pad, 11, "rubyhmdawb");
+	if (cog != "$")
+		ttt = ttt + "<br>Hmong Daw: <a href='./HmoobDawbDict.html?i="+cog+"'>" + cog + "</a>";
+	
+	$("#cognatelist").html(ttt);
+	$("#cognatelist").show();
+}
+
+function toABC(pad, maxlevel, opttable) {
+    if (pad == "")
+        return "";
+    var cubo = phoneof(pad, maxlevel, opttable, true);
+    var i;
+	if (cubo[0].startsWith('$'))
+		return "$";
+    var ttt = cubo[0];
+    for (i = 1; i < cubo.length; i++) {
+        var nextword = "";
+        nextword = cubo[i];
+        
+        if (nextword.startsWith('$')) {
+			return "$";
+        }
+        else if (ttt.slice(-1) == "\n")
+            ttt = ttt + nextword;
+        else
+            ttt = ttt + " " + nextword;
+    }
+    return ttt;
+}
+function phoneof(phrase, maxlevel, opttable, defa){
+    var ext = !defa;
+    if ((phrase.length == 1) && defa)
+        ext = true;
+    var outputarr = [];
+    var sss = "";
+    var word = phrase;
+    var k;
+    var sql = "";
+    var fullchar;
+
+    var pconlenbuf = 0;
+    var pconlentmp = 0;
+    var pconlentail = 0;
+    var pconcSz = 0;
+    var pconqSz = 0;
+    var pconrSz = 0;
+    var pcontcSz = 0;
+    var pcontqSz = 0;
+    var pcontrSz = 0;
+    var pcontail = "";
+    var pconqueue = "";
+    var xstr = [];
+    var pcubo = [];
+
+    for (k = 0; k != word.length; k++) {
+        pconqSz = pconrSz = pconcSz = pcontqSz = pcontrSz = pcontcSz = 0;
+        if ((word[k].charCodeAt(0) < 0xD800) || (word[k].charCodeAt(0) >= 0xE000)) {
+            fullchar = word[k];
+        } else {
+            fullchar = word[k] + word[k + 1];
+            //sql = "select "+optruby+" from "+opttable+" where HEX(word)='"+SuppChar.asHex(word2)+"' order by level desc";
+            if ((phrase.length == 2) && !ext)
+                ext = true;
+            k++;
+        }
+
+        pcubo = [];
+        if (pconqueue != "") {
+            var optta = opttable;
+            var cfullchar = pconqueue + fullchar;
+            var csize = cfullchar.split(":").length;
+            contents = condb1.exec("SELECT c" + optta + ", cword FROM cmpnom WHERE cword = '" + cfullchar + "' AND c" + optta + " <> '' AND c" + optta + " IS NOT NULL");
+            var split = null;
+            var i, j;
+
+            if (contents.length != 0) {
+                for (i = 0; i < contents[0].values.length; i++) {
+                    split = contents[0].values[i][0].split(" ");
+                    xstr = [];
+                    for (j = 0; j != csize; j++)
+                        xstr.push(split[j]);
+                    pcubo.push(xstr);
+                    pconlenbuf = pconlentmp;
+                }
+            }
+
+            pconqSz = pconrSz = pconcSz = pcubo.length;
+            contents = condb1.exec("SELECT c" + optta + ", cword FROM cmpnom WHERE cword like '" + cfullchar + ":%' AND c" + optta + " <> '' AND c" + optta + " IS NOT NULL");
+            xstr = [];
+            split = null;
+            var rubo = [];
+            if (contents.length != 0) {
+                for (i = 0; i < contents[0].values.length; i++) {
+                    split = contents[0].values[i][0].split(" ");
+                    xstr = [];
+                    for (j = 0; j != split.length; j++)
+                        xstr.push(split[j]);
+                    rubo.push(xstr);
+                    pconlenbuf = pconlentmp;
+                }
+            }
+            if (split != null) {
+                xstr = [];
+                for (i = 0; i != csize; i++)
+                    xstr.push(split[i]);
+                pconlentail = split[i - 1].length;
+                pcubo.push(xstr);
+                pcubo = pcubo.concat(rubo);
+                pconqSz++;
+                pconrSz = pcubo.length;
+            }
+            ptqSz = ptrSz = ptcSz = pcubo.length;
+
+            if (pcontail != "") {
+                var truby = pcontail + fullchar;
+                var tsize = truby.split(":").length;
+                contents = condb1.exec("SELECT c" + optta + ", cword FROM cmpnom WHERE cword = '" + truby + "' AND c" + optta + " <> '' AND c" + optta + " IS NOT NULL");
+                if (contents.length != 0) {
+                    for (i = 0; i < contents[0].values.length; i++) {
+                        split = contents[0].values[i][0].split(" ");
+                        xstr = [];
+                        for (j = 0; j != tsize; j++)
+                            xstr.push(split[j]);
+                        pcubo.push(xstr);
+                        pconlenbuf = pconlentmp;
+                    }
+                }
+                ptqSz = ptrSz = ptcSz = pcubo.length;
+                contents = condb1.exec("SELECT c" + optta + ", cword FROM cmpnom WHERE cword like '" + truby + ":%' AND c" + optta + " <> '' AND c" + optta + " IS NOT NULL");
+                xstr = [];
+                split = null;
+                rubo = [];
+                if (contents.length != 0) {
+                    for (i = 0; i < contents[0].values.length; i++) {
+                        split = contents[0].values[i][0].split(" ");
+                        xstr = [];
+                        for (j = 0; j != split.length; j++)
+                            xstr.push(split[j]);
+                        rubo.push(xstr);
+                        pconlenbuf = pconlentmp;
+                    }
+                }
+
+                if (split != null) {
+                    xstr = [];
+                    for (i = 0; i != csize; i++)
+                        xstr.push(split[i]);
+                    pconlentail = split[i - 1].length;
+                    pcubo.push(xstr);
+                    pcubo = pcubo.concat(rubo);
+                    pcontqSz++;
+                    pcontrSz = pcubo.length;
+                }
+            }
+        }
+        var q;
+
+        sql = "select ruby, (level % " + maxlevel + ") from " + opttable + " where (level >1 and word='" + fullchar + "') order by (level % " + maxlevel + ") desc";
+        contents = condb1.exec(sql);
+        if (contents.length != 0) {
+            sss = contents[0].values[0][0];
+        }
+
+        if (pconcSz > 0) {
+            if (pconcSz == pconqSz)
+                pconqueue = "";
+            else
+                pconqueue = pconqueue + fullchar + ":";
+            pcontail = "";
+        } else if (pconqSz > 0) {
+            pconqueue = pconqueue + fullchar + ":";
+            pcontail = fullchar + ":";
+        } else if (pconrSz > 0) {
+            pconqueue = pcontail = "";
+        } else if (pcontcSz > 0) {
+            pconlenbuf = pconlentail;
+            if (pcontcSz == pcontqSz)
+                pconqueue = "";
+            else
+                pconqueue = pcontail + fullchar + ":";
+            pcontail = "";
+        } else if (pcontqSz > 0) {
+            pconlenbuf = pconlentail;
+            pconqueue = pcontail + fullchar + ":";
+            pcontail = fullchar + ":";
+        } else if (pcontrSz > 0) {
+            pconlenbuf = pconlentail;
+            pconqueue = pcontail = "";
+        } else {
+            pconqueue = fullchar + ":";
+            pcontail = "";
+            pconlenbuf = 0;
+            pcubo = [];
+        }
+
+        if (pcubo.length != 0) {
+            for (q = 1; q < pcubo[0].length; q++) {
+                outputarr.pop();
+            }
+            for (q = 0; q != pcubo[0].length; q++) {
+                outputarr.push(pcubo[0][q]);
+            }
+        } else {
+            if (sss.length > 0)
+                outputarr.push(sss);
+            else
+                outputarr.push("$" + fullchar);
+        }
+        sss = "";
+    }
+
+    return outputarr;
+}
+
+$(document).click(function (e) {
+    if (!$(e.target).is("#cognatelist") && !$(e.target).is("#cognatelist a") && !$(e.target).is(".nomblock")) {
+        if ($('#cognatelist').is(':visible')) {
+            $('#cognatelist').hide();
+        }
+    }
+    if (!$(e.target).is("#ipalist") && !$(e.target).is("#ipalist a") && !$(e.target).is(".readblock")) {
+        if ($('#ipalist').is(':visible')) {
+            $('#ipalist').hide();
+        }
+    }
+});
+$('#cognatelist').click(function(e){
+   e.stopPropagation; // don't close modal by clicking inside modal and by clicking btn
+})
+$('#ipalist').click(function(e){
+   e.stopPropagation; // don't close modal by clicking inside modal and by clicking btn
+})
+
 </script>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hmaob-Vaos Cidian — Linguaevum</title>
+    <title>Hmaob - Vaos — Linguaevum</title>
     <link href="./Content/bootstrap.css" rel="stylesheet">
     <link href="./Content/Site.css" rel="stylesheet">
     <style>
@@ -246,6 +500,28 @@ else {
 .Home_button:hover .tooltiptext {
   visibility: visible;
 }
+
+#cognatelist, #ipalist {
+  line-height: normal;
+  display: none;
+  background-color: black;
+  font-style: italic;
+  font-size:2rem;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+#cognatelist a {
+  color:#ddc326; text-decoration: blink;font-style: normal;font-size: 2rem;
+  font-family: Cambria, "Times New Roman", "Cambria Tai Yo", "Tai Lanna", "Leelawadee UI", Tahoma, "Microsoft New Tai Lue", serif, "Muong Muok Cursive", TaiViet, "Segoe Ahom Print", "Helvetica Neue", Helvetica, Arial, SimSun, SimSun-ExtB, SimSun-ExtG, Jigmo3, "Malgun Gothic", "BabelStone Han", Sawndip, "Nom Na Tong", 'Han-Nom Gothic Supplement';
+}
+#ipalist a {
+  color:#31d0f5; text-decoration: blink;font-style: normal;font-size: 2rem; font-family: Cambria, "Times New Roman";
+}
+
 body{font: -apple-system-body;}
     </style>
 </head>
@@ -260,7 +536,7 @@ body{font: -apple-system-body;}
             <a href="/SinicIME"><img src="./Resources/tho.png" class="logo"></a>
             <a class="navbar-brand" href="/SinicIME">IME</a>
             <div class="Home_title">
-                <box class="Home_button" style="margin:0;border: none;border-radius:0" onclick=inverse()><a id="dict">Hmaob → Vaos</a></box> Cidian
+                Từ điển <box class="Home_button" style="margin:0;border: none;border-radius:0" onclick=inverse()><a id="dict">Hmaob → Vaos</a></box>
             </div>
         </div>
     <div>
@@ -270,6 +546,8 @@ body{font: -apple-system-body;}
         <!--<button class="Home_button" onclick=showAlphabet()>⌨️</button>-->
     </div>
     </div>
+	<div id='cognatelist'></div>
+	<div id='ipalist' style='right:5px'></div>
 </div>
 
 <div class="Home_container">
