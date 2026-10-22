@@ -185,6 +185,12 @@ function cognates(pad) {
 	cog = toABC(pad, 11, "rubymien");
 	if (cog != "$")
 		ttt = ttt + "<br>Iuh Mienh: <a href='./IuMienDict.html?i="+cog+"'>" + cog + "</a>";
+	cog = toABC(pad, 11, "rubyhmaob");
+	if (cog != "$")
+		ttt = ttt + "<br>Hmaob: <a href='./HmaobDict.html?i="+cog+"'>" + cog + "</a>";
+	cog = toABC(pad, 11, "rubyhmdawb");
+	if (cog != "$")
+		ttt = ttt + "<br>Hmoob Dawb: <a href='./HmoobDawbDict.html?i="+cog+"'>" + cog + "</a>";
 	
 	$("#cognatelist").html(ttt);
 	$("#cognatelist").show();
