@@ -133,6 +133,9 @@ if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
                     ref: (word[5] != null) ? word[5] : "",
                     meanings: []
                 }
+				if (word[4]==null) {
+					word[4]="";
+				}
                 var means = word[4].split("+");
                 means.forEach(function (mean) {
                     var explaination = mean.split("@");
